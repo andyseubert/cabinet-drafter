@@ -1,0 +1,57 @@
+name: Fix SketchUp Ruby Console path
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-sketchup-ruby-console-path.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Correct SketchUp Ruby Console menu path everywhere
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              'Window → Ruby Console': 'Extensions → Developer → Ruby Console',
+              'Window > Ruby Console': 'Extensions > Developer > Ruby Console',
+              'then paste the exact `load ...` command shown by CabinetDrafter into the SketchUp Ruby Console.': 'then in SketchUp Pro open **Extensions → Developer → Ruby Console** and paste the exact `load ...` command shown by CabinetDrafter.',
+              'In SketchUp Ruby Console run:': 'In SketchUp Pro, open Extensions → Developer → Ruby Console and run:',
+          }
+
+          for filename in ['index.html', 'README.md']:
+              p = Path(filename)
+              text = p.read_text(encoding='utf-8')
+              for old, new in replacements.items():
+                  text = text.replace(old, new)
+              p.write_text(text, encoding='utf-8')
+
+          p = Path('README.html')
+          text = p.read_text(encoding='utf-8')
+          marker = '<p><img src="screenshots/3d-preview.png" alt="CabinetDrafter 3D preview"></p>'
+          addition = marker + '<h2>SketchUp export</h2><p>SketchUp is optional. After downloading the Ruby script, in SketchUp Pro open <strong>Extensions → Developer → Ruby Console</strong>, paste the exact <code>load ...</code> command shown by CabinetDrafter, and press Enter.</p>'
+          if 'Extensions → Developer → Ruby Console' not in text:
+              if marker not in text:
+                  raise SystemExit('README.html insertion marker not found')
+              text = text.replace(marker, addition)
+          p.write_text(text, encoding='utf-8')
+
+          idx = Path('index.html').read_text(encoding='utf-8')
+          if 'Window → Ruby Console' in idx or 'Window > Ruby Console' in idx:
+              raise SystemExit('stale SketchUp menu path remains in index.html')
+          if 'Extensions → Developer → Ruby Console' not in idx:
+              raise SystemExit('correct SketchUp menu path missing from index.html')
+          PY
+
+          rm .github/workflows/fix-sketchup-ruby-console-path.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Correct SketchUp Ruby Console menu path"
+          git push
