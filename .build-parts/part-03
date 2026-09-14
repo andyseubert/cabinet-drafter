@@ -1,0 +1,78 @@
+<section class="card small"><h2>Use in SketchUp Pro</h2><p>Open <strong>Window → Ruby Console</strong> and run:</p><pre>load File.expand_path('~/Downloads/cabinet-drafter_generated_TIMESTAMP.rb')</pre><p>Each Ruby download gets a unique timestamped filename so SketchUp cannot accidentally reload an older copy. After downloading, the page shows the exact load command. The script replaces the prior Generated Cabinet Lineup, models drawer boxes, mixed open cubbies/divider panels, real birch ladder toe-kick bases with cherry skins, and cherry fronts, optionally adds cabinet text labels and independently selectable per-drawer box-height and face-height labels, and saves a native SKP to your Desktop.</p></section>
+<dialog id="helpDialog" class="help-dialog"><div class="help-doc">
+  <div class="help-heading">
+    <div>
+      <h2>CabinetDrafter Help</h2>
+      <p class="muted">Cabinet planner · version 1.1.1</p>
+    </div>
+    <button type="button" id="closeHelp" class="help-close">Close</button>
+  </div>
+
+  <div class="help-callout">
+    <strong>Quick start:</strong> choose inches or millimeters, edit the cabinet list, inspect the built-in 3D preview, check the sizing/BOM warnings, and save your project JSON. SketchUp export is optional.
+  </div>
+
+  <h3>1. What CabinetDrafter does</h3>
+  <p>CabinetDrafter is a single-file local browser tool for designing cabinet runs using frameless or face-frame construction. It calculates drawer boxes, doors, open cubbies, shelf openings, plywood parts and sheet nesting, and renders the cabinet lineup directly in the page. SketchUp export is optional. It does not need a web server or an online account.</p>
+  <ul>
+    <li>Build a lineup of drawer/mixed cabinets, single-door cabinets, and open-shelf cabinets.</li>
+    <li>Enter drawer box heights and open-space heights from bottom to top.</li>
+    <li>Use inches or millimeters without changing the underlying geometry.</li>
+    <li>Generate a plywood BOM, detailed cut-list CSV, and 4 × 8 sheet-planning diagrams.</li>
+    <li>Orbit and inspect the cabinet model directly in the browser and save the current view as PNG.</li>
+    <li>Optionally generate a Ruby script that builds and saves the model in SketchUp Pro.</li>
+    <li>Save the project to JSON and keep a browser-local recovery copy automatically.</li>
+  </ul>
+
+  <h3>2. First-time workflow</h3>
+  <ol>
+    <li><strong>Choose units.</strong> Inches and millimeters are only display/entry choices; CabinetDrafter keeps canonical geometry in inches internally for SketchUp compatibility.</li>
+    <li><strong>Edit the Cabinets table.</strong> Set a label, type, width, quantity, vertical stack/opening heights, and shelf count where appropriate.</li>
+    <li><strong>Review the sizing preview.</strong> Fix anything shown as a warning before relying on the cut list.</li>
+    <li><strong>Review the BOM and sheet layouts.</strong> Grain-sensitive cherry parts are kept oriented when Preserve cherry grain direction is enabled.</li>
+    <li><strong>Click Save Project JSON.</strong> Pick a normal file such as <code>my_kitchen.json</code>. Supported browsers will then auto-save that same file as you edit.</li>
+    <li><strong>Click Download Ruby script.</strong> CabinetDrafter shows the exact <code>load ...</code> command to paste into SketchUp.</li>
+    <li><strong>In SketchUp Pro:</strong> open <em>Window → Ruby Console</em>, paste the command, and press Enter. Regenerating replaces the prior <em>Generated Cabinet Lineup</em> group.</li>
+  </ol>
+
+  <h3>3. Cabinet types</h3>
+  <table class="help-table">
+    <thead><tr><th>Type</th><th>Use it for</th><th>Default construction</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Drawer / mixed</strong></td><td>Drawers, or drawers combined with fixed open cubbies.</td><td>Pure drawer cabinet: 3/4 birch carcass. If any open cubby is present, the carcass becomes 3/4 cherry so the visible interior is cherry.</td></tr>
+      <tr><td><strong>Single door</strong></td><td>One full-overlay door with optional adjustable shelves.</td><td>3/4 birch carcass, cherry door, open back, four stretchers.</td></tr>
+      <tr><td><strong>Open shelf</strong></td><td>Visible shelving with an applied full-width back.</td><td>3/4 cherry carcass, configurable applied back (default 1/4 cherry), two flat top stretchers, adjustable shelf-pin shelves.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4. Drawer / mixed stack syntax</h3>
+  <p>The stack is always entered <strong>bottom → top</strong>.</p>
+  <div class="help-warning"><strong>Important:</strong> <code>O</code> is the <strong>letter O ("oh")</strong>, short for <strong>Open</strong>. It is <strong>not the number zero (<code>0</code>)</strong>. If <code>O8</code> could be mistaken for <code>08</code>, type <code>Open 8</code> instead; both forms mean the same thing.</div>
+  <table class="help-table">
+    <thead><tr><th>Example</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>7, 7, 9.5</code></td><td>Legacy all-drawer mode: three drawer boxes because the entire list is bare numbers.</td></tr>
+      <tr><td><code>D7, D7, D9.5</code></td><td>The same three drawer boxes, written explicitly.</td></tr>
+      <tr><td><code>D9, D9, 15</code></td><td>Two 9-unit drawers followed by a 15-unit clear open cubby. Once D is used, bare numbers are open cubbies.</td></tr>
+      <tr><td><code>D7, O9.5, D7</code></td><td>7-unit drawer, 9.5-unit clear open cubby, 7-unit drawer. The <code>O</code> is the letter O for Open, not zero.</td></tr>
+      <tr><td><code>Open 8, D10</code></td><td>Bottom 8-unit open cubby uses the cabinet bottom and gets one top divider. <code>Open 8</code> and <code>O8</code> are equivalent.</td></tr>
+      <tr><td><code>D10, O8</code></td><td>Top 8-unit open cubby gets one bottom divider and no added full top. Here <code>O</code> is the letter O.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>D = Drawer.</strong> <strong>O = Open</strong> and is the <strong>letter O (oh), never the digit 0 (zero)</strong>. <code>Open 8</code>, <code>Cubby 8</code>, and <code>O8</code> are accepted synonyms. For convenience, once a stack contains an explicit <code>D</code>, an unprefixed number also means an open cubby. A completely bare list remains all drawers for compatibility with older projects. Fixed cubby divider panels are pocket-screwed into the cabinet sides.</p>
+
+  <h3>5. Open-shelf heights</h3>
+  <p>For an Open shelf cabinet, use the same vertical-stack field to enter <strong>clear opening heights</strong>, bottom to top.</p>
+  <pre>9.5, 12, auto</pre>
+  <p>This creates three clear openings. The first two are fixed to the entered heights and the final/top opening uses the remaining height. Use <code>auto</code> only for the final opening. If the field is blank, the Shelves count is used and the shelves are spaced evenly.</p>
+  <p>These shelves are still <strong>adjustable shelf-pin shelves</strong>; the entered heights describe the modeled layout, not fixed pocket-screw locations.</p>
+
+  <h3>6. Construction model</h3>
+  <p>CabinetDrafter currently models the following construction system:</p><div class="help-callout"><strong>Face frames in 1.1:</strong> select the front construction per cabinet. Global face-frame settings control stile width, rail width, frame thickness/material, overlay, and inset reveal. Frames are perimeter-only in 1.1; intermediate rails between individual drawers/cubbies are a future enhancement.</div>
+  <ul>
+    <li><strong>Per-cabinet front construction:</strong> frameless, face-frame overlay, or face-frame inset.</li>
+    <li><strong>Pocket-screw structural joinery.</strong></li>
+    <li>Standard carcass: 3/4 plywood.</li>
+    <li>Drawer boxes: 1/2 birch plywood sides, front, back, and bottom.</li>
+    <li>Drawer bottom fits completely between the four drawer walls; no dado or rabbet.</li>
+    <li>Drawer slide clearance: 1/2 per side / 1 total by default.</li>
