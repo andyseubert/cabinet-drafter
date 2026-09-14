@@ -1,0 +1,1654 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CabinetDrafter 1.1.1 — Cabinet planner</title>
+<style>
+:root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:#222}main{max-width:1440px;margin:0 auto;padding:28px 22px 50px}h1{margin:0 0 6px;font-size:30px}h2{margin:0 0 14px;font-size:20px}h3{margin:18px 0 8px;font-size:16px}p{line-height:1.45}.muted{color:#666}.card{background:#fff;border:1px solid #d9d6cf;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:12px}label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:5px}input,select,textarea,button{font:inherit}input,select{width:100%;padding:8px 9px;border:1px solid #bbb;border-radius:7px;background:#fff}input[type=checkbox]{width:auto;transform:scale(1.1);margin-right:7px}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid #ddd}td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}td input,td select{min-width:70px}.drawer-list{min-width:165px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}button{border:1px solid #aaa;background:#fafafa;padding:9px 13px;border-radius:8px;cursor:pointer}button.primary{background:#333;color:#fff;border-color:#333}button.danger{color:#8b1e1e}textarea{width:100%;height:300px;padding:12px;border:1px solid #bbb;border-radius:8px;font-family:Menlo,Monaco,monospace;font-size:12px;line-height:1.4;white-space:pre}.note{background:#fff8df;border-left:4px solid #d7a800;padding:10px 12px;border-radius:5px;margin-top:12px}.small{font-size:13px}.summary-good{color:#265a2e}.summary-warn{color:#8b1e1e;font-weight:700}.dim{white-space:nowrap}.disabledish{opacity:.45}.hint{font-size:11px;color:#777;margin-top:3px}.drawer-budget{font-size:11px;color:#666;margin-top:4px;line-height:1.3;min-width:190px}.drawer-budget.bad{color:#8b1e1e}.summary-table td,.summary-table th{padding:7px 8px}.nowrap{white-space:nowrap}.pill{display:inline-block;padding:2px 7px;border-radius:999px;background:#eee;font-size:11px}.layout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.sheet-card{border:1px solid #ddd;border-radius:10px;padding:10px;background:#fafafa}.sheet-card h3{margin:0 0 8px}.sheet-svg{width:100%;height:auto;max-height:620px;background:#fff;border:1px solid #aaa}.bom-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}.kpi{background:#f7f7f5;border:1px solid #e1dfd9;border-radius:9px;padding:10px}.kpi strong{font-size:20px;display:block}.grain-arrow{font-weight:700}.warning-box{background:#fff0f0;border-left:4px solid #b64a4a;padding:10px 12px;border-radius:5px;margin-top:10px}.success-box{background:#eef8ef;border-left:4px solid #4a8f54;padding:10px 12px;border-radius:5px;margin-top:10px}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.table-wrap{overflow-x:auto}}@media print{body.print-layouts main>*{display:none!important}body.print-layouts #sheetLayoutsCard{display:block!important;border:none;box-shadow:none;margin:0;padding:0}body.print-layouts #sheetLayoutsCard .actions,body.print-layouts #sheetLayoutsCard .note{display:none!important}.sheet-card{break-inside:avoid;page-break-inside:avoid}.layout-grid{display:block}.sheet-card{margin:0 0 20px}}
+.app-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.app-header p{margin:6px 0 0}.help-button{font-weight:700;min-width:88px}.help-dialog{width:min(980px,calc(100vw - 32px));max-height:88vh;border:1px solid #bbb;border-radius:14px;padding:0;box-shadow:0 16px 60px rgba(0,0,0,.28);background:#fff;color:#222}.help-dialog::backdrop{background:rgba(0,0,0,.38)}.help-doc{padding:22px 26px 32px;line-height:1.5}.help-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;position:sticky;top:0;background:#fff;padding:2px 0 12px;border-bottom:1px solid #eee;z-index:2}.help-heading h2{margin:0}.help-heading p{margin:3px 0 0}.help-close{white-space:nowrap}.help-doc h3{margin-top:26px;padding-top:4px;border-top:1px solid #eee}.help-doc h4{margin:20px 0 8px}.help-doc li{margin:5px 0}.help-doc pre{overflow:auto;background:#f6f5f1;border:1px solid #dedbd2;border-radius:8px;padding:12px;line-height:1.35}.help-table{width:100%;border-collapse:collapse;margin:10px 0}.help-table th,.help-table td{border:1px solid #ddd;padding:8px;vertical-align:top}.help-callout{background:#eef8ef;border-left:4px solid #4a8f54;padding:12px 14px;border-radius:6px}.help-warning{background:#fff3df;border-left:4px solid #d28a00;padding:12px 14px;border-radius:6px;margin:12px 0}@media(max-width:700px){.app-header{flex-direction:column}.help-button{align-self:flex-start}.help-doc{padding:18px}.help-heading{position:static}}
+
+.preview3d-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}.preview3d-header h2{margin-bottom:4px}.preview3d-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0}.preview3d-toolbar button{padding:7px 10px}.preview3d-check{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#444;padding:6px 8px;border:1px solid #ddd;border-radius:7px;background:#fafafa}.preview3d-check input{margin:0;width:auto;transform:none}.preview3d-wrap{position:relative;width:100%;height:min(64vh,640px);min-height:380px;border:1px solid #bdb9af;border-radius:10px;overflow:hidden;background:linear-gradient(#fbfbfa,#efeee9);touch-action:none}.preview3d-canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}.preview3d-canvas.dragging{cursor:grabbing}.preview3d-status{margin-top:7px}.preview3d-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:7px;font-size:11px;color:#666}.preview3d-swatch{display:inline-block;width:12px;height:12px;border:1px solid #777;vertical-align:-2px;margin-right:5px}.preview3d-swatch.birch{background:#ead9ae}.preview3d-swatch.cherry{background:#c88967}@media(max-width:700px){.preview3d-wrap{height:460px;min-height:320px}}
+</style>
+</head>
+<body><main>
+<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.1.1</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
+
+<section class="card"><h2>Units</h2><div class="grid"><div><label>Display / entry units</label><select id="units"><option value="in">Inches</option><option value="mm">Millimeters</option></select><div class="hint">The project is stored internally in inches for SketchUp compatibility. Switching units converts the displayed values without changing cabinet geometry.</div></div></div></section>
+
+<section class="card"><h2>Cabinets</h2><div class="table-wrap"><table><thead><tr><th>Label</th><th>Type</th><th>Front construction</th><th>Width</th><th>Qty</th><th>Vertical stack / clear openings<br><span class="muted">bottom → top</span></th><th>Custom drawer-front heights<br><span class="muted">optional; drawers only</span></th><th>Shelves<br><span class="muted">count fallback</span></th><th></th></tr></thead><tbody id="cabinetRows"></tbody></table></div>
+<div class="actions"><button id="addDrawer">+ Drawer / mixed cabinet</button><button id="addDoor">+ Single-door cabinet</button><button id="addShelf">+ Open-shelf cabinet</button></div>
+<div class="note small"><strong>Drawer / mixed stack syntax:</strong> <strong><code>O</code> means the LETTER O ("oh") for Open — not the digit zero (<code>0</code>).</strong> For example, <code>D7, O9.5, D7</code> means drawer, open cubby, drawer. You may write <code>Open 9.5</code> instead of <code>O9.5</code> if that is clearer. An all-number list such as <code>7, 7, 9.5</code> remains legacy all-drawer mode. Once you use <code>D</code> to mark drawers, any bare number is also interpreted as an open cubby: <code>D9, D9, 15</code> means two 9-unit drawers with a 15-unit clear cubby above. <strong>Open-shelf cabinets:</strong> use the same field for clear opening heights, bottom to top, for example <code>9.5, 12, auto</code>. Each boundary between openings gets an adjustable pin-supported shelf; <code>auto</code> is allowed only for the final/top opening and uses the remaining clear height. If the field is blank, the Shelves count still creates evenly spaced adjustable shelves. Values use the selected unit; explicit <code>mm</code> or <code>in</code> suffixes are also accepted.</div></section>
+
+<section class="card"><h2>Drawer sizing</h2><div class="grid">
+<div><label>Drawer depth</label><input id="drawerDepth" type="number" step="0.125"><div class="hint">24&quot; for your 24&quot; slides.</div></div>
+<div><label>Total slide clearance</label><input id="slideClearance" type="number" step="0.03125"><div class="hint">Default 1&quot; total = 1/2&quot; each side.</div></div>
+<div><label>Drawer side/front/back thickness</label><input id="drawerSidePly" type="number" step="0.125"><div class="hint">Default 1/2&quot; birch.</div></div>
+<div><label>Drawer bottom thickness</label><input id="drawerBottomPly" type="number" step="0.125"><div class="hint">Default 1/2&quot; birch; panel fits completely between the four drawer walls.</div></div>
+<div><label>Gap between drawer boxes</label><input id="drawerBoxGap" type="number" min="0" step="0.03125"><div class="hint">Default 1/2&quot;. This is a design choice, not a slide standard.</div></div>
+<div><label>Bottom drawer-box clearance</label><input id="drawerBottomClearance" type="number" min="0" step="0.03125"><div class="hint">Default 1/2&quot; above the cabinet bottom. Drawer boxes are stacked upward from here.</div></div>
+<div><label>Mixed-cabinet divider depth</label><input id="mixedPanelDepth" type="number" min="1" step="0.125"><div class="hint">Default 24&quot;. Horizontal panels that form the top/bottom of an open cubby.</div></div>
+<div><label>Mixed-cabinet divider material</label><select id="mixedPanelMaterial"><option value="cherry">3/4&quot; cherry</option><option value="birch">3/4&quot; birch</option></select><div class="hint">Default cherry. Any drawer cabinet containing an open cubby now uses a cherry carcass so the exposed interior is cherry.</div></div>
+</div>
+<div class="note small"><strong>Width rule:</strong> drawer box outside width = cabinet inside width − total slide clearance. <strong>Height rule:</strong> drawer boxes must fit between the top of the 3/4&quot; cabinet bottom and the underside of the 3/4&quot; top stretchers, so the default 38&quot; carcass has 36.5&quot; of internal vertical drawer-box space. Vertical drawer spacing is <em>not</em> standardized by the slides. Drawer boxes and open cubbies are stacked from the bottom upward. Open-cubby heights are clear opening heights; 3/4&quot; divider panels are added where required. A top open cubby is anchored to the underside of the top stretchers so its entered clear height is exact. Verify your slide manufacturer's horizontal clearance before cutting.</div></section>
+
+<section class="card"><h2>Face-frame options</h2><div class="grid">
+<div><label>Face-frame stile width</label><input id="frameStileWidth" type="number" min="0.25" step="0.125"><div class="hint">Default 1 1/2&quot;. Full-height left/right members.</div></div>
+<div><label>Face-frame rail width</label><input id="frameRailWidth" type="number" min="0.25" step="0.125"><div class="hint">Default 1 1/2&quot;. Top and bottom perimeter rails.</div></div>
+<div><label>Face-frame thickness</label><input id="frameThickness" type="number" min="0.25" step="0.125"><div class="hint">Default 3/4&quot;. Frame is applied to the front of the carcass.</div></div>
+<div><label>Face-frame material</label><select id="frameMaterial"><option value="cherry">Cherry solid stock</option><option value="birch">Birch solid stock</option></select><div class="hint">Face-frame members are treated as linear solid-wood stock, not plywood-sheet parts.</div></div>
+<div><label>Overlay beyond frame opening</label><input id="frameOverlay" type="number" min="0" step="0.03125"><div class="hint">Default 1/2&quot; per edge for face-frame overlay fronts.</div></div>
+<div><label>Inset reveal per edge</label><input id="frameInsetReveal" type="number" min="0" step="0.03125"><div class="hint">Default 1/16&quot; around inset doors/fronts.</div></div>
+</div><div class="note small"><strong>Version 1.1 face frames are perimeter frames:</strong> two full-height stiles plus a top and bottom rail. CabinetDrafter does not yet generate intermediate face-frame rails between individual drawers or cubbies. Overlay and inset front sizing is calculated against the perimeter frame opening.</div></section>
+
+<section class="card"><h2>Drawer / mixed sizing preview</h2><div id="drawerSummary" class="small"></div></section>
+
+<section class="card" id="preview3DCard">
+<div class="preview3d-header"><div><h2>3D Preview</h2><div class="small muted">Built into CabinetDrafter — no SketchUp or internet connection required.</div></div></div>
+<div class="preview3d-toolbar">
+<button type="button" data-preview-view="iso">Isometric</button><button type="button" data-preview-view="front">Front</button><button type="button" data-preview-view="left">Left</button><button type="button" data-preview-view="right">Right</button><button type="button" data-preview-view="top">Top</button><button type="button" id="previewFit">Fit</button>
+<label class="preview3d-check"><input id="previewShowFronts" type="checkbox" checked> Fronts / doors</label><label class="preview3d-check"><input id="previewShowDrawerBoxes" type="checkbox" checked> Drawer boxes</label><label class="preview3d-check"><input id="previewShowBacks" type="checkbox" checked> Backs</label>
+<button type="button" id="savePreviewPng">Save PNG</button>
+</div>
+<div class="preview3d-wrap" id="preview3DWrap"><canvas id="cabinet3D" class="preview3d-canvas" aria-label="Interactive 3D cabinet preview"></canvas></div>
+<div id="preview3DStatus" class="hint preview3d-status">Drag to orbit · mouse wheel to zoom · Shift-drag to pan · double-click to fit.</div>
+<div class="preview3d-legend"><span><span class="preview3d-swatch birch"></span>Birch</span><span><span class="preview3d-swatch cherry"></span>Cherry</span><span>Black outlines show individual pieces.</span></div>
+</section>
+
+<section class="card"><h2>Standard cabinet dimensions</h2><div class="grid">
+<div><label>Cabinet depth</label><input id="cabDepth" type="number" step="0.125"></div><div><label>Cabinet box height</label><input id="cabHeight" type="number" step="0.125"></div><div><label>Carcass plywood</label><input id="ply" type="number" step="0.125"></div><div><label>Open-space back thickness</label><input id="backPly" type="number" step="0.125"><div class="hint">Default 1/4&quot;. Applied to the outside rear face.</div></div><div><label>Open-space back material</label><select id="openBackMaterial"><option value="cherry">Cherry</option><option value="birch">Birch</option></select><div class="hint">Default cherry. Used for open-shelf backs and localized mixed-cubby backs.</div></div><div><label>Stretcher width</label><input id="stretcher" type="number" step="0.125"></div><div><label>Vertical front gap</label><input id="frontGap" type="number" min="0" step="0.03125"><div class="hint">Default 1/8&quot; top, bottom, and between drawer fronts.</div></div><div><label>Side reveal per cabinet edge</label><input id="sideReveal" type="number" min="0" step="0.03125"><div class="hint">Default 1/16&quot;; two abutting cabinets then have a 1/8&quot; seam.</div></div><div><label>Toe-kick height</label><input id="kickHeight" type="number" step="0.125"></div><div><label>Toe-kick setback</label><input id="kickSetback" type="number" step="0.125"></div><div><label>Toe-kick depth</label><input id="kickDepth" type="number" step="0.125"></div><div><label>Toe-kick skin thickness</label><input id="kickSkinPly" type="number" min="0.03125" step="0.03125"><div class="hint">Default 1/4&quot; cherry plywood. Veneer may be substituted manually.</div></div><div><label>Shelf depth</label><input id="shelfDepth" type="number" step="0.125"></div><div><label>Display gap between cabinets</label><input id="displayGap" type="number" step="0.5"></div><div><label>Saved SKP filename</label><input id="saveFilename" type="text"></div>
+</div></section>
+
+<section class="card"><h2>Plywood sheet planning</h2><div class="grid">
+<div><label>Sheet width</label><input id="sheetWidth" type="number" step="0.125"><div class="hint">Default 48&quot;.</div></div>
+<div><label>Sheet length</label><input id="sheetLength" type="number" step="0.125"><div class="hint">Default 96&quot;.</div></div>
+<div><label>Saw kerf</label><input id="kerf" type="number" min="0" step="0.03125"><div class="hint">Default 1/8&quot;.</div></div>
+<div><label>Edge trim per side</label><input id="edgeTrim" type="number" min="0" step="0.03125"><div class="hint">Default 1/4&quot; trim around each sheet.</div></div>
+<div><label>Extra/spare sheets per material</label><input id="spareSheets" type="number" min="0" step="1"><div class="hint">Added to the nested layout count.</div></div>
+<div><label>&nbsp;</label><div style="padding-top:8px"><input id="preserveCherryGrain" type="checkbox"><strong>Preserve cherry grain direction</strong></div><div class="hint">Recommended for fronts, doors, shelves, sides and backs.</div></div>
+</div>
+<div class="note small"><strong>Cutting-layout assumption:</strong> sheet grain runs along the 96&quot; direction. Cherry parts are oriented so visible grain runs the expected direction and are not rotated when grain preservation is on. Birch parts may rotate for better yield.</div></section>
+
+<section class="card"><h2>Construction rules in this version</h2><p class="small"><strong>Cabinets may be frameless, face-frame overlay, or face-frame inset on a per-cabinet basis.</strong> Structural carcass joints use pocket screws in the supplied project defaults. Pure drawer and single-door cabinets use a birch carcass; mixed drawer/open-cubby cabinets and open-shelf cabinets use cherry carcasses by default so visible interiors are finished. Face frames are modeled as solid-wood perimeter frames and are reported separately as linear stock. Drawer boxes remain 1/2&quot; birch with bottoms fitted completely between the four walls. Open spaces receive applied backs at the rear. Adjustable shelves are pin-supported; fixed mixed-cubby dividers are pocket-screwed. Countertops attach through top stretchers. No edge banding is included.</p><div class="note small"><strong>Toe-kick/base:</strong> each cabinet gets a separate 2&quot;-high 3/4&quot; birch ladder frame (front rail, rear rail, two side rails), intended to use offcuts. A separate 1/4&quot; cherry skin covers the visible front. The BOM treats the cabinet list as one installed run and makes the cherry skin in the longest pieces that fit the configured sheet length; SketchUp shows one skin segment per cabinet because the presentation model spaces cabinets apart.</div></section>
+
+<section class="card" id="bomCard"><h2>Material / sheet BOM</h2><div id="bomKpis" class="bom-kpi"></div><div id="designChecks"></div><div id="bomSummary" class="small"></div><div id="linearStockSummary" class="small"></div><div class="actions"><button id="downloadBom">Download sheet BOM CSV</button><button id="downloadCutList">Download detailed cut list CSV</button><button id="downloadLinearStock">Download face-frame stock CSV</button></div></section>
+
+<section class="card" id="sheetLayoutsCard"><h2>Plywood cutting layouts</h2><div class="actions"><button id="printLayouts">Print / Save layouts as PDF</button></div><div class="note small">This is a nesting/planning diagram, not a table-saw cut sequence. Real sheets may have voids, damage or grain defects, and your final saw strategy may move pieces around. The optimizer includes the selected kerf and edge trim.</div><div id="layoutWarnings"></div><div id="sheetLayouts" class="layout-grid"></div></section>
+
+<section class="card"><h2>Optional SketchUp export</h2><div style="margin-bottom:12px"><input id="showLabels" type="checkbox"><strong> Show cabinet labels in 3D / SketchUp</strong><div class="hint">Turn this off for a clean presentation model with no cabinet summary text labels.</div></div><div style="margin-bottom:12px"><input id="showDrawerBoxHeightLabels" type="checkbox"><strong> Show drawer box height labels in 3D / SketchUp</strong><div class="hint">Shows the entered drawer-box wall height for each drawer, formatted as a woodworking fraction in inch mode or millimeters in mm mode.</div></div><div style="margin-bottom:12px"><input id="showDrawerFaceHeightLabels" type="checkbox"><strong> Show drawer face height labels in 3D / SketchUp</strong><div class="hint">Shows the visible cherry drawer-front height for each drawer. Labels are placed directly at the center of each face; when both options are on the number order is box / face.</div></div><div style="margin-bottom:12px"><input id="showOpenSpaceHeightLabels" type="checkbox"><strong> Show open-space height labels in 3D / SketchUp</strong><div class="hint">Shows the clear vertical height centered in each mixed-cabinet cubby and each opening in an open-shelf cabinet, formatted as a woodworking fraction in inch mode or millimeters in mm mode.</div></div><div class="actions"><button class="primary" id="downloadRuby">Download Ruby script</button><button id="copyRuby">Copy Ruby</button><button class="primary" id="saveProject">Save Project JSON</button><button id="saveProjectAs">Save Project As…</button><button id="downloadJson">Export JSON copy</button><button id="loadJson">Load / Import JSON</button><input id="jsonFile" type="file" accept="application/json,.json" hidden><button class="danger" id="reset">Reset defaults</button></div><p class="small muted">Every edit is still saved immediately in this browser. Click <strong>Save Project JSON</strong> once to choose a normal JSON file on your Mac; after that, supported browsers auto-save that same file whenever the generated Ruby changes. Downloading or copying Ruby also forces a project save first.</p><div id="projectSaveStatus" class="hint">Project JSON: checking…</div><div id="rubyDownloadStatus" class="hint"></div><textarea id="rubyPreview" spellcheck="false"></textarea></section>
+<section class="card small"><h2>Use in SketchUp Pro</h2><p>Open <strong>Window → Ruby Console</strong> and run:</p><pre>load File.expand_path('~/Downloads/cabinet-drafter_generated_TIMESTAMP.rb')</pre><p>Each Ruby download gets a unique timestamped filename so SketchUp cannot accidentally reload an older copy. After downloading, the page shows the exact load command. The script replaces the prior Generated Cabinet Lineup, models drawer boxes, mixed open cubbies/divider panels, real birch ladder toe-kick bases with cherry skins, and cherry fronts, optionally adds cabinet text labels and independently selectable per-drawer box-height and face-height labels, and saves a native SKP to your Desktop.</p></section>
+<dialog id="helpDialog" class="help-dialog"><div class="help-doc">
+  <div class="help-heading">
+    <div>
+      <h2>CabinetDrafter Help</h2>
+      <p class="muted">Cabinet planner · version 1.1.1</p>
+    </div>
+    <button type="button" id="closeHelp" class="help-close">Close</button>
+  </div>
+
+  <div class="help-callout">
+    <strong>Quick start:</strong> choose inches or millimeters, edit the cabinet list, inspect the built-in 3D preview, check the sizing/BOM warnings, and save your project JSON. SketchUp export is optional.
+  </div>
+
+  <h3>1. What CabinetDrafter does</h3>
+  <p>CabinetDrafter is a single-file local browser tool for designing cabinet runs using frameless or face-frame construction. It calculates drawer boxes, doors, open cubbies, shelf openings, plywood parts and sheet nesting, and renders the cabinet lineup directly in the page. SketchUp export is optional. It does not need a web server or an online account.</p>
+  <ul>
+    <li>Build a lineup of drawer/mixed cabinets, single-door cabinets, and open-shelf cabinets.</li>
+    <li>Enter drawer box heights and open-space heights from bottom to top.</li>
+    <li>Use inches or millimeters without changing the underlying geometry.</li>
+    <li>Generate a plywood BOM, detailed cut-list CSV, and 4 × 8 sheet-planning diagrams.</li>
+    <li>Orbit and inspect the cabinet model directly in the browser and save the current view as PNG.</li>
+    <li>Optionally generate a Ruby script that builds and saves the model in SketchUp Pro.</li>
+    <li>Save the project to JSON and keep a browser-local recovery copy automatically.</li>
+  </ul>
+
+  <h3>2. First-time workflow</h3>
+  <ol>
+    <li><strong>Choose units.</strong> Inches and millimeters are only display/entry choices; CabinetDrafter keeps canonical geometry in inches internally for SketchUp compatibility.</li>
+    <li><strong>Edit the Cabinets table.</strong> Set a label, type, width, quantity, vertical stack/opening heights, and shelf count where appropriate.</li>
+    <li><strong>Review the sizing preview.</strong> Fix anything shown as a warning before relying on the cut list.</li>
+    <li><strong>Review the BOM and sheet layouts.</strong> Grain-sensitive cherry parts are kept oriented when Preserve cherry grain direction is enabled.</li>
+    <li><strong>Click Save Project JSON.</strong> Pick a normal file such as <code>my_kitchen.json</code>. Supported browsers will then auto-save that same file as you edit.</li>
+    <li><strong>Click Download Ruby script.</strong> CabinetDrafter shows the exact <code>load ...</code> command to paste into SketchUp.</li>
+    <li><strong>In SketchUp Pro:</strong> open <em>Window → Ruby Console</em>, paste the command, and press Enter. Regenerating replaces the prior <em>Generated Cabinet Lineup</em> group.</li>
+  </ol>
+
+  <h3>3. Cabinet types</h3>
+  <table class="help-table">
+    <thead><tr><th>Type</th><th>Use it for</th><th>Default construction</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Drawer / mixed</strong></td><td>Drawers, or drawers combined with fixed open cubbies.</td><td>Pure drawer cabinet: 3/4 birch carcass. If any open cubby is present, the carcass becomes 3/4 cherry so the visible interior is cherry.</td></tr>
+      <tr><td><strong>Single door</strong></td><td>One full-overlay door with optional adjustable shelves.</td><td>3/4 birch carcass, cherry door, open back, four stretchers.</td></tr>
+      <tr><td><strong>Open shelf</strong></td><td>Visible shelving with an applied full-width back.</td><td>3/4 cherry carcass, configurable applied back (default 1/4 cherry), two flat top stretchers, adjustable shelf-pin shelves.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4. Drawer / mixed stack syntax</h3>
+  <p>The stack is always entered <strong>bottom → top</strong>.</p>
+  <div class="help-warning"><strong>Important:</strong> <code>O</code> is the <strong>letter O ("oh")</strong>, short for <strong>Open</strong>. It is <strong>not the number zero (<code>0</code>)</strong>. If <code>O8</code> could be mistaken for <code>08</code>, type <code>Open 8</code> instead; both forms mean the same thing.</div>
+  <table class="help-table">
+    <thead><tr><th>Example</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>7, 7, 9.5</code></td><td>Legacy all-drawer mode: three drawer boxes because the entire list is bare numbers.</td></tr>
+      <tr><td><code>D7, D7, D9.5</code></td><td>The same three drawer boxes, written explicitly.</td></tr>
+      <tr><td><code>D9, D9, 15</code></td><td>Two 9-unit drawers followed by a 15-unit clear open cubby. Once D is used, bare numbers are open cubbies.</td></tr>
+      <tr><td><code>D7, O9.5, D7</code></td><td>7-unit drawer, 9.5-unit clear open cubby, 7-unit drawer. The <code>O</code> is the letter O for Open, not zero.</td></tr>
+      <tr><td><code>Open 8, D10</code></td><td>Bottom 8-unit open cubby uses the cabinet bottom and gets one top divider. <code>Open 8</code> and <code>O8</code> are equivalent.</td></tr>
+      <tr><td><code>D10, O8</code></td><td>Top 8-unit open cubby gets one bottom divider and no added full top. Here <code>O</code> is the letter O.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>D = Drawer.</strong> <strong>O = Open</strong> and is the <strong>letter O (oh), never the digit 0 (zero)</strong>. <code>Open 8</code>, <code>Cubby 8</code>, and <code>O8</code> are accepted synonyms. For convenience, once a stack contains an explicit <code>D</code>, an unprefixed number also means an open cubby. A completely bare list remains all drawers for compatibility with older projects. Fixed cubby divider panels are pocket-screwed into the cabinet sides.</p>
+
+  <h3>5. Open-shelf heights</h3>
+  <p>For an Open shelf cabinet, use the same vertical-stack field to enter <strong>clear opening heights</strong>, bottom to top.</p>
+  <pre>9.5, 12, auto</pre>
+  <p>This creates three clear openings. The first two are fixed to the entered heights and the final/top opening uses the remaining height. Use <code>auto</code> only for the final opening. If the field is blank, the Shelves count is used and the shelves are spaced evenly.</p>
+  <p>These shelves are still <strong>adjustable shelf-pin shelves</strong>; the entered heights describe the modeled layout, not fixed pocket-screw locations.</p>
+
+  <h3>6. Construction model</h3>
+  <p>CabinetDrafter currently models the following construction system:</p><div class="help-callout"><strong>Face frames in 1.1:</strong> select the front construction per cabinet. Global face-frame settings control stile width, rail width, frame thickness/material, overlay, and inset reveal. Frames are perimeter-only in 1.1; intermediate rails between individual drawers/cubbies are a future enhancement.</div>
+  <ul>
+    <li><strong>Per-cabinet front construction:</strong> frameless, face-frame overlay, or face-frame inset.</li>
+    <li><strong>Pocket-screw structural joinery.</strong></li>
+    <li>Standard carcass: 3/4 plywood.</li>
+    <li>Drawer boxes: 1/2 birch plywood sides, front, back, and bottom.</li>
+    <li>Drawer bottom fits completely between the four drawer walls; no dado or rabbet.</li>
+    <li>Drawer slide clearance: 1/2 per side / 1 total by default.</li>
+    <li>Drawer fronts and doors: 3/4 cherry plywood by default; sizing follows the selected frameless/face-frame front style.</li>
+    <li>Current 1/16 side reveal produces 11/16 geometric overlap on a 3/4 carcass edge and a 1/8 seam between adjacent cabinet fronts.</li>
+    <li>Single doors use <strong>two concealed Euro-style hinges</strong>. Hinge drilling dimensions are not generated until a hinge model is chosen.</li>
+    <li>Adjustable shelves use shelf pins. Fixed mixed-cubby dividers use pocket screws.</li>
+    <li>Countertops attach with screws through the flat top stretchers.</li>
+    <li>No edge banding or solid-wood edge treatment is currently included.</li>
+  </ul>
+
+  <h4>Open-back carcass and stretchers</h4>
+  <pre>FRONT / TOP CONCEPT
+
+  cabinet side                         cabinet side
+       |                                    |
+       |== front top stretcher (flat) =====|
+       |                                    |
+       |                                    |
+       |== rear top stretcher  (flat) =====|
+       |                                    |
+       +========== cabinet bottom ==========+
+
+REAR CONCEPT
+
+       +====== rear top stretcher ======+
+       |---- upper rear stretcher -------|  vertical, 4 high
+       |                                 |
+       |                                 |
+       |---- lower rear stretcher -------|  vertical, rests on bottom
+       +========== bottom ===============+</pre>
+  <p>Pure drawer and single-door cabinets use birch for these carcass parts. Mixed drawer/open-cubby cabinets use cherry. Mixed cabinets keep the four stretchers and receive localized applied backs only behind open cubbies. Open-shelf cabinets use one applied full-width back instead of the two vertical rear stretchers.</p>
+
+  <h4>Drawer box</h4>
+  <pre>TOP VIEW
+
+ +----------------------------------+
+ |                                  |
+ |  1/2 bottom fits INSIDE all      |
+ |  four 1/2 drawer walls           |
+ |                                  |
+ +----------------------------------+
+
+The entered drawer height is the full wall/box height.
+The bottom thickness does not increase the outside height.</pre>
+
+  <h4>Toe-kick / base</h4>
+  <pre>TOP VIEW - separate 2-high base
+
+ FRONT
+ +==================================+  3/4 birch front rail
+ | |                              | |
+ | |         open center          | |  3/4 birch side rails
+ | |                              | |
+ +==================================+  3/4 birch rear rail
+ REAR
+
+Visible front gets 1/4 cherry plywood or veneer skin.</pre>
+  <p>The structural base is intended to use birch offcuts. CabinetDrafter nests those pieces with the other birch parts when possible.</p>
+
+  <h3>7. Built-in 3D preview</h3>
+  <p>The 3D Preview is completely local and does not require SketchUp. It is generated from the same cabinet dimensions used by the BOM and cut list.</p>
+  <ul><li>Drag to orbit around the cabinets.</li><li>Use the mouse wheel to zoom.</li><li>Shift-drag to pan.</li><li>Use Front, Left, Right, Top, or Isometric for preset views.</li><li>Turn fronts/doors, drawer boxes, or backs on and off to inspect construction.</li><li>Click Save PNG to save the current view as an image.</li></ul>
+  <p>The browser preview uses flat birch/cherry colors and black part outlines. It is intended as a construction/design view, not a photorealistic renderer.</p>
+
+  <h3>8. 3D / SketchUp labels</h3>
+  <p>Each label type can be switched on or off independently:</p>
+  <ul>
+    <li>Cabinet summary labels.</li>
+    <li>Drawer box heights.</li>
+    <li>Drawer face heights.</li>
+    <li>Open-space heights for mixed cubbies and open-shelf openings.</li>
+  </ul>
+  <p>Drawer/opening height numbers are placed directly in the visual center of the corresponding face/opening. Inch labels use practical fractions rounded to the nearest 1/16; metric labels use millimeters.</p>
+
+  <h3>9. Saving projects</h3>
+  <p>CabinetDrafter uses two layers of local saving:</p>
+  <ul>
+    <li><strong>Browser recovery copy:</strong> every edit is stored in browser local storage.</li>
+    <li><strong>Project JSON:</strong> click Save Project JSON once and choose a file. When the browser permits direct file access, CabinetDrafter auto-saves that file after edits and before Ruby export/copy.</li>
+  </ul>
+  <p>Use <strong>Save Project As…</strong> to branch a design. Use <strong>Export JSON copy</strong> for a portable snapshot. Use <strong>Load / Import JSON</strong> to open somebody else's project.</p>
+
+  <h3>10. Sharing CabinetDrafter</h3>
+  <p>To give the tool to somebody else, send the CabinetDrafter ZIP. They can unzip it and open <code>index.html</code> directly in a modern browser. To share a specific design, send the project JSON too.</p>
+
+  <h3>11. BOM, face-frame stock, and sheet layouts</h3>
+  <p>The sheet optimizer is a planning/nesting aid, not a table-saw cut sequence. It accounts for the configured sheet size, edge trim, saw kerf, and cherry grain direction. Inspect real sheets for damage, voids, and grain before cutting.</p>
+  <div class="help-warning"><strong>Current run assumption:</strong> CabinetDrafter treats the complete cabinet list as one installed straight run when it creates the continuous cherry toe-kick skin. If a project contains cabinets on multiple walls or separate runs, split them into separate project files or manually split the toe-kick skin until multi-run support is added.</div>
+
+  <h3>12. Before you cut</h3>
+  <ul>
+    <li>Confirm actual plywood thickness; nominal 3/4 and 1/2 sheet goods may measure less.</li>
+    <li>Confirm drawer-slide side clearance before cutting drawer boxes. The default is 1/2 per side.</li>
+    <li>Choose the actual concealed hinge before boring door cups or mounting-plate holes.</li>
+    <li>Confirm countertop overhangs and wall conditions separately; CabinetDrafter currently models cabinets, not room walls/counters.</li>
+    <li>Review every warning in the sizing/BOM section.</li>
+    <li>Treat the generated cut list as a verified plan only after checking a representative cabinet against your real hardware/materials.</li>
+  </ul>
+
+  <h3>13. Current limitations</h3>
+  <ul>
+    <li>One global cabinet height and depth for the whole project.</li>
+    <li>Only single-door cabinets; no paired/double-door cabinet type yet.</li>
+    <li>No fillers, scribes, applied finished end panels, corner cabinets, or room/wall layout.</li>
+    <li>No hardware BOM yet for slides, hinges, shelf pins, pocket screws, or installation fasteners.</li>
+    <li>No automatic hinge cup-bore or shelf-pin drilling templates.</li>
+    <li>No explicit multiple cabinet runs/walls; continuous toe-kick skin assumes one run.</li>
+    <li>No edge treatment or pull drilling because those choices are still intentionally TBD.</li>
+  </ul>
+
+  <h3>14. Troubleshooting</h3>
+  <p><strong>The SketchUp model did not change:</strong> use the exact timestamped Ruby filename and load command CabinetDrafter shows after downloading. Each generated script removes the old <em>Generated Cabinet Lineup</em> group before rebuilding it.</p>
+  <p><strong>Project JSON is not auto-saving:</strong> browsers may require write permission again after reopening a local HTML file. Click Save Project JSON to reconnect the file. Browser recovery storage continues to work independently.</p>
+  <p><strong>An open-shelf height list does not fit:</strong> use <code>auto</code> for the top opening, or adjust the entered clear heights so the total plus shelf thicknesses fits the available vertical space.</p>
+</div></dialog>
+<script type="text/plain" id="rubyTemplate">
+# CabinetDrafter SketchUp Generator - 1.1.1
+# Generated by CabinetDrafter.
+# Run from SketchUp: Window > Ruby Console
+#   load '/full/path/to/cabinet_lineup_generated.rb'
+
+require 'sketchup.rb'
+
+module CabinetDrafter
+  extend self
+
+  CABINETS = [
+__CABINETS__
+  ]
+
+  # Standard construction dimensions, inches.
+  CAB_DEPTH   = __CAB_DEPTH__
+  CAB_HEIGHT  = __CAB_HEIGHT__
+  PLY         = __PLY__
+  BACK_PLY    = __BACK_PLY__
+  OPEN_BACK_MATERIAL = :__OPEN_BACK_MATERIAL__
+  STRETCHER   = __STRETCHER__
+  FRONT_GAP   = __FRONT_GAP__
+  SIDE_REVEAL = __SIDE_REVEAL__
+  KICK_HEIGHT = __KICK_HEIGHT__
+  KICK_SETBACK = __KICK_SETBACK__
+  KICK_DEPTH   = __KICK_DEPTH__
+  KICK_SKIN_PLY = __KICK_SKIN_PLY__
+  SHELF_DEPTH  = __SHELF_DEPTH__
+  DISPLAY_GAP  = __DISPLAY_GAP__
+
+  # Drawer defaults. SLIDE_CLEARANCE_TOTAL is the TOTAL width allowance
+  # for both slides together. 1.0 means 1/2 inch clearance per side.
+  DRAWER_DEPTH = __DRAWER_DEPTH__
+  SLIDE_CLEARANCE_TOTAL = __SLIDE_CLEARANCE__
+  DRAWER_SIDE_PLY = __DRAWER_SIDE_PLY__
+  DRAWER_BOTTOM_PLY = __DRAWER_BOTTOM_PLY__
+  DRAWER_BOX_GAP = __DRAWER_BOX_GAP__
+  DRAWER_BOTTOM_CLEARANCE = __DRAWER_BOTTOM_CLEARANCE__
+  MIXED_PANEL_DEPTH = __MIXED_PANEL_DEPTH__
+  MIXED_PANEL_MATERIAL = :__MIXED_PANEL_MATERIAL__
+  FRAME_STILE_WIDTH = __FRAME_STILE_WIDTH__
+  FRAME_RAIL_WIDTH = __FRAME_RAIL_WIDTH__
+  FRAME_THICKNESS = __FRAME_THICKNESS__
+  FRAME_MATERIAL = :__FRAME_MATERIAL__
+  FRAME_OVERLAY = __FRAME_OVERLAY__
+  FRAME_INSET_REVEAL = __FRAME_INSET_REVEAL__
+
+  SHOW_LABELS = __SHOW_LABELS__
+  SHOW_DRAWER_BOX_HEIGHT_LABELS = __SHOW_DRAWER_BOX_HEIGHT_LABELS__
+  SHOW_DRAWER_FACE_HEIGHT_LABELS = __SHOW_DRAWER_FACE_HEIGHT_LABELS__
+  SHOW_OPEN_SPACE_HEIGHT_LABELS = __SHOW_OPEN_SPACE_HEIGHT_LABELS__
+  DISPLAY_UNITS = :__DISPLAY_UNITS__
+  SAVE_FILENAME = '__SAVE_FILENAME__'
+
+  def i(n)
+    n.to_f.inch
+  end
+
+  # Format SketchUp annotations in the selected display units. Inch labels use
+  # practical woodworking fractions rounded to 1/16; metric labels round to 1 mm.
+  def fraction_inches(value, denominator = 16)
+    total = (value.to_f * denominator).round
+    whole = total / denominator
+    num = total % denominator
+    return format('%d"', whole) if num == 0
+
+    a = num
+    b = denominator
+    while b != 0
+      a, b = b, a % b
+    end
+    gcd = a
+    num /= gcd
+    den = denominator / gcd
+    whole > 0 ? format('%d %d/%d"', whole, num, den) : format('%d/%d"', num, den)
+  end
+
+  def format_dimension(value)
+    if DISPLAY_UNITS == :mm
+      format('%d mm', (value.to_f * 25.4).round)
+    else
+      fraction_inches(value)
+    end
+  end
+
+  def material(model, name, rgb)
+    mats = model.materials
+    mat = mats[name] || mats.add(name)
+    mat.color = Sketchup::Color.new(*rgb)
+    mat
+  end
+
+  def add_box(parent_entities, name, x, y, z, width, depth, height, mat)
+    raise "Invalid box #{name}: #{width} x #{depth} x #{height}" if width <= 0 || depth <= 0 || height <= 0
+    group = parent_entities.add_group
+    group.name = name
+    e = group.entities
+    pts = [[0,0,0], [i(width),0,0], [i(width),i(depth),0], [0,i(depth),0]]
+    face = e.add_face(pts)
+    face.reverse! if face.normal.z < 0
+    face.pushpull(i(height))
+    group.material = mat if mat
+    group.transform!(Geom::Transformation.translation([i(x), i(y), i(z)]))
+    group
+  end
+
+  def add_label(entities, text, x, y, z)
+    return unless SHOW_LABELS
+    entities.add_text(text, Geom::Point3d.new(i(x), i(y), i(z)))
+  end
+
+  def add_drawer_height_label(entities, drawer_index, box_height, face_height, x, y, z)
+    return unless SHOW_DRAWER_BOX_HEIGHT_LABELS || SHOW_DRAWER_FACE_HEIGHT_LABELS
+    text = if SHOW_DRAWER_BOX_HEIGHT_LABELS && SHOW_DRAWER_FACE_HEIGHT_LABELS
+             "#{format_dimension(box_height)} / #{format_dimension(face_height)}"
+           elsif SHOW_DRAWER_BOX_HEIGHT_LABELS
+             format_dimension(box_height)
+           else
+             format_dimension(face_height)
+           end
+    # No leader/arrow. Put the annotation point directly at the center of the
+    # visible drawer face. A tiny Y offset keeps it just in front of the face.
+    anchor = Geom::Point3d.new(i(x), i(y - 0.02), i(z))
+    entities.add_text(text, anchor)
+  end
+
+  def add_open_space_height_label(entities, height, x, y, z)
+    return unless SHOW_OPEN_SPACE_HEIGHT_LABELS
+    text = format_dimension(height)
+    # Match the drawer annotations: put the number directly in the center of
+    # the visible opening, just in front of the cabinet face.
+    anchor = Geom::Point3d.new(i(x), i(y - 0.02), i(z))
+    entities.add_text(text, anchor)
+  end
+
+  # Separate 2in toe-kick/base. The structural base is a 3/4in birch ladder
+  # frame; the visible front is a cherry skin. KICK_SETBACK is measured to the
+  # visible face of the skin.
+  def make_kick(entities, width, birch, cherry_skin)
+    raise "Toe-kick depth is too small for the selected plywood/skin thickness" if KICK_DEPTH <= KICK_SKIN_PLY + (2.0 * PLY)
+    front_y = KICK_SETBACK + KICK_SKIN_PLY
+    rear_y = KICK_SETBACK + KICK_DEPTH - PLY
+    side_y = front_y + PLY
+    side_depth = rear_y - side_y
+
+    add_box(entities, 'Toe Kick Front Rail - Birch 3/4', 0, front_y, 0,
+            width, PLY, KICK_HEIGHT, birch)
+    add_box(entities, 'Toe Kick Rear Rail - Birch 3/4', 0, rear_y, 0,
+            width, PLY, KICK_HEIGHT, birch)
+    add_box(entities, 'Toe Kick Left Side Rail - Birch 3/4', 0, side_y, 0,
+            PLY, side_depth, KICK_HEIGHT, birch)
+    add_box(entities, 'Toe Kick Right Side Rail - Birch 3/4', width - PLY, side_y, 0,
+            PLY, side_depth, KICK_HEIGHT, birch)
+    add_box(entities, 'Toe Kick Skin - Cherry', 0, KICK_SETBACK, 0,
+            width, KICK_SKIN_PLY, KICK_HEIGHT, cherry_skin)
+  end
+
+  # Frameless open-back carcass used by pure drawer, single-door, and mixed
+  # drawer/open-cubby cabinets. It has no full top/back and uses four stretchers.
+  def make_open_back_box(entities, width, carcass, wood_label, birch, cherry_skin)
+    inside_w = width - (2.0 * PLY)
+    z0 = KICK_HEIGHT
+    make_kick(entities, width, birch, cherry_skin)
+
+    add_box(entities, "Left Side - #{wood_label} 3/4", 0, 0, z0,
+            PLY, CAB_DEPTH, CAB_HEIGHT, carcass)
+    add_box(entities, "Right Side - #{wood_label} 3/4", width - PLY, 0, z0,
+            PLY, CAB_DEPTH, CAB_HEIGHT, carcass)
+    add_box(entities, "Bottom - #{wood_label} 3/4", PLY, 0, z0,
+            inside_w, CAB_DEPTH, PLY, carcass)
+
+    top_z = z0 + CAB_HEIGHT - PLY
+    rear_y = CAB_DEPTH - PLY
+
+    add_box(entities, "Front Top Stretcher - #{wood_label} 3/4",
+            PLY, 0, top_z, inside_w, STRETCHER, PLY, carcass)
+    add_box(entities, "Rear Top Stretcher - #{wood_label} 3/4",
+            PLY, CAB_DEPTH - STRETCHER, top_z,
+            inside_w, STRETCHER, PLY, carcass)
+
+    add_box(entities, "Upper Rear Stretcher - #{wood_label} 3/4",
+            PLY, rear_y, top_z - STRETCHER,
+            inside_w, PLY, STRETCHER, carcass)
+    add_box(entities, "Lower Rear Stretcher - #{wood_label} 3/4",
+            PLY, rear_y, z0 + PLY,
+            inside_w, PLY, STRETCHER, carcass)
+  end
+
+  def add_birch_shelves(entities, width, shelf_count, birch)
+    return if shelf_count.to_i <= 0
+    inside_w = width - (2.0 * PLY)
+    z0 = KICK_HEIGHT
+    count = shelf_count.to_i
+    clear_total = CAB_HEIGHT - (2.0 * PLY) - (count * PLY)
+    raise 'Shelf count leaves no clear opening height' if clear_total < 0
+    opening_h = clear_total / (count + 1).to_f
+    clear_bottom = z0 + PLY
+    count.times do |idx|
+      shelf_z = clear_bottom + opening_h
+      add_box(entities, format('Adjustable Shelf %d - Birch 3/4 (pin supported)', idx + 1),
+              PLY, 0, shelf_z, inside_w, [SHELF_DEPTH, CAB_DEPTH].min, PLY, birch)
+      clear_bottom = shelf_z + PLY
+    end
+  end
+
+  def normalized_zones(spec)
+    raw = Array(spec[:zones])
+    zones = raw.map do |entry|
+      kind = entry[0].to_sym
+      height = entry[1].to_f
+      raise "#{spec[:label]}: unknown stack zone #{kind}" unless [:drawer, :open].include?(kind)
+      raise "#{spec[:label]}: stack heights must be positive" unless height > 0
+      { kind: kind, height: height }
+    end
+    raise "#{spec[:label]} needs at least one drawer/open stack zone" if zones.empty?
+    raise "#{spec[:label]} drawer/mixed cabinet needs at least one drawer" unless zones.any? { |z| z[:kind] == :drawer }
+    zones.each_cons(2) do |a, b|
+      raise "#{spec[:label]}: adjacent open cubbies should be combined into one larger open cubby" if a[:kind] == :open && b[:kind] == :open
+    end
+    zones
+  end
+
+  # Resolve all vertical structure inside a drawer/mixed cabinet.
+  # Coordinates here are relative to the bottom of the 38in carcass (not the toe kick).
+  # Open-zone heights are CLEAR opening heights.
+  # - Bottom open zone: cabinet bottom is its lower shelf; only a top divider is added.
+  # - Middle open zone: bottom and top dividers are added.
+  # - Top open zone: only a bottom divider is added and the clear opening is anchored
+  #   to the underside of the top stretchers so the entered height is exact.
+  def resolved_zone_layout(spec)
+    zones = normalized_zones(spec)
+    internal_bottom = PLY
+    internal_top = CAB_HEIGHT - PLY
+    usable = internal_top - internal_bottom
+    raise "#{spec[:label]}: cabinet leaves no usable internal height" if usable <= 0
+
+    drawers = []
+    opens = []
+    dividers = []
+    drawer_index = 0
+    cursor = internal_bottom
+    top_open = zones.last[:kind] == :open
+    process_count = top_open ? zones.length - 1 : zones.length
+
+    (0...process_count).each do |idx|
+      zone = zones[idx]
+      if idx == 0
+        cursor += DRAWER_BOTTOM_CLEARANCE if zone[:kind] == :drawer
+      else
+        prev = zones[idx - 1]
+        case [prev[:kind], zone[:kind]]
+        when [:drawer, :drawer]
+          cursor += DRAWER_BOX_GAP
+        when [:drawer, :open]
+          cursor += DRAWER_BOX_GAP
+          dividers << { z: cursor, boundary: 'bottom of open cubby' }
+          cursor += PLY
+        when [:open, :drawer]
+          dividers << { z: cursor, boundary: 'top of open cubby' }
+          cursor += PLY + DRAWER_BOX_GAP
+        else
+          raise "#{spec[:label]}: adjacent open cubbies should be combined"
+        end
+      end
+
+      if zone[:kind] == :drawer
+        drawers << { zone_index: idx, drawer_index: drawer_index, z: cursor, height: zone[:height] }
+        drawer_index += 1
+        cursor += zone[:height]
+      else
+        opens << { zone_index: idx, clear_bottom: cursor, clear_top: cursor + zone[:height], height: zone[:height] }
+        cursor += zone[:height]
+      end
+    end
+
+    remaining = 0.0
+    remaining_context = 'unused above stack'
+    if top_open
+      raise "#{spec[:label]}: an all-open cabinet should use the Open Shelf type" if zones.length < 2
+      top_height = zones.last[:height]
+      divider_z = internal_top - top_height - PLY
+      prev = zones[-2]
+      raise "#{spec[:label]}: adjacent open cubbies should be combined" if prev[:kind] == :open
+      min_divider_z = cursor + DRAWER_BOX_GAP
+      if divider_z < min_divider_z - 0.001
+        raise "#{spec[:label]}: stack exceeds available height by #{format_dimension(min_divider_z - divider_z)}"
+      end
+      remaining = [divider_z - min_divider_z, 0.0].max
+      remaining_context = 'extra hidden clearance below top cubby'
+      dividers << { z: divider_z, boundary: 'bottom of top open cubby' }
+      opens << { zone_index: zones.length - 1,
+                 clear_bottom: divider_z + PLY,
+                 clear_top: internal_top,
+                 height: top_height }
+    else
+      remaining = internal_top - cursor
+      if remaining < -0.001
+        raise "#{spec[:label]}: stack exceeds internal vertical space by #{format_dimension(-remaining)}"
+      end
+      remaining = [remaining, 0.0].max
+    end
+
+    { zones: zones, drawers: drawers, opens: opens, dividers: dividers,
+      usable: usable, remaining: remaining, remaining_context: remaining_context }
+  end
+
+  def face_frame?(spec)
+    [:face_overlay, :face_inset].include?(spec[:front_style].to_sym)
+  end
+
+  def frame_opening(spec)
+    { x: FRAME_STILE_WIDTH, z: FRAME_RAIL_WIDTH,
+      width: spec[:width].to_f - (2.0 * FRAME_STILE_WIDTH),
+      height: CAB_HEIGHT - (2.0 * FRAME_RAIL_WIDTH) }
+  end
+
+  def front_rect(spec)
+    style = (spec[:front_style] || :frameless).to_sym
+    width = spec[:width].to_f
+    if style == :face_overlay
+      o = frame_opening(spec)
+      { x: o[:x] - FRAME_OVERLAY, width: o[:width] + (2.0 * FRAME_OVERLAY),
+        y: -(FRAME_THICKNESS + PLY), low: o[:z] - FRAME_OVERLAY, high: o[:z] + o[:height] + FRAME_OVERLAY }
+    elsif style == :face_inset
+      o = frame_opening(spec)
+      { x: o[:x] + FRAME_INSET_REVEAL, width: o[:width] - (2.0 * FRAME_INSET_REVEAL),
+        y: -FRAME_THICKNESS, low: o[:z] + FRAME_INSET_REVEAL, high: o[:z] + o[:height] - FRAME_INSET_REVEAL }
+    else
+      { x: SIDE_REVEAL, width: width - (2.0 * SIDE_REVEAL), y: -PLY, low: FRONT_GAP, high: CAB_HEIGHT - FRONT_GAP }
+    end
+  end
+
+  def add_face_frame(entities, width, spec, birch, cherry)
+    return unless face_frame?(spec)
+    raise "#{spec[:label]}: face-frame stiles leave no rail length" if width <= 2.0 * FRAME_STILE_WIDTH
+    mat = FRAME_MATERIAL == :birch ? birch : cherry
+    wood = FRAME_MATERIAL == :birch ? 'Birch' : 'Cherry'
+    z0 = KICK_HEIGHT
+    rail_len = width - (2.0 * FRAME_STILE_WIDTH)
+    add_box(entities, "Face Frame Left Stile - #{wood}", 0, -FRAME_THICKNESS, z0, FRAME_STILE_WIDTH, FRAME_THICKNESS, CAB_HEIGHT, mat)
+    add_box(entities, "Face Frame Right Stile - #{wood}", width - FRAME_STILE_WIDTH, -FRAME_THICKNESS, z0, FRAME_STILE_WIDTH, FRAME_THICKNESS, CAB_HEIGHT, mat)
+    add_box(entities, "Face Frame Bottom Rail - #{wood}", FRAME_STILE_WIDTH, -FRAME_THICKNESS, z0, rail_len, FRAME_THICKNESS, FRAME_RAIL_WIDTH, mat)
+    add_box(entities, "Face Frame Top Rail - #{wood}", FRAME_STILE_WIDTH, -FRAME_THICKNESS, z0 + CAB_HEIGHT - FRAME_RAIL_WIDTH, rail_len, FRAME_THICKNESS, FRAME_RAIL_WIDTH, mat)
+  end
+
+  # Drawer-front face layout is independent of drawer-box height.
+  # Each contiguous run of drawers fills the visible face region between open cubbies.
+  def resolved_front_layout(spec, layout)
+    drawers = layout[:drawers]
+    count = drawers.length
+    custom = Array(spec[:front_heights]).map(&:to_f).select { |v| v > 0 }
+    if !custom.empty? && custom.length != count
+      raise "#{spec[:label]}: custom front-height count must match drawer count"
+    end
+
+    open_by_zone = {}
+    layout[:opens].each { |o| open_by_zone[o[:zone_index]] = o }
+    drawer_by_zone = {}
+    drawers.each { |d| drawer_by_zone[d[:zone_index]] = d }
+
+    runs = []
+    current = []
+    layout[:zones].each_with_index do |zone, idx|
+      if zone[:kind] == :drawer
+        current << idx
+      elsif !current.empty?
+        runs << current
+        current = []
+      end
+    end
+    runs << current unless current.empty?
+
+    results = []
+    custom_offset = 0
+    runs.each do |run|
+      first_zone = run.first
+      last_zone = run.last
+      outer = front_rect(spec)
+      low = first_zone == 0 ? outer[:low] : open_by_zone[first_zone - 1][:clear_top] + FRONT_GAP
+      high = last_zone == layout[:zones].length - 1 ? outer[:high] : open_by_zone[last_zone + 1][:clear_bottom] - FRONT_GAP
+      run_drawers = run.map { |zi| drawer_by_zone[zi] }
+      available = high - low - ((run_drawers.length - 1) * FRONT_GAP)
+      box_sum = run_drawers.inject(0.0) { |sum, d| sum + d[:height] }
+      raise "#{spec[:label]}: no visible face height remains for a drawer run" if available <= 0
+
+      if custom.empty?
+        # Keep reveal lines tied to the physical drawer stack instead of
+        # redistributing spare face height across all drawers.  Boundaries between
+        # adjacent drawer fronts are centered in the actual drawer-box gaps, so a
+        # shared bottom-up drawer prefix aligns across neighboring cabinets even
+        # when one cabinet changes to an open cubby above it.
+        centers = []
+        (0...(run_drawers.length - 1)).each do |idx|
+          a = run_drawers[idx]
+          b = run_drawers[idx + 1]
+          centers << (((a[:z] + a[:height]) + b[:z]) / 2.0)
+        end
+
+        face_low = low
+        run_drawers.each_with_index do |d, idx|
+          face_high = idx == run_drawers.length - 1 ? high : centers[idx] - (FRONT_GAP / 2.0)
+          h = face_high - face_low
+          raise "#{spec[:label]}: drawer-front reveal geometry leaves a non-positive face height" if h <= 0
+          results << { drawer_index: d[:drawer_index], zone_index: d[:zone_index], z: face_low, height: h }
+          face_low = centers[idx] + (FRONT_GAP / 2.0) if idx < run_drawers.length - 1
+        end
+      else
+        hs = custom[custom_offset, run_drawers.length]
+        used = hs.inject(0.0, :+)
+        raise "#{spec[:label]}: custom drawer fronts exceed their available face region" if used > available + 0.001
+        cursor = low
+        run_drawers.each_with_index do |d, idx|
+          h = hs[idx]
+          results << { drawer_index: d[:drawer_index], zone_index: d[:zone_index], z: cursor, height: h }
+          cursor += h + FRONT_GAP if idx < run_drawers.length - 1
+        end
+      end
+      custom_offset += run_drawers.length
+    end
+
+    results.sort_by { |f| f[:drawer_index] }
+  end
+
+  # Models an open-top drawer box. Bottom is fully inside the four walls.
+  # All five pieces are intended for pocket-screw assembly; no dado/rabbet.
+  def make_drawer_box(parent, name, x, y, z, width, depth, height, birch)
+    side = DRAWER_SIDE_PLY
+    bottom = DRAWER_BOTTOM_PLY
+    raise "#{name}: drawer box is too narrow" if width <= 2.0 * side
+    raise "#{name}: drawer box is too shallow" if depth <= 2.0 * side
+    raise "#{name}: drawer box height must exceed bottom thickness" if height <= bottom
+
+    g = parent.add_group
+    g.name = name
+    e = g.entities
+    add_box(e, 'Left Drawer Side', 0, 0, 0, side, depth, height, birch)
+    add_box(e, 'Right Drawer Side', width - side, 0, 0, side, depth, height, birch)
+    add_box(e, 'Drawer Front', side, 0, 0, width - (2.0 * side), side, height, birch)
+    add_box(e, 'Drawer Back', side, depth - side, 0,
+            width - (2.0 * side), side, height, birch)
+    add_box(e, 'Drawer Bottom', side, side, 0,
+            width - (2.0 * side), depth - (2.0 * side), bottom, birch)
+    g.transform!(Geom::Transformation.translation([i(x), i(y), i(z)]))
+    g
+  end
+
+  def add_drawer_mixed_contents(entities, width, spec, birch, cherry, open_back)
+    layout = resolved_zone_layout(spec)
+    fronts = resolved_front_layout(spec, layout)
+    inside_w = width - (2.0 * PLY)
+    box_w = inside_w - SLIDE_CLEARANCE_TOTAL
+    raise "#{spec[:label]}: slide clearance leaves no drawer-box width" if box_w <= 0
+    raise "#{spec[:label]}: drawer depth #{DRAWER_DEPTH} exceeds cabinet depth #{CAB_DEPTH}" if DRAWER_DEPTH > CAB_DEPTH
+
+    z0 = KICK_HEIGHT
+    x_box = PLY + (SLIDE_CLEARANCE_TOTAL / 2.0)
+    front = front_rect(spec)
+    front_w = front[:width]
+    panel_depth = [MIXED_PANEL_DEPTH, CAB_DEPTH - PLY].min
+    panel_mat = MIXED_PANEL_MATERIAL == :cherry ? cherry : birch
+    panel_name = MIXED_PANEL_MATERIAL == :cherry ? 'Cherry' : 'Birch'
+
+    layout[:dividers].each_with_index do |d, idx|
+      add_box(entities, format('Open Cubby Divider %d - %s 3/4', idx + 1, panel_name),
+              PLY, 0, z0 + d[:z], inside_w, panel_depth, PLY, panel_mat)
+    end
+
+    # Open cubbies get localized applied backs only where the open space exists.
+    # Each back spans the full outside cabinet width and covers the clear opening
+    # plus the thickness of the horizontal structure immediately below and above.
+    layout[:opens].each_with_index do |o, idx|
+      add_box(entities, format('Open Cubby Back %d - %s', idx + 1, OPEN_BACK_MATERIAL.to_s.capitalize),
+              0, CAB_DEPTH, z0 + o[:clear_bottom] - PLY,
+              width, BACK_PLY, o[:height] + (2.0 * PLY), open_back)
+    end
+
+    layout[:drawers].each do |d|
+      position_name = if layout[:drawers].length == 1
+                        'only'
+                      elsif d[:drawer_index] == 0
+                        'bottom'
+                      elsif d[:drawer_index] == layout[:drawers].length - 1
+                        'top'
+                      else
+                        'middle'
+                      end
+      make_drawer_box(entities,
+                      format('Drawer Box %d (%s) - %.3g W x %.3g D x %.3g H', d[:drawer_index] + 1, position_name, box_w, DRAWER_DEPTH, d[:height]),
+                      x_box, 0, z0 + d[:z], box_w, DRAWER_DEPTH, d[:height], birch)
+    end
+
+    front_map = {}
+    fronts.each do |f|
+      position_name = if fronts.length == 1
+                        'only'
+                      elsif f[:drawer_index] == 0
+                        'bottom'
+                      elsif f[:drawer_index] == fronts.length - 1
+                        'top'
+                      else
+                        'middle'
+                      end
+      add_box(entities,
+              format('Drawer Front %d (%s) - Cherry 3/4', f[:drawer_index] + 1, position_name),
+              front[:x], front[:y], z0 + f[:z], front_w, PLY, f[:height], cherry)
+      front_map[f[:drawer_index]] = f
+    end
+
+    layout[:drawers].each do |d|
+      next unless (f = front_map[d[:drawer_index]])
+      add_drawer_height_label(entities, d[:drawer_index], d[:height], f[:height],
+                              front[:x] + (front_w / 2.0), front[:y] - 0.01,
+                              z0 + f[:z] + (f[:height] / 2.0))
+    end
+
+    layout[:opens].each do |o|
+      add_open_space_height_label(entities, o[:height], width / 2.0, -0.01,
+                                  z0 + ((o[:clear_bottom] + o[:clear_top]) / 2.0))
+    end
+
+    [layout, fronts, box_w]
+  end
+
+  def add_single_door(entities, width, spec, cherry)
+    z0 = KICK_HEIGHT
+    front = front_rect(spec)
+    name = spec[:front_style].to_sym == :face_inset ? 'Single Inset Door - Cherry 3/4' : 'Single Overlay Door - Cherry 3/4'
+    add_box(entities, name, front[:x], front[:y], z0 + front[:low],
+            front[:width], PLY, front[:high] - front[:low], cherry)
+  end
+
+  def make_drawer_cabinet(parent, x0, spec, birch, cherry, open_back, cherry_skin)
+    width = spec[:width].to_f
+    cab = parent.add_group
+    cab.name = spec[:label].to_s
+    e = cab.entities
+
+    zones_for_material = normalized_zones(spec)
+    mixed = zones_for_material.any? { |z| z[:kind] == :open }
+    carcass = mixed ? cherry : birch
+    carcass_name = mixed ? 'Cherry' : 'Birch'
+    make_open_back_box(e, width, carcass, carcass_name, birch, cherry_skin)
+    layout, fronts, box_w = add_drawer_mixed_contents(e, width, spec, birch, cherry, open_back)
+    add_face_frame(e, width, spec, birch, cherry)
+    stack_text = layout[:zones].map { |z| "#{z[:kind] == :drawer ? 'D' : 'O'}#{format_dimension(z[:height])}" }.join(', ')
+    open_text = layout[:opens].map { |o| format_dimension(o[:height]) }.join(', ')
+
+    add_label(e,
+              format("%s\n%s W x %s D x %s H\nstack bottom->top: %s\n%d drawers | box %s W x %s D\nopen clear H: %s\n%d divider panel(s) | %s %s",
+                     spec[:label], format_dimension(width), format_dimension(CAB_DEPTH), format_dimension(CAB_HEIGHT), stack_text,
+                     layout[:drawers].length, format_dimension(box_w), format_dimension(DRAWER_DEPTH),
+                     open_text.empty? ? 'none' : open_text,
+                     layout[:dividers].length, layout[:remaining_context], format_dimension(layout[:remaining])),
+              0, CAB_DEPTH + 2.0, KICK_HEIGHT + CAB_HEIGHT + 4.0)
+
+    cab.transform!(Geom::Transformation.translation([i(x0), 0, 0]))
+    cab
+  end
+
+  def make_door_cabinet(parent, x0, spec, birch, cherry, cherry_skin)
+    width = spec[:width].to_f
+    shelves = [spec[:shelves].to_i, 0].max
+    cab = parent.add_group
+    cab.name = spec[:label].to_s
+    e = cab.entities
+
+    make_open_back_box(e, width, birch, 'Birch', birch, cherry_skin)
+    add_birch_shelves(e, width, shelves, birch)
+    add_single_door(e, width, spec, cherry)
+    add_face_frame(e, width, spec, birch, cherry)
+
+    add_label(e,
+              format("%s\n%s W x %s D x %s H\nBirch box | one cherry door | %d shelf(s)",
+                     spec[:label], format_dimension(width), format_dimension(CAB_DEPTH), format_dimension(CAB_HEIGHT), shelves),
+              0, CAB_DEPTH + 2.0, KICK_HEIGHT + CAB_HEIGHT + 4.0)
+    cab.transform!(Geom::Transformation.translation([i(x0), 0, 0]))
+    cab
+  end
+
+  def make_open_shelf_cabinet(parent, x0, spec, birch, cherry, open_back, cherry_skin)
+    width = spec[:width].to_f
+    requested_openings = Array(spec[:shelf_openings])
+    fallback_shelf_count = [spec[:shelves].to_i, 0].max
+    inside_w = width - (2.0 * PLY)
+    z0 = KICK_HEIGHT
+
+    cab = parent.add_group
+    cab.name = spec[:label].to_s
+    e = cab.entities
+
+    make_kick(e, width, birch, cherry_skin)
+    add_box(e, 'Left Side - Cherry 3/4', 0, 0, z0, PLY, CAB_DEPTH, CAB_HEIGHT, cherry)
+    add_box(e, 'Right Side - Cherry 3/4', width - PLY, 0, z0, PLY, CAB_DEPTH, CAB_HEIGHT, cherry)
+    add_box(e, 'Bottom - Cherry 3/4', PLY, 0, z0, inside_w, CAB_DEPTH, PLY, cherry)
+    add_box(e, format('Applied Full Back - %s', OPEN_BACK_MATERIAL.to_s.capitalize),
+            0, CAB_DEPTH, z0, width, BACK_PLY, CAB_HEIGHT, open_back)
+
+    top_z = z0 + CAB_HEIGHT - PLY
+    rear_top_y = CAB_DEPTH - STRETCHER
+    add_box(e, 'Front Top Stretcher - Cherry 3/4', PLY, 0, top_z, inside_w, STRETCHER, PLY, cherry)
+    add_box(e, 'Rear Top Stretcher - Cherry 3/4', PLY, rear_top_y, top_z, inside_w, STRETCHER, PLY, cherry)
+
+    shelf_positions = []
+    clear_heights = []
+    if requested_openings.any?
+      raise "#{spec[:label]}: open-shelf height list must contain at least one opening" if requested_openings.empty?
+      raise "#{spec[:label]}: auto is only allowed for the final/top opening" if requested_openings[0...-1].any? { |h| h == :auto }
+      shelf_count = requested_openings.length - 1
+      available_clear = CAB_HEIGHT - (2.0 * PLY) - (shelf_count * PLY)
+      numeric = requested_openings.reject { |h| h == :auto }.map(&:to_f)
+      raise "#{spec[:label]}: open-shelf heights must be positive" if numeric.any? { |h| h <= 0 }
+      if requested_openings.last == :auto
+        auto_h = available_clear - numeric.inject(0.0, :+)
+        raise "#{spec[:label]}: specified shelf openings exceed available height" if auto_h <= 0
+        clear_heights = numeric + [auto_h]
+      else
+        clear_heights = numeric
+        diff = available_clear - clear_heights.inject(0.0, :+)
+        raise "#{spec[:label]}: open-shelf clear heights must total #{format_dimension(available_clear)}; current list differs by #{format_dimension(diff.abs)} (or use auto for the top opening)" if diff.abs > 0.01
+      end
+      clear_bottom = z0 + PLY
+      clear_heights[0...-1].each_with_index do |h, idx|
+        shelf_z = clear_bottom + h
+        shelf_positions << shelf_z
+        add_box(e, format('Adjustable Shelf %d - Cherry 3/4 (pin supported)', idx + 1),
+                PLY, 0, shelf_z, inside_w, [SHELF_DEPTH, CAB_DEPTH].min, PLY, cherry)
+        clear_bottom = shelf_z + PLY
+      end
+    else
+      shelf_count = fallback_shelf_count
+      if shelf_count > 0
+        clear_total = CAB_HEIGHT - (2.0 * PLY) - (shelf_count * PLY)
+        raise "#{spec[:label]}: shelf count leaves no clear opening height" if clear_total < 0
+        opening_h = clear_total / (shelf_count + 1).to_f
+        clear_bottom = z0 + PLY
+        shelf_count.times do |idx|
+          shelf_z = clear_bottom + opening_h
+          shelf_positions << shelf_z
+          add_box(e, format('Adjustable Shelf %d - Cherry 3/4 (pin supported)', idx + 1),
+                  PLY, 0, shelf_z, inside_w, [SHELF_DEPTH, CAB_DEPTH].min, PLY, cherry)
+          clear_bottom = shelf_z + PLY
+        end
+      end
+    end
+
+    clear_bottom = z0 + PLY
+    shelf_positions.each do |shelf_z|
+      clear_h = shelf_z - clear_bottom
+      add_open_space_height_label(e, clear_h, width / 2.0, -0.01, clear_bottom + (clear_h / 2.0))
+      clear_bottom = shelf_z + PLY
+    end
+    clear_h = top_z - clear_bottom
+    add_open_space_height_label(e, clear_h, width / 2.0, -0.01, clear_bottom + (clear_h / 2.0)) if clear_h > 0
+
+    add_face_frame(e, width, spec, birch, cherry)
+
+    shelf_count = shelf_positions.length
+    add_label(e,
+              format("%s\n%s W x %s D x %s H\nCherry box + applied back | %d shelf(s)",
+                     spec[:label], format_dimension(width), format_dimension(CAB_DEPTH), format_dimension(CAB_HEIGHT), shelf_count),
+              0, CAB_DEPTH + 2.0, KICK_HEIGHT + CAB_HEIGHT + 4.0)
+    cab.transform!(Geom::Transformation.translation([i(x0), 0, 0]))
+    cab
+  end
+
+  def normalized_specs
+    expanded = []
+    CABINETS.each do |spec|
+      qty = [spec[:qty].to_i, 1].max
+      qty.times do |idx|
+        s = spec.dup
+        s[:label] = "#{spec[:label]} #{idx + 1}" if qty > 1
+        expanded << s
+      end
+    end
+    expanded
+  end
+
+  def run
+    model = Sketchup.active_model
+    model.start_operation('Create Cabinet Lineup', true)
+    begin
+      root = model.entities
+      root.grep(Sketchup::Group).select { |g| g.name == 'Generated Cabinet Lineup' }.each(&:erase!)
+      birch = material(model, 'Birch Plywood', [224, 207, 167])
+      cherry = material(model, 'Cherry Plywood', [160, 92, 55])
+      birch_back = material(model, 'Birch Open-Space Back', [218, 201, 164])
+      cherry_back = material(model, 'Cherry Open-Space Back', [175, 110, 70])
+      open_back = OPEN_BACK_MATERIAL == :cherry ? cherry_back : birch_back
+      cherry_skin = material(model, 'Cherry Toe Kick Skin', [175, 110, 70])
+      floor_mat = material(model, 'Floor Neutral', [205, 205, 200])
+
+      presentation = root.add_group
+      presentation.name = 'Generated Cabinet Lineup'
+      presentation.set_attribute('CabinetDrafter', 'generated', true)
+      pe = presentation.entities
+
+      specs = normalized_specs
+      x = 0.0
+      total_width = 0.0
+      specs.each_with_index do |spec, idx|
+        case spec[:type].to_sym
+        when :drawer
+          make_drawer_cabinet(pe, x, spec, birch, cherry, open_back, cherry_skin)
+        when :door
+          make_door_cabinet(pe, x, spec, birch, cherry, cherry_skin)
+        when :open_shelf
+          make_open_shelf_cabinet(pe, x, spec, birch, cherry, open_back, cherry_skin)
+        else
+          raise "Unknown cabinet type: #{spec[:type]}"
+        end
+
+        x += spec[:width].to_f
+        total_width += spec[:width].to_f
+        if idx < specs.length - 1
+          x += DISPLAY_GAP
+          total_width += DISPLAY_GAP
+        end
+      end
+
+      floor_margin = 6.0
+      add_box(pe, 'Floor Reference', -floor_margin, -floor_margin, -0.25,
+              total_width + (2.0 * floor_margin),
+              CAB_DEPTH + (2.0 * floor_margin), 0.25, floor_mat)
+
+      model.commit_operation
+      model.active_view.zoom_extents
+      save_path = File.join(File.expand_path('~/Desktop'), SAVE_FILENAME)
+      model.save(save_path)
+      UI.messagebox("Created #{specs.length} cabinet(s) and saved:\n#{save_path}")
+    rescue => e
+      model.abort_operation
+      UI.messagebox("Cabinet generator error:\n#{e.message}\n\n#{e.backtrace.first(8).join("\n")}")
+      raise e
+    end
+  end
+end
+
+CabinetDrafter.run
+
+</script>
+<script>
+(() => {
+  const STORAGE_KEY='cabinetDrafterV110', OLD_KEYS=['joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','joineryGridV25','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
+  const defaults={"cabinets":[{"label":"24in Drawer Cabinet","type":"drawer","width":24,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"label":"20in Single Door Cabinet","type":"door","width":20,"qty":1,"stackSpec":"","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"label":"18in Drawer Cabinet","type":"drawer","width":18,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"}],"cabDepth":25,"cabHeight":38,"ply":0.75,"backPly":0.25,"stretcher":4,"frontGap":0.125,"sideReveal":0.0625,"kickHeight":2,"kickSetback":3,"kickDepth":22,"shelfDepth":24.5,"displayGap":8,"drawerDepth":24,"slideClearance":1.0,"drawerSidePly":0.5,"drawerBottomPly":0.5,"drawerBoxGap":0.5,"drawerBottomClearance":0.5,"mixedPanelDepth":24,"mixedPanelMaterial":"cherry","openBackMaterial":"cherry","saveFilename":"cabinet-drafter_generated.skp","sheetWidth":48,"sheetLength":96,"kerf":0.125,"edgeTrim":0.25,"spareSheets":0,"preserveCherryGrain":true,"showLabels":true,"showDrawerBoxHeightLabels":false,"showDrawerFaceHeightLabels":false,"showOpenSpaceHeightLabels":false,"kickSkinPly":0.25,"units":"in","frameStileWidth":1.5,"frameRailWidth":1.5,"frameThickness":0.75,"frameMaterial":"cherry","frameOverlay":0.5,"frameInsetReveal":0.0625};
+  const rows=document.getElementById('cabinetRows'), preview=document.getElementById('rubyPreview'), summary=document.getElementById('drawerSummary');
+  const PROJECT_DB='CabinetDrafterProjectFiles', PROJECT_STORE='handles', PROJECT_HANDLE_KEY='cabinetdrafter-project-json';
+  let projectFileHandle=null, projectAutosaveTimer=null, projectHandleReady=false, projectWriteChain=Promise.resolve();
+  const ids=["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","mixedPanelMaterial","openBackMaterial","frameStileWidth","frameRailWidth","frameThickness","frameMaterial","frameOverlay","frameInsetReveal","saveFilename","sheetWidth","sheetLength","kerf","edgeTrim","spareSheets"];
+  const dimensionIds=new Set(["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frameStileWidth","frameRailWidth","frameThickness","frameOverlay","frameInsetReveal","sheetWidth","sheetLength","kerf","edgeTrim"]);
+  let activeUnits='in';
+  const deepCopy=x=>JSON.parse(JSON.stringify(x));
+  const number=(v,f=0)=>{if(v===null||v===undefined||String(v).trim()==='')return f;const n=Number(v);return Number.isFinite(n)?n:f};
+  const rubyString=s=>String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+  const fmt=n=>Number(n).toFixed(5).replace(/0+$/,'').replace(/\.$/,'');
+  const esc=s=>String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
+  const toInches=(v,units=activeUnits)=>units==='mm'?Number(v)/25.4:Number(v);
+  const fromInches=(v,units=activeUnits)=>units==='mm'?Number(v)*25.4:Number(v);
+  const fmtDisplay=n=>activeUnits==='mm'?Number(fromInches(n)).toFixed(2).replace(/0+$/,'').replace(/\.$/,''):fmt(n);
+  const unitSuffix=()=>activeUnits==='mm'?' mm':'"';
+  const dimText=n=>`${fmtDisplay(n)}${unitSuffix()}`;
+  const listText=a=>(Array.isArray(a)?a:[]).map(fmtDisplay).join(', ');
+
+  function parseMeasurement(token,sourceUnits=activeUnits){
+    let raw=String(token||'').trim();if(!raw)return NaN;
+    let units=sourceUnits;
+    if(/\bmm\b/i.test(raw))units='mm';else if(/\bin(?:ch(?:es)?)?\b/i.test(raw)||/[“”\"]/.test(raw)||/[′']/.test(raw))units='in';
+    let t=raw.replace(/\b(?:mm|in|inch|inches)\b/ig,'').replace(/[“”\"]/g,'').replace(/[′']/g,'').replace(/−/g,'-');
+    let value=NaN,m=t.match(/(-?\d+(?:\.\d+)?)\s*(?:-|\s)\s*(\d+)\s*\/\s*(\d+)/);
+    if(m){const d=Number(m[3]);value=d?Number(m[1])+Number(m[2])/d:NaN}
+    else{m=t.match(/(-?\d+)\s*\/\s*(\d+)/);if(m){const d=Number(m[2]);value=d?Number(m[1])/d:NaN}else{m=t.match(/-?(?:\d+(?:\.\d*)?|\.\d+)/);value=m?Number(m[0]):NaN}}
+    return Number.isFinite(value)?toInches(value,units):NaN;
+  }
+  function parseList(v,sourceUnits=activeUnits){return String(v||'').split(/[,;\n]+/).map(x=>parseMeasurement(x,sourceUnits)).filter(x=>Number.isFinite(x)&&x>0)}
+  function normalizeField(el){const vals=parseList(el.value,activeUnits);if(vals.length)el.value=vals.map(fmtDisplay).join(', ');else if(el.value.trim())el.value=''}
+
+  function stackTextFromZones(zones){return (zones||[]).map(z=>`${z.kind==='open'?'O':'D'}${fmt(z.height)}`).join(', ')}
+  function parseStack(v,sourceUnits='in'){
+    const raw=String(v||'').split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean),zones=[],errors=[];
+    // Backward compatibility: a completely bare list (7, 7, 9.5) is all drawers.
+    // Mixed-mode syntax: once any drawer is explicitly marked with D/Drawer,
+    // unprefixed numeric entries are open cubbies. This makes D9, D9, 15 mean
+    // two drawers followed by a 15-unit open cubby, while O/Open remains valid.
+    const explicitDrawerMode=raw.some(token=>/^\s*(?:d(?=\s*[-.0-9])|drawer\b)/i.test(token));
+    for(const token of raw){
+      let kind;
+      if(/^\s*(?:o(?=\s*[-.0-9])|open\b|s(?=\s*[-.0-9])|shelf\b|c(?=\s*[-.0-9])|cubby\b)/i.test(token))kind='open';
+      else if(/^\s*(?:d(?=\s*[-.0-9])|drawer\b)/i.test(token))kind='drawer';
+      else kind=explicitDrawerMode?'open':'drawer';
+      const h=parseMeasurement(token,sourceUnits);
+      if(!(h>0)){errors.push(`Could not read "${token}"`);continue}
+      zones.push({kind,height:h});
+    }
+    for(let i=1;i<zones.length;i++)if(zones[i-1].kind==='open'&&zones[i].kind==='open')errors.push('Adjacent open cubbies should be combined into one larger open zone');
+    return {zones,errors,normalized:stackTextFromZones(zones)};
+  }
+  function normalizeStackField(el){
+    const raw=String(el.value||'').split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean);
+    if(!raw.length){if(el.value.trim())el.value='';return}
+    const out=[];
+    for(const token of raw){
+      const h=parseMeasurement(token,activeUnits);
+      if(!(h>0))return; // Preserve the user's text if any token cannot be parsed.
+      let prefix='';
+      if(/^\s*(?:d(?=\s*[-.0-9])|drawer\b)/i.test(token))prefix='D';
+      else if(/^\s*(?:o(?=\s*[-.0-9])|open\b|s(?=\s*[-.0-9])|shelf\b|c(?=\s*[-.0-9])|cubby\b)/i.test(token))prefix='O';
+      // Bare numeric entries stay bare. In an all-bare list they mean drawers; when D is used elsewhere in the list they mean open cubbies.
+      out.push(prefix+fmtDisplay(h));
+    }
+    el.value=out.join(', ');
+  }
+
+  function canonicalizeDrawerSpec(raw,sourceUnits=activeUnits){
+    const tokens=String(raw||'').split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean),out=[];
+    for(const token of tokens){const h=parseMeasurement(token,sourceUnits);if(!(h>0))return String(raw||'').trim();let prefix='';if(/^\s*(?:d(?=\s*[-.0-9])|drawer\b)/i.test(token))prefix='D';else if(/^\s*(?:o(?=\s*[-.0-9])|open\b|s(?=\s*[-.0-9])|shelf\b|c(?=\s*[-.0-9])|cubby\b)/i.test(token))prefix='O';out.push(prefix+fmt(h))}return out.join(', ')
+  }
+  function parseShelfSpec(v,sourceUnits='in'){
+    const raw=String(v||'').split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean),entries=[],errors=[];
+    for(let i=0;i<raw.length;i++){const token=raw[i];if(/^\s*(?:auto|\*)\s*$/i.test(token)){entries.push({auto:true});continue}const h=parseMeasurement(token,sourceUnits);if(!(h>0)){errors.push(`Could not read "${token}"`);continue}entries.push({auto:false,height:h})}
+    const autos=entries.map((e,i)=>e.auto?i:-1).filter(i=>i>=0);if(autos.length>1)errors.push('Only one auto opening is allowed');if(autos.length&&autos[0]!==entries.length-1)errors.push('auto is only allowed for the final/top opening');return {entries,errors}
+  }
+  function canonicalizeShelfSpec(raw,sourceUnits=activeUnits){const p=parseShelfSpec(raw,sourceUnits);if(p.errors.length)return String(raw||'').trim();return p.entries.map(e=>e.auto?'auto':fmt(e.height)).join(', ')}
+  function displayDrawerSpec(canonical){const tokens=String(canonical||'').split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean),out=[];for(const token of tokens){const h=parseMeasurement(token,'in');if(!(h>0)){out.push(token);continue}let prefix='';if(/^\s*(?:d(?=\s*[-.0-9])|drawer\b)/i.test(token))prefix='D';else if(/^\s*(?:o(?=\s*[-.0-9])|open\b|s(?=\s*[-.0-9])|shelf\b|c(?=\s*[-.0-9])|cubby\b)/i.test(token))prefix='O';out.push(prefix+fmtDisplay(h))}return out.join(', ')}
+  function displayShelfSpec(canonical){const p=parseShelfSpec(canonical,'in');if(p.errors.length)return canonical||'';return p.entries.map(e=>e.auto?'auto':fmtDisplay(e.height)).join(', ')}
+  function normalizeShelfField(el){const p=parseShelfSpec(el.value,activeUnits);if(p.errors.length)return;el.value=p.entries.map(e=>e.auto?'auto':fmtDisplay(e.height)).join(', ')}
+  function shelfLayout(c,st){
+    const p=parseShelfSpec(c.stackSpec||'','in');if(p.errors.length)return {error:p.errors.join('; ')};
+    if(!p.entries.length){const count=Math.max(0,c.shelves||0),clearTotal=st.cabHeight-(2*st.ply)-(count*st.ply);if(clearTotal<0)return {error:'Shelf count leaves no clear opening height'};const openingH=clearTotal/(count+1),openings=[],shelves=[];let bottom=st.ply;for(let i=0;i<count;i++){const z=bottom+openingH;openings.push({height:openingH,clearBottom:bottom,clearTop:z});shelves.push({z});bottom=z+st.ply}openings.push({height:openingH,clearBottom:bottom,clearTop:bottom+openingH});return {openings,shelves,explicit:false}}
+    const shelfCount=p.entries.length-1,availableClear=st.cabHeight-(2*st.ply)-(shelfCount*st.ply);if(availableClear<=0)return {error:'Shelf count leaves no clear opening height'};let heights=p.entries.filter(e=>!e.auto).map(e=>e.height);if(p.entries[p.entries.length-1].auto){const autoH=availableClear-heights.reduce((a,b)=>a+b,0);if(autoH<=0)return {error:`Specified openings exceed available clear height by ${dimText(-autoH)}`};heights=[...heights,autoH]}else{const diff=availableClear-heights.reduce((a,b)=>a+b,0);if(Math.abs(diff)>0.01)return {error:`Clear opening heights must total ${dimText(availableClear)}; adjust by ${dimText(diff)} or use auto for the top opening`}}
+    const openings=[],shelves=[];let bottom=st.ply;heights.forEach((h,i)=>{openings.push({height:h,clearBottom:bottom,clearTop:bottom+h});if(i<heights.length-1){const z=bottom+h;shelves.push({z});bottom=z+st.ply}});return {openings,shelves,explicit:true}
+  }
+
+  function normalizeCab(c){
+    const oldCount=Math.max(0,Math.round(number(c.drawers,0)));let oldHeights=Array.isArray(c.drawerHeights)?c.drawerHeights:[];if(!oldHeights.length&&oldCount)oldHeights=Array(oldCount).fill(7);
+    let stackSpec=typeof c.stackSpec==='string'?c.stackSpec:'';
+    if(!stackSpec&&Array.isArray(c.zones)&&c.zones.length)stackSpec=stackTextFromZones(c.zones);
+    if(!stackSpec&&oldHeights.length)stackSpec=oldHeights.map(h=>'D'+fmt(h)).join(', ');
+    return {label:c.label||'',type:c.type||'drawer',frontStyle:['frameless','face_overlay','face_inset'].includes(c.frontStyle)?c.frontStyle:'frameless',width:number(c.width,24),qty:Math.max(1,Math.round(number(c.qty,1))),stackSpec,frontHeights:Array.isArray(c.frontHeights)?c.frontHeights:[],shelves:Math.max(0,Math.round(number(c.shelves,0)))};
+  }
+  function zonesFor(c){return parseStack(c.stackSpec||'','in').zones}
+  function drawerHeightsFor(c){return zonesFor(c).filter(z=>z.kind==='drawer').map(z=>z.height)}
+  function setRowEnabled(tr){
+    const type=tr.querySelector('.type').value,isDrawer=type==='drawer',isOpen=type==='open_shelf',stack=tr.querySelector('.stackSpec'),front=tr.querySelector('.frontHeights'),shelves=tr.querySelector('.shelves');
+    stack.disabled=!(isDrawer||isOpen);stack.parentElement.classList.toggle('disabledish',stack.disabled);front.disabled=!isDrawer;front.parentElement.classList.toggle('disabledish',!isDrawer);
+    if(isDrawer){stack.placeholder=activeUnits==='mm'?'D180, Open 200, D180':'D7, Open 8, D7';shelves.disabled=true;shelves.value=0}
+    else if(isOpen){stack.placeholder=activeUnits==='mm'?'240, 300, auto':'9.5, 12, auto';const canonical=canonicalizeShelfSpec(stack.value,activeUnits),p=parseShelfSpec(canonical,'in');const explicit=p.entries.length>0&&!p.errors.length;shelves.disabled=explicit;if(explicit)shelves.value=Math.max(0,p.entries.length-1)}
+    else{stack.placeholder='';shelves.disabled=false}
+    shelves.parentElement.classList.toggle('disabledish',shelves.disabled);updateRowBudget(tr)
+  }
+  function makeRow(cab){
+    cab=normalizeCab(cab);const tr=document.createElement('tr');
+    tr.innerHTML=`<td><input class="label" type="text"></td><td><select class="type"><option value="drawer">Drawer / mixed</option><option value="door">Single door</option><option value="open_shelf">Open shelf</option></select></td><td><select class="frontStyle"><option value="frameless">Frameless</option><option value="face_overlay">Face frame · overlay</option><option value="face_inset">Face frame · inset</option></select></td><td><input class="width" type="number" min="1" step="0.125"></td><td><input class="qty" type="number" min="1" step="1"></td><td><input class="stackSpec drawer-list" type="text"><div class="drawer-budget"></div></td><td><input class="frontHeights drawer-list" type="text" placeholder="auto"></td><td><input class="shelves" type="number" min="0" step="1"></td><td><button class="remove danger">Remove</button></td>`;
+    tr.querySelector('.label').value=cab.label;tr.querySelector('.type').value=cab.type;tr.querySelector('.frontStyle').value=cab.frontStyle;tr.querySelector('.width').value=fmtDisplay(cab.width);tr.querySelector('.qty').value=cab.qty;tr.querySelector('.stackSpec').value=cab.type==='open_shelf'?displayShelfSpec(cab.stackSpec):displayDrawerSpec(cab.stackSpec);tr.querySelector('.frontHeights').value=listText(cab.frontHeights);tr.querySelector('.shelves').value=cab.shelves;
+    tr.querySelector('.remove').onclick=()=>{tr.remove();changed()};
+    tr.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>{setRowEnabled(tr);changed()}));
+    tr.querySelector('.stackSpec').addEventListener('blur',e=>{if(tr.querySelector('.type').value==='open_shelf')normalizeShelfField(e.target);else normalizeStackField(e.target);setRowEnabled(tr);changed()});
+    tr.querySelector('.frontHeights').addEventListener('blur',e=>{normalizeField(e.target);changed()});
+    rows.appendChild(tr);setRowEnabled(tr);
+  }
+  function readRows(){return [...rows.querySelectorAll('tr')].map(tr=>{const type=tr.querySelector('.type').value,raw=tr.querySelector('.stackSpec').value.trim();return {label:tr.querySelector('.label').value.trim(),type,frontStyle:tr.querySelector('.frontStyle').value,width:toInches(number(tr.querySelector('.width').value,fromInches(24)),activeUnits),qty:Math.max(1,Math.round(number(tr.querySelector('.qty').value,1))),stackSpec:type==='open_shelf'?canonicalizeShelfSpec(raw,activeUnits):canonicalizeDrawerSpec(raw,activeUnits),frontHeights:parseList(tr.querySelector('.frontHeights').value,activeUnits),shelves:Math.max(0,Math.round(number(tr.querySelector('.shelves').value,0)))}})}
+  function state(){const st={cabinets:readRows(),units:activeUnits};ids.forEach(id=>{const el=document.getElementById(id);if(el.type==='number')st[id]=dimensionIds.has(id)?toInches(number(el.value,fromInches(defaults[id])),activeUnits):number(el.value,defaults[id]);else st[id]=el.value});st.preserveCherryGrain=document.getElementById('preserveCherryGrain').checked;st.showLabels=document.getElementById('showLabels').checked;st.showDrawerBoxHeightLabels=document.getElementById('showDrawerBoxHeightLabels').checked;st.showDrawerFaceHeightLabels=document.getElementById('showDrawerFaceHeightLabels').checked;st.showOpenSpaceHeightLabels=document.getElementById('showOpenSpaceHeightLabels').checked;return st}
+  function applyState(st){st={...st};if(st.drawerBottomClearance===undefined&&st.drawerTopClearance!==undefined)st.drawerBottomClearance=st.drawerTopClearance;if(st.showDrawerBoxHeightLabels===undefined&&st.showDrawerHeightLabels!==undefined)st.showDrawerBoxHeightLabels=!!st.showDrawerHeightLabels;if(st.showDrawerFaceHeightLabels===undefined&&st.showDrawerHeightLabels!==undefined)st.showDrawerFaceHeightLabels=!!st.showDrawerHeightLabels;activeUnits=st.units==='mm'?'mm':'in';document.getElementById('units').value=activeUnits;rows.innerHTML='';(st.cabinets||defaults.cabinets).map(normalizeCab).forEach(makeRow);ids.forEach(id=>{const el=document.getElementById(id),v=st[id]??defaults[id];el.value=el.type==='number'&&dimensionIds.has(id)?fmtDisplay(v):v});document.getElementById('preserveCherryGrain').checked=st.preserveCherryGrain??defaults.preserveCherryGrain;document.getElementById('showLabels').checked=st.showLabels??defaults.showLabels;document.getElementById('showDrawerBoxHeightLabels').checked=st.showDrawerBoxHeightLabels??defaults.showDrawerBoxHeightLabels;document.getElementById('showDrawerFaceHeightLabels').checked=st.showDrawerFaceHeightLabels??defaults.showDrawerFaceHeightLabels;document.getElementById('showOpenSpaceHeightLabels').checked=st.showOpenSpaceHeightLabels??defaults.showOpenSpaceHeightLabels;updateInputSteps();updateAll()}
+  function updateInputSteps(){const step=activeUnits==='mm'?'0.5':'0.03125';dimensionIds.forEach(id=>{const el=document.getElementById(id);if(el&&el.type==='number')el.step=step});rows.querySelectorAll('.width').forEach(el=>el.step=activeUnits==='mm'?'0.5':'0.125')}
+
+
+  function isFaceFrame(c){return c.frontStyle==='face_overlay'||c.frontStyle==='face_inset'}
+  function frameOpening(c,st){return {x:st.frameStileWidth,z:st.frameRailWidth,w:c.width-(2*st.frameStileWidth),h:st.cabHeight-(2*st.frameRailWidth)}}
+  function frontRect(c,st){
+    if(c.frontStyle==='face_overlay'){const o=frameOpening(c,st);return {x:o.x-st.frameOverlay,w:o.w+(2*st.frameOverlay),y:-(st.frameThickness+st.ply),low:o.z-st.frameOverlay,high:o.z+o.h+st.frameOverlay}}
+    if(c.frontStyle==='face_inset'){const o=frameOpening(c,st);return {x:o.x+st.frameInsetReveal,w:o.w-(2*st.frameInsetReveal),y:-st.frameThickness,low:o.z+st.frameInsetReveal,high:o.z+o.h-st.frameInsetReveal}}
+    return {x:st.sideReveal,w:c.width-(2*st.sideReveal),y:-st.ply,low:st.frontGap,high:st.cabHeight-st.frontGap}
+  }
+  function addFaceFrameParts(parts,c,st,label){
+    if(!isFaceFrame(c))return;const wood=st.frameMaterial==='birch'?'Birch':'Cherry';
+    // Solid face-frame members are tracked separately as linear stock; this function intentionally does not add plywood-sheet parts.
+  }
+  function buildLinearStock(st){const items=[];for(const c of expandedCabinets(st)){if(!isFaceFrame(c))continue;const material=st.frameMaterial==='birch'?'Birch':'Cherry',label=c.instanceLabel||c.label||`${c.width} cabinet`,railLen=c.width-(2*st.frameStileWidth);if(railLen<=0)continue;items.push({material,thickness:st.frameThickness,width:st.frameStileWidth,length:st.cabHeight,qty:2,name:'Face-frame stile',cabinet:label});items.push({material,thickness:st.frameThickness,width:st.frameRailWidth,length:railLen,qty:2,name:'Face-frame rail',cabinet:label})}return items}
+  function summarizeLinearStock(st){const groups=new Map();for(const p of buildLinearStock(st)){const k=`${p.material}|${fmt(p.thickness)}|${fmt(p.width)}`,g=groups.get(k)||{material:p.material,thickness:p.thickness,width:p.width,pieces:0,totalLength:0};g.pieces+=p.qty;g.totalLength+=p.length*p.qty;groups.set(k,g)}return [...groups.values()]}
+
+  function zoneLayout(c,st){
+    const parsed=parseStack(c.stackSpec||''),zones=parsed.zones;if(parsed.errors.length)return {error:parsed.errors.join('; '),zones};
+    if(!zones.length)return {error:'No drawer/open stack entered',zones};
+    if(!zones.some(z=>z.kind==='drawer'))return {error:'Drawer / mixed cabinet needs at least one drawer; use Open Shelf for an all-open cabinet',zones};
+    const internalBottom=st.ply,internalTop=st.cabHeight-st.ply,usable=internalTop-internalBottom;if(usable<=0)return {error:'Cabinet height leaves no usable internal height',zones};
+    const drawers=[],opens=[],dividers=[];let drawerIndex=0,cursor=internalBottom;
+    const topOpen=zones[zones.length-1].kind==='open',processCount=topOpen?zones.length-1:zones.length;
+    for(let i=0;i<processCount;i++){
+      const z=zones[i];
+      if(i===0){if(z.kind==='drawer')cursor+=st.drawerBottomClearance}
+      else{
+        const prev=zones[i-1];
+        if(prev.kind==='drawer'&&z.kind==='drawer')cursor+=st.drawerBoxGap;
+        else if(prev.kind==='drawer'&&z.kind==='open'){cursor+=st.drawerBoxGap;dividers.push({z:cursor,boundary:'bottom of open cubby'});cursor+=st.ply}
+        else if(prev.kind==='open'&&z.kind==='drawer'){dividers.push({z:cursor,boundary:'top of open cubby'});cursor+=st.ply+st.drawerBoxGap}
+        else return {error:'Adjacent open cubbies should be combined into one larger open zone',zones};
+      }
+      if(z.kind==='drawer'){drawers.push({zoneIndex:i,drawerIndex,z:cursor,height:z.height});drawerIndex++;cursor+=z.height}
+      else{opens.push({zoneIndex:i,clearBottom:cursor,clearTop:cursor+z.height,height:z.height});cursor+=z.height}
+    }
+    let remaining=0,remainingContext='unused above stack';
+    if(topOpen){
+      if(zones.length<2)return {error:'An all-open cabinet should use the Open Shelf type',zones};
+      const prev=zones[zones.length-2];if(prev.kind==='open')return {error:'Adjacent open cubbies should be combined',zones};
+      const topHeight=zones[zones.length-1].height,dividerZ=internalTop-topHeight-st.ply,minDividerZ=cursor+st.drawerBoxGap;
+      if(dividerZ<minDividerZ-0.001)return {error:`Stack exceeds available height by ${dimText(minDividerZ-dividerZ)}`,zones,usable,drawers,opens,dividers};
+      remaining=Math.max(0,dividerZ-minDividerZ);remainingContext='extra hidden clearance below top cubby';
+      dividers.push({z:dividerZ,boundary:'bottom of top open cubby'});opens.push({zoneIndex:zones.length-1,clearBottom:dividerZ+st.ply,clearTop:internalTop,height:topHeight});
+    }else{
+      remaining=internalTop-cursor;if(remaining<-0.001)return {error:`Stack exceeds internal vertical space by ${dimText(-remaining)}`,zones,usable,drawers,opens,dividers};remaining=Math.max(0,remaining);
+    }
+    return {zones,usable,drawers,opens,dividers,remaining,remainingContext,internalBottom,internalTop};
+  }
+
+  function frontLayout(c,st,layout=zoneLayout(c,st)){
+    if(layout.error)return {error:layout.error,layout};
+    const drawers=layout.drawers,count=drawers.length,custom=c.frontHeights||[];
+    if(custom.length&&custom.length!==count)return {error:'Custom front count must match drawer count',layout};
+    const openByZone=new Map(layout.opens.map(o=>[o.zoneIndex,o])),drawerByZone=new Map(drawers.map(d=>[d.zoneIndex,d]));
+    const runs=[];let current=[];layout.zones.forEach((z,i)=>{if(z.kind==='drawer')current.push(i);else if(current.length){runs.push(current);current=[]}});if(current.length)runs.push(current);
+    const results=[];let customOffset=0,shorter=0,totalLeftover=0;
+    for(const run of runs){
+      const first=run[0],last=run[run.length-1],outer=frontRect(c,st),low=first===0?outer.low:openByZone.get(first-1).clearTop+st.frontGap,high=last===layout.zones.length-1?outer.high:openByZone.get(last+1).clearBottom-st.frontGap;
+      const rd=run.map(zi=>drawerByZone.get(zi)),available=high-low-((rd.length-1)*st.frontGap),boxSum=rd.reduce((a,d)=>a+d.height,0);if(available<=0)return {error:'No visible face height remains for a drawer run',layout};
+      if(custom.length){
+        const heights=custom.slice(customOffset,customOffset+rd.length),used=heights.reduce((a,b)=>a+b,0);if(used>available+0.001)return {error:'Custom drawer fronts exceed their available face region',layout};totalLeftover+=available-used;heights.forEach((h,i)=>{if(h+0.001<rd[i].height)shorter++});
+        let cursor=low;rd.forEach((d,i)=>{results.push({drawerIndex:d.drawerIndex,zoneIndex:d.zoneIndex,z:cursor,height:heights[i]});if(i<rd.length-1)cursor+=heights[i]+st.frontGap});
+      }else{
+        // Keep reveal lines tied to the physical drawer stack instead of redistributing
+        // spare face height across every drawer.  The boundary between adjacent
+        // drawers is centered in the actual drawer-box gap.  This makes a shared
+        // bottom-up drawer prefix line up across neighboring cabinets even when
+        // one cabinet changes to an open cubby above it.
+        const centers=[];for(let i=0;i<rd.length-1;i++){const a=rd[i],b=rd[i+1];centers.push(((a.z+a.height)+b.z)/2)}
+        let faceLow=low;for(let i=0;i<rd.length;i++){const faceHigh=i===rd.length-1?high:centers[i]-(st.frontGap/2),h=faceHigh-faceLow;if(h<=0)return {error:'Drawer-front reveal geometry leaves a non-positive face height',layout};results.push({drawerIndex:rd[i].drawerIndex,zoneIndex:rd[i].zoneIndex,z:faceLow,height:h});if(i<rd.length-1)faceLow=centers[i]+(st.frontGap/2)}
+      }
+      customOffset+=rd.length;
+    }
+    results.sort((a,b)=>a.drawerIndex-b.drawerIndex);return {fronts:results,layout,custom:!!custom.length,shorter,leftover:totalLeftover};
+  }
+
+  function updateRowBudget(tr){
+    const helper=tr.querySelector('.drawer-budget');if(!helper)return;const type=tr.querySelector('.type').value;if(type==='door'){helper.textContent='';return}
+    const all=state(),idx=[...rows.querySelectorAll('tr')].indexOf(tr),cab=all.cabinets[idx];
+    if(type==='open_shelf'){
+      const layout=shelfLayout(cab,all);helper.className='drawer-budget'+(layout.error?' bad':'');
+      if(layout.error){helper.textContent=layout.error;return}
+      helper.textContent=`${layout.openings.length} clear opening(s), ${layout.shelves.length} adjustable shelf/shelves · ${layout.openings.map(o=>dimText(o.height)).join(', ')}`;return
+    }
+    const p=parseStack(cab.stackSpec,'in'),layout=zoneLayout(cab,all);if(!p.zones.length){helper.className='drawer-budget';helper.textContent=`Cabinet ${dimText(all.cabHeight)} high → ${dimText(all.cabHeight-2*all.ply)} internal height. Enter D drawer and/or O open zones.`;return}
+    helper.className='drawer-budget'+(layout.error?' bad':'');if(layout.error){helper.textContent=layout.error;return}
+    helper.textContent=`${layout.drawers.length} drawer(s), ${layout.opens.length} open cubby(s), ${layout.dividers.length} added divider panel(s) · ${dimText(layout.usable)} internal height · ${dimText(layout.remaining)} ${layout.remainingContext}`;
+  }
+  function updateAllRowBudgets(){[...rows.querySelectorAll('tr')].forEach(updateRowBudget)}
+  function updateSummary(){
+    const st=state(),cabs=st.cabinets.filter(c=>c.type==='drawer');if(!cabs.length){summary.innerHTML='<span class="muted">No drawer / mixed cabinets.</span>';return}
+    let h='<div class="table-wrap"><table class="summary-table"><thead><tr><th>Cabinet</th><th>Stack bottom → top</th><th>Drawer box W × D</th><th>Open clear heights</th><th>Divider panels</th><th>Remaining</th><th>Drawer-front heights</th><th>Status</th></tr></thead><tbody>';
+    for(const c of cabs){
+      const inside=c.width-(2*st.ply),boxW=inside-st.slideClearance,layout=zoneLayout(c,st),fl=frontLayout(c,st,layout),errs=[];if(inside<=0)errs.push('cabinet too narrow for carcass sides');if(boxW<=2*st.drawerSidePly)errs.push('drawer box too narrow for selected slide clearance/side thickness');if(st.drawerDepth>st.cabDepth+0.001)errs.push('drawer depth exceeds cabinet depth');if(layout.error)errs.push(layout.error);const dh=layout.drawers||[];if(dh.some(d=>d.height<=st.drawerBottomPly))errs.push('a drawer box height is not greater than drawer-bottom thickness');if(fl.error&&!layout.error)errs.push(fl.error);if(fl.shorter)errs.push(`${fl.shorter} custom front(s) shorter than their drawer box`);
+      const front=fl.fronts?fl.fronts.map(f=>dimText(f.height)).join(', '):'—',opens=layout.opens?layout.opens.map(o=>dimText(o.height)).join(', '):'—',remaining=layout.error?'—':`${dimText(layout.remaining)} ${layout.remainingContext}`;
+      const status=errs.length?`<span class="summary-warn">${errs.map(esc).join('; ')}</span>`:`<span class="summary-good">${fl.custom?'Custom fronts':'Auto fronts'} · fits</span>`;
+      h+=`<tr><td>${esc(c.label||dimText(c.width)+' Drawer/Mixed')}</td><td>${esc(parseStack(c.stackSpec).normalized||'—')}</td><td class="dim">${dimText(boxW)} × ${dimText(st.drawerDepth)}</td><td>${opens||'—'}</td><td>${layout.dividers?layout.dividers.length:'—'}</td><td>${remaining}</td><td>${front}</td><td>${status}</td></tr>`;
+    }
+    h+='</tbody></table></div><div class="note small"><strong>D</strong> zones are drawer-box outside heights. <strong>O</strong> zones (letter O for Open, not zero) are clear open-cubby heights. Middle cubbies get two added horizontal divider panels; bottom cubbies use the cabinet bottom; top cubbies omit an added top panel. Drawer fronts are automatically sized separately within each contiguous drawer run so they do not cover an open cubby.</div>';summary.innerHTML=h;
+  }
+
+  function rubyArray(a){return '['+(a||[]).map(v=>fmt(v)).join(', ')+']'}
+  function zonesRuby(c){const z=parseStack(c.stackSpec||'','in').zones;return '['+z.map(x=>`[:${x.kind}, ${fmt(x.height)}]`).join(', ')+']'}
+  function shelfOpeningsRuby(c){const p=parseShelfSpec(c.stackSpec||'','in');if(p.errors.length)return '[]';return '['+p.entries.map(e=>e.auto?':auto':fmt(e.height)).join(', ')+']'}
+  function cabinetRuby(cabs){return cabs.map(c=>{const label=c.label||`${fmt(c.width)}in ${c.type==='door'?'Single Door':c.type==='open_shelf'?'Open Shelf':'Drawer/Mixed'} Cabinet`;return `    { type: :${c.type}, front_style: :${c.frontStyle||'frameless'}, width: ${fmt(c.width)}, qty: ${c.qty}, shelves: ${c.shelves}, shelf_openings: ${shelfOpeningsRuby(c)}, zones: ${zonesRuby(c)}, front_heights: ${rubyArray(c.frontHeights)}, label: '${rubyString(label)}' }`}).join(',\n')}
+  function generateRuby(){const st=state();let text=document.getElementById('rubyTemplate').textContent.replace(/^\n/,'');const map={'__CABINETS__':cabinetRuby(st.cabinets),'__CAB_DEPTH__':fmt(st.cabDepth),'__CAB_HEIGHT__':fmt(st.cabHeight),'__PLY__':fmt(st.ply),'__BACK_PLY__':fmt(st.backPly),'__STRETCHER__':fmt(st.stretcher),'__FRONT_GAP__':fmt(st.frontGap),'__SIDE_REVEAL__':fmt(st.sideReveal),'__KICK_HEIGHT__':fmt(st.kickHeight),'__KICK_SETBACK__':fmt(st.kickSetback),'__KICK_DEPTH__':fmt(st.kickDepth),'__KICK_SKIN_PLY__':fmt(st.kickSkinPly),'__SHELF_DEPTH__':fmt(st.shelfDepth),'__DISPLAY_GAP__':fmt(st.displayGap),'__DRAWER_DEPTH__':fmt(st.drawerDepth),'__SLIDE_CLEARANCE__':fmt(st.slideClearance),'__DRAWER_SIDE_PLY__':fmt(st.drawerSidePly),'__DRAWER_BOTTOM_PLY__':fmt(st.drawerBottomPly),'__DRAWER_BOX_GAP__':fmt(st.drawerBoxGap),'__DRAWER_BOTTOM_CLEARANCE__':fmt(st.drawerBottomClearance),'__MIXED_PANEL_DEPTH__':fmt(st.mixedPanelDepth),'__MIXED_PANEL_MATERIAL__':st.mixedPanelMaterial==='cherry'?'cherry':'birch','__OPEN_BACK_MATERIAL__':st.openBackMaterial==='birch'?'birch':'cherry','__FRAME_STILE_WIDTH__':fmt(st.frameStileWidth),'__FRAME_RAIL_WIDTH__':fmt(st.frameRailWidth),'__FRAME_THICKNESS__':fmt(st.frameThickness),'__FRAME_MATERIAL__':st.frameMaterial==='birch'?'birch':'cherry','__FRAME_OVERLAY__':fmt(st.frameOverlay),'__FRAME_INSET_REVEAL__':fmt(st.frameInsetReveal),'__SHOW_LABELS__':st.showLabels?'true':'false','__SHOW_DRAWER_BOX_HEIGHT_LABELS__':st.showDrawerBoxHeightLabels?'true':'false','__SHOW_DRAWER_FACE_HEIGHT_LABELS__':st.showDrawerFaceHeightLabels?'true':'false','__SHOW_OPEN_SPACE_HEIGHT_LABELS__':st.showOpenSpaceHeightLabels?'true':'false','__DISPLAY_UNITS__':st.units==='mm'?'mm':'in','__SAVE_FILENAME__':rubyString(st.saveFilename||defaults.saveFilename)};for(const[k,v]of Object.entries(map))text=text.split(k).join(String(v));return text}
+
+  function fracLabel(n){const known=[[0.75,'3/4'],[0.5,'1/2'],[0.25,'1/4'],[0.625,'5/8'],[0.375,'3/8'],[0.125,'1/8']];for(const [v,l] of known)if(Math.abs(n-v)<0.001)return l;return fmt(n)}
+  function materialKey(wood,thickness){return `${wood} ${fracLabel(thickness)}`}
+  function addPart(parts,wood,thickness,name,a,b,qty=1,grainMode='none',cabinet=''){
+    if(!(a>0&&b>0&&qty>0))return;const key=materialKey(wood,thickness);parts.push({material:key,wood,thickness,name,a,b,qty,cabinet,grainMode});
+  }
+  function expandedCabinets(s){const out=[];for(const c of s.cabinets){for(let q=0;q<Math.max(1,c.qty);q++){const x={...c};x.instanceLabel=c.qty>1?`${c.label} ${q+1}`:c.label;out.push(x)}}return out}
+  function buildParts(s){
+    const parts=[],expanded=expandedCabinets(s);let kickRunWidth=0;
+    for(const c of expanded){
+      const w=c.width,inside=w-(2*s.ply),label=c.instanceLabel||c.label||`${w} cabinet`;
+      kickRunWidth+=w;
+
+      // Separate 2in birch ladder base. These narrow rails are intentionally
+      // nested with the other birch parts so offcuts can satisfy them.
+      addPart(parts,'Birch',s.ply,'Toe-kick front/rear rail',w,s.kickHeight,2,'none',label);
+      const kickSideDepth=s.kickDepth-s.kickSkinPly-(2*s.ply);
+      addPart(parts,'Birch',s.ply,'Toe-kick side rail',kickSideDepth,s.kickHeight,2,'none',label);
+
+      if(c.type==='drawer'){
+        const layout=zoneLayout(c,s),mixed=!layout.error&&layout.opens&&layout.opens.length>0;
+        const carcassWood=mixed?'Cherry':'Birch',sideGrain=mixed?'vertical':'none',flatGrain=mixed?'horizontal':'none';
+        addPart(parts,carcassWood,s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,sideGrain,label);
+        addPart(parts,carcassWood,s.ply,'Bottom',inside,s.cabDepth,1,flatGrain,label);
+        addPart(parts,carcassWood,s.ply,'4in stretcher',inside,s.stretcher,4,flatGrain,label);
+        const fl=frontLayout(c,s,layout),boxW=inside-s.slideClearance;
+        if(!layout.error){
+          const panelWood=s.mixedPanelMaterial==='cherry'?'Cherry':'Birch',panelGrain=panelWood==='Cherry'?'horizontal':'none',panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply);
+          if(layout.dividers.length)addPart(parts,panelWood,s.ply,'Open cubby fixed divider (pocket screwed)',inside,panelDepth,layout.dividers.length,panelGrain,label);
+          const backWood=s.openBackMaterial==='birch'?'Birch':'Cherry',backGrain=backWood==='Cherry'?'vertical':'none';
+          for(const o of layout.opens)addPart(parts,backWood,s.backPly,'Open cubby applied back',w,o.height+(2*s.ply),1,backGrain,label);
+          if(!fl.error){const fr=frontRect(c,s);for(const f of fl.fronts)addPart(parts,'Cherry',s.ply,`Drawer front ${f.drawerIndex+1}`,fr.w,f.height,1,'horizontal',label)}
+          const side=s.drawerSidePly,bottom=s.drawerBottomPly;
+          for(const d of layout.drawers){
+            const pos=d.drawerIndex===0?' (bottom)':d.drawerIndex===layout.drawers.length-1?' (top)':'';
+            addPart(parts,'Birch',side,`Drawer ${d.drawerIndex+1}${pos} side`,s.drawerDepth,d.height,2,'none',label);
+            addPart(parts,'Birch',side,`Drawer ${d.drawerIndex+1}${pos} front/back`,boxW-(2*side),d.height,2,'none',label);
+            addPart(parts,'Birch',bottom,`Drawer ${d.drawerIndex+1}${pos} bottom`,boxW-(2*side),s.drawerDepth-(2*side),1,'none',label);
+          }
+        }
+      }else if(c.type==='door'){
+        addPart(parts,'Birch',s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'none',label);
+        addPart(parts,'Birch',s.ply,'Bottom',inside,s.cabDepth,1,'none',label);
+        addPart(parts,'Birch',s.ply,'4in stretcher',inside,s.stretcher,4,'none',label);
+        if(c.shelves>0)addPart(parts,'Birch',s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),c.shelves,'none',label);
+        const fr=frontRect(c,s);addPart(parts,'Cherry',s.ply,c.frontStyle==='face_inset'?'Single inset door':c.frontStyle==='face_overlay'?'Single face-frame overlay door':'Single frameless overlay door',fr.w,fr.high-fr.low,1,'vertical',label);
+      }else if(c.type==='open_shelf'){
+        addPart(parts,'Cherry',s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'vertical',label);
+        addPart(parts,'Cherry',s.ply,'Bottom',inside,s.cabDepth,1,'horizontal',label);
+        addPart(parts,'Cherry',s.ply,'Top stretcher',inside,s.stretcher,2,'horizontal',label);
+        const sl=shelfLayout(c,s);if(!sl.error&&sl.shelves.length)addPart(parts,'Cherry',s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),sl.shelves.length,'horizontal',label);
+        const backWood=s.openBackMaterial==='birch'?'Birch':'Cherry',backGrain=backWood==='Cherry'?'vertical':'none';
+        addPart(parts,backWood,s.backPly,'Applied full back',w,s.cabHeight,1,backGrain,label);
+      }
+    }
+
+    // Visible toe-kick skin: treat all listed cabinets as one installed run and
+    // make each skin segment as long as the configured sheet can provide.
+    const maxSkinLength=s.sheetLength-(2*s.edgeTrim);
+    if(kickRunWidth>0&&s.kickSkinPly>0&&maxSkinLength>0){
+      let remain=kickRunWidth,segment=1;
+      while(remain>0.001){
+        const len=Math.min(remain,maxSkinLength);
+        addPart(parts,'Cherry',s.kickSkinPly,`Continuous toe-kick skin segment ${segment}`,len,s.kickHeight,1,'horizontal','Installed toe-kick run');
+        remain-=len;segment++;
+      }
+    }
+    return parts;
+  }
+  function instanceParts(parts,s){
+    const out=[];let id=1;
+    for(const p of parts){for(let i=0;i<p.qty;i++){
+      let w=p.a,h=p.b,locked=false;
+      if(p.wood==='Cherry'&&s.preserveCherryGrain){locked=true;if(p.grainMode==='vertical'){w=p.a;h=p.b}else if(p.grainMode==='horizontal'){w=p.a;h=p.b}else{locked=false}}
+      // For horizontal grain, p.a is authored as the grain-running dimension for fronts/shelves.
+      // Put grain-running dimension on sheet Y (96in axis).
+      if(locked&&p.grainMode==='horizontal'){w=p.b;h=p.a}
+      out.push({...p,qty:1,id:id++,packW:w,packH:h,locked});
+    }}
+    return out;
+  }
+
+  function intersects(a,b){return !(b.x>=a.x+a.w||b.x+b.w<=a.x||b.y>=a.y+a.h||b.y+b.h<=a.y)}
+  function contains(a,b){return b.x>=a.x-1e-9&&b.y>=a.y-1e-9&&b.x+b.w<=a.x+a.w+1e-9&&b.y+b.h<=a.y+a.h+1e-9}
+  function splitFree(f,u){
+    if(!intersects(f,u))return [f];const r=[];
+    if(u.x>f.x)r.push({x:f.x,y:f.y,w:u.x-f.x,h:f.h});
+    if(u.x+u.w<f.x+f.w)r.push({x:u.x+u.w,y:f.y,w:(f.x+f.w)-(u.x+u.w),h:f.h});
+    if(u.y>f.y)r.push({x:f.x,y:f.y,w:f.w,h:u.y-f.y});
+    if(u.y+u.h<f.y+f.h)r.push({x:f.x,y:u.y+u.h,w:f.w,h:(f.y+f.h)-(u.y+u.h)});
+    return r.filter(x=>x.w>0.001&&x.h>0.001);
+  }
+  function pruneFree(rects){return rects.filter((r,i)=>!rects.some((q,j)=>i!==j&&contains(q,r)))}
+  function tryPlace(sheet,part,s){
+    const k=s.kerf,opts=[{w:part.packW+k,h:part.packH+k,rot:false,aw:part.packW,ah:part.packH}];if(!part.locked&&Math.abs(part.packW-part.packH)>0.001)opts.push({w:part.packH+k,h:part.packW+k,rot:true,aw:part.packH,ah:part.packW});
+    let best=null;
+    for(const f of sheet.free){for(const o of opts){if(o.w<=f.w+1e-9&&o.h<=f.h+1e-9){const leftoverH=f.h-o.h,leftoverW=f.w-o.w,short=Math.min(leftoverH,leftoverW),long=Math.max(leftoverH,leftoverW),area=f.w*f.h-o.w*o.h;const score=[short,long,area];if(!best||score[0]<best.score[0]||score[0]===best.score[0]&&score[1]<best.score[1]||score[0]===best.score[0]&&score[1]===best.score[1]&&score[2]<best.score[2])best={x:f.x,y:f.y,...o,score}}}}
+    if(!best)return false;const used={x:best.x,y:best.y,w:best.w,h:best.h};let free=[];for(const f of sheet.free)free.push(...splitFree(f,used));sheet.free=pruneFree(free);sheet.items.push({...part,x:best.x+s.edgeTrim,y:best.y+s.edgeTrim,w:best.aw,h:best.ah,rotated:best.rot});return true;
+  }
+  function packMaterial(instances,s){
+    const k=Math.max(0,s.kerf),usableW=s.sheetWidth-(2*s.edgeTrim),usableH=s.sheetLength-(2*s.edgeTrim),effectiveW=usableW+k,effectiveH=usableH+k,sheets=[],overs=[];
+    if(usableW<=0||usableH<=0)return {sheets,overs:[...instances]};
+    const sorted=[...instances].sort((a,b)=>Math.max(b.packW,b.packH)-Math.max(a.packW,a.packH)||b.packW*b.packH-a.packW*a.packH);
+    for(const p of sorted){
+      const canFit=(p.packW+k<=effectiveW&&p.packH+k<=effectiveH)||(!p.locked&&p.packH+k<=effectiveW&&p.packW+k<=effectiveH);if(!canFit){overs.push(p);continue}
+      let placed=false;for(const sh of sheets){if(tryPlace(sh,p,{...s,kerf:k})){placed=true;break}}
+      if(!placed){const sh={free:[{x:0,y:0,w:effectiveW,h:effectiveH}],items:[]};sheets.push(sh);if(!tryPlace(sh,p,{...s,kerf:k}))overs.push(p)}
+    }
+    return {sheets,overs};
+  }
+  function packAll(s){
+    const parts=buildParts(s),inst=instanceParts(parts,s),groups={};for(const p of inst)(groups[p.material]??=[]).push(p);const results={};for(const [mat,items] of Object.entries(groups))results[mat]=packMaterial(items,s);return {parts,instances:inst,results};
+  }
+  function summarizeMaterial(mat,group,s){const sheetArea=s.sheetWidth*s.sheetLength,used=group.sheets.reduce((sum,sh)=>sum+sh.items.reduce((a,p)=>a+p.w*p.h,0),0),pieces=group.sheets.reduce((a,sh)=>a+sh.items.length,0)+group.overs.length;return {material:mat,pieces,sheets:group.sheets.length,purchase:group.sheets.length+Math.max(0,Math.round(s.spareSheets)),usedArea:used,util:group.sheets.length?used/(group.sheets.length*sheetArea):0,overs:group.overs.length}}
+  function designChecks(s){
+    const errors=[],warnings=[];
+    if(s.cabHeight<=2*s.ply)errors.push('Cabinet height must exceed bottom + top-stretcher thickness.');
+    if(s.cabDepth<=0)errors.push('Cabinet depth must be positive.');
+    if(s.drawerDepth>s.cabDepth+0.001)errors.push(`Drawer depth ${fmt(s.drawerDepth)}" exceeds cabinet depth ${fmt(s.cabDepth)}".`);
+    if(s.drawerDepth<=2*s.drawerSidePly)errors.push('Drawer depth is too small for the selected drawer side/front/back thickness.');
+    if(s.slideClearance<0)errors.push('Slide clearance cannot be negative.');
+    if(s.frontGap<0)errors.push('Vertical front gap cannot be negative.');
+    if(s.sideReveal<0)errors.push('Side reveal cannot be negative.');
+    if(s.drawerBoxGap<0)errors.push('Drawer box gap cannot be negative.');
+    if(s.drawerBottomClearance<0)errors.push('Bottom drawer-box clearance cannot be negative.');
+    if(s.mixedPanelDepth<=0)errors.push('Mixed-cabinet divider depth must be positive.');
+    if(s.kickHeight<=0)errors.push('Toe-kick height must be positive.');
+    if(s.kickSkinPly<=0)errors.push('Toe-kick skin thickness must be positive.');
+    if(s.kickDepth<=s.kickSkinPly+(2*s.ply))errors.push('Toe-kick depth is too small for the front/rear rails, side rails, and skin.');
+    if(s.sideReveal>s.ply+0.001)errors.push('Side reveal cannot exceed carcass thickness for a full-overlay front.');
+    if(!['birch','cherry'].includes(s.mixedPanelMaterial))errors.push('Mixed-cabinet divider material must be birch or cherry.');
+    if(!['birch','cherry'].includes(s.openBackMaterial))errors.push('Open-space back material must be birch or cherry.');
+    if(s.backPly<=0)errors.push('Open-space back thickness must be positive.');
+    if(s.frameStileWidth<=0||s.frameRailWidth<=0||s.frameThickness<=0)errors.push('Face-frame stile width, rail width, and thickness must be positive.');
+    if(s.frameOverlay<0||s.frameInsetReveal<0)errors.push('Face-frame overlay and inset reveal cannot be negative.');
+    if(!['birch','cherry'].includes(s.frameMaterial))errors.push('Face-frame material must be birch or cherry.');
+    if(s.sheetWidth<=2*s.edgeTrim||s.sheetLength<=2*s.edgeTrim)errors.push('Sheet edge trim leaves no usable sheet area.');
+    if(s.kerf<0||s.edgeTrim<0)errors.push('Kerf and edge trim cannot be negative.');
+    for(const c of s.cabinets){
+      const name=c.label||`${fmt(c.width)}" ${c.type}`,inside=c.width-(2*s.ply);if(inside<=0){errors.push(`${name}: width is too small for two carcass sides.`);continue}
+      if(isFaceFrame(c)){const fo=frameOpening(c,s);if(fo.w<=0||fo.h<=0)errors.push(`${name}: face-frame stile/rail widths leave no usable frame opening.`);const fr=frontRect(c,s);if(fr.w<=0||fr.high<=fr.low)errors.push(`${name}: selected face-frame front style leaves no usable door/drawer-front area.`)}
+      if(c.type==='drawer'){
+        const boxW=inside-s.slideClearance;if(boxW<=2*s.drawerSidePly)errors.push(`${name}: drawer box width is too small after slide clearance.`);
+        const layout=zoneLayout(c,s);if(layout.error)errors.push(`${name}: ${layout.error}.`);
+        if(layout.drawers&&layout.drawers.some(d=>d.height<=s.drawerBottomPly))errors.push(`${name}: every drawer box height must exceed the drawer-bottom thickness.`);
+        const fl=frontLayout(c,s,layout);if(fl.error&&!layout.error)errors.push(`${name}: ${fl.error}.`);if(fl.shorter)warnings.push(`${name}: ${fl.shorter} custom drawer front(s) are shorter than the corresponding box.`);
+        if(s.mixedPanelDepth>s.cabDepth-s.ply+0.001&&layout.dividers&&layout.dividers.length)warnings.push(`${name}: mixed divider depth is clamped to ${fmt(s.cabDepth-s.ply)}" so it does not intersect the rear stretchers.`);
+      }
+      if(c.type==='door'&&s.shelfDepth>s.cabDepth+0.001)warnings.push(`${name}: shelf depth is clamped to cabinet depth (${fmt(s.cabDepth)}").`);
+      if(c.type==='open_shelf'){const sl=shelfLayout(c,s);if(sl.error)errors.push(`${name}: ${sl.error}.`);if(s.shelfDepth>s.cabDepth+0.001)warnings.push(`${name}: shelf depth is clamped to cabinet depth (${dimText(s.cabDepth)}).`);}
+    }
+    warnings.push(`Cabinet box height is ${dimText(s.cabHeight)} plus a separate ${dimText(s.kickHeight)} toe kick, so the modeled overall height is ${dimText(s.cabHeight+s.kickHeight)}.`);
+    warnings.push('Pure drawer and single-door cabinets use birch carcasses. Any drawer cabinet containing an open cubby automatically uses a cherry carcass and the same four-stretcher open-back structure.');
+    warnings.push(`Mixed-cabinet fixed divider panels are ${dimText(Math.min(s.mixedPanelDepth,s.cabDepth-s.ply))} deep and currently ${s.mixedPanelMaterial} plywood. Bottom cubbies use the cabinet bottom; top cubbies have no added top panel.`);
+    warnings.push(`Open-space backs are applied to the outside rear face using ${dimText(s.backPly)} ${s.openBackMaterial} material. This adds ${dimText(s.backPly)} to overall physical depth where a back is present.`);
+    warnings.push('Mixed cabinets receive backs only behind open cubbies. Each localized back is full cabinet width and clear-opening height plus one carcass thickness above and below. Drawer-only regions remain open-backed.');
+    warnings.push('Open-shelf cabinets use one full-width applied back; their bottom and adjustable shelves may use the full carcass depth.');
+    warnings.push('Drawer boxes are pocket-screw construction: 1/2" birch sides/front/back and a 1/2" birch bottom fitted completely between the four walls, with no dados. The entered drawer-box height is the full wall height.');
+    const actualOverlay=s.ply-s.sideReveal;warnings.push(`Frameless fronts use ${dimText(s.sideReveal)} side reveal (${dimText(actualOverlay)} geometric carcass-edge overlap with the current carcass thickness). Face-frame overlay fronts use ${dimText(s.frameOverlay)} overlay beyond the frame opening; inset fronts use ${dimText(s.frameInsetReveal)} reveal per edge.`);warnings.push('Face-frame support in version 1.1 uses a perimeter frame only: two full-height stiles plus top and bottom rails. Intermediate face-frame rails between drawers/cubbies are not generated yet.');
+    warnings.push('Mixed drawer/open-cubby cabinets use cherry carcass sides, bottom, and all four stretchers; their fixed cubby dividers default to cherry.');
+    warnings.push('Adjustable shelves are pin-supported. Mixed-cubby divider panels are fixed with pocket screws. Countertops attach with screws through the top stretchers.');
+    warnings.push('No edge banding/solid edging is included. Door hinge model, hinge count/cup bores, and handmade pulls remain outside the generated BOM.');
+    warnings.push('Toe-kick skin BOM assumes the listed cabinets form one continuous installed run; SketchUp display gaps are ignored for that skin length.');
+    return {errors,warnings};
+  }
+  function updateBomAndLayouts(){
+    const s=state(),checks=designChecks(s),packed=packAll(s),summaries=Object.entries(packed.results).map(([m,g])=>summarizeMaterial(m,g,s)).sort((a,b)=>a.material.localeCompare(b.material)),linear=summarizeLinearStock(s);
+    document.getElementById('designChecks').innerHTML=(checks.errors.length?`<div class="warning-box small"><strong>Design errors:</strong><br>${checks.errors.map(esc).join('<br>')}</div>`:'')+(checks.warnings.length?`<div class="note small"><strong>Assumptions / cautions:</strong><br>${checks.warnings.map(esc).join('<br>')}</div>`:'');
+    const totalSheets=summaries.reduce((a,x)=>a+x.purchase,0),sheetPieces=summaries.reduce((a,x)=>a+x.pieces,0),framePieces=linear.reduce((a,x)=>a+x.pieces,0),totalPieces=sheetPieces+framePieces;document.getElementById('bomKpis').innerHTML=`<div class="kpi"><span class="muted small">Cut parts</span><strong>${totalPieces}</strong></div><div class="kpi"><span class="muted small">Plywood material types</span><strong>${summaries.length}</strong></div><div class="kpi"><span class="muted small">Suggested sheets</span><strong>${totalSheets}</strong></div><div class="kpi"><span class="muted small">Face-frame pieces</span><strong>${framePieces}</strong></div>`;
+    let t='<div class="table-wrap"><table class="summary-table"><thead><tr><th>Material</th><th>Parts</th><th>Nested sheets</th><th>Suggested purchase</th><th>Sheet utilization</th><th>Status</th></tr></thead><tbody>';
+    for(const x of summaries)t+=`<tr><td><strong>${esc(x.material)}</strong></td><td>${x.pieces}</td><td>${x.sheets}</td><td><strong>${x.purchase}</strong></td><td>${(x.util*100).toFixed(1)}%</td><td>${x.overs?`<span class="summary-warn">${x.overs} part(s) do not fit</span>`:'<span class="summary-good">OK</span>'}</td></tr>`;t+='</tbody></table></div>';document.getElementById('bomSummary').innerHTML=t;let lt='';if(linear.length){lt='<h3>Face-frame solid stock</h3><div class="table-wrap"><table class="summary-table"><thead><tr><th>Material</th><th>Thickness</th><th>Member width</th><th>Pieces</th><th>Total linear length</th></tr></thead><tbody>';for(const g of linear)lt+=`<tr><td>${esc(g.material)}</td><td>${dimText(g.thickness)}</td><td>${dimText(g.width)}</td><td>${g.pieces}</td><td><strong>${dimText(g.totalLength)}</strong></td></tr>`;lt+='</tbody></table></div><div class="hint">Linear length is a net cut-length estimate only; add waste based on the board lengths and defect allowance you intend to buy.</div>'}document.getElementById('linearStockSummary').innerHTML=lt;
+    renderLayouts(packed.results,s);window.__cabinetDrafterPacked={packed,s,summaries,linear};
+  }
+  function materialColor(mat){return mat.startsWith('Cherry')?'#c88967':'#ead9ae'}
+  function svgEsc(s){return esc(s)}
+  function renderLayouts(results,s){
+    const root=document.getElementById('sheetLayouts'),warn=document.getElementById('layoutWarnings');root.innerHTML='';let warnings=[];
+    for(const [mat,g] of Object.entries(results).sort((a,b)=>a[0].localeCompare(b[0]))){if(g.overs.length)warnings.push(`${mat}: ${g.overs.length} part(s) cannot fit on a ${fmt(s.sheetWidth)} × ${fmt(s.sheetLength)} sheet with the current trim/grain rules.`);g.sheets.forEach((sh,idx)=>{
+      const card=document.createElement('div');card.className='sheet-card';const util=sh.items.reduce((a,p)=>a+p.w*p.h,0)/(s.sheetWidth*s.sheetLength);card.innerHTML=`<h3>${esc(mat)} — sheet ${idx+1}</h3><div class="small muted">${sh.items.length} parts · ${(util*100).toFixed(1)}% area used${mat.startsWith('Cherry')&&s.preserveCherryGrain?' · grain ↑':''}</div>`;
+      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox',`0 0 ${s.sheetWidth} ${s.sheetLength}`);svg.setAttribute('class','sheet-svg');svg.setAttribute('aria-label',`${mat} sheet ${idx+1}`);
+      const bg=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:0,y:0,width:s.sheetWidth,height:s.sheetLength,fill:'#fff',stroke:'#333','stroke-width':'0.18'}))bg.setAttribute(k,v);svg.appendChild(bg);
+      if(s.edgeTrim>0){const r=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:s.edgeTrim,y:s.edgeTrim,width:s.sheetWidth-2*s.edgeTrim,height:s.sheetLength-2*s.edgeTrim,fill:'none',stroke:'#999','stroke-width':'0.12','stroke-dasharray':'0.5 0.5'}))r.setAttribute(k,v);svg.appendChild(r)}
+      for(const p of sh.items){const r=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:p.x,y:p.y,width:p.w,height:p.h,fill:materialColor(mat),stroke:'#333','stroke-width':'0.12'}))r.setAttribute(k,v);svg.appendChild(r);const text=document.createElementNS(svg.namespaceURI,'text');text.setAttribute('x',p.x+0.5);text.setAttribute('y',p.y+1.8);text.setAttribute('font-size','1.35');text.setAttribute('font-family','Arial, sans-serif');text.setAttribute('fill','#222');const l1=document.createElementNS(svg.namespaceURI,'tspan');l1.textContent=p.name;l1.setAttribute('x',p.x+0.5);l1.setAttribute('dy','0');text.appendChild(l1);const l2=document.createElementNS(svg.namespaceURI,'tspan');l2.textContent=`${fmtDisplay(p.a)}×${fmtDisplay(p.b)}${activeUnits==='mm'?' mm':' in'}`;l2.setAttribute('x',p.x+0.5);l2.setAttribute('dy','1.45');text.appendChild(l2);svg.appendChild(text)}
+      card.appendChild(svg);root.appendChild(card)
+    })}
+    warn.innerHTML=warnings.length?`<div class="warning-box small"><strong>Layout warning:</strong> ${warnings.map(esc).join('<br>')}</div>`:'<div class="success-box small">All generated parts fit the selected sheet sizes.</div>';
+  }
+
+  function csvCell(v){const s=String(v??'');return /[\",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
+  function downloadBomCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const rows=[['Material','Part count','Nested sheets','Extra sheets','Suggested purchase','Utilization %','Oversize parts']];for(const s of x.summaries)rows.push([s.material,s.pieces,s.sheets,x.s.spareSheets,s.purchase,(s.util*100).toFixed(1),s.overs]);download('cabinet-drafter_sheet_BOM.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
+  function downloadCutListCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const u=activeUnits==='mm'?'mm':'in';const rows=[['Material','Cabinet','Part','Qty',`Dimension A (${u})`,`Dimension B (${u})`,'Grain rule']];for(const p of x.packed.parts)rows.push([p.material,p.cabinet,p.name,p.qty,fmtDisplay(p.a),fmtDisplay(p.b),p.grainMode]);download('cabinet-drafter_detailed_cut_list.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
+  function downloadLinearStockCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const u=activeUnits==='mm'?'mm':'in',rows=[['Material',`Thickness (${u})`,`Member width (${u})`,'Pieces',`Total linear length (${u})`]];for(const g of x.linear)rows.push([g.material,fmtDisplay(g.thickness),fmtDisplay(g.width),g.pieces,fmtDisplay(g.totalLength)]);download('cabinet-drafter_face_frame_stock.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
+
+  function projectJsonText(){
+    return JSON.stringify({_format:'cabinetdrafter-project',_version:'1.1.1',_savedAt:new Date().toISOString(),...state()},null,2)+'\n';
+  }
+  function setProjectStatus(message,kind=''){
+    const el=document.getElementById('projectSaveStatus');if(!el)return;
+    el.className='hint'+(kind==='good'?' summary-good':kind==='warn'?' summary-warn':'');
+    el.textContent=message;
+  }
+  function openProjectDb(){
+    return new Promise((resolve,reject)=>{
+      if(!('indexedDB' in window)){resolve(null);return}
+      const req=indexedDB.open(PROJECT_DB,1);
+      req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(PROJECT_STORE))db.createObjectStore(PROJECT_STORE)};
+      req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);
+    });
+  }
+  async function storedProjectHandle(){
+    try{const db=await openProjectDb();if(!db)return null;return await new Promise((resolve,reject)=>{const tx=db.transaction(PROJECT_STORE,'readonly'),r=tx.objectStore(PROJECT_STORE).get(PROJECT_HANDLE_KEY);r.onsuccess=()=>resolve(r.result||null);r.onerror=()=>reject(r.error);tx.oncomplete=()=>db.close()})}catch(_){return null}
+  }
+  async function rememberProjectHandle(handle){
+    try{const db=await openProjectDb();if(!db)return;await new Promise((resolve,reject)=>{const tx=db.transaction(PROJECT_STORE,'readwrite');tx.objectStore(PROJECT_STORE).put(handle,PROJECT_HANDLE_KEY);tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>reject(tx.error)})}catch(_){}
+  }
+  async function forgetProjectHandle(){
+    try{const db=await openProjectDb();if(!db)return;await new Promise((resolve,reject)=>{const tx=db.transaction(PROJECT_STORE,'readwrite');tx.objectStore(PROJECT_STORE).delete(PROJECT_HANDLE_KEY);tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>reject(tx.error)})}catch(_){}
+  }
+  async function handlePermission(handle,request=false){
+    if(!handle)return false;
+    try{const opts={mode:'readwrite'};let p=await handle.queryPermission(opts);if(p==='granted')return true;if(request)p=await handle.requestPermission(opts);return p==='granted'}catch(_){return false}
+  }
+  async function writeProjectHandle(handle,{requestPermission=false,quiet=false}={}){
+    if(!handle)return false;
+    if(!(await handlePermission(handle,requestPermission))){if(!quiet)setProjectStatus(`Project JSON remembered as ${handle.name||'a file'}, but write permission is not active. Click Save Project JSON to reconnect.`,'warn');return false}
+    const text=projectJsonText();
+    projectWriteChain=projectWriteChain.catch(()=>{}).then(async()=>{const writable=await handle.createWritable();await writable.write(text);await writable.close()});
+    try{await projectWriteChain;if(!quiet)setProjectStatus(`Saved ${handle.name||'project JSON'} at ${new Date().toLocaleTimeString()}. Auto-save is on.`,'good');return true}catch(err){setProjectStatus(`Could not save project JSON: ${err.message}`,'warn');return false}
+  }
+  function scheduleProjectAutosave(){
+    if(!projectHandleReady||!projectFileHandle)return;
+    clearTimeout(projectAutosaveTimer);
+    projectAutosaveTimer=setTimeout(()=>{writeProjectHandle(projectFileHandle,{requestPermission:false,quiet:false})},350);
+  }
+  async function saveProjectAs(){
+    if(!('showSaveFilePicker' in window)){
+      download('cabinet-drafter_project.json',projectJsonText(),'application/json');
+      setProjectStatus('This browser does not allow direct file autosave here. Exported cabinet-drafter_project.json instead; browser/local storage still auto-saves every edit.','warn');
+      return false;
+    }
+    try{
+      const handle=await window.showSaveFilePicker({suggestedName:'cabinet-drafter_project.json',types:[{description:'Cabinet project JSON',accept:{'application/json':['.json']}}]});
+      projectFileHandle=handle;projectHandleReady=true;await rememberProjectHandle(handle);
+      return await writeProjectHandle(handle,{requestPermission:true,quiet:false});
+    }catch(err){if(err&&err.name==='AbortError')return false;setProjectStatus(`Could not select project JSON: ${err.message}`,'warn');return false}
+  }
+  async function saveProject(){
+    if(projectFileHandle){const ok=await writeProjectHandle(projectFileHandle,{requestPermission:true,quiet:false});if(ok)return true}
+    return await saveProjectAs();
+  }
+  async function flushProjectSave(){
+    clearTimeout(projectAutosaveTimer);
+    if(projectFileHandle)return await writeProjectHandle(projectFileHandle,{requestPermission:false,quiet:true});
+    return false;
+  }
+  async function initProjectFile(){
+    projectFileHandle=await storedProjectHandle();projectHandleReady=true;
+    if(!projectFileHandle){setProjectStatus('Project JSON: not connected. Click Save Project JSON once to choose a file; browser storage is already saving edits locally.');return}
+    if(await handlePermission(projectFileHandle,false))setProjectStatus(`Project JSON: ${projectFileHandle.name||'connected file'} is connected. Auto-save is on.`,'good');
+    else setProjectStatus(`Project JSON remembered as ${projectFileHandle.name||'a file'}. Click Save Project JSON once to restore write permission.`,'warn');
+  }
+
+
+  // ---------------------------------------------------------------------------
+  // Built-in offline 3D preview. The cabinets are axis-aligned boxes, so a
+  // small canvas renderer gives us SketchUp-like orbiting without any external
+  // library, account, or network dependency.
+  // ---------------------------------------------------------------------------
+  const previewCanvas=document.getElementById('cabinet3D'),previewWrap=document.getElementById('preview3DWrap'),previewStatus=document.getElementById('preview3DStatus');
+  const preview3D={scene:{boxes:[],labels:[],errors:[],cabinetCount:0},az:-Math.PI/4,elev:0.48,scale:8,panX:0,panY:0,target:[0,0,0],dragging:false,dragMode:'orbit',lastX:0,lastY:0,fitted:false};
+  const vdot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],vsub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],vcross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+  function vnorm(a){const n=Math.hypot(a[0],a[1],a[2])||1;return [a[0]/n,a[1]/n,a[2]/n]}
+  function previewDim(value){
+    if(activeUnits==='mm')return `${Math.round(value*25.4)} mm`;
+    const sign=value<0?'-':'',abs=Math.abs(value),sixteenths=Math.round(abs*16),whole=Math.floor(sixteenths/16),num0=sixteenths%16;
+    if(!num0)return `${sign}${whole}\"`;
+    const gcd=(a,b)=>b?gcd(b,a%b):a,g=gcd(num0,16),num=num0/g,den=16/g;
+    return `${sign}${whole?whole+' ':''}${num}/${den}\"`;
+  }
+  function previewAddBox(scene,name,x,y,z,w,d,h,material,category='structure'){
+    if(!(w>0&&d>0&&h>0))return;scene.boxes.push({name,x,y,z,w,d,h,material,category});
+  }
+  function previewAddLabel(scene,text,x,y,z,kind='dimension'){if(text)scene.labels.push({text:String(text),x,y,z,kind})}
+  function addPreviewKick(scene,x0,width,s){
+    const frontY=s.kickSetback+s.kickSkinPly,rearY=s.kickSetback+s.kickDepth-s.ply,sideY=frontY+s.ply,sideDepth=rearY-sideY;
+    previewAddBox(scene,'Toe-kick front rail',x0,frontY,0,width,s.ply,s.kickHeight,'birch','kick');
+    previewAddBox(scene,'Toe-kick rear rail',x0,rearY,0,width,s.ply,s.kickHeight,'birch','kick');
+    if(sideDepth>0){previewAddBox(scene,'Toe-kick left side',x0,sideY,0,s.ply,sideDepth,s.kickHeight,'birch','kick');previewAddBox(scene,'Toe-kick right side',x0+width-s.ply,sideY,0,s.ply,sideDepth,s.kickHeight,'birch','kick')}
+    previewAddBox(scene,'Toe-kick skin',x0,s.kickSetback,0,width,s.kickSkinPly,s.kickHeight,'cherry','kick');
+  }
+  function addPreviewOpenBackCarcass(scene,x0,width,s,material){
+    const inside=width-(2*s.ply),z0=s.kickHeight,topZ=z0+s.cabHeight-s.ply,rearY=s.cabDepth-s.ply;
+    addPreviewKick(scene,x0,width,s);
+    previewAddBox(scene,'Left side',x0,0,z0,s.ply,s.cabDepth,s.cabHeight,material);
+    previewAddBox(scene,'Right side',x0+width-s.ply,0,z0,s.ply,s.cabDepth,s.cabHeight,material);
+    previewAddBox(scene,'Bottom',x0+s.ply,0,z0,inside,s.cabDepth,s.ply,material);
+    previewAddBox(scene,'Front top stretcher',x0+s.ply,0,topZ,inside,s.stretcher,s.ply,material);
+    previewAddBox(scene,'Rear top stretcher',x0+s.ply,s.cabDepth-s.stretcher,topZ,inside,s.stretcher,s.ply,material);
+    previewAddBox(scene,'Upper rear stretcher',x0+s.ply,rearY,topZ-s.stretcher,inside,s.ply,s.stretcher,material);
+    previewAddBox(scene,'Lower rear stretcher',x0+s.ply,rearY,z0+s.ply,inside,s.ply,s.stretcher,material);
+  }
+  function addPreviewDrawerBox(scene,x,y,z,width,depth,height,s){
+    const side=s.drawerSidePly,bottom=s.drawerBottomPly;
+    previewAddBox(scene,'Drawer left side',x,y,z,side,depth,height,'birch','drawerBox');
+    previewAddBox(scene,'Drawer right side',x+width-side,y,z,side,depth,height,'birch','drawerBox');
+    previewAddBox(scene,'Drawer inner front',x+side,y,z,width-(2*side),side,height,'birch','drawerBox');
+    previewAddBox(scene,'Drawer back',x+side,y+depth-side,z,width-(2*side),side,height,'birch','drawerBox');
+    previewAddBox(scene,'Drawer bottom',x+side,y+side,z,width-(2*side),depth-(2*side),bottom,'birch','drawerBox');
+  }
+  function addPreviewDoorShelves(scene,x0,width,count,s){
+    count=Math.max(0,Math.round(count||0));if(!count)return;const inside=width-(2*s.ply),clearTotal=s.cabHeight-(2*s.ply)-(count*s.ply);if(clearTotal<0)return;const opening=clearTotal/(count+1),z0=s.kickHeight;let bottom=s.ply;
+    for(let i=0;i<count;i++){const z=bottom+opening;previewAddBox(scene,`Shelf ${i+1}`,x0+s.ply,0,z0+z,inside,Math.min(s.shelfDepth,s.cabDepth),s.ply,'birch');bottom=z+s.ply}
+  }
+  function previewAddFaceFrame(scene,x0,c,s){if(!isFaceFrame(c))return;const mat=s.frameMaterial==='birch'?'birch':'cherry',z0=s.kickHeight,railLen=c.width-(2*s.frameStileWidth);previewAddBox(scene,'Face-frame left stile',x0,-s.frameThickness,z0,s.frameStileWidth,s.frameThickness,s.cabHeight,mat,'frame');previewAddBox(scene,'Face-frame right stile',x0+c.width-s.frameStileWidth,-s.frameThickness,z0,s.frameStileWidth,s.frameThickness,s.cabHeight,mat,'frame');if(railLen>0){previewAddBox(scene,'Face-frame bottom rail',x0+s.frameStileWidth,-s.frameThickness,z0,railLen,s.frameThickness,s.frameRailWidth,mat,'frame');previewAddBox(scene,'Face-frame top rail',x0+s.frameStileWidth,-s.frameThickness,z0+s.cabHeight-s.frameRailWidth,railLen,s.frameThickness,s.frameRailWidth,mat,'frame')}}
+
+  function buildPreviewScene(s){
+    const scene={boxes:[],labels:[],errors:[],cabinetCount:0},expanded=expandedCabinets(s);let x0=0;
+    for(const c of expanded){
+      const w=c.width,inside=w-(2*s.ply),label=c.instanceLabel||c.label||`${previewDim(w)} cabinet`,z0=s.kickHeight;scene.cabinetCount++;
+      try{
+        if(c.type==='drawer'){
+          const parsed=parseStack(c.stackSpec||'','in'),mixed=parsed.zones.some(z=>z.kind==='open'),carcass=mixed?'cherry':'birch';
+          addPreviewOpenBackCarcass(scene,x0,w,s,carcass);
+          const layout=zoneLayout(c,s);if(layout.error)throw new Error(layout.error);const fl=frontLayout(c,s,layout);if(fl.error)throw new Error(fl.error);
+          const panelMat=s.mixedPanelMaterial==='birch'?'birch':'cherry',panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply),backMat=s.openBackMaterial==='birch'?'birchBack':'cherryBack';
+          layout.dividers.forEach((d,i)=>previewAddBox(scene,`Open cubby divider ${i+1}`,x0+s.ply,0,z0+d.z,inside,panelDepth,s.ply,panelMat));
+          layout.opens.forEach((o,i)=>previewAddBox(scene,`Open cubby back ${i+1}`,x0,s.cabDepth,z0+o.clearBottom-s.ply,w,s.backPly,o.height+(2*s.ply),backMat,'back'));
+          const boxW=inside-s.slideClearance,xBox=x0+s.ply+(s.slideClearance/2);
+          layout.drawers.forEach(d=>addPreviewDrawerBox(scene,xBox,0,z0+d.z,boxW,s.drawerDepth,d.height,s));
+          const fr=frontRect(c,s),drawerByIndex=new Map(layout.drawers.map(d=>[d.drawerIndex,d]));
+          fl.fronts.forEach(f=>{
+            previewAddBox(scene,`Drawer front ${f.drawerIndex+1}`,x0+fr.x,fr.y,z0+f.z,fr.w,s.ply,f.height,'cherry','front');
+            const d=drawerByIndex.get(f.drawerIndex);let txt='';if(s.showDrawerBoxHeightLabels&&s.showDrawerFaceHeightLabels)txt=`${previewDim(d.height)} / ${previewDim(f.height)}`;else if(s.showDrawerBoxHeightLabels)txt=previewDim(d.height);else if(s.showDrawerFaceHeightLabels)txt=previewDim(f.height);if(txt)previewAddLabel(scene,txt,x0+fr.x+(fr.w/2),fr.y-0.03,z0+f.z+f.height/2,'dimension');
+          });
+          if(s.showOpenSpaceHeightLabels)layout.opens.forEach(o=>previewAddLabel(scene,previewDim(o.height),x0+w/2,-0.03,z0+(o.clearBottom+o.clearTop)/2,'dimension'));
+        }else if(c.type==='door'){
+          addPreviewOpenBackCarcass(scene,x0,w,s,'birch');addPreviewDoorShelves(scene,x0,w,c.shelves,s);
+          const fr=frontRect(c,s);previewAddBox(scene,'Single door',x0+fr.x,fr.y,z0+fr.low,fr.w,s.ply,fr.high-fr.low,'cherry','front');
+        }else if(c.type==='open_shelf'){
+          addPreviewKick(scene,x0,w,s);const topZ=z0+s.cabHeight-s.ply;
+          previewAddBox(scene,'Left side',x0,0,z0,s.ply,s.cabDepth,s.cabHeight,'cherry');previewAddBox(scene,'Right side',x0+w-s.ply,0,z0,s.ply,s.cabDepth,s.cabHeight,'cherry');previewAddBox(scene,'Bottom',x0+s.ply,0,z0,inside,s.cabDepth,s.ply,'cherry');
+          previewAddBox(scene,'Applied full back',x0,s.cabDepth,z0,w,s.backPly,s.cabHeight,s.openBackMaterial==='birch'?'birchBack':'cherryBack','back');
+          previewAddBox(scene,'Front top stretcher',x0+s.ply,0,topZ,inside,s.stretcher,s.ply,'cherry');previewAddBox(scene,'Rear top stretcher',x0+s.ply,s.cabDepth-s.stretcher,topZ,inside,s.stretcher,s.ply,'cherry');
+          const sl=shelfLayout(c,s);if(sl.error)throw new Error(sl.error);sl.shelves.forEach((sh,i)=>previewAddBox(scene,`Adjustable shelf ${i+1}`,x0+s.ply,0,z0+sh.z,inside,Math.min(s.shelfDepth,s.cabDepth),s.ply,'cherry'));
+          if(s.showOpenSpaceHeightLabels)sl.openings.forEach(o=>previewAddLabel(scene,previewDim(o.height),x0+w/2,-0.03,z0+(o.clearBottom+o.clearTop)/2,'dimension'));
+        }
+        previewAddFaceFrame(scene,x0,c,s);
+        if(s.showLabels)previewAddLabel(scene,label,x0+w/2,-1,z0+s.cabHeight+2,'cabinet');
+      }catch(err){scene.errors.push(`${label}: ${err.message}`)}
+      x0+=w+s.displayGap;
+    }
+    return scene;
+  }
+  function previewBasis(){
+    const ce=Math.cos(preview3D.elev),cameraVec=[ce*Math.cos(preview3D.az),ce*Math.sin(preview3D.az),Math.sin(preview3D.elev)],forward=[-cameraVec[0],-cameraVec[1],-cameraVec[2]];let right=vcross(forward,[0,0,1]);if(Math.hypot(...right)<1e-5)right=[1,0,0];right=vnorm(right);const up=vnorm(vcross(right,forward));return {cameraVec,forward,right,up};
+  }
+  function previewProject(p,basis,width,height){const d=vsub(p,preview3D.target);return {x:(width/2)+preview3D.panX+vdot(d,basis.right)*preview3D.scale,y:(height/2)+preview3D.panY-vdot(d,basis.up)*preview3D.scale,depth:vdot(d,basis.forward)}}
+  function previewBoxCorners(b){return [[b.x,b.y,b.z],[b.x+b.w,b.y,b.z],[b.x+b.w,b.y+b.d,b.z],[b.x,b.y+b.d,b.z],[b.x,b.y,b.z+b.h],[b.x+b.w,b.y,b.z+b.h],[b.x+b.w,b.y+b.d,b.z+b.h],[b.x,b.y+b.d,b.z+b.h]]}
+  const previewFaceDefs=[{i:[0,1,5,4],n:[0,-1,0]},{i:[3,7,6,2],n:[0,1,0]},{i:[0,4,7,3],n:[-1,0,0]},{i:[1,2,6,5],n:[1,0,0]},{i:[0,3,2,1],n:[0,0,-1]},{i:[4,5,6,7],n:[0,0,1]}];
+  function previewMaterialRgb(mat){if(mat==='cherryBack')return [173,107,70];if(mat==='birchBack')return [218,203,166];if(mat==='cherry')return [200,137,103];return [234,217,174]}
+  function previewShade(mat,n){const base=previewMaterialRgb(mat),light=vnorm([-0.5,-0.8,1]),f=0.72+0.28*Math.max(0,vdot(n,light));return `rgb(${base.map(v=>Math.max(0,Math.min(255,Math.round(v*f)))).join(',')})`}
+  function previewVisibleBoxes(){const showFronts=document.getElementById('previewShowFronts').checked,showDrawers=document.getElementById('previewShowDrawerBoxes').checked,showBacks=document.getElementById('previewShowBacks').checked;return preview3D.scene.boxes.filter(b=>(showFronts||b.category!=='front')&&(showDrawers||b.category!=='drawerBox')&&(showBacks||b.category!=='back'))}
+  function previewResizeCanvas(){const r=previewCanvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2),w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr));if(previewCanvas.width!==w||previewCanvas.height!==h){previewCanvas.width=w;previewCanvas.height=h}const ctx=previewCanvas.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return {ctx,width:r.width,height:r.height,dpr}}
+  function previewSceneBounds(includeLabels=true){const boxes=previewVisibleBoxes(),pts=[];boxes.forEach(b=>pts.push(...previewBoxCorners(b)));if(includeLabels)preview3D.scene.labels.forEach(l=>pts.push([l.x,l.y,l.z]));if(!pts.length)return {min:[0,0,0],max:[1,1,1]};const min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];pts.forEach(p=>{for(let k=0;k<3;k++){min[k]=Math.min(min[k],p[k]);max[k]=Math.max(max[k],p[k])}});return {min,max}}
+  function fitPreview3D(){
+    if(!previewCanvas)return;const {width,height}=previewResizeCanvas(),bounds=previewSceneBounds(true);preview3D.target=[(bounds.min[0]+bounds.max[0])/2,(bounds.min[1]+bounds.max[1])/2,(bounds.min[2]+bounds.max[2])/2];preview3D.panX=0;preview3D.panY=0;
+    const basis=previewBasis(),corners=[];for(const x of [bounds.min[0],bounds.max[0]])for(const y of [bounds.min[1],bounds.max[1]])for(const z of [bounds.min[2],bounds.max[2]])corners.push([x,y,z]);const xs=[],ys=[];corners.forEach(p=>{const d=vsub(p,preview3D.target);xs.push(vdot(d,basis.right));ys.push(vdot(d,basis.up))});const spanX=Math.max(...xs)-Math.min(...xs)||1,spanY=Math.max(...ys)-Math.min(...ys)||1;preview3D.scale=Math.max(0.1,Math.min((width-60)/spanX,(height-60)/spanY));preview3D.fitted=true;renderPreview3D();
+  }
+  function drawPreviewLabel(ctx,label,p){
+    const lines=String(label.text).split(/\n/),font=label.kind==='cabinet'?'600 13px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif':'600 12px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif';ctx.font=font;ctx.textAlign='center';ctx.textBaseline='middle';const lineH=15,w=Math.max(...lines.map(t=>ctx.measureText(t).width))+10,h=(lines.length*lineH)+6;ctx.fillStyle='rgba(255,255,255,.82)';ctx.fillRect(p.x-w/2,p.y-h/2,w,h);ctx.strokeStyle='rgba(255,255,255,.95)';ctx.lineWidth=3;ctx.fillStyle='#222';lines.forEach((t,i)=>{const yy=p.y+(i-(lines.length-1)/2)*lineH;ctx.strokeText(t,p.x,yy);ctx.fillText(t,p.x,yy)});
+  }
+  function renderPreview3D(){
+    if(!previewCanvas)return;const {ctx,width,height}=previewResizeCanvas();ctx.clearRect(0,0,width,height);ctx.fillStyle='#f7f7f4';ctx.fillRect(0,0,width,height);if(!preview3D.scene.boxes.length){ctx.fillStyle='#666';ctx.textAlign='center';ctx.font='14px sans-serif';ctx.fillText('No cabinet geometry to preview.',width/2,height/2);return}
+    const basis=previewBasis(),faces=[];for(const b of previewVisibleBoxes()){const c=previewBoxCorners(b);for(const f of previewFaceDefs){if(vdot(f.n,basis.cameraVec)<=0.0001)continue;const world=f.i.map(i=>c[i]),proj=world.map(p=>previewProject(p,basis,width,height)),depth=proj.reduce((a,p)=>a+p.depth,0)/proj.length;faces.push({pts:proj,depth,fill:previewShade(b.material,f.n),name:b.name})}}
+    faces.sort((a,b)=>b.depth-a.depth);ctx.lineJoin='round';ctx.lineCap='round';for(const f of faces){ctx.beginPath();ctx.moveTo(f.pts[0].x,f.pts[0].y);for(let i=1;i<f.pts.length;i++)ctx.lineTo(f.pts[i].x,f.pts[i].y);ctx.closePath();ctx.fillStyle=f.fill;ctx.fill();ctx.strokeStyle='rgba(32,32,32,.78)';ctx.lineWidth=0.9;ctx.stroke()}
+    const labels=preview3D.scene.labels.map(l=>({label:l,p:previewProject([l.x,l.y,l.z],basis,width,height)})).sort((a,b)=>b.p.depth-a.p.depth);labels.forEach(x=>drawPreviewLabel(ctx,x.label,x.p));
+    const errors=preview3D.scene.errors.length?` · ${preview3D.scene.errors.length} preview warning(s)`:'';previewStatus.textContent=`${preview3D.scene.cabinetCount} cabinet(s) · ${preview3D.scene.boxes.length} modeled pieces${errors} · Drag to orbit · wheel to zoom · Shift-drag to pan · double-click to fit.`;
+  }
+  function update3DPreview(s=state()){preview3D.scene=buildPreviewScene(s);window.__cabinetDrafter3DScene=preview3D.scene;fitPreview3D()}
+  function setPreviewView(view){if(view==='front'){preview3D.az=-Math.PI/2;preview3D.elev=0}else if(view==='left'){preview3D.az=Math.PI;preview3D.elev=0}else if(view==='right'){preview3D.az=0;preview3D.elev=0}else if(view==='top'){preview3D.az=-Math.PI/2;preview3D.elev=(Math.PI/2)-0.002}else{preview3D.az=-Math.PI/4;preview3D.elev=0.48}fitPreview3D()}
+  document.querySelectorAll('[data-preview-view]').forEach(b=>b.addEventListener('click',()=>setPreviewView(b.dataset.previewView)));document.getElementById('previewFit').addEventListener('click',fitPreview3D);['previewShowFronts','previewShowDrawerBoxes','previewShowBacks'].forEach(id=>document.getElementById(id).addEventListener('change',()=>{fitPreview3D()}));
+  previewCanvas.addEventListener('pointerdown',e=>{preview3D.dragging=true;preview3D.dragMode=(e.shiftKey||e.button===1)?'pan':'orbit';preview3D.lastX=e.clientX;preview3D.lastY=e.clientY;previewCanvas.classList.add('dragging');previewCanvas.setPointerCapture(e.pointerId)});
+  previewCanvas.addEventListener('pointermove',e=>{if(!preview3D.dragging)return;const dx=e.clientX-preview3D.lastX,dy=e.clientY-preview3D.lastY;preview3D.lastX=e.clientX;preview3D.lastY=e.clientY;if(preview3D.dragMode==='pan'){preview3D.panX+=dx;preview3D.panY+=dy}else{preview3D.az-=dx*0.009;preview3D.elev=Math.max(-1.35,Math.min(1.35,preview3D.elev+dy*0.007))}renderPreview3D()});
+  const endPreviewDrag=e=>{preview3D.dragging=false;previewCanvas.classList.remove('dragging');try{previewCanvas.releasePointerCapture(e.pointerId)}catch(_){}};previewCanvas.addEventListener('pointerup',endPreviewDrag);previewCanvas.addEventListener('pointercancel',endPreviewDrag);previewCanvas.addEventListener('contextmenu',e=>e.preventDefault());previewCanvas.addEventListener('dblclick',fitPreview3D);
+  previewCanvas.addEventListener('wheel',e=>{e.preventDefault();preview3D.scale=Math.max(0.08,Math.min(250,preview3D.scale*Math.exp(-e.deltaY*0.001)));renderPreview3D()},{passive:false});
+  document.getElementById('savePreviewPng').addEventListener('click',()=>{renderPreview3D();const a=document.createElement('a');a.href=previewCanvas.toDataURL('image/png');a.download='cabinet-drafter_3d_preview.png';document.body.appendChild(a);a.click();a.remove()});
+  if('ResizeObserver' in window)new ResizeObserver(()=>{if(preview3D.scene.boxes.length)fitPreview3D()}).observe(previewWrap);else window.addEventListener('resize',()=>{if(preview3D.scene.boxes.length)fitPreview3D()});
+
+  function updateAll(){const s=state();preview.value=generateRuby();updateAllRowBudgets();updateSummary();updateBomAndLayouts();update3DPreview(s);scheduleProjectAutosave()}
+  function changed(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state()))}catch(_){}updateAll()}
+  function download(name,text,type='text/plain'){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500)}
+  document.getElementById('addDrawer').onclick=()=>{makeRow({label:'New Drawer / Mixed Cabinet',type:'drawer',frontStyle:'frameless',width:24,qty:1,stackSpec:'D7, D7, D7',frontHeights:[],shelves:0});changed()};
+  document.getElementById('addDoor').onclick=()=>{makeRow({label:'New Single Door Cabinet',type:'door',frontStyle:'frameless',width:20,qty:1,stackSpec:'',frontHeights:[],shelves:0});changed()};
+  document.getElementById('addShelf').onclick=()=>{makeRow({label:'New Open Shelf Cabinet',type:'open_shelf',frontStyle:'frameless',width:24,qty:1,stackSpec:'',frontHeights:[],shelves:2});changed()};
+  document.getElementById('units').addEventListener('change',e=>{const st=state();activeUnits=e.target.value==='mm'?'mm':'in';st.units=activeUnits;applyState(st);try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state()))}catch(_){}});
+  ids.forEach(id=>document.getElementById(id).addEventListener('input',changed));document.getElementById('preserveCherryGrain').addEventListener('change',changed);document.getElementById('showLabels').addEventListener('change',changed);document.getElementById('showDrawerBoxHeightLabels').addEventListener('change',changed);document.getElementById('showDrawerFaceHeightLabels').addEventListener('change',changed);document.getElementById('showOpenSpaceHeightLabels').addEventListener('change',changed);
+  function rubyTimestamp(){const d=new Date(),p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`}
+  document.getElementById('downloadRuby').onclick=async()=>{await flushProjectSave();const name=`cabinet-drafter_generated_${rubyTimestamp()}.rb`;download(name,generateRuby());const cmd=`load File.expand_path('~/Downloads/${name}')`;document.getElementById('rubyDownloadStatus').innerHTML=`Downloaded <strong>${esc(name)}</strong>. In SketchUp Ruby Console run: <code>${esc(cmd)}</code>`;};
+  document.getElementById('copyRuby').onclick=async()=>{await flushProjectSave();try{await navigator.clipboard.writeText(generateRuby());alert('Ruby copied to clipboard.')}catch(_){preview.select();document.execCommand('copy');alert('Ruby copied to clipboard.')}};
+  document.getElementById('saveProject').onclick=saveProject;
+  document.getElementById('saveProjectAs').onclick=saveProjectAs;
+  document.getElementById('downloadJson').onclick=()=>download('cabinet-drafter_project_export.json',projectJsonText(),'application/json');
+  document.getElementById('downloadBom').onclick=downloadBomCsv;document.getElementById('downloadCutList').onclick=downloadCutListCsv;document.getElementById('downloadLinearStock').onclick=downloadLinearStockCsv;
+  document.getElementById('printLayouts').onclick=()=>{document.body.classList.add('print-layouts');window.print();setTimeout(()=>document.body.classList.remove('print-layouts'),500)};
+  document.getElementById('loadJson').onclick=()=>document.getElementById('jsonFile').click();
+  document.getElementById('jsonFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const s=JSON.parse(await file.text());applyState({...defaults,...s});try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state()))}catch(_){} }catch(err){alert('Could not load settings: '+err.message)}e.target.value=''});
+  document.getElementById('reset').onclick=()=>{if(confirm('Reset all cabinet settings to the supplied defaults?')){try{localStorage.removeItem(STORAGE_KEY)}catch(_){}applyState(deepCopy(defaults));changed()}};
+const helpDialog=document.getElementById('helpDialog');
+  document.getElementById('openHelp').onclick=()=>{if(helpDialog.showModal)helpDialog.showModal();else helpDialog.setAttribute('open','')};
+  document.getElementById('closeHelp').onclick=()=>{if(helpDialog.close)helpDialog.close();else helpDialog.removeAttribute('open')};
+  helpDialog.addEventListener('click',e=>{if(e.target===helpDialog){if(helpDialog.close)helpDialog.close();else helpDialog.removeAttribute('open')}});
+  let initial=deepCopy(defaults);try{let saved=localStorage.getItem(STORAGE_KEY),fromOld=false;if(!saved){for(const k of OLD_KEYS){saved=localStorage.getItem(k);if(saved){fromOld=true;break}}}if(saved){const prior=JSON.parse(saved);if(fromOld){prior.mixedPanelMaterial=prior.mixedPanelMaterial||'cherry';prior.openBackMaterial=prior.openBackMaterial||'cherry';if(Array.isArray(prior.cabinets))prior.cabinets=prior.cabinets.map(c=>({...c,frontStyle:c.frontStyle||'frameless'}))}initial={...initial,...prior}}}catch(_){}applyState(initial);initProjectFile();
+})();
+</script></body></html>
