@@ -59,3 +59,9 @@ The development project assumes the countertop is screwed through the top stretc
 ## Hardware
 
 Hardware counts and drilling templates are not yet complete. Development-project assumptions include two concealed European hinges per door and side-mount drawer slides using the configured clearance.
+
+## Drawer-front alignment
+
+For automatically sized drawer fronts, reveal lines between adjacent drawers are centered in the physical drawer-box gap. This keeps matching bottom-up drawer stacks aligned across neighboring cabinets. Extra face height is no longer distributed evenly among all drawer fronts, because doing so moved shared reveal lines when an adjacent cabinet had a different upper layout.
+
+A drawer immediately below an open cubby may still have a different upper edge from a drawer that has another drawer above it; the open-cubby divider/clear opening determines the top edge of that final drawer-front run.
