@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 - 2026-09-14
+
+### Added
+
+- SketchUp export option to keep existing generated cabinet groups instead of replacing the prior `Generated Cabinet Lineup`.
+
 ## 1.2.0 - 2026-09-14
 
 ### Added

@@ -66,7 +66,7 @@ Completed work is tracked as individual physical plywood cut parts. A completed 
 
 Part completion IDs are based on the cabinet instance, part role, material, and dimensions. Label-only edits should not lose progress, while material or size changes should invalidate affected completed parts.
 
-Full-sheet inventory is counted separately by material and means full, uncut usable sheets only. Scraps and partial sheets are not modeled as inventory in 1.2.0.
+Full-sheet inventory is counted separately by material and means full, uncut usable sheets only. Scraps and partial sheets are not modeled as inventory in the current workflow.
 
 ## Drawer-front alignment
 

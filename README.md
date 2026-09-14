@@ -23,7 +23,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Separate face-frame solid-stock takeoff by thickness and member width
 - Interactive browser 3D preview with orbit/zoom/pan and PNG export
 - Project JSON save/load with browser autosave
-- Optional SketchUp Desktop Ruby export
+- Optional SketchUp Desktop Ruby export, with a choice to replace or keep previous generated groups
 
 ## Try it
 
@@ -84,7 +84,7 @@ Global face-frame settings control stile width, rail width, frame thickness, mat
 
 ## Build progress and inventory
 
-CabinetDrafter 1.2.0 tracks completed work as individual physical plywood cut parts. Checking off a part does not delete or change the cabinet design; it only removes that part from the remaining-work nesting and remaining cut-list CSV.
+CabinetDrafter tracks completed work as individual physical plywood cut parts. Checking off a part does not delete or change the cabinet design; it only removes that part from the remaining-work nesting and remaining cut-list CSV.
 
 Each cabinet instance has a stable internal ID so progress survives label changes and ordinary editing. Part IDs include the part geometry and material, so a completed part is not silently reused for a newly sized or newly specified part.
 
@@ -117,6 +117,8 @@ The built-in preview requires no SketchUp and no network connection. It can:
 ## SketchUp export
 
 SketchUp is optional. If you have SketchUp Desktop with Ruby support, use **Download Ruby script**, then in SketchUp Pro open **Extensions → Developer → Ruby Console** and paste the exact `load ...` command shown by CabinetDrafter.
+
+By default, the generated Ruby replaces the prior `Generated Cabinet Lineup` group. Turn off **Replace prior Generated Cabinet Lineup in SketchUp** before downloading if you want SketchUp to keep existing generated cabinets and add the new export as a separate timestamped group.
 
 SketchUp for Web does not execute the Ruby generator; the in-browser 3D preview exists so CabinetDrafter remains useful without SketchUp.
 
