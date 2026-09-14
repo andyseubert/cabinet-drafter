@@ -16,6 +16,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Inches or millimeters for entry/display while keeping canonical geometry stable internally
 - Applied backs behind open spaces
 - Drawer-box sizing with configurable slide clearance
+- Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware sheet nesting, kerf, edge trim, and spare-sheet allowance
 - Separate face-frame solid-stock takeoff by thickness and member width
 - Interactive browser 3D preview with orbit/zoom/pan and PNG export
@@ -61,6 +62,10 @@ Open-shelf cabinets use the same field for clear opening heights from bottom to 
 ```
 
 `auto` may be used for the final/top opening to consume the remaining clear height. Leaving the field blank falls back to evenly spaced shelves using the Shelves count.
+
+## Drawer-front alignment
+
+Auto-sized drawer-front reveal lines are tied to the physical drawer-box stack. The reveal between adjacent drawers is centered in the actual drawer-box gap. This keeps a shared bottom-up sequence such as `D7.5, D7.5` aligned across neighboring cabinets even when one cabinet changes to an open cubby above.
 
 ## Face frames in 1.1
 
