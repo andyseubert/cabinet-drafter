@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1 - 2026-09-14
+
+### Fixed
+
+- Auto-sized drawer-front reveal lines now follow the physical bottom-up drawer stack instead of spreading spare face height evenly across every drawer in a run.
+- Matching lower drawer stacks now align across adjacent cabinets even when one cabinet changes to an open cubby above.
+- Browser 3D preview, BOM/cut-list front dimensions, and SketchUp export use the same corrected front geometry.
+
 ## 1.1.0 - 2026-09-14
 
 First public CabinetDrafter release.
