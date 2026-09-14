@@ -15,6 +15,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Explicit drawer heights and clear shelf/cubby opening heights
 - Inches or millimeters for entry/display while keeping canonical geometry stable internally
 - Applied backs behind open spaces and single-door cabinets
+- Role-based plywood material choices for visible/front parts, hidden cabinet-box parts, drawer boxes, open-space backs, and mixed dividers
 - Drawer-box sizing with configurable slide clearance
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware sheet nesting, kerf, edge trim, and spare-sheet allowance
@@ -97,6 +98,10 @@ additional sheets to buy = max(remaining nested sheets + spare sheets - full she
 The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls.
 
 ## Material calculations
+
+The **Material choices** section keeps visible and hidden work separate without pretending the app knows every sheet good in the lumber rack. Choose the plywood for faces/doors/drawer fronts and visible cabinet parts, the hidden cabinet-box plywood for pure drawer carcasses and toe-kick structure, and the drawer-box plywood independently. Mixed-cabinet dividers and open-space backs can either match one of those roles or be set explicitly to birch or cherry.
+
+Single-door cabinets use the visible/front material for the cabinet box, shelves, door, and applied back. Pure drawer cabinets keep using the hidden cabinet-box material by default.
 
 CabinetDrafter creates a valid, non-overlapping sheet layout using the selected sheet size, edge trim, kerf, and grain constraints. The sheet count is a practical purchase-planning number for the layout it found, but the nesting algorithm does **not** claim to find the mathematical minimum number of sheets in every case.
 

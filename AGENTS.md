@@ -10,7 +10,7 @@ Live site: `https://andyseubert.github.io/cabinet-drafter/`
 
 CabinetDrafter is a self-contained browser cabinet planner. The primary application is `index.html`, with no required server, account, CDN, framework, or external JavaScript dependency. It supports cabinet layout, drawer/open-space sizing, plywood BOMs, cut lists, sheet nesting, an interactive browser 3D preview, project JSON save/load, and optional SketchUp Ruby export.
 
-Current public version: **1.2.3**.
+Current public version: **1.2.4**.
 
 Future user-facing changes should bump the version according to semver unless there is a good reason not to.
 
@@ -50,7 +50,10 @@ SketchUp Web cannot execute Ruby extensions/scripts.
 
 - Standard carcass depth: 25 in.
 - Standard carcass height: 38 in.
-- Carcass plywood: 3/4 in.
+- Cabinet-box plywood thickness: 3/4 in.
+- Default visible/front plywood: cherry.
+- Default hidden cabinet-box plywood: birch.
+- Default drawer-box plywood: birch.
 - Separate toe kick/base: 2 in high.
 - Default toe-kick setback: 3 in.
 - Default toe-kick depth: 22 in.
@@ -90,8 +93,9 @@ Face-frame stock is linear solid stock and must not be nested onto plywood sheet
 - Side-mount slides.
 - Default total horizontal slide clearance: 1 in = 1/2 in each side.
 - Default drawer depth: 24 in.
-- Drawer sides/front/back: 1/2 in birch plywood.
-- Drawer bottom: 1/2 in birch plywood.
+- Drawer sides/front/back: 1/2 in drawer-box plywood.
+- Drawer bottom: 1/2 in drawer-box plywood.
+- Drawer-box material defaults to birch plywood and can be selected independently from visible/front and hidden cabinet-box material.
 - Bottom fits fully between all four drawer walls.
 - No dado/rabbet assumed.
 - Entered drawer box height is the outside wall height.
@@ -142,7 +146,7 @@ Open height means clear cubby height. Drawer height means outside drawer-box wal
 
 ### Pure drawer carcasses
 
-- 3/4 in birch plywood carcass.
+- 3/4 in hidden cabinet-box plywood carcass.
 - 3/4 in solid plywood bottom.
 - No full top.
 - No full back.
@@ -154,23 +158,23 @@ Open height means clear cubby height. Drawer height means outside drawer-box wal
 
 ### Single-door cabinets
 
-- 3/4 in birch plywood cabinet box.
+- 3/4 in visible/front plywood cabinet box.
 - 3/4 in solid plywood bottom.
 - No full top.
 - Full applied back on the outside rear face, not inset.
-- Back material: cherry plywood matching the door/front material.
+- Back material: visible/front plywood matching the door.
 - Back thickness follows the configured back thickness, default 1/4 in.
 - No rear vertical stretchers.
 - Two flat 4 in top stretchers:
   - front top, flat
   - rear top, flat
-- Optional adjustable shelves are birch plywood and use shelf pins.
+- Optional adjustable shelves use visible/front plywood and shelf pins.
 
 ### Open-shelf cabinets
 
-- 3/4 in cherry plywood carcass.
+- 3/4 in visible/front plywood carcass.
 - Applied back on the outside rear face, not inset.
-- Default applied back: 1/4 in cherry, configurable.
+- Default applied back: 1/4 in plywood matching visible/front material, configurable to match hidden cabinet-box material or explicit birch/cherry.
 - Full-width, full-height back.
 - No rear vertical stretchers.
 - Two flat 4 in top stretchers.
@@ -186,9 +190,10 @@ Explicit clear opening heights may be entered bottom-to-top, for example:
 
 ### Mixed drawer/open-cubby cabinets
 
-- Carcass becomes cherry because the interior is visible.
+- Carcass uses visible/front plywood because the interior is visible.
 - Two flat 4 in top stretchers only; rear vertical stretchers are omitted where localized backs provide rear closure.
-- Fixed divider panels are 3/4 in by default, 24 in deep by default, and pocket-screwed.
+- Fixed divider panels are 3/4 in by default, 24 in deep by default, pocket-screwed, and default to the visible/front material.
+- Divider panels can instead match the hidden cabinet-box material or be set explicitly to birch/cherry.
 - Every open cubby gets a localized applied back.
 - Drawer-only areas remain open-backed.
 - Mixed-cubby back spans the full outside cabinet width.
@@ -202,7 +207,7 @@ Example:
 
 ### Fronts and doors
 
-- Default material: 3/4 in cherry plywood.
+- Default material: 3/4 in visible/front plywood, which defaults to cherry.
 - Frameless construction is full overlay.
 - Frameless side reveal default: 1/16 in.
 - With 3/4 in carcass, that means 11/16 in geometric overlap per side.
@@ -214,32 +219,33 @@ Example:
 ### Toe kicks
 
 - Separate ladder frame.
-- 3/4 in birch plywood structural rails.
+- 3/4 in hidden cabinet-box plywood structural rails.
 - Front rail, rear rail, and two side rails.
 - Intended to use offcuts where possible.
-- Visible front gets 1/4 in cherry plywood or veneer skin.
-- BOM treats the current cabinet list as one installed run for continuous cherry skin planning.
+- Visible front gets 1/4 in visible/front plywood or veneer skin.
+- BOM treats the current cabinet list as one installed run for continuous visible-material skin planning.
 - Multiple-wall/run support remains a known limitation.
 
 ## BOM and nesting behavior
 
 Materials currently include:
 
-- 3/4 birch plywood
-- 3/4 cherry plywood
-- 1/2 birch drawer stock, including drawer bottoms
-- configurable thin open-space back, default 1/4 cherry
-- cherry single-door back stock, using the configured back thickness
-- 1/4 cherry toe-kick skin
+- 3/4 visible/front plywood, default cherry
+- 3/4 hidden cabinet-box plywood, default birch
+- drawer-box plywood, default 1/2 birch including drawer bottoms
+- configurable mixed-cabinet divider plywood, default matching visible/front
+- configurable thin open-space back, default 1/4 matching visible/front
+- single-door back stock, using the configured back thickness and visible/front material
+- visible/front toe-kick skin, default 1/4 cherry
 - face-frame solid stock tracked separately
 
 Nesting rules:
 
 - Configurable sheet width/length, kerf, edge trim, spare sheets.
-- Cherry grain preservation is on by default.
+- Visible grain preservation is on by default.
 - Grain is treated as running along the 96 in sheet direction.
-- Birch parts may rotate.
-- Cherry grain-sensitive parts do not rotate when grain preservation is on.
+- Hidden cabinet-box and drawer-box parts may rotate.
+- Grain-sensitive visible parts do not rotate when grain preservation is on, regardless of whether the selected visible/front species is birch or cherry.
 - Layout is a practical rectangle nesting plan, not a table-saw cut sequence.
 - Do not claim mathematically minimal sheet count.
 
@@ -339,10 +345,10 @@ Track uncut **full sheets on hand** separately by material.
 
 Examples:
 
-- 3/4 birch full sheets on hand
-- 3/4 cherry full sheets on hand
-- 1/2 birch full sheets on hand
-- 1/4 cherry or other configured back stock on hand
+- 3/4 hidden cabinet-box full sheets on hand, for example Birch 3/4
+- 3/4 visible/front full sheets on hand, for example Cherry 3/4
+- drawer-box full sheets on hand, for example Birch 1/2
+- configured back-stock full sheets on hand, for example Cherry 1/4 or Birch 1/4
 
 Then show:
 

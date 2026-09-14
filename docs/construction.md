@@ -5,9 +5,12 @@ CabinetDrafter is configurable, but its generated geometry and BOM must still st
 ## Carcasses
 
 - Default carcass thickness: 3/4 in plywood.
-- Pure drawer and single-door cabinet boxes default to birch.
-- Single-door backs use cherry plywood to match the door/front material.
-- Mixed drawer/open-cubby and open-shelf defaults: cherry carcass for visible interiors.
+- Default visible/front plywood: cherry.
+- Default hidden cabinet-box plywood: birch.
+- Default drawer-box plywood: birch.
+- Pure drawer cabinet boxes use the hidden cabinet-box material.
+- Single-door cabinet boxes, shelves, doors, and applied backs use the visible/front material.
+- Mixed drawer/open-cubby and open-shelf visible cabinet parts use the visible/front material.
 - Carcass joints in the development project use pocket screws.
 - No automatic edge banding/solid edging is included.
 
@@ -25,8 +28,9 @@ The face frame is applied to the front of the carcass and consists of two full-h
 
 ## Drawer boxes
 
-- Default sides/front/back: 1/2 in birch plywood.
-- Default bottom: 1/2 in birch plywood.
+- Default sides/front/back: 1/2 in drawer-box plywood.
+- Default bottom: 1/2 in drawer-box plywood.
+- Default drawer-box material: birch.
 - Bottom fits completely between all four walls; no dado/rabbet is assumed.
 - Drawer box height is the outside wall height; bottom thickness does not reduce that entered height.
 - Default side-slide clearance: 1/2 in per side / 1 in total.
@@ -34,11 +38,12 @@ The face frame is applied to the front of the carcass and consists of two full-h
 ## Open spaces and backs
 
 - Visible open spaces receive applied backs on the outside rear face.
-- Default back: 1/4 in cherry, configurable to birch/cherry and thickness.
+- Default open-space back: 1/4 in plywood matching the visible/front material.
+- Open-space backs can instead match the hidden cabinet-box material or be set explicitly to birch/cherry.
 - Mixed cabinets receive backs only behind open cubbies; drawer-only areas remain open-backed.
 - A mixed-cubby back spans full cabinet width and covers clear opening height plus one carcass thickness above and below.
 - Open-shelf cabinets use one full-width applied back.
-- Single-door cabinets use one full-width applied cherry back using the configured back thickness.
+- Single-door cabinets use one full-width applied back in the visible/front material using the configured back thickness.
 
 ## Shelves
 
@@ -52,7 +57,7 @@ Pure drawer open-back carcasses use four stretchers: two flat top stretchers and
 
 ## Toe kick
 
-Default base is a separate 2 in-high 3/4 in birch ladder frame using narrow offcuts, with a visible 1/4 in cherry skin across the installed run. The current BOM treats the listed cabinets as one continuous run for toe-kick skin planning.
+Default base is a separate 2 in-high 3/4 in ladder frame using the hidden cabinet-box material and narrow offcuts, with a visible 1/4 in skin using the visible/front material across the installed run. The current BOM treats the listed cabinets as one continuous run for toe-kick skin planning.
 
 ## Countertop
 

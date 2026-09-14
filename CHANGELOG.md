@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.4 - 2026-09-14
+
+### Added
+
+- Plywood material choices for visible/front parts, hidden cabinet-box parts, drawer boxes, mixed dividers, and open-space backs.
+
+### Changed
+
+- Single-door cabinets now use the visible/front material for the cabinet box, shelves, door, and applied back.
+- Grain preservation now follows grain-sensitive visible parts rather than being tied only to cherry plywood.
+
 ## 1.2.3 - 2026-09-14
 
 ### Changed
