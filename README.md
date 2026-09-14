@@ -99,7 +99,7 @@ The built-in preview requires no SketchUp and no network connection. It can:
 
 ## SketchUp export
 
-SketchUp is optional. If you have SketchUp Desktop with Ruby support, use **Download Ruby script**, then paste the exact `load ...` command shown by CabinetDrafter into the SketchUp Ruby Console.
+SketchUp is optional. If you have SketchUp Desktop with Ruby support, use **Download Ruby script**, then in SketchUp Pro open **Extensions → Developer → Ruby Console** and paste the exact `load ...` command shown by CabinetDrafter.
 
 SketchUp for Web does not execute the Ruby generator; the in-browser 3D preview exists so CabinetDrafter remains useful without SketchUp.
 
