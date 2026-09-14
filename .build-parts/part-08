@@ -1,0 +1,172 @@
+              format("%s\n%s W x %s D x %s H\nBirch box | one cherry door | %d shelf(s)",
+                     spec[:label], format_dimension(width), format_dimension(CAB_DEPTH), format_dimension(CAB_HEIGHT), shelves),
+              0, CAB_DEPTH + 2.0, KICK_HEIGHT + CAB_HEIGHT + 4.0)
+    cab.transform!(Geom::Transformation.translation([i(x0), 0, 0]))
+    cab
+  end
+
+  def make_open_shelf_cabinet(parent, x0, spec, birch, cherry, open_back, cherry_skin)
+    width = spec[:width].to_f
+    requested_openings = Array(spec[:shelf_openings])
+    fallback_shelf_count = [spec[:shelves].to_i, 0].max
+    inside_w = width - (2.0 * PLY)
+    z0 = KICK_HEIGHT
+
+    cab = parent.add_group
+    cab.name = spec[:label].to_s
+    e = cab.entities
+
+    make_kick(e, width, birch, cherry_skin)
+    add_box(e, 'Left Side - Cherry 3/4', 0, 0, z0, PLY, CAB_DEPTH, CAB_HEIGHT, cherry)
+    add_box(e, 'Right Side - Cherry 3/4', width - PLY, 0, z0, PLY, CAB_DEPTH, CAB_HEIGHT, cherry)
+    add_box(e, 'Bottom - Cherry 3/4', PLY, 0, z0, inside_w, CAB_DEPTH, PLY, cherry)
+    add_box(e, format('Applied Full Back - %s', OPEN_BACK_MATERIAL.to_s.capitalize),
+            0, CAB_DEPTH, z0, width, BACK_PLY, CAB_HEIGHT, open_back)
+
+    top_z = z0 + CAB_HEIGHT - PLY
+    rear_top_y = CAB_DEPTH - STRETCHER
+    add_box(e, 'Front Top Stretcher - Cherry 3/4', PLY, 0, top_z, inside_w, STRETCHER, PLY, cherry)
+    add_box(e, 'Rear Top Stretcher - Cherry 3/4', PLY, rear_top_y, top_z, inside_w, STRETCHER, PLY, cherry)
+
+    shelf_positions = []
+    clear_heights = []
+    if requested_openings.any?
+      raise "#{spec[:label]}: open-shelf height list must contain at least one opening" if requested_openings.empty?
+      raise "#{spec[:label]}: auto is only allowed for the final/top opening" if requested_openings[0...-1].any? { |h| h == :auto }
+      shelf_count = requested_openings.length - 1
+      available_clear = CAB_HEIGHT - (2.0 * PLY) - (shelf_count * PLY)
+      numeric = requested_openings.reject { |h| h == :auto }.map(&:to_f)
+      raise "#{spec[:label]}: open-shelf heights must be positive" if numeric.any? { |h| h <= 0 }
+      if requested_openings.last == :auto
+        auto_h = available_clear - numeric.inject(0.0, :+)
+        raise "#{spec[:label]}: specified shelf openings exceed available height" if auto_h <= 0
+        clear_heights = numeric + [auto_h]
+      else
+        clear_heights = numeric
+        diff = available_clear - clear_heights.inject(0.0, :+)
+        raise "#{spec[:label]}: open-shelf clear heights must total #{format_dimension(available_clear)}; current list differs by #{format_dimension(diff.abs)} (or use auto for the top opening)" if diff.abs > 0.01
+      end
+      clear_bottom = z0 + PLY
+      clear_heights[0...-1].each_with_index do |h, idx|
+        shelf_z = clear_bottom + h
+        shelf_positions << shelf_z
+        add_box(e, format('Adjustable Shelf %d - Cherry 3/4 (pin supported)', idx + 1),
+                PLY, 0, shelf_z, inside_w, [SHELF_DEPTH, CAB_DEPTH].min, PLY, cherry)
+        clear_bottom = shelf_z + PLY
+      end
+    else
+      shelf_count = fallback_shelf_count
+      if shelf_count > 0
+        clear_total = CAB_HEIGHT - (2.0 * PLY) - (shelf_count * PLY)
+        raise "#{spec[:label]}: shelf count leaves no clear opening height" if clear_total < 0
+        opening_h = clear_total / (shelf_count + 1).to_f
+        clear_bottom = z0 + PLY
+        shelf_count.times do |idx|
+          shelf_z = clear_bottom + opening_h
+          shelf_positions << shelf_z
+          add_box(e, format('Adjustable Shelf %d - Cherry 3/4 (pin supported)', idx + 1),
+                  PLY, 0, shelf_z, inside_w, [SHELF_DEPTH, CAB_DEPTH].min, PLY, cherry)
+          clear_bottom = shelf_z + PLY
+        end
+      end
+    end
+
+    clear_bottom = z0 + PLY
+    shelf_positions.each do |shelf_z|
+      clear_h = shelf_z - clear_bottom
+      add_open_space_height_label(e, clear_h, width / 2.0, -0.01, clear_bottom + (clear_h / 2.0))
+      clear_bottom = shelf_z + PLY
+    end
+    clear_h = top_z - clear_bottom
+    add_open_space_height_label(e, clear_h, width / 2.0, -0.01, clear_bottom + (clear_h / 2.0)) if clear_h > 0
+
+    add_face_frame(e, width, spec, birch, cherry)
+
+    shelf_count = shelf_positions.length
+    add_label(e,
+              format("%s\n%s W x %s D x %s H\nCherry box + applied back | %d shelf(s)",
+                     spec[:label], format_dimension(width), format_dimension(CAB_DEPTH), format_dimension(CAB_HEIGHT), shelf_count),
+              0, CAB_DEPTH + 2.0, KICK_HEIGHT + CAB_HEIGHT + 4.0)
+    cab.transform!(Geom::Transformation.translation([i(x0), 0, 0]))
+    cab
+  end
+
+  def normalized_specs
+    expanded = []
+    CABINETS.each do |spec|
+      qty = [spec[:qty].to_i, 1].max
+      qty.times do |idx|
+        s = spec.dup
+        s[:label] = "#{spec[:label]} #{idx + 1}" if qty > 1
+        expanded << s
+      end
+    end
+    expanded
+  end
+
+  def run
+    model = Sketchup.active_model
+    model.start_operation('Create Cabinet Lineup', true)
+    begin
+      root = model.entities
+      root.grep(Sketchup::Group).select { |g| g.name == 'Generated Cabinet Lineup' }.each(&:erase!)
+      birch = material(model, 'Birch Plywood', [224, 207, 167])
+      cherry = material(model, 'Cherry Plywood', [160, 92, 55])
+      birch_back = material(model, 'Birch Open-Space Back', [218, 201, 164])
+      cherry_back = material(model, 'Cherry Open-Space Back', [175, 110, 70])
+      open_back = OPEN_BACK_MATERIAL == :cherry ? cherry_back : birch_back
+      cherry_skin = material(model, 'Cherry Toe Kick Skin', [175, 110, 70])
+      floor_mat = material(model, 'Floor Neutral', [205, 205, 200])
+
+      presentation = root.add_group
+      presentation.name = 'Generated Cabinet Lineup'
+      presentation.set_attribute('CabinetDrafter', 'generated', true)
+      pe = presentation.entities
+
+      specs = normalized_specs
+      x = 0.0
+      total_width = 0.0
+      specs.each_with_index do |spec, idx|
+        case spec[:type].to_sym
+        when :drawer
+          make_drawer_cabinet(pe, x, spec, birch, cherry, open_back, cherry_skin)
+        when :door
+          make_door_cabinet(pe, x, spec, birch, cherry, cherry_skin)
+        when :open_shelf
+          make_open_shelf_cabinet(pe, x, spec, birch, cherry, open_back, cherry_skin)
+        else
+          raise "Unknown cabinet type: #{spec[:type]}"
+        end
+
+        x += spec[:width].to_f
+        total_width += spec[:width].to_f
+        if idx < specs.length - 1
+          x += DISPLAY_GAP
+          total_width += DISPLAY_GAP
+        end
+      end
+
+      floor_margin = 6.0
+      add_box(pe, 'Floor Reference', -floor_margin, -floor_margin, -0.25,
+              total_width + (2.0 * floor_margin),
+              CAB_DEPTH + (2.0 * floor_margin), 0.25, floor_mat)
+
+      model.commit_operation
+      model.active_view.zoom_extents
+      save_path = File.join(File.expand_path('~/Desktop'), SAVE_FILENAME)
+      model.save(save_path)
+      UI.messagebox("Created #{specs.length} cabinet(s) and saved:\n#{save_path}")
+    rescue => e
+      model.abort_operation
+      UI.messagebox("Cabinet generator error:\n#{e.message}\n\n#{e.backtrace.first(8).join("\n")}")
+      raise e
+    end
+  end
+end
+
+CabinetDrafter.run
+
+</script>
+<script>
+(() => {
+  const STORAGE_KEY='cabinetDrafterV110', OLD_KEYS=['joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','joineryGridV25','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
