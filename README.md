@@ -45,6 +45,8 @@ You can also download the repository and open `index.html` directly. The app doe
 7. As you build, check off completed cut parts and enter full sheets already on hand.
 8. Use **Save Project JSON** to keep a portable project file.
 
+In browsers that support the File System Access API, **Save Project JSON** asks for a destination once and then reuses that same file for later saves and autosaves after permission is granted. **Save Project As...** is the control for intentionally choosing a different file. Browsers without direct file-write support still keep browser recovery storage current, but saving a JSON file is a normal download/export each time.
+
 ### Drawer / mixed stack syntax
 
 `D` means Drawer. `O` means **Open** - the letter O ("oh"), not zero.
@@ -53,9 +55,13 @@ You can also download the repository and open `index.html` directly. The app doe
 D7, D7, D9          three drawers
 D9, O15             one drawer, then a 15-inch clear open cubby
 D9, Open 15, D7     drawer, open cubby, drawer
+D4.75, O12, O12, D4.75
+                      drawer, two separate 12-inch clear cubbies, drawer
 ```
 
 A legacy all-number list such as `7, 7, 9.5` remains an all-drawer list. Once `D` is used, a bare number is treated as an open space, so `D9, D9, 15` means two drawers and a 15-unit open cubby.
+
+Adjacent open entries are not combined. They remain separate cubbies with fixed divider panels between them. The drawer-box gap applies between adjacent drawer boxes; fixed dividers separate drawers from open cubbies.
 
 ### Open-shelf heights
 

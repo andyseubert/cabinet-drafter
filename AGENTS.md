@@ -10,7 +10,7 @@ Live site: `https://andyseubert.github.io/cabinet-drafter/`
 
 CabinetDrafter is a self-contained browser cabinet planner. The primary application is `index.html`, with no required server, account, CDN, framework, or external JavaScript dependency. It supports cabinet layout, drawer/open-space sizing, plywood BOMs, cut lists, sheet nesting, an interactive browser 3D preview, project JSON save/load, and optional SketchUp Ruby export.
 
-Current public version: **1.2.5**.
+Current public version: **1.2.6**.
 
 Future user-facing changes should bump the version according to semver unless there is a good reason not to.
 
@@ -140,9 +140,11 @@ Compatibility rules:
 - An all-number list such as `10, 7, 5.25` means all drawers.
 - Once any explicit `D` is present, a bare number means an open cubby.
 - `D9, D9, 15` therefore means two 9 in drawers and one 15 in open cubby.
-- Adjacent open zones should be rejected and combined by the user.
+- Adjacent open zones remain separate open cubbies and receive fixed divider panels between them.
+- `D4.75, O12, O12, D4.75` therefore means a drawer, two separate 12 in clear open cubbies, and a drawer.
 
 Open height means clear cubby height. Drawer height means outside drawer-box wall height.
+The drawer-box gap applies only between adjacent drawer boxes; fixed divider panels separate drawers from open cubbies.
 
 ### Pure drawer carcasses
 
@@ -194,11 +196,12 @@ Explicit clear opening heights may be entered bottom-to-top, for example:
 - Two flat 4 in top stretchers only; rear vertical stretchers are omitted where localized backs provide rear closure.
 - Fixed divider panels are 3/4 in by default, 24 in deep by default, pocket-screwed, and default to the visible/front material.
 - Divider panels can instead match the hidden cabinet-box material or be set explicitly to birch/cherry.
-- Every open cubby gets a localized applied back.
+- Every contiguous open-cubby run gets a localized applied back.
 - Drawer-only areas remain open-backed.
-- Mixed-cubby back spans the full outside cabinet width.
-- Mixed-cubby back height = clear opening height + one carcass thickness below + one above.
-- With 3/4 in carcass, back height = clear height + 1.5 in.
+- A mixed-cubby back spans the full outside cabinet width.
+- A single mixed-cubby back height = clear opening height + one carcass thickness below + one above.
+- Adjacent open cubbies share one localized back spanning the combined clear openings, the divider panel(s) between them, and one carcass thickness below and above.
+- With 3/4 in carcass, a single-cubby back height = clear height + 1.5 in.
 - Top cubbies still use the top-stretcher thickness as the upper allowance even though there is no full top.
 
 Example:

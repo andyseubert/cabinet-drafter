@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CabinetDrafter 1.2.5 — Cabinet planner</title>
+<title>CabinetDrafter 1.2.6 — Cabinet planner</title>
 <style>
 :root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:#222}main{max-width:1440px;margin:0 auto;padding:28px 22px 50px}h1{margin:0 0 6px;font-size:30px}h2{margin:0 0 14px;font-size:20px}h3{margin:18px 0 8px;font-size:16px}p{line-height:1.45}.muted{color:#666}.card{background:#fff;border:1px solid #d9d6cf;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:12px}label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:5px}input,select,textarea,button{font:inherit}input,select{width:100%;padding:8px 9px;border:1px solid #bbb;border-radius:7px;background:#fff}input[type=checkbox]{width:auto;transform:scale(1.1);margin-right:7px}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid #ddd}td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}td input,td select{min-width:70px}.drawer-list{min-width:165px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.row-actions{display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap}.row-actions button{min-width:34px;padding:6px 8px}.row-actions button:disabled{opacity:.35;cursor:not-allowed}button{border:1px solid #aaa;background:#fafafa;padding:9px 13px;border-radius:8px;cursor:pointer}button.primary{background:#333;color:#fff;border-color:#333}button.danger{color:#8b1e1e}textarea{width:100%;height:300px;padding:12px;border:1px solid #bbb;border-radius:8px;font-family:Menlo,Monaco,monospace;font-size:12px;line-height:1.4;white-space:pre}.note{background:#fff8df;border-left:4px solid #d7a800;padding:10px 12px;border-radius:5px;margin-top:12px}.small{font-size:13px}.summary-good{color:#265a2e}.summary-warn{color:#8b1e1e;font-weight:700}.dim{white-space:nowrap}.disabledish{opacity:.45}.hint{font-size:11px;color:#777;margin-top:3px}.drawer-budget{font-size:11px;color:#666;margin-top:4px;line-height:1.3;min-width:190px}.drawer-budget.bad{color:#8b1e1e}.summary-table td,.summary-table th{padding:7px 8px}.nowrap{white-space:nowrap}.pill{display:inline-block;padding:2px 7px;border-radius:999px;background:#eee;font-size:11px}.layout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.sheet-card{border:1px solid #ddd;border-radius:10px;padding:10px;background:#fafafa}.sheet-card h3{margin:0 0 8px}.sheet-svg{width:100%;height:auto;max-height:620px;background:#fff;border:1px solid #aaa}.bom-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}.kpi{background:#f7f7f5;border:1px solid #e1dfd9;border-radius:9px;padding:10px}.kpi strong{font-size:20px;display:block}.grain-arrow{font-weight:700}.warning-box{background:#fff0f0;border-left:4px solid #b64a4a;padding:10px 12px;border-radius:5px;margin-top:10px}.success-box{background:#eef8ef;border-left:4px solid #4a8f54;padding:10px 12px;border-radius:5px;margin-top:10px}.progress-group{border-top:1px solid #eee;padding:12px 0}.progress-group:first-child{border-top:0}.progress-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}.progress-actions{display:flex;gap:8px;flex-wrap:wrap}.progress-actions button{padding:6px 9px}.part-done{color:#777;text-decoration:line-through}.inventory-sheet-input{max-width:88px}.layout-print-control{display:flex;align-items:center;gap:6px;margin-bottom:7px}.layout-print-control input{margin-right:3px}.print-count{align-self:center;color:#666}.sheet-card:not(.print-selected){opacity:.72}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.table-wrap{overflow-x:auto}}@media print{body.print-layouts main>*{display:none!important}body.print-layouts #sheetLayoutsCard{display:block!important;border:none;box-shadow:none;margin:0;padding:0}body.print-layouts #sheetLayoutsCard .actions,body.print-layouts #sheetLayoutsCard .note,body.print-layouts .layout-print-control{display:none!important}body.print-layouts .sheet-card:not(.print-selected){display:none!important}.sheet-card{break-inside:avoid;page-break-inside:avoid}.layout-grid{display:block}.sheet-card{margin:0 0 20px;opacity:1!important}}
 .app-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.app-header p{margin:6px 0 0}.help-button{font-weight:700;min-width:88px}.help-dialog{width:min(980px,calc(100vw - 32px));max-height:88vh;border:1px solid #bbb;border-radius:14px;padding:0;box-shadow:0 16px 60px rgba(0,0,0,.28);background:#fff;color:#222}.help-dialog::backdrop{background:rgba(0,0,0,.38)}.help-doc{padding:22px 26px 32px;line-height:1.5}.help-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;position:sticky;top:0;background:#fff;padding:2px 0 12px;border-bottom:1px solid #eee;z-index:2}.help-heading h2{margin:0}.help-heading p{margin:3px 0 0}.help-close{white-space:nowrap}.help-doc h3{margin-top:26px;padding-top:4px;border-top:1px solid #eee}.help-doc h4{margin:20px 0 8px}.help-doc li{margin:5px 0}.help-doc pre{overflow:auto;background:#f6f5f1;border:1px solid #dedbd2;border-radius:8px;padding:12px;line-height:1.35}.help-table{width:100%;border-collapse:collapse;margin:10px 0}.help-table th,.help-table td{border:1px solid #ddd;padding:8px;vertical-align:top}.help-callout{background:#eef8ef;border-left:4px solid #4a8f54;padding:12px 14px;border-radius:6px}.help-warning{background:#fff3df;border-left:4px solid #d28a00;padding:12px 14px;border-radius:6px;margin:12px 0}@media(max-width:700px){.app-header{flex-direction:column}.help-button{align-self:flex-start}.help-doc{padding:18px}.help-heading{position:static}}
@@ -12,13 +12,13 @@
 </style>
 </head>
 <body><main>
-<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.2.5</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
+<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.2.6</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
 
 <section class="card"><h2>Units</h2><div class="grid"><div><label>Display / entry units</label><select id="units"><option value="in">Inches</option><option value="mm">Millimeters</option></select><div class="hint">The project is stored internally in inches for SketchUp compatibility. Switching units converts the displayed values without changing cabinet geometry.</div></div></div></section>
 
 <section class="card"><h2>Cabinets</h2><div class="table-wrap"><table><thead><tr><th>Label</th><th>Type</th><th>Front construction</th><th>Width</th><th>Qty</th><th>Vertical stack / clear openings<br><span class="muted">bottom → top</span></th><th>Custom drawer-front heights<br><span class="muted">optional; drawers only</span></th><th>Shelves<br><span class="muted">count fallback</span></th><th></th></tr></thead><tbody id="cabinetRows"></tbody></table></div>
 <div class="actions"><button id="addDrawer">+ Drawer / mixed cabinet</button><button id="addDoor">+ Single-door cabinet</button><button id="addShelf">+ Open-shelf cabinet</button></div>
-<div class="note small"><strong>Drawer / mixed stack syntax:</strong> <strong><code>O</code> means the LETTER O ("oh") for Open — not the digit zero (<code>0</code>).</strong> For example, <code>D7, O9.5, D7</code> means drawer, open cubby, drawer. You may write <code>Open 9.5</code> instead of <code>O9.5</code> if that is clearer. An all-number list such as <code>7, 7, 9.5</code> remains legacy all-drawer mode. Once you use <code>D</code> to mark drawers, any bare number is also interpreted as an open cubby: <code>D9, D9, 15</code> means two 9-unit drawers with a 15-unit clear cubby above. <strong>Open-shelf cabinets:</strong> use the same field for clear opening heights, bottom to top, for example <code>9.5, 12, auto</code>. Each boundary between openings gets an adjustable pin-supported shelf; <code>auto</code> is allowed only for the final/top opening and uses the remaining clear height. If the field is blank, the Shelves count still creates evenly spaced adjustable shelves. Values use the selected unit; explicit <code>mm</code> or <code>in</code> suffixes are also accepted.</div></section>
+<div class="note small"><strong>Drawer / mixed stack syntax:</strong> <strong><code>O</code> means the LETTER O ("oh") for Open — not the digit zero (<code>0</code>).</strong> For example, <code>D7, O9.5, D7</code> means drawer, open cubby, drawer. Adjacent open entries stay separate: <code>D4.75, O12, O12, D4.75</code> makes two 12&quot; clear cubbies with a fixed divider between them. You may write <code>Open 9.5</code> instead of <code>O9.5</code> if that is clearer. An all-number list such as <code>7, 7, 9.5</code> remains legacy all-drawer mode. Once you use <code>D</code> to mark drawers, any bare number is also interpreted as an open cubby: <code>D9, D9, 15</code> means two 9-unit drawers with a 15-unit clear cubby above. <strong>Open-shelf cabinets:</strong> use the same field for clear opening heights, bottom to top, for example <code>9.5, 12, auto</code>. Each boundary between openings gets an adjustable pin-supported shelf; <code>auto</code> is allowed only for the final/top opening and uses the remaining clear height. If the field is blank, the Shelves count still creates evenly spaced adjustable shelves. Values use the selected unit; explicit <code>mm</code> or <code>in</code> suffixes are also accepted.</div></section>
 
 <section class="card"><h2>Drawer sizing</h2><div class="grid">
 <div><label>Drawer depth</label><input id="drawerDepth" type="number" step="0.125"><div class="hint">24&quot; for your 24&quot; slides.</div></div>
@@ -29,7 +29,7 @@
 <div><label>Bottom drawer-box clearance</label><input id="drawerBottomClearance" type="number" min="0" step="0.03125"><div class="hint">Default 1/2&quot; above the cabinet bottom. Drawer boxes are stacked upward from here.</div></div>
 <div><label>Mixed-cabinet divider depth</label><input id="mixedPanelDepth" type="number" min="1" step="0.125"><div class="hint">Default 24&quot;. Horizontal panels that form the top/bottom of an open cubby.</div></div>
 </div>
-<div class="note small"><strong>Width rule:</strong> drawer box outside width = cabinet inside width − total slide clearance. <strong>Height rule:</strong> drawer boxes must fit between the top of the 3/4&quot; cabinet bottom and the underside of the 3/4&quot; top stretchers, so the default 38&quot; carcass has 36.5&quot; of internal vertical drawer-box space. Vertical drawer spacing is <em>not</em> standardized by the slides. Drawer boxes and open cubbies are stacked from the bottom upward. Open-cubby heights are clear opening heights; 3/4&quot; divider panels are added where required. A top open cubby is anchored to the underside of the top stretchers so its entered clear height is exact. Verify your slide manufacturer's horizontal clearance before cutting.</div></section>
+<div class="note small"><strong>Width rule:</strong> drawer box outside width = cabinet inside width − total slide clearance. <strong>Height rule:</strong> drawer boxes must fit between the top of the 3/4&quot; cabinet bottom and the underside of the 3/4&quot; top stretchers, so the default 38&quot; carcass has 36.5&quot; of internal vertical drawer-box space. Vertical drawer spacing is <em>not</em> standardized by the slides. Drawer boxes and open cubbies are stacked from the bottom upward. The drawer-box gap applies between adjacent drawer boxes; fixed 3/4&quot; divider panels separate drawers from open cubbies and separate adjacent open cubbies. Open-cubby heights are clear opening heights. A top open cubby is anchored to the underside of the top stretchers so its entered clear height is exact. Verify your slide manufacturer's horizontal clearance before cutting.</div></section>
 
 <section class="card"><h2>Material choices</h2><div class="grid">
 <div><label>Faces / doors / visible cabinet plywood</label><select id="frontMaterial"><option value="cherry">Cherry plywood</option><option value="birch">Birch plywood</option></select><div class="hint">Drawer fronts, doors, single-door boxes/backs, mixed/open visible cabinet parts, and toe-kick skin.</div></div>
@@ -84,13 +84,13 @@
 
 <section class="card" id="sheetLayoutsCard"><h2>Remaining plywood cutting layouts</h2><div class="actions"><button id="selectAllLayouts">Select all</button><button id="selectNoLayouts">Select none</button><button id="printLayouts">Print / Save selected layouts as PDF</button><span id="layoutPrintCount" class="small print-count"></span></div><div class="note small">These layouts include remaining cut parts only. Completed physical parts are not nested here. This is a nesting/planning diagram, not a table-saw cut sequence. Real sheets may have voids, damage or grain defects, and your final saw strategy may move pieces around. The optimizer includes the selected kerf and edge trim.</div><div id="layoutWarnings"></div><div id="sheetLayouts" class="layout-grid"></div></section>
 
-<section class="card"><h2>Optional SketchUp export</h2><div style="margin-bottom:12px"><input id="showLabels" type="checkbox"><strong> Show cabinet labels in 3D / SketchUp</strong><div class="hint">Turn this off for a clean presentation model with no cabinet summary text labels.</div></div><div style="margin-bottom:12px"><input id="showDrawerBoxHeightLabels" type="checkbox"><strong> Show drawer box height labels in 3D / SketchUp</strong><div class="hint">Shows the entered drawer-box wall height for each drawer, formatted as a woodworking fraction in inch mode or millimeters in mm mode.</div></div><div style="margin-bottom:12px"><input id="showDrawerFaceHeightLabels" type="checkbox"><strong> Show drawer face height labels in 3D / SketchUp</strong><div class="hint">Shows the visible drawer-front height for each drawer. Labels are placed directly at the center of each face; when both options are on the number order is box / face.</div></div><div style="margin-bottom:12px"><input id="showOpenSpaceHeightLabels" type="checkbox"><strong> Show open-space height labels in 3D / SketchUp</strong><div class="hint">Shows the clear vertical height centered in each mixed-cabinet cubby and each opening in an open-shelf cabinet, formatted as a woodworking fraction in inch mode or millimeters in mm mode.</div></div><div style="margin-bottom:12px"><input id="replaceExistingSketchupGroup" type="checkbox"><strong> Replace prior Generated Cabinet Lineup in SketchUp</strong><div class="hint">Turn this off to keep existing generated cabinets and add the new export as a separate timestamped group.</div></div><div class="actions"><button class="primary" id="downloadRuby">Download Ruby script</button><button id="copyRuby">Copy Ruby</button><button class="primary" id="saveProject">Save Project JSON</button><button id="saveProjectAs">Save Project As…</button><button id="downloadJson">Export JSON copy</button><button id="loadJson">Load / Import JSON</button><input id="jsonFile" type="file" accept="application/json,.json" hidden><button class="danger" id="reset">Reset defaults</button></div><p class="small muted">Every edit is still saved immediately in this browser. Click <strong>Save Project JSON</strong> once to choose a normal JSON file on your Mac; after that, supported browsers auto-save that same file whenever the generated Ruby changes. Downloading or copying Ruby also forces a project save first.</p><div id="projectSaveStatus" class="hint">Project JSON: checking…</div><div id="rubyDownloadStatus" class="hint"></div><textarea id="rubyPreview" spellcheck="false"></textarea></section>
+<section class="card"><h2>Optional SketchUp export</h2><div style="margin-bottom:12px"><input id="showLabels" type="checkbox"><strong> Show cabinet labels in 3D / SketchUp</strong><div class="hint">Turn this off for a clean presentation model with no cabinet summary text labels.</div></div><div style="margin-bottom:12px"><input id="showDrawerBoxHeightLabels" type="checkbox"><strong> Show drawer box height labels in 3D / SketchUp</strong><div class="hint">Shows the entered drawer-box wall height for each drawer, formatted as a woodworking fraction in inch mode or millimeters in mm mode.</div></div><div style="margin-bottom:12px"><input id="showDrawerFaceHeightLabels" type="checkbox"><strong> Show drawer face height labels in 3D / SketchUp</strong><div class="hint">Shows the visible drawer-front height for each drawer. Labels are placed directly at the center of each face; when both options are on the number order is box / face.</div></div><div style="margin-bottom:12px"><input id="showOpenSpaceHeightLabels" type="checkbox"><strong> Show open-space height labels in 3D / SketchUp</strong><div class="hint">Shows the clear vertical height centered in each mixed-cabinet cubby and each opening in an open-shelf cabinet, formatted as a woodworking fraction in inch mode or millimeters in mm mode.</div></div><div style="margin-bottom:12px"><input id="replaceExistingSketchupGroup" type="checkbox"><strong> Replace prior Generated Cabinet Lineup in SketchUp</strong><div class="hint">Turn this off to keep existing generated cabinets and add the new export as a separate timestamped group.</div></div><div class="actions"><button class="primary" id="downloadRuby">Download Ruby script</button><button id="copyRuby">Copy Ruby</button><button class="primary" id="saveProject">Save Project JSON</button><button id="saveProjectAs">Save Project As…</button><button id="downloadJson">Export JSON copy</button><button id="loadJson">Load / Import JSON</button><input id="jsonFile" type="file" accept="application/json,.json" hidden><button class="danger" id="reset">Reset defaults</button></div><p class="small muted">Every edit is still saved immediately in this browser. Click <strong>Save Project JSON</strong> once to choose a normal JSON file on your Mac; after that, supported browsers auto-save that same file whenever the project changes. <strong>Save Project As…</strong> is only needed when you want a different file. Downloading or copying Ruby also forces a project save first.</p><div id="projectSaveStatus" class="hint">Project JSON: checking…</div><div id="rubyDownloadStatus" class="hint"></div><textarea id="rubyPreview" spellcheck="false"></textarea></section>
 <section class="card small"><h2>Use in SketchUp Pro</h2><p>Open <strong>Extensions → Developer → Ruby Console</strong> and run:</p><pre>load File.expand_path('~/Downloads/cabinet-drafter_generated_TIMESTAMP.rb')</pre><p>Each Ruby download gets a unique timestamped filename so SketchUp cannot accidentally reload an older copy. After downloading, the page shows the exact load command. By default the script replaces the prior Generated Cabinet Lineup; turn off that export option to keep existing generated cabinets and add the new run as a separate timestamped group. The script models drawer boxes, mixed open cubbies/divider panels, toe-kick bases and skins, fronts/doors, optional cabinet text labels and independently selectable per-drawer box-height and face-height labels, and saves a native SKP to your Desktop.</p></section>
 <dialog id="helpDialog" class="help-dialog"><div class="help-doc">
   <div class="help-heading">
     <div>
       <h2>CabinetDrafter Help</h2>
-      <p class="muted">Cabinet planner · version 1.2.5</p>
+      <p class="muted">Cabinet planner · version 1.2.6</p>
     </div>
     <button type="button" id="closeHelp" class="help-close">Close</button>
   </div>
@@ -277,11 +277,11 @@ Visible front gets the selected front/visible material or veneer skin.</pre>
 
   <h3>15. Troubleshooting</h3>
   <p><strong>The SketchUp model did not change:</strong> use the exact timestamped Ruby filename and load command CabinetDrafter shows after downloading. With the replace option enabled, each generated script removes the old <em>Generated Cabinet Lineup</em> group before rebuilding it. With the option disabled, the script adds a new timestamped group instead.</p>
-  <p><strong>Project JSON is not auto-saving:</strong> browsers may require write permission again after reopening a local HTML file. Click Save Project JSON to reconnect the file. Browser recovery storage continues to work independently.</p>
+  <p><strong>Project JSON is not auto-saving:</strong> browsers may require write permission again after reopening a local HTML file. Click Save Project JSON to reconnect the remembered file. Use Save Project As… only when you want to choose a different destination. Browser recovery storage continues to work independently.</p>
   <p><strong>An open-shelf height list does not fit:</strong> use <code>auto</code> for the top opening, or adjust the entered clear heights so the total plus shelf thicknesses fits the available vertical space.</p>
 </div></dialog>
 <script type="text/plain" id="rubyTemplate">
-# CabinetDrafter SketchUp Generator - 1.2.5
+# CabinetDrafter SketchUp Generator - 1.2.6
 # Generated by CabinetDrafter.
 # Run from SketchUp: Extensions > Developer > Ruby Console
 #   load '/full/path/to/cabinet_lineup_generated.rb'
@@ -524,19 +524,39 @@ __CABINETS__
     end
     raise "#{spec[:label]} needs at least one drawer/open stack zone" if zones.empty?
     raise "#{spec[:label]} drawer/mixed cabinet needs at least one drawer" unless zones.any? { |z| z[:kind] == :drawer }
-    zones.each_cons(2) do |a, b|
-      raise "#{spec[:label]}: adjacent open cubbies should be combined into one larger open cubby" if a[:kind] == :open && b[:kind] == :open
-    end
     zones
+  end
+
+  def open_back_runs(opens)
+    runs = []
+    Array(opens).sort_by { |o| o[:zone_index] }.each do |o|
+      last = runs.last
+      if last && o[:zone_index] == last[:last_zone_index] + 1
+        last[:last_zone_index] = o[:zone_index]
+        last[:clear_top] = o[:clear_top]
+        last[:height] = (last[:clear_top] - last[:clear_bottom]) + (2.0 * PLY)
+        last[:open_count] += 1
+      else
+        runs << {
+          first_zone_index: o[:zone_index],
+          last_zone_index: o[:zone_index],
+          clear_bottom: o[:clear_bottom],
+          clear_top: o[:clear_top],
+          height: o[:height] + (2.0 * PLY),
+          open_count: 1
+        }
+      end
+    end
+    runs
   end
 
   # Resolve all vertical structure inside a drawer/mixed cabinet.
   # Coordinates here are relative to the bottom of the 38in carcass (not the toe kick).
   # Open-zone heights are CLEAR opening heights.
-  # - Bottom open zone: cabinet bottom is its lower shelf; only a top divider is added.
-  # - Middle open zone: bottom and top dividers are added.
-  # - Top open zone: only a bottom divider is added and the clear opening is anchored
-  #   to the underside of the top stretchers so the entered height is exact.
+  # Fixed dividers separate drawer zones from open zones and separate adjacent
+  # open cubbies. The drawer-box gap applies only between adjacent drawers.
+  # Top open runs are anchored to the underside of the top stretchers so each
+  # entered clear opening height remains exact.
   def resolved_zone_layout(spec)
     zones = normalized_zones(spec)
     internal_bottom = PLY
@@ -549,8 +569,15 @@ __CABINETS__
     dividers = []
     drawer_index = 0
     cursor = internal_bottom
-    top_open = zones.last[:kind] == :open
-    process_count = top_open ? zones.length - 1 : zones.length
+    top_open_start = zones.length
+    if zones.last[:kind] == :open
+      top_open_start -= 1
+      while top_open_start > 0 && zones[top_open_start - 1][:kind] == :open
+        top_open_start -= 1
+      end
+    end
+    top_open = top_open_start < zones.length
+    process_count = top_open ? top_open_start : zones.length
 
     (0...process_count).each do |idx|
       zone = zones[idx]
@@ -562,14 +589,14 @@ __CABINETS__
         when [:drawer, :drawer]
           cursor += DRAWER_BOX_GAP
         when [:drawer, :open]
-          cursor += DRAWER_BOX_GAP
           dividers << { z: cursor, boundary: 'bottom of open cubby' }
           cursor += PLY
         when [:open, :drawer]
           dividers << { z: cursor, boundary: 'top of open cubby' }
-          cursor += PLY + DRAWER_BOX_GAP
-        else
-          raise "#{spec[:label]}: adjacent open cubbies should be combined"
+          cursor += PLY
+        when [:open, :open]
+          dividers << { z: cursor, boundary: 'between open cubbies' }
+          cursor += PLY
         end
       end
 
@@ -586,22 +613,28 @@ __CABINETS__
     remaining = 0.0
     remaining_context = 'unused above stack'
     if top_open
-      raise "#{spec[:label]}: an all-open cabinet should use the Open Shelf type" if zones.length < 2
-      top_height = zones.last[:height]
-      divider_z = internal_top - top_height - PLY
-      prev = zones[-2]
-      raise "#{spec[:label]}: adjacent open cubbies should be combined" if prev[:kind] == :open
-      min_divider_z = cursor + DRAWER_BOX_GAP
+      raise "#{spec[:label]}: an all-open cabinet should use the Open Shelf type" if top_open_start == 0
+      top_run = zones[top_open_start, zones.length - top_open_start]
+      top_clear_height = top_run.map { |z| z[:height] }.reduce(0.0, :+)
+      divider_z = internal_top - top_clear_height - (top_run.length * PLY)
+      min_divider_z = cursor
       if divider_z < min_divider_z - 0.001
         raise "#{spec[:label]}: stack exceeds available height by #{format_dimension(min_divider_z - divider_z)}"
       end
       remaining = [divider_z - min_divider_z, 0.0].max
-      remaining_context = 'extra hidden clearance below top cubby'
-      dividers << { z: divider_z, boundary: 'bottom of top open cubby' }
-      opens << { zone_index: zones.length - 1,
-                 clear_bottom: divider_z + PLY,
-                 clear_top: internal_top,
-                 height: top_height }
+      remaining_context = top_run.length > 1 ? 'extra hidden clearance below top cubby run' : 'extra hidden clearance below top cubby'
+      top_cursor = divider_z
+      top_run.each_with_index do |zone, offset|
+        dividers << { z: top_cursor,
+                      boundary: offset.zero? ? 'bottom of top open cubby run' : 'between open cubbies' }
+        top_cursor += PLY
+        opens << { zone_index: top_open_start + offset,
+                   clear_bottom: top_cursor,
+                   clear_top: top_cursor + zone[:height],
+                   height: zone[:height] }
+        top_cursor += zone[:height]
+      end
+      cursor = top_cursor
     else
       remaining = internal_top - cursor
       if remaining < -0.001
@@ -611,6 +644,7 @@ __CABINETS__
     end
 
     { zones: zones, drawers: drawers, opens: opens, dividers: dividers,
+      back_runs: open_back_runs(opens),
       usable: usable, remaining: remaining, remaining_context: remaining_context }
   end
 
@@ -773,13 +807,13 @@ __CABINETS__
               PLY, 0, z0 + d[:z], inside_w, panel_depth, PLY, mixed_panel_mat)
     end
 
-    # Open cubbies get localized applied backs only where the open space exists.
-    # Each back spans the full outside cabinet width and covers the clear opening
-    # plus the thickness of the horizontal structure immediately below and above.
-    layout[:opens].each_with_index do |o, idx|
-      add_box(entities, format('Open Cubby Back %d - %s', idx + 1, open_back_label),
-              0, CAB_DEPTH, z0 + o[:clear_bottom] - PLY,
-              width, BACK_PLY, o[:height] + (2.0 * PLY), open_back)
+    # Contiguous open cubbies share one applied back so adjacent openings do not
+    # create overlapping back panels. Separate open runs still get separate backs.
+    layout[:back_runs].each_with_index do |run, idx|
+      name = run[:open_count] > 1 ? 'Open Cubby Run Back' : 'Open Cubby Back'
+      add_box(entities, format('%s %d - %s', name, idx + 1, open_back_label),
+              0, CAB_DEPTH, z0 + run[:clear_bottom] - PLY,
+              width, BACK_PLY, run[:height], open_back)
     end
 
     layout[:drawers].each do |d|
@@ -1071,8 +1105,8 @@ CabinetDrafter.run
 </script>
 <script>
 (() => {
-  const APP_VERSION='1.2.5';
-  const STORAGE_KEY='cabinetDrafterV125', OLD_KEYS=['cabinetDrafterV124','cabinetDrafterV123','cabinetDrafterV122','cabinetDrafterV121','cabinetDrafterV120','cabinetDrafterV110','joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','joineryGridV25','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
+  const APP_VERSION='1.2.6';
+  const STORAGE_KEY='cabinetDrafterV126', OLD_KEYS=['cabinetDrafterV125','cabinetDrafterV124','cabinetDrafterV123','cabinetDrafterV122','cabinetDrafterV121','cabinetDrafterV120','cabinetDrafterV110','joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','joineryGridV25','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
   const defaults={"cabinets":[{"uid":"cab-default-1","label":"24in Drawer Cabinet","type":"drawer","width":24,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"uid":"cab-default-2","label":"20in Single Door Cabinet","type":"door","width":20,"qty":1,"stackSpec":"","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"uid":"cab-default-3","label":"18in Drawer Cabinet","type":"drawer","width":18,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"}],"cabDepth":25,"cabHeight":38,"ply":0.75,"backPly":0.25,"stretcher":4,"frontGap":0.125,"sideReveal":0.0625,"kickHeight":2,"kickSetback":3,"kickDepth":22,"shelfDepth":24.5,"displayGap":8,"drawerDepth":24,"slideClearance":1.0,"drawerSidePly":0.5,"drawerBottomPly":0.5,"drawerBoxGap":0.5,"drawerBottomClearance":0.5,"mixedPanelDepth":24,"frontMaterial":"cherry","hiddenCarcassMaterial":"birch","drawerBoxMaterial":"birch","mixedPanelMaterial":"front","openBackMaterial":"front","saveFilename":"cabinet-drafter_generated.skp","sheetWidth":48,"sheetLength":96,"kerf":0.125,"edgeTrim":0.25,"spareSheets":0,"preserveCherryGrain":true,"showLabels":true,"showDrawerBoxHeightLabels":false,"showDrawerFaceHeightLabels":false,"showOpenSpaceHeightLabels":false,"replaceExistingSketchupGroup":true,"kickSkinPly":0.25,"units":"in","frameStileWidth":1.5,"frameRailWidth":1.5,"frameThickness":0.75,"frameMaterial":"cherry","frameOverlay":0.5,"frameInsetReveal":0.0625,"progress":{"completedPartIds":[]},"inventory":{"fullSheetsOnHand":{}}};
   const rows=document.getElementById('cabinetRows'), preview=document.getElementById('rubyPreview'), summary=document.getElementById('drawerSummary');
   const PROJECT_DB='CabinetDrafterProjectFiles', PROJECT_STORE='handles', PROJECT_HANDLE_KEY='cabinetdrafter-project-json';
@@ -1108,7 +1142,8 @@ CabinetDrafter.run
   function normalizeFullSheetInventory(value){const src=value?.fullSheetsOnHand&&typeof value.fullSheetsOnHand==='object'?value.fullSheetsOnHand:value&&typeof value==='object'?value:{};const out={};for(const [k,v] of Object.entries(src)){const n=Math.max(0,Math.round(number(v,0)));if(n>0)out[k]=n}return out}
   function progressFromProject(st){return normalizeCompletedIds(st?.progress||st?.completedPartIds)}
   function inventoryFromProject(st){return normalizeFullSheetInventory(st?.inventory||st?.fullSheetsOnHand)}
-  function currentCanonicalState(){return canonicalStateCache?deepCopy(canonicalStateCache):state()}
+  function projectStateOnly(st){const out=deepCopy(st);delete out._format;delete out._version;delete out._savedAt;return out}
+  function currentCanonicalState(){return projectStateOnly(canonicalStateCache||state())}
   function localSave(st=currentCanonicalState()){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(st))}catch(_){}}
   function uniqueCabinets(cabinets){const seen=new Set();return (cabinets||defaults.cabinets).map(normalizeCab).map(c=>{if(seen.has(c.uid))c.uid=nextCabinetUid();seen.add(c.uid);return c})}
 
@@ -1142,8 +1177,22 @@ CabinetDrafter.run
       if(!(h>0)){errors.push(`Could not read "${token}"`);continue}
       zones.push({kind,height:h});
     }
-    for(let i=1;i<zones.length;i++)if(zones[i-1].kind==='open'&&zones[i].kind==='open')errors.push('Adjacent open cubbies should be combined into one larger open zone');
     return {zones,errors,normalized:stackTextFromZones(zones)};
+  }
+  function openBackRuns(opens,st){
+    const runs=[];
+    for(const o of [...(opens||[])].sort((a,b)=>a.zoneIndex-b.zoneIndex)){
+      const last=runs[runs.length-1];
+      if(last&&o.zoneIndex===last.lastZoneIndex+1){
+        last.lastZoneIndex=o.zoneIndex;
+        last.clearTop=o.clearTop;
+        last.height=(last.clearTop-last.clearBottom)+(2*st.ply);
+        last.openCount+=1;
+      }else{
+        runs.push({firstZoneIndex:o.zoneIndex,lastZoneIndex:o.zoneIndex,clearBottom:o.clearBottom,clearTop:o.clearTop,height:o.height+(2*st.ply),openCount:1});
+      }
+    }
+    return runs;
   }
   function normalizeStackField(el){
     const raw=String(el.value||'').split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean);
@@ -1255,32 +1304,35 @@ CabinetDrafter.run
     if(!zones.some(z=>z.kind==='drawer'))return {error:'Drawer / mixed cabinet needs at least one drawer; use Open Shelf for an all-open cabinet',zones};
     const internalBottom=st.ply,internalTop=st.cabHeight-st.ply,usable=internalTop-internalBottom;if(usable<=0)return {error:'Cabinet height leaves no usable internal height',zones};
     const drawers=[],opens=[],dividers=[];let drawerIndex=0,cursor=internalBottom;
-    const topOpen=zones[zones.length-1].kind==='open',processCount=topOpen?zones.length-1:zones.length;
+    let topOpenStart=zones.length;
+    if(zones[zones.length-1].kind==='open'){topOpenStart--;while(topOpenStart>0&&zones[topOpenStart-1].kind==='open')topOpenStart--}
+    const topOpen=topOpenStart<zones.length,processCount=topOpen?topOpenStart:zones.length;
     for(let i=0;i<processCount;i++){
       const z=zones[i];
       if(i===0){if(z.kind==='drawer')cursor+=st.drawerBottomClearance}
       else{
         const prev=zones[i-1];
         if(prev.kind==='drawer'&&z.kind==='drawer')cursor+=st.drawerBoxGap;
-        else if(prev.kind==='drawer'&&z.kind==='open'){cursor+=st.drawerBoxGap;dividers.push({z:cursor,boundary:'bottom of open cubby'});cursor+=st.ply}
-        else if(prev.kind==='open'&&z.kind==='drawer'){dividers.push({z:cursor,boundary:'top of open cubby'});cursor+=st.ply+st.drawerBoxGap}
-        else return {error:'Adjacent open cubbies should be combined into one larger open zone',zones};
+        else if(prev.kind==='drawer'&&z.kind==='open'){dividers.push({z:cursor,boundary:'bottom of open cubby'});cursor+=st.ply}
+        else if(prev.kind==='open'&&z.kind==='drawer'){dividers.push({z:cursor,boundary:'top of open cubby'});cursor+=st.ply}
+        else if(prev.kind==='open'&&z.kind==='open'){dividers.push({z:cursor,boundary:'between open cubbies'});cursor+=st.ply}
       }
       if(z.kind==='drawer'){drawers.push({zoneIndex:i,drawerIndex,z:cursor,height:z.height});drawerIndex++;cursor+=z.height}
       else{opens.push({zoneIndex:i,clearBottom:cursor,clearTop:cursor+z.height,height:z.height});cursor+=z.height}
     }
     let remaining=0,remainingContext='unused above stack';
     if(topOpen){
-      if(zones.length<2)return {error:'An all-open cabinet should use the Open Shelf type',zones};
-      const prev=zones[zones.length-2];if(prev.kind==='open')return {error:'Adjacent open cubbies should be combined',zones};
-      const topHeight=zones[zones.length-1].height,dividerZ=internalTop-topHeight-st.ply,minDividerZ=cursor+st.drawerBoxGap;
+      if(topOpenStart===0)return {error:'An all-open cabinet should use the Open Shelf type',zones};
+      const topRun=zones.slice(topOpenStart),topClearHeight=topRun.reduce((sum,z)=>sum+z.height,0),dividerZ=internalTop-topClearHeight-(topRun.length*st.ply),minDividerZ=cursor;
       if(dividerZ<minDividerZ-0.001)return {error:`Stack exceeds available height by ${dimText(minDividerZ-dividerZ)}`,zones,usable,drawers,opens,dividers};
-      remaining=Math.max(0,dividerZ-minDividerZ);remainingContext='extra hidden clearance below top cubby';
-      dividers.push({z:dividerZ,boundary:'bottom of top open cubby'});opens.push({zoneIndex:zones.length-1,clearBottom:dividerZ+st.ply,clearTop:internalTop,height:topHeight});
+      remaining=Math.max(0,dividerZ-minDividerZ);remainingContext=topRun.length>1?'extra hidden clearance below top cubby run':'extra hidden clearance below top cubby';
+      let topCursor=dividerZ;
+      topRun.forEach((z,offset)=>{dividers.push({z:topCursor,boundary:offset===0?'bottom of top open cubby run':'between open cubbies'});topCursor+=st.ply;opens.push({zoneIndex:topOpenStart+offset,clearBottom:topCursor,clearTop:topCursor+z.height,height:z.height});topCursor+=z.height});
+      cursor=topCursor;
     }else{
       remaining=internalTop-cursor;if(remaining<-0.001)return {error:`Stack exceeds internal vertical space by ${dimText(-remaining)}`,zones,usable,drawers,opens,dividers};remaining=Math.max(0,remaining);
     }
-    return {zones,usable,drawers,opens,dividers,remaining,remainingContext,internalBottom,internalTop};
+    return {zones,usable,drawers,opens,dividers,backRuns:openBackRuns(opens,st),remaining,remainingContext,internalBottom,internalTop};
   }
 
   function frontLayout(c,st,layout=zoneLayout(c,st)){
@@ -1332,7 +1384,7 @@ CabinetDrafter.run
       const status=errs.length?`<span class="summary-warn">${errs.map(esc).join('; ')}</span>`:`<span class="summary-good">${fl.custom?'Custom fronts':'Auto fronts'} · fits</span>`;
       h+=`<tr><td>${esc(c.label||dimText(c.width)+' Drawer/Mixed')}</td><td>${esc(parseStack(c.stackSpec).normalized||'—')}</td><td class="dim">${dimText(boxW)} × ${dimText(st.drawerDepth)}</td><td>${opens||'—'}</td><td>${layout.dividers?layout.dividers.length:'—'}</td><td>${remaining}</td><td>${front}</td><td>${status}</td></tr>`;
     }
-    h+='</tbody></table></div><div class="note small"><strong>D</strong> zones are drawer-box outside heights. <strong>O</strong> zones (letter O for Open, not zero) are clear open-cubby heights. Middle cubbies get two added horizontal divider panels; bottom cubbies use the cabinet bottom; top cubbies omit an added top panel. Drawer fronts are automatically sized separately within each contiguous drawer run so they do not cover an open cubby.</div>';summary.innerHTML=h;
+    h+='</tbody></table></div><div class="note small"><strong>D</strong> zones are drawer-box outside heights. <strong>O</strong> zones (letter O for Open, not zero) are clear open-cubby heights. Adjacent open entries remain separate cubbies and get fixed divider panels between them. The drawer-box gap applies between adjacent drawer boxes; open cubbies are separated from neighboring drawer zones by fixed dividers. Drawer fronts are automatically sized separately within each contiguous drawer run so they do not cover an open cubby.</div>';summary.innerHTML=h;
   }
 
   function rubyArray(a){return '['+(a||[]).map(v=>fmt(v)).join(', ')+']'}
@@ -1379,7 +1431,10 @@ CabinetDrafter.run
           const panelWood=mixedPanelWood,panelGrain='horizontal',panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply);
           if(layout.dividers.length)addCabPart(panelWood,s.ply,'Open cubby fixed divider (pocket screwed)',inside,panelDepth,layout.dividers.length,panelGrain,'open-cubby-fixed-divider',carcass);
           const backWood=openBackWood,backGrain='vertical';
-          for(const o of layout.opens)addCabPart(backWood,s.backPly,'Open cubby applied back',w,o.height+(2*s.ply),1,backGrain,`open-cubby-back-zone-${o.zoneIndex}`,carcass);
+          for(const run of layout.backRuns){
+            const single=run.openCount===1,name=single?'Open cubby applied back':'Open cubby run applied back';
+            addCabPart(backWood,s.backPly,name,w,run.height,1,backGrain,single?`open-cubby-back-zone-${run.firstZoneIndex}`:`open-cubby-back-zones-${run.firstZoneIndex}-${run.lastZoneIndex}`,carcass);
+          }
           if(!fl.error){const fr=frontRect(c,s);for(const f of fl.fronts)addCabPart(frontWood,s.ply,`Drawer front ${f.drawerIndex+1}`,fr.w,f.height,1,'horizontal',`drawer-front-${f.drawerIndex+1}`,drawerAssembly(f.drawerIndex,layout.drawers.length))}
           const side=s.drawerSidePly,bottom=s.drawerBottomPly;
           for(const d of layout.drawers){
@@ -1513,11 +1568,11 @@ CabinetDrafter.run
     warnings.push(`Visible/front plywood is ${frontWood}. It is used for doors, drawer fronts, single-door cabinet boxes/backs/shelves, mixed/open visible cabinet parts, and the toe-kick skin.`);
     warnings.push(`Hidden cabinet-box plywood is ${hiddenWood}. It is used for pure drawer cabinet boxes and toe-kick structural rails. Drawer boxes use ${drawerWood}.`);
     warnings.push(`Pure drawer cabinets use ${hiddenWood} open-backed carcasses with four stretchers. Single-door cabinets use ${frontWood} boxes with two flat top stretchers and a ${frontWood} applied back matching the door.`);
-    warnings.push(`Mixed-cabinet fixed divider panels are ${dimText(Math.min(s.mixedPanelDepth,s.cabDepth-s.ply))} deep and currently ${mixedPanelWood} plywood. Bottom cubbies use the cabinet bottom; top cubbies have no added top panel.`);
+    warnings.push(`Mixed-cabinet fixed divider panels are ${dimText(Math.min(s.mixedPanelDepth,s.cabDepth-s.ply))} deep and currently ${mixedPanelWood} plywood. They separate drawers from open cubbies and separate adjacent open cubbies.`);
     warnings.push(`Open-space backs are applied to the outside rear face using ${dimText(s.backPly)} ${openBackWood} material. Single-door backs use ${dimText(s.backPly)} ${frontWood} to match the door. Applied backs add ${dimText(s.backPly)} to overall physical depth where present.`);
-    warnings.push('Mixed cabinets receive backs only behind open cubbies. Each localized back is full cabinet width and clear-opening height plus one carcass thickness above and below. Drawer-only regions remain open-backed.');
+    warnings.push('Mixed cabinets receive backs only behind open cubbies. Each contiguous open run gets one full-width applied back covering the run height plus one carcass thickness above and below. Drawer-only regions remain open-backed.');
     warnings.push('Open-shelf cabinets use one full-width applied back; their bottom and adjustable shelves may use the full carcass depth.');
-    warnings.push(`Drawer boxes are pocket-screw construction: ${dimText(s.drawerSidePly)} ${drawerWood} sides/front/back and a ${dimText(s.drawerBottomPly)} ${drawerWood} bottom fitted completely between the four walls, with no dados. The entered drawer-box height is the full wall height.`);
+    warnings.push(`Drawer boxes are pocket-screw construction: ${dimText(s.drawerSidePly)} ${drawerWood} sides/front/back and a ${dimText(s.drawerBottomPly)} ${drawerWood} bottom fitted completely between the four walls, with no dados. The entered drawer-box height is the full wall height; the drawer-box gap applies only between adjacent drawer boxes.`);
     const actualOverlay=s.ply-s.sideReveal;warnings.push(`Frameless fronts use ${dimText(s.sideReveal)} side reveal (${dimText(actualOverlay)} geometric carcass-edge overlap with the current carcass thickness). Face-frame overlay fronts use ${dimText(s.frameOverlay)} overlay beyond the frame opening; inset fronts use ${dimText(s.frameInsetReveal)} reveal per edge.`);warnings.push('Face-frame support currently uses a perimeter frame only: two full-height stiles plus top and bottom rails. Intermediate face-frame rails between drawers/cubbies are not generated yet.');
     warnings.push(`Mixed drawer/open-cubby cabinets use ${frontWood} carcass sides, bottom, and two flat top stretchers; rear vertical stretchers are omitted because the open cubbies receive localized applied backs.`);
     warnings.push('Adjustable shelves are pin-supported. Mixed-cubby divider panels are fixed with pocket screws. Countertops attach with screws through the top stretchers.');
@@ -1634,10 +1689,10 @@ CabinetDrafter.run
   }
   async function writeProjectHandle(handle,{requestPermission=false,quiet=false}={}){
     if(!handle)return false;
-    if(!(await handlePermission(handle,requestPermission))){if(!quiet)setProjectStatus(`Project JSON remembered as ${handle.name||'a file'}, but write permission is not active. Click Save Project JSON to reconnect.`,'warn');return false}
+    if(!(await handlePermission(handle,requestPermission))){if(!quiet)setProjectStatus(`Project JSON remembered as ${handle.name||'a file'}, but write permission is not active. Click Save Project JSON to reconnect, or Save Project As… to choose a different file.`,'warn');return false}
     const text=projectJsonText();
     projectWriteChain=projectWriteChain.catch(()=>{}).then(async()=>{const writable=await handle.createWritable();await writable.write(text);await writable.close()});
-    try{await projectWriteChain;if(!quiet)setProjectStatus(`Saved ${handle.name||'project JSON'} at ${new Date().toLocaleTimeString()}. Auto-save is on.`,'good');return true}catch(err){setProjectStatus(`Could not save project JSON: ${err.message}`,'warn');return false}
+    try{await projectWriteChain;if(!quiet)setProjectStatus(`Saved ${handle.name||'project JSON'} at ${new Date().toLocaleTimeString()}. Auto-save is on.`,'good');return true}catch(err){setProjectStatus(`Could not save project JSON: ${err.message}. Use Save Project As… if you need to choose a new file.`,'warn');return false}
   }
   function scheduleProjectAutosave(){
     if(!projectHandleReady||!projectFileHandle)return;
@@ -1657,7 +1712,7 @@ CabinetDrafter.run
     }catch(err){if(err&&err.name==='AbortError')return false;setProjectStatus(`Could not select project JSON: ${err.message}`,'warn');return false}
   }
   async function saveProject(){
-    if(projectFileHandle){const ok=await writeProjectHandle(projectFileHandle,{requestPermission:true,quiet:false});if(ok)return true}
+    if(projectFileHandle)return await writeProjectHandle(projectFileHandle,{requestPermission:true,quiet:false});
     return await saveProjectAs();
   }
   async function flushProjectSave(){
@@ -1740,7 +1795,7 @@ CabinetDrafter.run
           const layout=zoneLayout(c,s);if(layout.error)throw new Error(layout.error);const fl=frontLayout(c,s,layout);if(fl.error)throw new Error(fl.error);
           const panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply);
           layout.dividers.forEach((d,i)=>previewAddBox(scene,`Open cubby divider ${i+1}`,x0+s.ply,0,z0+d.z,inside,panelDepth,s.ply,mixedPanelMat));
-          layout.opens.forEach((o,i)=>previewAddBox(scene,`Open cubby back ${i+1}`,x0,s.cabDepth,z0+o.clearBottom-s.ply,w,s.backPly,o.height+(2*s.ply),openBackMat,'back'));
+          layout.backRuns.forEach((run,i)=>previewAddBox(scene,`${run.openCount>1?'Open cubby run back':'Open cubby back'} ${i+1}`,x0,s.cabDepth,z0+run.clearBottom-s.ply,w,s.backPly,run.height,openBackMat,'back'));
           const boxW=inside-s.slideClearance,xBox=x0+s.ply+(s.slideClearance/2);
           layout.drawers.forEach(d=>addPreviewDrawerBox(scene,xBox,0,z0+d.z,boxW,s.drawerDepth,d.height,s,drawerBoxMat));
           const fr=frontRect(c,s),drawerByIndex=new Map(layout.drawers.map(d=>[d.drawerIndex,d]));

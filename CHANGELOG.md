@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.6 - 2026-09-14
+
+### Changed
+
+- Adjacent open entries in drawer/mixed stacks now remain separate cubbies with fixed divider panels instead of being rejected.
+- Contiguous mixed-cubby open runs now use one applied back panel instead of overlapping per-cubby backs.
+- Save Project JSON now reuses a remembered project file handle instead of falling back to a new destination picker when write permission needs attention.
+
 ## 1.2.5 - 2026-09-14
 
 ### Added

@@ -34,6 +34,8 @@ The face frame is applied to the front of the carcass and consists of two full-h
 - Bottom fits completely between all four walls; no dado/rabbet is assumed.
 - Drawer box height is the outside wall height; bottom thickness does not reduce that entered height.
 - Default side-slide clearance: 1/2 in per side / 1 in total.
+- The drawer-box gap applies between adjacent drawer boxes.
+- Fixed mixed-cubby divider panels separate drawer boxes from open cubbies.
 
 ## Open spaces and backs
 
@@ -41,7 +43,9 @@ The face frame is applied to the front of the carcass and consists of two full-h
 - Default open-space back: 1/4 in plywood matching the visible/front material.
 - Open-space backs can instead match the hidden cabinet-box material or be set explicitly to birch/cherry.
 - Mixed cabinets receive backs only behind open cubbies; drawer-only areas remain open-backed.
-- A mixed-cubby back spans full cabinet width and covers clear opening height plus one carcass thickness above and below.
+- Adjacent open entries in a mixed cabinet remain separate cubbies and receive fixed divider panels between them.
+- A single mixed-cubby back spans full cabinet width and covers clear opening height plus one carcass thickness above and below.
+- Adjacent open cubbies share one localized back spanning the combined clear openings, the divider panel(s) between them, and one carcass thickness above and below.
 - Open-shelf cabinets use one full-width applied back.
 - Single-door cabinets use one full-width applied back in the visible/front material using the configured back thickness.
 
