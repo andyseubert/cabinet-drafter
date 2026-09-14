@@ -1,0 +1,199 @@
+  CAB_HEIGHT  = __CAB_HEIGHT__
+  PLY         = __PLY__
+  BACK_PLY    = __BACK_PLY__
+  OPEN_BACK_MATERIAL = :__OPEN_BACK_MATERIAL__
+  STRETCHER   = __STRETCHER__
+  FRONT_GAP   = __FRONT_GAP__
+  SIDE_REVEAL = __SIDE_REVEAL__
+  KICK_HEIGHT = __KICK_HEIGHT__
+  KICK_SETBACK = __KICK_SETBACK__
+  KICK_DEPTH   = __KICK_DEPTH__
+  KICK_SKIN_PLY = __KICK_SKIN_PLY__
+  SHELF_DEPTH  = __SHELF_DEPTH__
+  DISPLAY_GAP  = __DISPLAY_GAP__
+
+  # Drawer defaults. SLIDE_CLEARANCE_TOTAL is the TOTAL width allowance
+  # for both slides together. 1.0 means 1/2 inch clearance per side.
+  DRAWER_DEPTH = __DRAWER_DEPTH__
+  SLIDE_CLEARANCE_TOTAL = __SLIDE_CLEARANCE__
+  DRAWER_SIDE_PLY = __DRAWER_SIDE_PLY__
+  DRAWER_BOTTOM_PLY = __DRAWER_BOTTOM_PLY__
+  DRAWER_BOX_GAP = __DRAWER_BOX_GAP__
+  DRAWER_BOTTOM_CLEARANCE = __DRAWER_BOTTOM_CLEARANCE__
+  MIXED_PANEL_DEPTH = __MIXED_PANEL_DEPTH__
+  MIXED_PANEL_MATERIAL = :__MIXED_PANEL_MATERIAL__
+  FRAME_STILE_WIDTH = __FRAME_STILE_WIDTH__
+  FRAME_RAIL_WIDTH = __FRAME_RAIL_WIDTH__
+  FRAME_THICKNESS = __FRAME_THICKNESS__
+  FRAME_MATERIAL = :__FRAME_MATERIAL__
+  FRAME_OVERLAY = __FRAME_OVERLAY__
+  FRAME_INSET_REVEAL = __FRAME_INSET_REVEAL__
+
+  SHOW_LABELS = __SHOW_LABELS__
+  SHOW_DRAWER_BOX_HEIGHT_LABELS = __SHOW_DRAWER_BOX_HEIGHT_LABELS__
+  SHOW_DRAWER_FACE_HEIGHT_LABELS = __SHOW_DRAWER_FACE_HEIGHT_LABELS__
+  SHOW_OPEN_SPACE_HEIGHT_LABELS = __SHOW_OPEN_SPACE_HEIGHT_LABELS__
+  DISPLAY_UNITS = :__DISPLAY_UNITS__
+  SAVE_FILENAME = '__SAVE_FILENAME__'
+
+  def i(n)
+    n.to_f.inch
+  end
+
+  # Format SketchUp annotations in the selected display units. Inch labels use
+  # practical woodworking fractions rounded to 1/16; metric labels round to 1 mm.
+  def fraction_inches(value, denominator = 16)
+    total = (value.to_f * denominator).round
+    whole = total / denominator
+    num = total % denominator
+    return format('%d"', whole) if num == 0
+
+    a = num
+    b = denominator
+    while b != 0
+      a, b = b, a % b
+    end
+    gcd = a
+    num /= gcd
+    den = denominator / gcd
+    whole > 0 ? format('%d %d/%d"', whole, num, den) : format('%d/%d"', num, den)
+  end
+
+  def format_dimension(value)
+    if DISPLAY_UNITS == :mm
+      format('%d mm', (value.to_f * 25.4).round)
+    else
+      fraction_inches(value)
+    end
+  end
+
+  def material(model, name, rgb)
+    mats = model.materials
+    mat = mats[name] || mats.add(name)
+    mat.color = Sketchup::Color.new(*rgb)
+    mat
+  end
+
+  def add_box(parent_entities, name, x, y, z, width, depth, height, mat)
+    raise "Invalid box #{name}: #{width} x #{depth} x #{height}" if width <= 0 || depth <= 0 || height <= 0
+    group = parent_entities.add_group
+    group.name = name
+    e = group.entities
+    pts = [[0,0,0], [i(width),0,0], [i(width),i(depth),0], [0,i(depth),0]]
+    face = e.add_face(pts)
+    face.reverse! if face.normal.z < 0
+    face.pushpull(i(height))
+    group.material = mat if mat
+    group.transform!(Geom::Transformation.translation([i(x), i(y), i(z)]))
+    group
+  end
+
+  def add_label(entities, text, x, y, z)
+    return unless SHOW_LABELS
+    entities.add_text(text, Geom::Point3d.new(i(x), i(y), i(z)))
+  end
+
+  def add_drawer_height_label(entities, drawer_index, box_height, face_height, x, y, z)
+    return unless SHOW_DRAWER_BOX_HEIGHT_LABELS || SHOW_DRAWER_FACE_HEIGHT_LABELS
+    text = if SHOW_DRAWER_BOX_HEIGHT_LABELS && SHOW_DRAWER_FACE_HEIGHT_LABELS
+             "#{format_dimension(box_height)} / #{format_dimension(face_height)}"
+           elsif SHOW_DRAWER_BOX_HEIGHT_LABELS
+             format_dimension(box_height)
+           else
+             format_dimension(face_height)
+           end
+    # No leader/arrow. Put the annotation point directly at the center of the
+    # visible drawer face. A tiny Y offset keeps it just in front of the face.
+    anchor = Geom::Point3d.new(i(x), i(y - 0.02), i(z))
+    entities.add_text(text, anchor)
+  end
+
+  def add_open_space_height_label(entities, height, x, y, z)
+    return unless SHOW_OPEN_SPACE_HEIGHT_LABELS
+    text = format_dimension(height)
+    # Match the drawer annotations: put the number directly in the center of
+    # the visible opening, just in front of the cabinet face.
+    anchor = Geom::Point3d.new(i(x), i(y - 0.02), i(z))
+    entities.add_text(text, anchor)
+  end
+
+  # Separate 2in toe-kick/base. The structural base is a 3/4in birch ladder
+  # frame; the visible front is a cherry skin. KICK_SETBACK is measured to the
+  # visible face of the skin.
+  def make_kick(entities, width, birch, cherry_skin)
+    raise "Toe-kick depth is too small for the selected plywood/skin thickness" if KICK_DEPTH <= KICK_SKIN_PLY + (2.0 * PLY)
+    front_y = KICK_SETBACK + KICK_SKIN_PLY
+    rear_y = KICK_SETBACK + KICK_DEPTH - PLY
+    side_y = front_y + PLY
+    side_depth = rear_y - side_y
+
+    add_box(entities, 'Toe Kick Front Rail - Birch 3/4', 0, front_y, 0,
+            width, PLY, KICK_HEIGHT, birch)
+    add_box(entities, 'Toe Kick Rear Rail - Birch 3/4', 0, rear_y, 0,
+            width, PLY, KICK_HEIGHT, birch)
+    add_box(entities, 'Toe Kick Left Side Rail - Birch 3/4', 0, side_y, 0,
+            PLY, side_depth, KICK_HEIGHT, birch)
+    add_box(entities, 'Toe Kick Right Side Rail - Birch 3/4', width - PLY, side_y, 0,
+            PLY, side_depth, KICK_HEIGHT, birch)
+    add_box(entities, 'Toe Kick Skin - Cherry', 0, KICK_SETBACK, 0,
+            width, KICK_SKIN_PLY, KICK_HEIGHT, cherry_skin)
+  end
+
+  # Frameless open-back carcass used by pure drawer, single-door, and mixed
+  # drawer/open-cubby cabinets. It has no full top/back and uses four stretchers.
+  def make_open_back_box(entities, width, carcass, wood_label, birch, cherry_skin)
+    inside_w = width - (2.0 * PLY)
+    z0 = KICK_HEIGHT
+    make_kick(entities, width, birch, cherry_skin)
+
+    add_box(entities, "Left Side - #{wood_label} 3/4", 0, 0, z0,
+            PLY, CAB_DEPTH, CAB_HEIGHT, carcass)
+    add_box(entities, "Right Side - #{wood_label} 3/4", width - PLY, 0, z0,
+            PLY, CAB_DEPTH, CAB_HEIGHT, carcass)
+    add_box(entities, "Bottom - #{wood_label} 3/4", PLY, 0, z0,
+            inside_w, CAB_DEPTH, PLY, carcass)
+
+    top_z = z0 + CAB_HEIGHT - PLY
+    rear_y = CAB_DEPTH - PLY
+
+    add_box(entities, "Front Top Stretcher - #{wood_label} 3/4",
+            PLY, 0, top_z, inside_w, STRETCHER, PLY, carcass)
+    add_box(entities, "Rear Top Stretcher - #{wood_label} 3/4",
+            PLY, CAB_DEPTH - STRETCHER, top_z,
+            inside_w, STRETCHER, PLY, carcass)
+
+    add_box(entities, "Upper Rear Stretcher - #{wood_label} 3/4",
+            PLY, rear_y, top_z - STRETCHER,
+            inside_w, PLY, STRETCHER, carcass)
+    add_box(entities, "Lower Rear Stretcher - #{wood_label} 3/4",
+            PLY, rear_y, z0 + PLY,
+            inside_w, PLY, STRETCHER, carcass)
+  end
+
+  def add_birch_shelves(entities, width, shelf_count, birch)
+    return if shelf_count.to_i <= 0
+    inside_w = width - (2.0 * PLY)
+    z0 = KICK_HEIGHT
+    count = shelf_count.to_i
+    clear_total = CAB_HEIGHT - (2.0 * PLY) - (count * PLY)
+    raise 'Shelf count leaves no clear opening height' if clear_total < 0
+    opening_h = clear_total / (count + 1).to_f
+    clear_bottom = z0 + PLY
+    count.times do |idx|
+      shelf_z = clear_bottom + opening_h
+      add_box(entities, format('Adjustable Shelf %d - Birch 3/4 (pin supported)', idx + 1),
+              PLY, 0, shelf_z, inside_w, [SHELF_DEPTH, CAB_DEPTH].min, PLY, birch)
+      clear_bottom = shelf_z + PLY
+    end
+  end
+
+  def normalized_zones(spec)
+    raw = Array(spec[:zones])
+    zones = raw.map do |entry|
+      kind = entry[0].to_sym
+      height = entry[1].to_f
+      raise "#{spec[:label]}: unknown stack zone #{kind}" unless [:drawer, :open].include?(kind)
+      raise "#{spec[:label]}: stack heights must be positive" unless height > 0
+      { kind: kind, height: height }
+    end
+    raise "#{spec[:label]} needs at least one drawer/open stack zone" if zones.empty?
