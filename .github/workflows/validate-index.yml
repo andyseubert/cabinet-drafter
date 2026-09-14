@@ -1,0 +1,29 @@
+name: Validate CabinetDrafter index
+
+on:
+  push:
+    paths:
+      - '.validate/READY'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate assembled app
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('index.html')
+          text = p.read_text()
+          assert '<title>CabinetDrafter 1.1.1' in text
+          assert text.rstrip().endswith('</script></body></html>')
+          scripts = re.findall(r'<script(?:\s[^>]*)?>(.*?)</script>', text, re.S)
+          executable = [s for s in scripts if 'CabinetDrafter SketchUp Generator' not in s]
+          assert executable, 'No executable JavaScript found'
+          Path('/tmp/app.js').write_text(executable[-1])
+          print('bytes', p.stat().st_size)
+          PY
+          node --check /tmp/app.js
+          sha256sum index.html
