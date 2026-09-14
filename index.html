@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CabinetDrafter 1.1.1 — Cabinet planner</title>
+<title>CabinetDrafter 1.2.0 — Cabinet planner</title>
 <style>
-:root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:#222}main{max-width:1440px;margin:0 auto;padding:28px 22px 50px}h1{margin:0 0 6px;font-size:30px}h2{margin:0 0 14px;font-size:20px}h3{margin:18px 0 8px;font-size:16px}p{line-height:1.45}.muted{color:#666}.card{background:#fff;border:1px solid #d9d6cf;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:12px}label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:5px}input,select,textarea,button{font:inherit}input,select{width:100%;padding:8px 9px;border:1px solid #bbb;border-radius:7px;background:#fff}input[type=checkbox]{width:auto;transform:scale(1.1);margin-right:7px}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid #ddd}td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}td input,td select{min-width:70px}.drawer-list{min-width:165px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}button{border:1px solid #aaa;background:#fafafa;padding:9px 13px;border-radius:8px;cursor:pointer}button.primary{background:#333;color:#fff;border-color:#333}button.danger{color:#8b1e1e}textarea{width:100%;height:300px;padding:12px;border:1px solid #bbb;border-radius:8px;font-family:Menlo,Monaco,monospace;font-size:12px;line-height:1.4;white-space:pre}.note{background:#fff8df;border-left:4px solid #d7a800;padding:10px 12px;border-radius:5px;margin-top:12px}.small{font-size:13px}.summary-good{color:#265a2e}.summary-warn{color:#8b1e1e;font-weight:700}.dim{white-space:nowrap}.disabledish{opacity:.45}.hint{font-size:11px;color:#777;margin-top:3px}.drawer-budget{font-size:11px;color:#666;margin-top:4px;line-height:1.3;min-width:190px}.drawer-budget.bad{color:#8b1e1e}.summary-table td,.summary-table th{padding:7px 8px}.nowrap{white-space:nowrap}.pill{display:inline-block;padding:2px 7px;border-radius:999px;background:#eee;font-size:11px}.layout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.sheet-card{border:1px solid #ddd;border-radius:10px;padding:10px;background:#fafafa}.sheet-card h3{margin:0 0 8px}.sheet-svg{width:100%;height:auto;max-height:620px;background:#fff;border:1px solid #aaa}.bom-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}.kpi{background:#f7f7f5;border:1px solid #e1dfd9;border-radius:9px;padding:10px}.kpi strong{font-size:20px;display:block}.grain-arrow{font-weight:700}.warning-box{background:#fff0f0;border-left:4px solid #b64a4a;padding:10px 12px;border-radius:5px;margin-top:10px}.success-box{background:#eef8ef;border-left:4px solid #4a8f54;padding:10px 12px;border-radius:5px;margin-top:10px}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.table-wrap{overflow-x:auto}}@media print{body.print-layouts main>*{display:none!important}body.print-layouts #sheetLayoutsCard{display:block!important;border:none;box-shadow:none;margin:0;padding:0}body.print-layouts #sheetLayoutsCard .actions,body.print-layouts #sheetLayoutsCard .note{display:none!important}.sheet-card{break-inside:avoid;page-break-inside:avoid}.layout-grid{display:block}.sheet-card{margin:0 0 20px}}
+:root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:#222}main{max-width:1440px;margin:0 auto;padding:28px 22px 50px}h1{margin:0 0 6px;font-size:30px}h2{margin:0 0 14px;font-size:20px}h3{margin:18px 0 8px;font-size:16px}p{line-height:1.45}.muted{color:#666}.card{background:#fff;border:1px solid #d9d6cf;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:12px}label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:5px}input,select,textarea,button{font:inherit}input,select{width:100%;padding:8px 9px;border:1px solid #bbb;border-radius:7px;background:#fff}input[type=checkbox]{width:auto;transform:scale(1.1);margin-right:7px}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid #ddd}td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}td input,td select{min-width:70px}.drawer-list{min-width:165px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}button{border:1px solid #aaa;background:#fafafa;padding:9px 13px;border-radius:8px;cursor:pointer}button.primary{background:#333;color:#fff;border-color:#333}button.danger{color:#8b1e1e}textarea{width:100%;height:300px;padding:12px;border:1px solid #bbb;border-radius:8px;font-family:Menlo,Monaco,monospace;font-size:12px;line-height:1.4;white-space:pre}.note{background:#fff8df;border-left:4px solid #d7a800;padding:10px 12px;border-radius:5px;margin-top:12px}.small{font-size:13px}.summary-good{color:#265a2e}.summary-warn{color:#8b1e1e;font-weight:700}.dim{white-space:nowrap}.disabledish{opacity:.45}.hint{font-size:11px;color:#777;margin-top:3px}.drawer-budget{font-size:11px;color:#666;margin-top:4px;line-height:1.3;min-width:190px}.drawer-budget.bad{color:#8b1e1e}.summary-table td,.summary-table th{padding:7px 8px}.nowrap{white-space:nowrap}.pill{display:inline-block;padding:2px 7px;border-radius:999px;background:#eee;font-size:11px}.layout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.sheet-card{border:1px solid #ddd;border-radius:10px;padding:10px;background:#fafafa}.sheet-card h3{margin:0 0 8px}.sheet-svg{width:100%;height:auto;max-height:620px;background:#fff;border:1px solid #aaa}.bom-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}.kpi{background:#f7f7f5;border:1px solid #e1dfd9;border-radius:9px;padding:10px}.kpi strong{font-size:20px;display:block}.grain-arrow{font-weight:700}.warning-box{background:#fff0f0;border-left:4px solid #b64a4a;padding:10px 12px;border-radius:5px;margin-top:10px}.success-box{background:#eef8ef;border-left:4px solid #4a8f54;padding:10px 12px;border-radius:5px;margin-top:10px}.progress-group{border-top:1px solid #eee;padding:12px 0}.progress-group:first-child{border-top:0}.progress-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}.progress-actions{display:flex;gap:8px;flex-wrap:wrap}.progress-actions button{padding:6px 9px}.part-done{color:#777;text-decoration:line-through}.inventory-sheet-input{max-width:88px}.layout-print-control{display:flex;align-items:center;gap:6px;margin-bottom:7px}.layout-print-control input{margin-right:3px}.print-count{align-self:center;color:#666}.sheet-card:not(.print-selected){opacity:.72}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.table-wrap{overflow-x:auto}}@media print{body.print-layouts main>*{display:none!important}body.print-layouts #sheetLayoutsCard{display:block!important;border:none;box-shadow:none;margin:0;padding:0}body.print-layouts #sheetLayoutsCard .actions,body.print-layouts #sheetLayoutsCard .note,body.print-layouts .layout-print-control{display:none!important}body.print-layouts .sheet-card:not(.print-selected){display:none!important}.sheet-card{break-inside:avoid;page-break-inside:avoid}.layout-grid{display:block}.sheet-card{margin:0 0 20px;opacity:1!important}}
 .app-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.app-header p{margin:6px 0 0}.help-button{font-weight:700;min-width:88px}.help-dialog{width:min(980px,calc(100vw - 32px));max-height:88vh;border:1px solid #bbb;border-radius:14px;padding:0;box-shadow:0 16px 60px rgba(0,0,0,.28);background:#fff;color:#222}.help-dialog::backdrop{background:rgba(0,0,0,.38)}.help-doc{padding:22px 26px 32px;line-height:1.5}.help-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;position:sticky;top:0;background:#fff;padding:2px 0 12px;border-bottom:1px solid #eee;z-index:2}.help-heading h2{margin:0}.help-heading p{margin:3px 0 0}.help-close{white-space:nowrap}.help-doc h3{margin-top:26px;padding-top:4px;border-top:1px solid #eee}.help-doc h4{margin:20px 0 8px}.help-doc li{margin:5px 0}.help-doc pre{overflow:auto;background:#f6f5f1;border:1px solid #dedbd2;border-radius:8px;padding:12px;line-height:1.35}.help-table{width:100%;border-collapse:collapse;margin:10px 0}.help-table th,.help-table td{border:1px solid #ddd;padding:8px;vertical-align:top}.help-callout{background:#eef8ef;border-left:4px solid #4a8f54;padding:12px 14px;border-radius:6px}.help-warning{background:#fff3df;border-left:4px solid #d28a00;padding:12px 14px;border-radius:6px;margin:12px 0}@media(max-width:700px){.app-header{flex-direction:column}.help-button{align-self:flex-start}.help-doc{padding:18px}.help-heading{position:static}}
 
 .preview3d-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}.preview3d-header h2{margin-bottom:4px}.preview3d-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0}.preview3d-toolbar button{padding:7px 10px}.preview3d-check{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#444;padding:6px 8px;border:1px solid #ddd;border-radius:7px;background:#fafafa}.preview3d-check input{margin:0;width:auto;transform:none}.preview3d-wrap{position:relative;width:100%;height:min(64vh,640px);min-height:380px;border:1px solid #bdb9af;border-radius:10px;overflow:hidden;background:linear-gradient(#fbfbfa,#efeee9);touch-action:none}.preview3d-canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}.preview3d-canvas.dragging{cursor:grabbing}.preview3d-status{margin-top:7px}.preview3d-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:7px;font-size:11px;color:#666}.preview3d-swatch{display:inline-block;width:12px;height:12px;border:1px solid #777;vertical-align:-2px;margin-right:5px}.preview3d-swatch.birch{background:#ead9ae}.preview3d-swatch.cherry{background:#c88967}@media(max-width:700px){.preview3d-wrap{height:460px;min-height:320px}}
 </style>
 </head>
 <body><main>
-<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.1.1</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
+<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.2.0</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
 
 <section class="card"><h2>Units</h2><div class="grid"><div><label>Display / entry units</label><select id="units"><option value="in">Inches</option><option value="mm">Millimeters</option></select><div class="hint">The project is stored internally in inches for SketchUp compatibility. Switching units converts the displayed values without changing cabinet geometry.</div></div></div></section>
 
@@ -39,7 +39,7 @@
 <div><label>Face-frame material</label><select id="frameMaterial"><option value="cherry">Cherry solid stock</option><option value="birch">Birch solid stock</option></select><div class="hint">Face-frame members are treated as linear solid-wood stock, not plywood-sheet parts.</div></div>
 <div><label>Overlay beyond frame opening</label><input id="frameOverlay" type="number" min="0" step="0.03125"><div class="hint">Default 1/2&quot; per edge for face-frame overlay fronts.</div></div>
 <div><label>Inset reveal per edge</label><input id="frameInsetReveal" type="number" min="0" step="0.03125"><div class="hint">Default 1/16&quot; around inset doors/fronts.</div></div>
-</div><div class="note small"><strong>Version 1.1 face frames are perimeter frames:</strong> two full-height stiles plus a top and bottom rail. CabinetDrafter does not yet generate intermediate face-frame rails between individual drawers or cubbies. Overlay and inset front sizing is calculated against the perimeter frame opening.</div></section>
+</div><div class="note small"><strong>Face frames are currently perimeter frames:</strong> two full-height stiles plus a top and bottom rail. CabinetDrafter does not yet generate intermediate face-frame rails between individual drawers or cubbies. Overlay and inset front sizing is calculated against the perimeter frame opening.</div></section>
 
 <section class="card"><h2>Drawer / mixed sizing preview</h2><div id="drawerSummary" class="small"></div></section>
 
@@ -71,9 +71,11 @@
 
 <section class="card"><h2>Construction rules in this version</h2><p class="small"><strong>Cabinets may be frameless, face-frame overlay, or face-frame inset on a per-cabinet basis.</strong> Structural carcass joints use pocket screws in the supplied project defaults. Pure drawer and single-door cabinets use a birch carcass; mixed drawer/open-cubby cabinets and open-shelf cabinets use cherry carcasses by default so visible interiors are finished. Face frames are modeled as solid-wood perimeter frames and are reported separately as linear stock. Drawer boxes remain 1/2&quot; birch with bottoms fitted completely between the four walls. Open spaces receive applied backs at the rear. Adjustable shelves are pin-supported; fixed mixed-cubby dividers are pocket-screwed. Countertops attach through top stretchers. No edge banding is included.</p><div class="note small"><strong>Toe-kick/base:</strong> each cabinet gets a separate 2&quot;-high 3/4&quot; birch ladder frame (front rail, rear rail, two side rails), intended to use offcuts. A separate 1/4&quot; cherry skin covers the visible front. The BOM treats the cabinet list as one installed run and makes the cherry skin in the longest pieces that fit the configured sheet length; SketchUp shows one skin segment per cabinet because the presentation model spaces cabinets apart.</div></section>
 
-<section class="card" id="bomCard"><h2>Material / sheet BOM</h2><div id="bomKpis" class="bom-kpi"></div><div id="designChecks"></div><div id="bomSummary" class="small"></div><div id="linearStockSummary" class="small"></div><div class="actions"><button id="downloadBom">Download sheet BOM CSV</button><button id="downloadCutList">Download detailed cut list CSV</button><button id="downloadLinearStock">Download face-frame stock CSV</button></div></section>
+<section class="card" id="progressCard"><h2>Build progress & sheet inventory</h2><div id="progressKpis" class="bom-kpi"></div><div class="note small"><strong>Progress tracks physical plywood cut parts.</strong> Checked parts stay in the project design and 3D model, but they are removed from the remaining-work nesting below. Full sheets on hand means uncut, full usable sheets only; scraps and partial sheets are not counted as full-sheet inventory.</div><h3>Shopping list of sheets still to buy</h3><div id="inventorySummary" class="small"></div><h3>Completed cut parts</h3><div class="actions"><button id="markAllPartsComplete">Mark all current parts complete</button><button id="clearCompletedParts">Clear completed parts</button><button id="downloadRemainingCutList">Download remaining cut list CSV</button><button id="downloadProgressCsv">Download progress CSV</button></div><div id="partProgress" class="small"></div></section>
 
-<section class="card" id="sheetLayoutsCard"><h2>Plywood cutting layouts</h2><div class="actions"><button id="printLayouts">Print / Save layouts as PDF</button></div><div class="note small">This is a nesting/planning diagram, not a table-saw cut sequence. Real sheets may have voids, damage or grain defects, and your final saw strategy may move pieces around. The optimizer includes the selected kerf and edge trim.</div><div id="layoutWarnings"></div><div id="sheetLayouts" class="layout-grid"></div></section>
+<section class="card" id="bomCard"><h2>Material / sheet BOM <span class="muted">full project</span></h2><div id="bomKpis" class="bom-kpi"></div><div id="designChecks"></div><div id="bomSummary" class="small"></div><div id="linearStockSummary" class="small"></div><div class="actions"><button id="downloadBom">Download sheet BOM CSV</button><button id="downloadCutList">Download detailed cut list CSV</button><button id="downloadLinearStock">Download face-frame stock CSV</button></div></section>
+
+<section class="card" id="sheetLayoutsCard"><h2>Remaining plywood cutting layouts</h2><div class="actions"><button id="selectAllLayouts">Select all</button><button id="selectNoLayouts">Select none</button><button id="printLayouts">Print / Save selected layouts as PDF</button><span id="layoutPrintCount" class="small print-count"></span></div><div class="note small">These layouts include remaining cut parts only. Completed physical parts are not nested here. This is a nesting/planning diagram, not a table-saw cut sequence. Real sheets may have voids, damage or grain defects, and your final saw strategy may move pieces around. The optimizer includes the selected kerf and edge trim.</div><div id="layoutWarnings"></div><div id="sheetLayouts" class="layout-grid"></div></section>
 
 <section class="card"><h2>Optional SketchUp export</h2><div style="margin-bottom:12px"><input id="showLabels" type="checkbox"><strong> Show cabinet labels in 3D / SketchUp</strong><div class="hint">Turn this off for a clean presentation model with no cabinet summary text labels.</div></div><div style="margin-bottom:12px"><input id="showDrawerBoxHeightLabels" type="checkbox"><strong> Show drawer box height labels in 3D / SketchUp</strong><div class="hint">Shows the entered drawer-box wall height for each drawer, formatted as a woodworking fraction in inch mode or millimeters in mm mode.</div></div><div style="margin-bottom:12px"><input id="showDrawerFaceHeightLabels" type="checkbox"><strong> Show drawer face height labels in 3D / SketchUp</strong><div class="hint">Shows the visible cherry drawer-front height for each drawer. Labels are placed directly at the center of each face; when both options are on the number order is box / face.</div></div><div style="margin-bottom:12px"><input id="showOpenSpaceHeightLabels" type="checkbox"><strong> Show open-space height labels in 3D / SketchUp</strong><div class="hint">Shows the clear vertical height centered in each mixed-cabinet cubby and each opening in an open-shelf cabinet, formatted as a woodworking fraction in inch mode or millimeters in mm mode.</div></div><div class="actions"><button class="primary" id="downloadRuby">Download Ruby script</button><button id="copyRuby">Copy Ruby</button><button class="primary" id="saveProject">Save Project JSON</button><button id="saveProjectAs">Save Project As…</button><button id="downloadJson">Export JSON copy</button><button id="loadJson">Load / Import JSON</button><input id="jsonFile" type="file" accept="application/json,.json" hidden><button class="danger" id="reset">Reset defaults</button></div><p class="small muted">Every edit is still saved immediately in this browser. Click <strong>Save Project JSON</strong> once to choose a normal JSON file on your Mac; after that, supported browsers auto-save that same file whenever the generated Ruby changes. Downloading or copying Ruby also forces a project save first.</p><div id="projectSaveStatus" class="hint">Project JSON: checking…</div><div id="rubyDownloadStatus" class="hint"></div><textarea id="rubyPreview" spellcheck="false"></textarea></section>
 <section class="card small"><h2>Use in SketchUp Pro</h2><p>Open <strong>Extensions → Developer → Ruby Console</strong> and run:</p><pre>load File.expand_path('~/Downloads/cabinet-drafter_generated_TIMESTAMP.rb')</pre><p>Each Ruby download gets a unique timestamped filename so SketchUp cannot accidentally reload an older copy. After downloading, the page shows the exact load command. The script replaces the prior Generated Cabinet Lineup, models drawer boxes, mixed open cubbies/divider panels, real birch ladder toe-kick bases with cherry skins, and cherry fronts, optionally adds cabinet text labels and independently selectable per-drawer box-height and face-height labels, and saves a native SKP to your Desktop.</p></section>
@@ -81,7 +83,7 @@
   <div class="help-heading">
     <div>
       <h2>CabinetDrafter Help</h2>
-      <p class="muted">Cabinet planner · version 1.1.1</p>
+      <p class="muted">Cabinet planner · version 1.2.0</p>
     </div>
     <button type="button" id="closeHelp" class="help-close">Close</button>
   </div>
@@ -96,7 +98,7 @@
     <li>Build a lineup of drawer/mixed cabinets, single-door cabinets, and open-shelf cabinets.</li>
     <li>Enter drawer box heights and open-space heights from bottom to top.</li>
     <li>Use inches or millimeters without changing the underlying geometry.</li>
-    <li>Generate a plywood BOM, detailed cut-list CSV, and 4 × 8 sheet-planning diagrams.</li>
+    <li>Generate a plywood BOM, detailed cut-list CSV, remaining-work sheet-planning diagrams, and a shopping list that accounts for full sheets already on hand.</li>
     <li>Orbit and inspect the cabinet model directly in the browser and save the current view as PNG.</li>
     <li>Optionally generate a Ruby script that builds and saves the model in SketchUp Pro.</li>
     <li>Save the project to JSON and keep a browser-local recovery copy automatically.</li>
@@ -146,7 +148,7 @@
   <p>These shelves are still <strong>adjustable shelf-pin shelves</strong>; the entered heights describe the modeled layout, not fixed pocket-screw locations.</p>
 
   <h3>6. Construction model</h3>
-  <p>CabinetDrafter currently models the following construction system:</p><div class="help-callout"><strong>Face frames in 1.1:</strong> select the front construction per cabinet. Global face-frame settings control stile width, rail width, frame thickness/material, overlay, and inset reveal. Frames are perimeter-only in 1.1; intermediate rails between individual drawers/cubbies are a future enhancement.</div>
+  <p>CabinetDrafter currently models the following construction system:</p><div class="help-callout"><strong>Face frames:</strong> select the front construction per cabinet. Global face-frame settings control stile width, rail width, frame thickness/material, overlay, and inset reveal. Frames are perimeter-only; intermediate rails between individual drawers/cubbies are a future enhancement.</div>
   <ul>
     <li><strong>Per-cabinet front construction:</strong> frameless, face-frame overlay, or face-frame inset.</li>
     <li><strong>Pocket-screw structural joinery.</strong></li>
@@ -234,14 +236,18 @@ Visible front gets 1/4 cherry plywood or veneer skin.</pre>
   </ul>
   <p>Use <strong>Save Project As…</strong> to branch a design. Use <strong>Export JSON copy</strong> for a portable snapshot. Use <strong>Load / Import JSON</strong> to open somebody else's project.</p>
 
-  <h3>10. Sharing CabinetDrafter</h3>
+  <h3>10. Build progress and inventory</h3>
+  <p>Use the Build progress section while cutting and assembling. Checking a plywood part complete keeps the cabinet in the design and 3D model, but removes that physical part from the remaining-work nesting and remaining cut-list CSV.</p>
+  <p>Full sheets on hand are tracked by material. They mean full, uncut usable sheets only; scraps and partial sheets are not counted as full sheets in this version. Remaining layout sheets can be selected individually before printing.</p>
+
+  <h3>11. Sharing CabinetDrafter</h3>
   <p>To give the tool to somebody else, send the CabinetDrafter ZIP. They can unzip it and open <code>index.html</code> directly in a modern browser. To share a specific design, send the project JSON too.</p>
 
-  <h3>11. BOM, face-frame stock, and sheet layouts</h3>
+  <h3>12. BOM, face-frame stock, and sheet layouts</h3>
   <p>The sheet optimizer is a planning/nesting aid, not a table-saw cut sequence. It accounts for the configured sheet size, edge trim, saw kerf, and cherry grain direction. Inspect real sheets for damage, voids, and grain before cutting.</p>
   <div class="help-warning"><strong>Current run assumption:</strong> CabinetDrafter treats the complete cabinet list as one installed straight run when it creates the continuous cherry toe-kick skin. If a project contains cabinets on multiple walls or separate runs, split them into separate project files or manually split the toe-kick skin until multi-run support is added.</div>
 
-  <h3>12. Before you cut</h3>
+  <h3>13. Before you cut</h3>
   <ul>
     <li>Confirm actual plywood thickness; nominal 3/4 and 1/2 sheet goods may measure less.</li>
     <li>Confirm drawer-slide side clearance before cutting drawer boxes. The default is 1/2 per side.</li>
@@ -251,7 +257,7 @@ Visible front gets 1/4 cherry plywood or veneer skin.</pre>
     <li>Treat the generated cut list as a verified plan only after checking a representative cabinet against your real hardware/materials.</li>
   </ul>
 
-  <h3>13. Current limitations</h3>
+  <h3>14. Current limitations</h3>
   <ul>
     <li>One global cabinet height and depth for the whole project.</li>
     <li>Only single-door cabinets; no paired/double-door cabinet type yet.</li>
@@ -262,13 +268,13 @@ Visible front gets 1/4 cherry plywood or veneer skin.</pre>
     <li>No edge treatment or pull drilling because those choices are still intentionally TBD.</li>
   </ul>
 
-  <h3>14. Troubleshooting</h3>
+  <h3>15. Troubleshooting</h3>
   <p><strong>The SketchUp model did not change:</strong> use the exact timestamped Ruby filename and load command CabinetDrafter shows after downloading. Each generated script removes the old <em>Generated Cabinet Lineup</em> group before rebuilding it.</p>
   <p><strong>Project JSON is not auto-saving:</strong> browsers may require write permission again after reopening a local HTML file. Click Save Project JSON to reconnect the file. Browser recovery storage continues to work independently.</p>
   <p><strong>An open-shelf height list does not fit:</strong> use <code>auto</code> for the top opening, or adjust the entered clear heights so the total plus shelf thicknesses fits the available vertical space.</p>
 </div></dialog>
 <script type="text/plain" id="rubyTemplate">
-# CabinetDrafter SketchUp Generator - 1.1.1
+# CabinetDrafter SketchUp Generator - 1.2.0
 # Generated by CabinetDrafter.
 # Run from SketchUp: Extensions > Developer > Ruby Console
 #   load '/full/path/to/cabinet_lineup_generated.rb'
@@ -1011,11 +1017,13 @@ CabinetDrafter.run
 </script>
 <script>
 (() => {
-  const STORAGE_KEY='cabinetDrafterV110', OLD_KEYS=['joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','joineryGridV25','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
-  const defaults={"cabinets":[{"label":"24in Drawer Cabinet","type":"drawer","width":24,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"label":"20in Single Door Cabinet","type":"door","width":20,"qty":1,"stackSpec":"","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"label":"18in Drawer Cabinet","type":"drawer","width":18,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"}],"cabDepth":25,"cabHeight":38,"ply":0.75,"backPly":0.25,"stretcher":4,"frontGap":0.125,"sideReveal":0.0625,"kickHeight":2,"kickSetback":3,"kickDepth":22,"shelfDepth":24.5,"displayGap":8,"drawerDepth":24,"slideClearance":1.0,"drawerSidePly":0.5,"drawerBottomPly":0.5,"drawerBoxGap":0.5,"drawerBottomClearance":0.5,"mixedPanelDepth":24,"mixedPanelMaterial":"cherry","openBackMaterial":"cherry","saveFilename":"cabinet-drafter_generated.skp","sheetWidth":48,"sheetLength":96,"kerf":0.125,"edgeTrim":0.25,"spareSheets":0,"preserveCherryGrain":true,"showLabels":true,"showDrawerBoxHeightLabels":false,"showDrawerFaceHeightLabels":false,"showOpenSpaceHeightLabels":false,"kickSkinPly":0.25,"units":"in","frameStileWidth":1.5,"frameRailWidth":1.5,"frameThickness":0.75,"frameMaterial":"cherry","frameOverlay":0.5,"frameInsetReveal":0.0625};
+  const APP_VERSION='1.2.0';
+  const STORAGE_KEY='cabinetDrafterV120', OLD_KEYS=['cabinetDrafterV110','joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','joineryGridV25','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
+  const defaults={"cabinets":[{"uid":"cab-default-1","label":"24in Drawer Cabinet","type":"drawer","width":24,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"uid":"cab-default-2","label":"20in Single Door Cabinet","type":"door","width":20,"qty":1,"stackSpec":"","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"uid":"cab-default-3","label":"18in Drawer Cabinet","type":"drawer","width":18,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"}],"cabDepth":25,"cabHeight":38,"ply":0.75,"backPly":0.25,"stretcher":4,"frontGap":0.125,"sideReveal":0.0625,"kickHeight":2,"kickSetback":3,"kickDepth":22,"shelfDepth":24.5,"displayGap":8,"drawerDepth":24,"slideClearance":1.0,"drawerSidePly":0.5,"drawerBottomPly":0.5,"drawerBoxGap":0.5,"drawerBottomClearance":0.5,"mixedPanelDepth":24,"mixedPanelMaterial":"cherry","openBackMaterial":"cherry","saveFilename":"cabinet-drafter_generated.skp","sheetWidth":48,"sheetLength":96,"kerf":0.125,"edgeTrim":0.25,"spareSheets":0,"preserveCherryGrain":true,"showLabels":true,"showDrawerBoxHeightLabels":false,"showDrawerFaceHeightLabels":false,"showOpenSpaceHeightLabels":false,"kickSkinPly":0.25,"units":"in","frameStileWidth":1.5,"frameRailWidth":1.5,"frameThickness":0.75,"frameMaterial":"cherry","frameOverlay":0.5,"frameInsetReveal":0.0625,"progress":{"completedPartIds":[]},"inventory":{"fullSheetsOnHand":{}}};
   const rows=document.getElementById('cabinetRows'), preview=document.getElementById('rubyPreview'), summary=document.getElementById('drawerSummary');
   const PROJECT_DB='CabinetDrafterProjectFiles', PROJECT_STORE='handles', PROJECT_HANDLE_KEY='cabinetdrafter-project-json';
   let projectFileHandle=null, projectAutosaveTimer=null, projectHandleReady=false, projectWriteChain=Promise.resolve();
+  let completedPartIds=new Set(), fullSheetInventory={}, layoutPrintSelection=new Set(), currentLayoutSheetKeys=[], layoutPrintSelectionTouched=false, nextCabinetUidCounter=1, canonicalStateCache=null;
   const ids=["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","mixedPanelMaterial","openBackMaterial","frameStileWidth","frameRailWidth","frameThickness","frameMaterial","frameOverlay","frameInsetReveal","saveFilename","sheetWidth","sheetLength","kerf","edgeTrim","spareSheets"];
   const dimensionIds=new Set(["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frameStileWidth","frameRailWidth","frameThickness","frameOverlay","frameInsetReveal","sheetWidth","sheetLength","kerf","edgeTrim"]);
   let activeUnits='in';
@@ -1030,6 +1038,17 @@ CabinetDrafter.run
   const unitSuffix=()=>activeUnits==='mm'?' mm':'"';
   const dimText=n=>`${fmtDisplay(n)}${unitSuffix()}`;
   const listText=a=>(Array.isArray(a)?a:[]).map(fmtDisplay).join(', ');
+  const cleanKey=v=>String(v||'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)||'item';
+  function stableHash(v){let h=2166136261;const s=String(v);for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(36)}
+  function nextCabinetUid(){return `cab-${Date.now().toString(36)}-${(nextCabinetUidCounter++).toString(36)}`}
+  function normalizeUid(v){const raw=String(v||'').trim();return raw&&raw.length<120?cleanKey(raw):nextCabinetUid()}
+  function normalizeCompletedIds(value){const raw=Array.isArray(value)?value:Array.isArray(value?.completedPartIds)?value.completedPartIds:[];return new Set(raw.map(x=>String(x||'').trim()).filter(Boolean))}
+  function normalizeFullSheetInventory(value){const src=value?.fullSheetsOnHand&&typeof value.fullSheetsOnHand==='object'?value.fullSheetsOnHand:value&&typeof value==='object'?value:{};const out={};for(const [k,v] of Object.entries(src)){const n=Math.max(0,Math.round(number(v,0)));if(n>0)out[k]=n}return out}
+  function progressFromProject(st){return normalizeCompletedIds(st?.progress||st?.completedPartIds)}
+  function inventoryFromProject(st){return normalizeFullSheetInventory(st?.inventory||st?.fullSheetsOnHand)}
+  function currentCanonicalState(){return canonicalStateCache?deepCopy(canonicalStateCache):state()}
+  function localSave(st=currentCanonicalState()){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(st))}catch(_){}}
+  function uniqueCabinets(cabinets){const seen=new Set();return (cabinets||defaults.cabinets).map(normalizeCab).map(c=>{if(seen.has(c.uid))c.uid=nextCabinetUid();seen.add(c.uid);return c})}
 
   function parseMeasurement(token,sourceUnits=activeUnits){
     let raw=String(token||'').trim();if(!raw)return NaN;
@@ -1093,6 +1112,22 @@ CabinetDrafter.run
   function displayDrawerSpec(canonical){const tokens=String(canonical||'').split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean),out=[];for(const token of tokens){const h=parseMeasurement(token,'in');if(!(h>0)){out.push(token);continue}let prefix='';if(/^\s*(?:d(?=\s*[-.0-9])|drawer\b)/i.test(token))prefix='D';else if(/^\s*(?:o(?=\s*[-.0-9])|open\b|s(?=\s*[-.0-9])|shelf\b|c(?=\s*[-.0-9])|cubby\b)/i.test(token))prefix='O';out.push(prefix+fmtDisplay(h))}return out.join(', ')}
   function displayShelfSpec(canonical){const p=parseShelfSpec(canonical,'in');if(p.errors.length)return canonical||'';return p.entries.map(e=>e.auto?'auto':fmtDisplay(e.height)).join(', ')}
   function normalizeShelfField(el){const p=parseShelfSpec(el.value,activeUnits);if(p.errors.length)return;el.value=p.entries.map(e=>e.auto?'auto':fmtDisplay(e.height)).join(', ')}
+  function displayTolerance(){return activeUnits==='mm'?0.006:0.00001}
+  function readDimensionValue(el,fallback,cachedValue){
+    const raw=number(el.value,fromInches(fallback));
+    if(cachedValue!==undefined&&Number.isFinite(Number(cachedValue))&&Math.abs(raw-fromInches(cachedValue,activeUnits))<=displayTolerance())return cachedValue;
+    return toInches(raw,activeUnits);
+  }
+  function readDimensionListValue(el,cachedList){
+    const raw=el.value.trim();
+    if(Array.isArray(cachedList)&&raw===listText(cachedList))return [...cachedList];
+    return parseList(raw,activeUnits);
+  }
+  function readStackSpecValue(raw,type,cachedSpec){
+    const value=String(raw||'').trim();
+    if(typeof cachedSpec==='string'){const expected=type==='open_shelf'?displayShelfSpec(cachedSpec):displayDrawerSpec(cachedSpec);if(value===expected)return cachedSpec}
+    return type==='open_shelf'?canonicalizeShelfSpec(value,activeUnits):canonicalizeDrawerSpec(value,activeUnits);
+  }
   function shelfLayout(c,st){
     const p=parseShelfSpec(c.stackSpec||'','in');if(p.errors.length)return {error:p.errors.join('; ')};
     if(!p.entries.length){const count=Math.max(0,c.shelves||0),clearTotal=st.cabHeight-(2*st.ply)-(count*st.ply);if(clearTotal<0)return {error:'Shelf count leaves no clear opening height'};const openingH=clearTotal/(count+1),openings=[],shelves=[];let bottom=st.ply;for(let i=0;i<count;i++){const z=bottom+openingH;openings.push({height:openingH,clearBottom:bottom,clearTop:z});shelves.push({z});bottom=z+st.ply}openings.push({height:openingH,clearBottom:bottom,clearTop:bottom+openingH});return {openings,shelves,explicit:false}}
@@ -1105,7 +1140,7 @@ CabinetDrafter.run
     let stackSpec=typeof c.stackSpec==='string'?c.stackSpec:'';
     if(!stackSpec&&Array.isArray(c.zones)&&c.zones.length)stackSpec=stackTextFromZones(c.zones);
     if(!stackSpec&&oldHeights.length)stackSpec=oldHeights.map(h=>'D'+fmt(h)).join(', ');
-    return {label:c.label||'',type:c.type||'drawer',frontStyle:['frameless','face_overlay','face_inset'].includes(c.frontStyle)?c.frontStyle:'frameless',width:number(c.width,24),qty:Math.max(1,Math.round(number(c.qty,1))),stackSpec,frontHeights:Array.isArray(c.frontHeights)?c.frontHeights:[],shelves:Math.max(0,Math.round(number(c.shelves,0)))};
+    return {uid:normalizeUid(c.uid),label:c.label||'',type:c.type||'drawer',frontStyle:['frameless','face_overlay','face_inset'].includes(c.frontStyle)?c.frontStyle:'frameless',width:number(c.width,24),qty:Math.max(1,Math.round(number(c.qty,1))),stackSpec,frontHeights:Array.isArray(c.frontHeights)?c.frontHeights:[],shelves:Math.max(0,Math.round(number(c.shelves,0)))};
   }
   function zonesFor(c){return parseStack(c.stackSpec||'','in').zones}
   function drawerHeightsFor(c){return zonesFor(c).filter(z=>z.kind==='drawer').map(z=>z.height)}
@@ -1119,6 +1154,7 @@ CabinetDrafter.run
   }
   function makeRow(cab){
     cab=normalizeCab(cab);const tr=document.createElement('tr');
+    tr.dataset.uid=cab.uid;
     tr.innerHTML=`<td><input class="label" type="text"></td><td><select class="type"><option value="drawer">Drawer / mixed</option><option value="door">Single door</option><option value="open_shelf">Open shelf</option></select></td><td><select class="frontStyle"><option value="frameless">Frameless</option><option value="face_overlay">Face frame · overlay</option><option value="face_inset">Face frame · inset</option></select></td><td><input class="width" type="number" min="1" step="0.125"></td><td><input class="qty" type="number" min="1" step="1"></td><td><input class="stackSpec drawer-list" type="text"><div class="drawer-budget"></div></td><td><input class="frontHeights drawer-list" type="text" placeholder="auto"></td><td><input class="shelves" type="number" min="0" step="1"></td><td><button class="remove danger">Remove</button></td>`;
     tr.querySelector('.label').value=cab.label;tr.querySelector('.type').value=cab.type;tr.querySelector('.frontStyle').value=cab.frontStyle;tr.querySelector('.width').value=fmtDisplay(cab.width);tr.querySelector('.qty').value=cab.qty;tr.querySelector('.stackSpec').value=cab.type==='open_shelf'?displayShelfSpec(cab.stackSpec):displayDrawerSpec(cab.stackSpec);tr.querySelector('.frontHeights').value=listText(cab.frontHeights);tr.querySelector('.shelves').value=cab.shelves;
     tr.querySelector('.remove').onclick=()=>{tr.remove();changed()};
@@ -1127,9 +1163,9 @@ CabinetDrafter.run
     tr.querySelector('.frontHeights').addEventListener('blur',e=>{normalizeField(e.target);changed()});
     rows.appendChild(tr);setRowEnabled(tr);
   }
-  function readRows(){return [...rows.querySelectorAll('tr')].map(tr=>{const type=tr.querySelector('.type').value,raw=tr.querySelector('.stackSpec').value.trim();return {label:tr.querySelector('.label').value.trim(),type,frontStyle:tr.querySelector('.frontStyle').value,width:toInches(number(tr.querySelector('.width').value,fromInches(24)),activeUnits),qty:Math.max(1,Math.round(number(tr.querySelector('.qty').value,1))),stackSpec:type==='open_shelf'?canonicalizeShelfSpec(raw,activeUnits):canonicalizeDrawerSpec(raw,activeUnits),frontHeights:parseList(tr.querySelector('.frontHeights').value,activeUnits),shelves:Math.max(0,Math.round(number(tr.querySelector('.shelves').value,0)))}})}
-  function state(){const st={cabinets:readRows(),units:activeUnits};ids.forEach(id=>{const el=document.getElementById(id);if(el.type==='number')st[id]=dimensionIds.has(id)?toInches(number(el.value,fromInches(defaults[id])),activeUnits):number(el.value,defaults[id]);else st[id]=el.value});st.preserveCherryGrain=document.getElementById('preserveCherryGrain').checked;st.showLabels=document.getElementById('showLabels').checked;st.showDrawerBoxHeightLabels=document.getElementById('showDrawerBoxHeightLabels').checked;st.showDrawerFaceHeightLabels=document.getElementById('showDrawerFaceHeightLabels').checked;st.showOpenSpaceHeightLabels=document.getElementById('showOpenSpaceHeightLabels').checked;return st}
-  function applyState(st){st={...st};if(st.drawerBottomClearance===undefined&&st.drawerTopClearance!==undefined)st.drawerBottomClearance=st.drawerTopClearance;if(st.showDrawerBoxHeightLabels===undefined&&st.showDrawerHeightLabels!==undefined)st.showDrawerBoxHeightLabels=!!st.showDrawerHeightLabels;if(st.showDrawerFaceHeightLabels===undefined&&st.showDrawerHeightLabels!==undefined)st.showDrawerFaceHeightLabels=!!st.showDrawerHeightLabels;activeUnits=st.units==='mm'?'mm':'in';document.getElementById('units').value=activeUnits;rows.innerHTML='';(st.cabinets||defaults.cabinets).map(normalizeCab).forEach(makeRow);ids.forEach(id=>{const el=document.getElementById(id),v=st[id]??defaults[id];el.value=el.type==='number'&&dimensionIds.has(id)?fmtDisplay(v):v});document.getElementById('preserveCherryGrain').checked=st.preserveCherryGrain??defaults.preserveCherryGrain;document.getElementById('showLabels').checked=st.showLabels??defaults.showLabels;document.getElementById('showDrawerBoxHeightLabels').checked=st.showDrawerBoxHeightLabels??defaults.showDrawerBoxHeightLabels;document.getElementById('showDrawerFaceHeightLabels').checked=st.showDrawerFaceHeightLabels??defaults.showDrawerFaceHeightLabels;document.getElementById('showOpenSpaceHeightLabels').checked=st.showOpenSpaceHeightLabels??defaults.showOpenSpaceHeightLabels;updateInputSteps();updateAll()}
+  function readRows(){const cachedByUid=new Map((canonicalStateCache?.cabinets||[]).map(c=>[normalizeUid(c.uid),c]));return [...rows.querySelectorAll('tr')].map(tr=>{const uid=normalizeUid(tr.dataset.uid),cached=cachedByUid.get(uid)||{},type=tr.querySelector('.type').value,raw=tr.querySelector('.stackSpec').value.trim();return {uid,label:tr.querySelector('.label').value.trim(),type,frontStyle:tr.querySelector('.frontStyle').value,width:readDimensionValue(tr.querySelector('.width'),24,cached.width),qty:Math.max(1,Math.round(number(tr.querySelector('.qty').value,1))),stackSpec:readStackSpecValue(raw,type,cached.stackSpec),frontHeights:readDimensionListValue(tr.querySelector('.frontHeights'),cached.frontHeights),shelves:Math.max(0,Math.round(number(tr.querySelector('.shelves').value,0)))}})}
+  function state(){const st={cabinets:readRows(),units:activeUnits};ids.forEach(id=>{const el=document.getElementById(id);if(el.type==='number')st[id]=dimensionIds.has(id)?readDimensionValue(el,defaults[id],canonicalStateCache?.[id]):number(el.value,defaults[id]);else st[id]=el.value});st.preserveCherryGrain=document.getElementById('preserveCherryGrain').checked;st.showLabels=document.getElementById('showLabels').checked;st.showDrawerBoxHeightLabels=document.getElementById('showDrawerBoxHeightLabels').checked;st.showDrawerFaceHeightLabels=document.getElementById('showDrawerFaceHeightLabels').checked;st.showOpenSpaceHeightLabels=document.getElementById('showOpenSpaceHeightLabels').checked;st.progress={completedPartIds:[...completedPartIds].sort()};st.inventory={fullSheetsOnHand:normalizeFullSheetInventory(fullSheetInventory)};return st}
+  function applyState(st){st={...defaults,...st};if(st.drawerBottomClearance===undefined&&st.drawerTopClearance!==undefined)st.drawerBottomClearance=st.drawerTopClearance;if(st.showDrawerBoxHeightLabels===undefined&&st.showDrawerHeightLabels!==undefined)st.showDrawerBoxHeightLabels=!!st.showDrawerHeightLabels;if(st.showDrawerFaceHeightLabels===undefined&&st.showDrawerHeightLabels!==undefined)st.showDrawerFaceHeightLabels=!!st.showDrawerHeightLabels;completedPartIds=progressFromProject(st);fullSheetInventory=inventoryFromProject(st);layoutPrintSelection=new Set();currentLayoutSheetKeys=[];layoutPrintSelectionTouched=false;activeUnits=st.units==='mm'?'mm':'in';st.units=activeUnits;st.cabinets=uniqueCabinets(st.cabinets||defaults.cabinets);st.progress={completedPartIds:[...completedPartIds].sort()};st.inventory={fullSheetsOnHand:normalizeFullSheetInventory(fullSheetInventory)};canonicalStateCache=deepCopy(st);document.getElementById('units').value=activeUnits;rows.innerHTML='';st.cabinets.forEach(makeRow);ids.forEach(id=>{const el=document.getElementById(id),v=st[id]??defaults[id];el.value=el.type==='number'&&dimensionIds.has(id)?fmtDisplay(v):v});document.getElementById('preserveCherryGrain').checked=st.preserveCherryGrain??defaults.preserveCherryGrain;document.getElementById('showLabels').checked=st.showLabels??defaults.showLabels;document.getElementById('showDrawerBoxHeightLabels').checked=st.showDrawerBoxHeightLabels??defaults.showDrawerBoxHeightLabels;document.getElementById('showDrawerFaceHeightLabels').checked=st.showDrawerFaceHeightLabels??defaults.showDrawerFaceHeightLabels;document.getElementById('showOpenSpaceHeightLabels').checked=st.showOpenSpaceHeightLabels??defaults.showOpenSpaceHeightLabels;updateInputSteps();updateAll(st)}
   function updateInputSteps(){const step=activeUnits==='mm'?'0.5':'0.03125';dimensionIds.forEach(id=>{const el=document.getElementById(id);if(el&&el.type==='number')el.step=step});rows.querySelectorAll('.width').forEach(el=>el.step=activeUnits==='mm'?'0.5':'0.125')}
 
 
@@ -1208,9 +1244,9 @@ CabinetDrafter.run
     results.sort((a,b)=>a.drawerIndex-b.drawerIndex);return {fronts:results,layout,custom:!!custom.length,shorter,leftover:totalLeftover};
   }
 
-  function updateRowBudget(tr){
+  function updateRowBudget(tr,allState=null){
     const helper=tr.querySelector('.drawer-budget');if(!helper)return;const type=tr.querySelector('.type').value;if(type==='door'){helper.textContent='';return}
-    const all=state(),idx=[...rows.querySelectorAll('tr')].indexOf(tr),cab=all.cabinets[idx];
+    const all=allState||state(),idx=[...rows.querySelectorAll('tr')].indexOf(tr),cab=all.cabinets[idx];
     if(type==='open_shelf'){
       const layout=shelfLayout(cab,all);helper.className='drawer-budget'+(layout.error?' bad':'');
       if(layout.error){helper.textContent=layout.error;return}
@@ -1220,9 +1256,9 @@ CabinetDrafter.run
     helper.className='drawer-budget'+(layout.error?' bad':'');if(layout.error){helper.textContent=layout.error;return}
     helper.textContent=`${layout.drawers.length} drawer(s), ${layout.opens.length} open cubby(s), ${layout.dividers.length} added divider panel(s) · ${dimText(layout.usable)} internal height · ${dimText(layout.remaining)} ${layout.remainingContext}`;
   }
-  function updateAllRowBudgets(){[...rows.querySelectorAll('tr')].forEach(updateRowBudget)}
-  function updateSummary(){
-    const st=state(),cabs=st.cabinets.filter(c=>c.type==='drawer');if(!cabs.length){summary.innerHTML='<span class="muted">No drawer / mixed cabinets.</span>';return}
+  function updateAllRowBudgets(st=null){[...rows.querySelectorAll('tr')].forEach(tr=>updateRowBudget(tr,st))}
+  function updateSummary(st=state()){
+    const cabs=st.cabinets.filter(c=>c.type==='drawer');if(!cabs.length){summary.innerHTML='<span class="muted">No drawer / mixed cabinets.</span>';return}
     let h='<div class="table-wrap"><table class="summary-table"><thead><tr><th>Cabinet</th><th>Stack bottom → top</th><th>Drawer box W × D</th><th>Open clear heights</th><th>Divider panels</th><th>Remaining</th><th>Drawer-front heights</th><th>Status</th></tr></thead><tbody>';
     for(const c of cabs){
       const inside=c.width-(2*st.ply),boxW=inside-st.slideClearance,layout=zoneLayout(c,st),fl=frontLayout(c,st,layout),errs=[];if(inside<=0)errs.push('cabinet too narrow for carcass sides');if(boxW<=2*st.drawerSidePly)errs.push('drawer box too narrow for selected slide clearance/side thickness');if(st.drawerDepth>st.cabDepth+0.001)errs.push('drawer depth exceeds cabinet depth');if(layout.error)errs.push(layout.error);const dh=layout.drawers||[];if(dh.some(d=>d.height<=st.drawerBottomPly))errs.push('a drawer box height is not greater than drawer-bottom thickness');if(fl.error&&!layout.error)errs.push(fl.error);if(fl.shorter)errs.push(`${fl.shorter} custom front(s) shorter than their drawer box`);
@@ -1237,60 +1273,63 @@ CabinetDrafter.run
   function zonesRuby(c){const z=parseStack(c.stackSpec||'','in').zones;return '['+z.map(x=>`[:${x.kind}, ${fmt(x.height)}]`).join(', ')+']'}
   function shelfOpeningsRuby(c){const p=parseShelfSpec(c.stackSpec||'','in');if(p.errors.length)return '[]';return '['+p.entries.map(e=>e.auto?':auto':fmt(e.height)).join(', ')+']'}
   function cabinetRuby(cabs){return cabs.map(c=>{const label=c.label||`${fmt(c.width)}in ${c.type==='door'?'Single Door':c.type==='open_shelf'?'Open Shelf':'Drawer/Mixed'} Cabinet`;return `    { type: :${c.type}, front_style: :${c.frontStyle||'frameless'}, width: ${fmt(c.width)}, qty: ${c.qty}, shelves: ${c.shelves}, shelf_openings: ${shelfOpeningsRuby(c)}, zones: ${zonesRuby(c)}, front_heights: ${rubyArray(c.frontHeights)}, label: '${rubyString(label)}' }`}).join(',\n')}
-  function generateRuby(){const st=state();let text=document.getElementById('rubyTemplate').textContent.replace(/^\n/,'');const map={'__CABINETS__':cabinetRuby(st.cabinets),'__CAB_DEPTH__':fmt(st.cabDepth),'__CAB_HEIGHT__':fmt(st.cabHeight),'__PLY__':fmt(st.ply),'__BACK_PLY__':fmt(st.backPly),'__STRETCHER__':fmt(st.stretcher),'__FRONT_GAP__':fmt(st.frontGap),'__SIDE_REVEAL__':fmt(st.sideReveal),'__KICK_HEIGHT__':fmt(st.kickHeight),'__KICK_SETBACK__':fmt(st.kickSetback),'__KICK_DEPTH__':fmt(st.kickDepth),'__KICK_SKIN_PLY__':fmt(st.kickSkinPly),'__SHELF_DEPTH__':fmt(st.shelfDepth),'__DISPLAY_GAP__':fmt(st.displayGap),'__DRAWER_DEPTH__':fmt(st.drawerDepth),'__SLIDE_CLEARANCE__':fmt(st.slideClearance),'__DRAWER_SIDE_PLY__':fmt(st.drawerSidePly),'__DRAWER_BOTTOM_PLY__':fmt(st.drawerBottomPly),'__DRAWER_BOX_GAP__':fmt(st.drawerBoxGap),'__DRAWER_BOTTOM_CLEARANCE__':fmt(st.drawerBottomClearance),'__MIXED_PANEL_DEPTH__':fmt(st.mixedPanelDepth),'__MIXED_PANEL_MATERIAL__':st.mixedPanelMaterial==='cherry'?'cherry':'birch','__OPEN_BACK_MATERIAL__':st.openBackMaterial==='birch'?'birch':'cherry','__FRAME_STILE_WIDTH__':fmt(st.frameStileWidth),'__FRAME_RAIL_WIDTH__':fmt(st.frameRailWidth),'__FRAME_THICKNESS__':fmt(st.frameThickness),'__FRAME_MATERIAL__':st.frameMaterial==='birch'?'birch':'cherry','__FRAME_OVERLAY__':fmt(st.frameOverlay),'__FRAME_INSET_REVEAL__':fmt(st.frameInsetReveal),'__SHOW_LABELS__':st.showLabels?'true':'false','__SHOW_DRAWER_BOX_HEIGHT_LABELS__':st.showDrawerBoxHeightLabels?'true':'false','__SHOW_DRAWER_FACE_HEIGHT_LABELS__':st.showDrawerFaceHeightLabels?'true':'false','__SHOW_OPEN_SPACE_HEIGHT_LABELS__':st.showOpenSpaceHeightLabels?'true':'false','__DISPLAY_UNITS__':st.units==='mm'?'mm':'in','__SAVE_FILENAME__':rubyString(st.saveFilename||defaults.saveFilename)};for(const[k,v]of Object.entries(map))text=text.split(k).join(String(v));return text}
+  function generateRuby(st=currentCanonicalState()){let text=document.getElementById('rubyTemplate').textContent.replace(/^\n/,'');const map={'__CABINETS__':cabinetRuby(st.cabinets),'__CAB_DEPTH__':fmt(st.cabDepth),'__CAB_HEIGHT__':fmt(st.cabHeight),'__PLY__':fmt(st.ply),'__BACK_PLY__':fmt(st.backPly),'__STRETCHER__':fmt(st.stretcher),'__FRONT_GAP__':fmt(st.frontGap),'__SIDE_REVEAL__':fmt(st.sideReveal),'__KICK_HEIGHT__':fmt(st.kickHeight),'__KICK_SETBACK__':fmt(st.kickSetback),'__KICK_DEPTH__':fmt(st.kickDepth),'__KICK_SKIN_PLY__':fmt(st.kickSkinPly),'__SHELF_DEPTH__':fmt(st.shelfDepth),'__DISPLAY_GAP__':fmt(st.displayGap),'__DRAWER_DEPTH__':fmt(st.drawerDepth),'__SLIDE_CLEARANCE__':fmt(st.slideClearance),'__DRAWER_SIDE_PLY__':fmt(st.drawerSidePly),'__DRAWER_BOTTOM_PLY__':fmt(st.drawerBottomPly),'__DRAWER_BOX_GAP__':fmt(st.drawerBoxGap),'__DRAWER_BOTTOM_CLEARANCE__':fmt(st.drawerBottomClearance),'__MIXED_PANEL_DEPTH__':fmt(st.mixedPanelDepth),'__MIXED_PANEL_MATERIAL__':st.mixedPanelMaterial==='cherry'?'cherry':'birch','__OPEN_BACK_MATERIAL__':st.openBackMaterial==='birch'?'birch':'cherry','__FRAME_STILE_WIDTH__':fmt(st.frameStileWidth),'__FRAME_RAIL_WIDTH__':fmt(st.frameRailWidth),'__FRAME_THICKNESS__':fmt(st.frameThickness),'__FRAME_MATERIAL__':st.frameMaterial==='birch'?'birch':'cherry','__FRAME_OVERLAY__':fmt(st.frameOverlay),'__FRAME_INSET_REVEAL__':fmt(st.frameInsetReveal),'__SHOW_LABELS__':st.showLabels?'true':'false','__SHOW_DRAWER_BOX_HEIGHT_LABELS__':st.showDrawerBoxHeightLabels?'true':'false','__SHOW_DRAWER_FACE_HEIGHT_LABELS__':st.showDrawerFaceHeightLabels?'true':'false','__SHOW_OPEN_SPACE_HEIGHT_LABELS__':st.showOpenSpaceHeightLabels?'true':'false','__DISPLAY_UNITS__':st.units==='mm'?'mm':'in','__SAVE_FILENAME__':rubyString(st.saveFilename||defaults.saveFilename)};for(const[k,v]of Object.entries(map))text=text.split(k).join(String(v));return text}
 
   function fracLabel(n){const known=[[0.75,'3/4'],[0.5,'1/2'],[0.25,'1/4'],[0.625,'5/8'],[0.375,'3/8'],[0.125,'1/8']];for(const [v,l] of known)if(Math.abs(n-v)<0.001)return l;return fmt(n)}
   function materialKey(wood,thickness){return `${wood} ${fracLabel(thickness)}`}
-  function addPart(parts,wood,thickness,name,a,b,qty=1,grainMode='none',cabinet=''){
-    if(!(a>0&&b>0&&qty>0))return;const key=materialKey(wood,thickness);parts.push({material:key,wood,thickness,name,a,b,qty,cabinet,grainMode});
+  function addPart(parts,wood,thickness,name,a,b,qty=1,grainMode='none',cabinet='',meta={}){
+    if(!(a>0&&b>0&&qty>0))return;const key=materialKey(wood,thickness),groupKey=meta.groupKey||cleanKey(cabinet||'project'),groupLabel=meta.groupLabel||cabinet||'Project',roleKey=meta.roleKey||name;
+    parts.push({material:key,wood,thickness,name,a,b,qty,cabinet,grainMode,groupKey,groupLabel,roleKey});
   }
-  function expandedCabinets(s){const out=[];for(const c of s.cabinets){for(let q=0;q<Math.max(1,c.qty);q++){const x={...c};x.instanceLabel=c.qty>1?`${c.label} ${q+1}`:c.label;out.push(x)}}return out}
+  function expandedCabinets(s){const out=[];for(const c of uniqueCabinets(s.cabinets)){for(let q=0;q<Math.max(1,c.qty);q++){const x={...c};x.copyIndex=q;x.copyNumber=q+1;x.instanceKey=`${c.uid}#${q+1}`;const baseLabel=c.label||`${fmt(c.width)}in ${c.type==='door'?'Single Door':c.type==='open_shelf'?'Open Shelf':'Drawer/Mixed'} Cabinet`;x.instanceLabel=c.qty>1?`${baseLabel} ${q+1}`:baseLabel;out.push(x)}}return out}
   function buildParts(s){
     const parts=[],expanded=expandedCabinets(s);let kickRunWidth=0;
     for(const c of expanded){
       const w=c.width,inside=w-(2*s.ply),label=c.instanceLabel||c.label||`${w} cabinet`;
+      const groupMeta={groupKey:c.instanceKey,groupLabel:label};
+      const addCabPart=(wood,thickness,name,a,b,qty=1,grainMode='none',roleKey=name)=>addPart(parts,wood,thickness,name,a,b,qty,grainMode,label,{...groupMeta,roleKey});
       kickRunWidth+=w;
 
       // Separate 2in birch ladder base. These narrow rails are intentionally
       // nested with the other birch parts so offcuts can satisfy them.
-      addPart(parts,'Birch',s.ply,'Toe-kick front/rear rail',w,s.kickHeight,2,'none',label);
+      addCabPart('Birch',s.ply,'Toe-kick front/rear rail',w,s.kickHeight,2,'none','toe-kick-front-rear-rail');
       const kickSideDepth=s.kickDepth-s.kickSkinPly-(2*s.ply);
-      addPart(parts,'Birch',s.ply,'Toe-kick side rail',kickSideDepth,s.kickHeight,2,'none',label);
+      addCabPart('Birch',s.ply,'Toe-kick side rail',kickSideDepth,s.kickHeight,2,'none','toe-kick-side-rail');
 
       if(c.type==='drawer'){
         const layout=zoneLayout(c,s),mixed=!layout.error&&layout.opens&&layout.opens.length>0;
         const carcassWood=mixed?'Cherry':'Birch',sideGrain=mixed?'vertical':'none',flatGrain=mixed?'horizontal':'none';
-        addPart(parts,carcassWood,s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,sideGrain,label);
-        addPart(parts,carcassWood,s.ply,'Bottom',inside,s.cabDepth,1,flatGrain,label);
-        addPart(parts,carcassWood,s.ply,'4in stretcher',inside,s.stretcher,4,flatGrain,label);
+        addCabPart(carcassWood,s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,sideGrain,'cabinet-side');
+        addCabPart(carcassWood,s.ply,'Bottom',inside,s.cabDepth,1,flatGrain,'cabinet-bottom');
+        addCabPart(carcassWood,s.ply,'4in stretcher',inside,s.stretcher,4,flatGrain,'carcass-stretcher');
         const fl=frontLayout(c,s,layout),boxW=inside-s.slideClearance;
         if(!layout.error){
           const panelWood=s.mixedPanelMaterial==='cherry'?'Cherry':'Birch',panelGrain=panelWood==='Cherry'?'horizontal':'none',panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply);
-          if(layout.dividers.length)addPart(parts,panelWood,s.ply,'Open cubby fixed divider (pocket screwed)',inside,panelDepth,layout.dividers.length,panelGrain,label);
+          if(layout.dividers.length)addCabPart(panelWood,s.ply,'Open cubby fixed divider (pocket screwed)',inside,panelDepth,layout.dividers.length,panelGrain,'open-cubby-fixed-divider');
           const backWood=s.openBackMaterial==='birch'?'Birch':'Cherry',backGrain=backWood==='Cherry'?'vertical':'none';
-          for(const o of layout.opens)addPart(parts,backWood,s.backPly,'Open cubby applied back',w,o.height+(2*s.ply),1,backGrain,label);
-          if(!fl.error){const fr=frontRect(c,s);for(const f of fl.fronts)addPart(parts,'Cherry',s.ply,`Drawer front ${f.drawerIndex+1}`,fr.w,f.height,1,'horizontal',label)}
+          for(const o of layout.opens)addCabPart(backWood,s.backPly,'Open cubby applied back',w,o.height+(2*s.ply),1,backGrain,`open-cubby-back-zone-${o.zoneIndex}`);
+          if(!fl.error){const fr=frontRect(c,s);for(const f of fl.fronts)addCabPart('Cherry',s.ply,`Drawer front ${f.drawerIndex+1}`,fr.w,f.height,1,'horizontal',`drawer-front-${f.drawerIndex+1}`)}
           const side=s.drawerSidePly,bottom=s.drawerBottomPly;
           for(const d of layout.drawers){
             const pos=d.drawerIndex===0?' (bottom)':d.drawerIndex===layout.drawers.length-1?' (top)':'';
-            addPart(parts,'Birch',side,`Drawer ${d.drawerIndex+1}${pos} side`,s.drawerDepth,d.height,2,'none',label);
-            addPart(parts,'Birch',side,`Drawer ${d.drawerIndex+1}${pos} front/back`,boxW-(2*side),d.height,2,'none',label);
-            addPart(parts,'Birch',bottom,`Drawer ${d.drawerIndex+1}${pos} bottom`,boxW-(2*side),s.drawerDepth-(2*side),1,'none',label);
+            addCabPart('Birch',side,`Drawer ${d.drawerIndex+1}${pos} side`,s.drawerDepth,d.height,2,'none',`drawer-${d.drawerIndex+1}-side`);
+            addCabPart('Birch',side,`Drawer ${d.drawerIndex+1}${pos} front/back`,boxW-(2*side),d.height,2,'none',`drawer-${d.drawerIndex+1}-front-back`);
+            addCabPart('Birch',bottom,`Drawer ${d.drawerIndex+1}${pos} bottom`,boxW-(2*side),s.drawerDepth-(2*side),1,'none',`drawer-${d.drawerIndex+1}-bottom`);
           }
         }
       }else if(c.type==='door'){
-        addPart(parts,'Birch',s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'none',label);
-        addPart(parts,'Birch',s.ply,'Bottom',inside,s.cabDepth,1,'none',label);
-        addPart(parts,'Birch',s.ply,'4in stretcher',inside,s.stretcher,4,'none',label);
-        if(c.shelves>0)addPart(parts,'Birch',s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),c.shelves,'none',label);
-        const fr=frontRect(c,s);addPart(parts,'Cherry',s.ply,c.frontStyle==='face_inset'?'Single inset door':c.frontStyle==='face_overlay'?'Single face-frame overlay door':'Single frameless overlay door',fr.w,fr.high-fr.low,1,'vertical',label);
+        addCabPart('Birch',s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'none','cabinet-side');
+        addCabPart('Birch',s.ply,'Bottom',inside,s.cabDepth,1,'none','cabinet-bottom');
+        addCabPart('Birch',s.ply,'4in stretcher',inside,s.stretcher,4,'none','carcass-stretcher');
+        if(c.shelves>0)addCabPart('Birch',s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),c.shelves,'none','adjustable-shelf');
+        const fr=frontRect(c,s);addCabPart('Cherry',s.ply,c.frontStyle==='face_inset'?'Single inset door':c.frontStyle==='face_overlay'?'Single face-frame overlay door':'Single frameless overlay door',fr.w,fr.high-fr.low,1,'vertical','single-door-front');
       }else if(c.type==='open_shelf'){
-        addPart(parts,'Cherry',s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'vertical',label);
-        addPart(parts,'Cherry',s.ply,'Bottom',inside,s.cabDepth,1,'horizontal',label);
-        addPart(parts,'Cherry',s.ply,'Top stretcher',inside,s.stretcher,2,'horizontal',label);
-        const sl=shelfLayout(c,s);if(!sl.error&&sl.shelves.length)addPart(parts,'Cherry',s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),sl.shelves.length,'horizontal',label);
+        addCabPart('Cherry',s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'vertical','cabinet-side');
+        addCabPart('Cherry',s.ply,'Bottom',inside,s.cabDepth,1,'horizontal','cabinet-bottom');
+        addCabPart('Cherry',s.ply,'Top stretcher',inside,s.stretcher,2,'horizontal','top-stretcher');
+        const sl=shelfLayout(c,s);if(!sl.error&&sl.shelves.length)addCabPart('Cherry',s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),sl.shelves.length,'horizontal','adjustable-shelf');
         const backWood=s.openBackMaterial==='birch'?'Birch':'Cherry',backGrain=backWood==='Cherry'?'vertical':'none';
-        addPart(parts,backWood,s.backPly,'Applied full back',w,s.cabHeight,1,backGrain,label);
+        addCabPart(backWood,s.backPly,'Applied full back',w,s.cabHeight,1,backGrain,'applied-full-back');
       }
     }
 
@@ -1301,21 +1340,23 @@ CabinetDrafter.run
       let remain=kickRunWidth,segment=1;
       while(remain>0.001){
         const len=Math.min(remain,maxSkinLength);
-        addPart(parts,'Cherry',s.kickSkinPly,`Continuous toe-kick skin segment ${segment}`,len,s.kickHeight,1,'horizontal','Installed toe-kick run');
+        addPart(parts,'Cherry',s.kickSkinPly,`Continuous toe-kick skin segment ${segment}`,len,s.kickHeight,1,'horizontal','Installed toe-kick run',{groupKey:'installed-toe-kick-run',groupLabel:'Installed toe-kick run',roleKey:`toe-kick-skin-segment-${segment}`});
         remain-=len;segment++;
       }
     }
     return parts;
   }
   function instanceParts(parts,s){
-    const out=[];let id=1;
+    const out=[];let id=1;const baseCounts=new Map();
     for(const p of parts){for(let i=0;i<p.qty;i++){
       let w=p.a,h=p.b,locked=false;
       if(p.wood==='Cherry'&&s.preserveCherryGrain){locked=true;if(p.grainMode==='vertical'){w=p.a;h=p.b}else if(p.grainMode==='horizontal'){w=p.a;h=p.b}else{locked=false}}
       // For horizontal grain, p.a is authored as the grain-running dimension for fronts/shelves.
       // Put grain-running dimension on sheet Y (96in axis).
       if(locked&&p.grainMode==='horizontal'){w=p.b;h=p.a}
-      out.push({...p,qty:1,id:id++,packW:w,packH:h,locked});
+      const signature=[p.material,p.wood,fmt(p.thickness),p.name,fmt(p.a),fmt(p.b),p.grainMode].join('|'),base=[p.groupKey,p.roleKey,signature].join('|'),pieceNo=(baseCounts.get(base)||0)+1;baseCounts.set(base,pieceNo);
+      const partId=`part:${cleanKey(p.groupKey)}:${cleanKey(p.roleKey)}:${pieceNo}:${stableHash(signature)}`;
+      out.push({...p,qty:1,id:id++,pieceNo,partId,packW:w,packH:h,locked});
     }}
     return out;
   }
@@ -1348,9 +1389,11 @@ CabinetDrafter.run
     }
     return {sheets,overs};
   }
+  function packInstances(instances,s){const groups={};for(const p of instances)(groups[p.material]??=[]).push(p);const results={};for(const [mat,items] of Object.entries(groups))results[mat]=packMaterial(items,s);return results}
   function packAll(s){
-    const parts=buildParts(s),inst=instanceParts(parts,s),groups={};for(const p of inst)(groups[p.material]??=[]).push(p);const results={};for(const [mat,items] of Object.entries(groups))results[mat]=packMaterial(items,s);return {parts,instances:inst,results};
+    const parts=buildParts(s),inst=instanceParts(parts,s);return {parts,instances:inst,results:packInstances(inst,s)};
   }
+  function remainingPackedFrom(packed,s){const instances=packed.instances.filter(p=>!completedPartIds.has(p.partId));return {parts:packed.parts,instances,results:packInstances(instances,s)}}
   function summarizeMaterial(mat,group,s){const sheetArea=s.sheetWidth*s.sheetLength,used=group.sheets.reduce((sum,sh)=>sum+sh.items.reduce((a,p)=>a+p.w*p.h,0),0),pieces=group.sheets.reduce((a,sh)=>a+sh.items.length,0)+group.overs.length;return {material:mat,pieces,sheets:group.sheets.length,purchase:group.sheets.length+Math.max(0,Math.round(s.spareSheets)),usedArea:used,util:group.sheets.length?used/(group.sheets.length*sheetArea):0,overs:group.overs.length}}
   function designChecks(s){
     const errors=[],warnings=[];
@@ -1396,43 +1439,89 @@ CabinetDrafter.run
     warnings.push('Mixed cabinets receive backs only behind open cubbies. Each localized back is full cabinet width and clear-opening height plus one carcass thickness above and below. Drawer-only regions remain open-backed.');
     warnings.push('Open-shelf cabinets use one full-width applied back; their bottom and adjustable shelves may use the full carcass depth.');
     warnings.push('Drawer boxes are pocket-screw construction: 1/2" birch sides/front/back and a 1/2" birch bottom fitted completely between the four walls, with no dados. The entered drawer-box height is the full wall height.');
-    const actualOverlay=s.ply-s.sideReveal;warnings.push(`Frameless fronts use ${dimText(s.sideReveal)} side reveal (${dimText(actualOverlay)} geometric carcass-edge overlap with the current carcass thickness). Face-frame overlay fronts use ${dimText(s.frameOverlay)} overlay beyond the frame opening; inset fronts use ${dimText(s.frameInsetReveal)} reveal per edge.`);warnings.push('Face-frame support in version 1.1 uses a perimeter frame only: two full-height stiles plus top and bottom rails. Intermediate face-frame rails between drawers/cubbies are not generated yet.');
+    const actualOverlay=s.ply-s.sideReveal;warnings.push(`Frameless fronts use ${dimText(s.sideReveal)} side reveal (${dimText(actualOverlay)} geometric carcass-edge overlap with the current carcass thickness). Face-frame overlay fronts use ${dimText(s.frameOverlay)} overlay beyond the frame opening; inset fronts use ${dimText(s.frameInsetReveal)} reveal per edge.`);warnings.push('Face-frame support currently uses a perimeter frame only: two full-height stiles plus top and bottom rails. Intermediate face-frame rails between drawers/cubbies are not generated yet.');
     warnings.push('Mixed drawer/open-cubby cabinets use cherry carcass sides, bottom, and all four stretchers; their fixed cubby dividers default to cherry.');
     warnings.push('Adjustable shelves are pin-supported. Mixed-cubby divider panels are fixed with pocket screws. Countertops attach with screws through the top stretchers.');
     warnings.push('No edge banding/solid edging is included. Door hinge model, hinge count/cup bores, and handmade pulls remain outside the generated BOM.');
     warnings.push('Toe-kick skin BOM assumes the listed cabinets form one continuous installed run; SketchUp display gaps are ignored for that skin length.');
     return {errors,warnings};
   }
-  function updateBomAndLayouts(){
-    const s=state(),checks=designChecks(s),packed=packAll(s),summaries=Object.entries(packed.results).map(([m,g])=>summarizeMaterial(m,g,s)).sort((a,b)=>a.material.localeCompare(b.material)),linear=summarizeLinearStock(s);
+  function renderProgress(packed,remainingPacked,totalSummaries,remainingSummaries,s){
+    const kpis=document.getElementById('progressKpis');if(!kpis)return;
+    const knownIds=new Set(packed.instances.map(p=>p.partId)),completed=packed.instances.filter(p=>completedPartIds.has(p.partId)),stale=[...completedPartIds].filter(id=>!knownIds.has(id)).length,remaining=remainingPacked.instances,remainingSheetTarget=remainingSummaries.reduce((a,x)=>a+x.purchase,0);
+    kpis.innerHTML=`<div class="kpi"><span class="muted small">Full project plywood parts</span><strong>${packed.instances.length}</strong></div><div class="kpi"><span class="muted small">Completed parts</span><strong>${completed.length}</strong></div><div class="kpi"><span class="muted small">Remaining parts</span><strong>${remaining.length}</strong></div><div class="kpi"><span class="muted small">Remaining sheet target</span><strong>${remainingSheetTarget}</strong><span class="hint">includes spare-sheet setting</span></div>`;
+    renderInventorySummary(totalSummaries,remainingSummaries,s);
+    renderPartProgress(packed.instances,stale);
+  }
+  function renderInventorySummary(totalSummaries,remainingSummaries,s){
+    const root=document.getElementById('inventorySummary');if(!root)return;const remainingByMaterial=new Map(remainingSummaries.map(x=>[x.material,x])),totalByMaterial=new Map(totalSummaries.map(x=>[x.material,x])),materials=[...new Set([...totalSummaries.map(x=>x.material),...remainingSummaries.map(x=>x.material),...Object.keys(fullSheetInventory)])].sort((a,b)=>a.localeCompare(b));
+    if(!materials.length){root.innerHTML='<span class="muted">No plywood sheet parts are currently generated.</span>';return}
+    const spare=Math.max(0,Math.round(s.spareSheets));let h='<div class="table-wrap"><table class="summary-table"><thead><tr><th>Material</th><th>Full project sheets</th><th>Remaining parts</th><th>Remaining nested sheets</th><th>Spare sheets included</th><th>Full sheets on hand</th><th>Additional sheets to buy</th><th>Status</th></tr></thead><tbody>';
+    for(const mat of materials){const total=totalByMaterial.get(mat),rem=remainingByMaterial.get(mat),onHand=Math.max(0,Math.round(number(fullSheetInventory[mat],0))),required=rem?rem.purchase:0,buy=Math.max(required-onHand,0);h+=`<tr><td><strong>${esc(mat)}</strong></td><td>${total?total.purchase:0}</td><td>${rem?rem.pieces:0}</td><td>${rem?rem.sheets:0}</td><td>${rem?spare:0}</td><td><input class="inventory-sheet-input" data-material="${esc(mat)}" type="number" min="0" step="1" value="${onHand}"></td><td><strong>${buy}</strong></td><td>${rem&&rem.overs?`<span class="summary-warn">${rem.overs} oversize part(s)</span>`:'<span class="summary-good">OK</span>'}</td></tr>`}
+    h+='</tbody></table></div><div class="hint">Shopping quantities are max(remaining nested sheets + configured spare sheets - full sheets on hand, 0). Inventory is only full, uncut usable sheets; partial sheets and scraps stay outside this 1.2.0 workflow.</div>';root.innerHTML=h;
+    root.querySelectorAll('.inventory-sheet-input').forEach(input=>input.addEventListener('change',e=>{const mat=e.target.dataset.material,n=Math.max(0,Math.round(number(e.target.value,0)));if(n>0)fullSheetInventory[mat]=n;else delete fullSheetInventory[mat];changed()}));
+  }
+  function renderPartProgress(instances,staleCount){
+    const root=document.getElementById('partProgress');if(!root)return;
+    if(!instances.length){root.innerHTML='<span class="muted">No plywood cut parts are currently generated.</span>';return}
+    const groups=new Map();for(const p of instances){const key=p.groupKey||'project',g=groups.get(key)||{key,label:p.groupLabel||p.cabinet||'Project',items:[]};g.items.push(p);groups.set(key,g)}
+    let h=staleCount?`<div class="note small"><strong>${staleCount} saved completed part ${staleCount===1?'ID no longer matches':'IDs no longer match'} the current geometry.</strong> This usually means dimensions, materials, or cabinet count changed. The saved ID is kept so progress can recover if the matching part returns.</div>`:'';
+    for(const g of groups.values()){const done=g.items.filter(p=>completedPartIds.has(p.partId)).length,remain=g.items.length-done,isRun=g.key==='installed-toe-kick-run';h+=`<div class="progress-group"><div class="progress-head"><div><strong>${esc(g.label)}</strong><div class="hint">${done} of ${g.items.length} plywood part(s) complete · ${remain} remaining</div></div><div class="progress-actions"><button type="button" class="mark-group-complete" data-group-key="${esc(g.key)}">${isRun?'Mark run complete':'Mark cabinet complete'}</button><button type="button" class="clear-group-complete" data-group-key="${esc(g.key)}">${isRun?'Clear run':'Clear cabinet'}</button></div></div><details ${remain?'open':''}><summary>Physical cut parts</summary><div class="table-wrap"><table class="summary-table"><thead><tr><th>Done</th><th>Part</th><th>Material</th><th>Size</th></tr></thead><tbody>`;
+      for(const p of g.items){const donePart=completedPartIds.has(p.partId);h+=`<tr class="${donePart?'part-done':''}"><td><input class="part-complete-check" data-part-id="${esc(p.partId)}" type="checkbox" ${donePart?'checked':''}></td><td>${esc(p.name)}${p.pieceNo>1?` <span class="muted">#${p.pieceNo}</span>`:''}</td><td>${esc(p.material)}</td><td class="dim">${dimText(p.a)} × ${dimText(p.b)}</td></tr>`}
+      h+='</tbody></table></div></details></div>';
+    }
+    root.innerHTML=h;
+    root.querySelectorAll('.part-complete-check').forEach(cb=>cb.addEventListener('change',e=>{const id=e.target.dataset.partId;if(e.target.checked)completedPartIds.add(id);else completedPartIds.delete(id);changed()}));
+    root.querySelectorAll('.mark-group-complete').forEach(btn=>btn.addEventListener('click',e=>{const key=e.target.dataset.groupKey;for(const p of instances)if(p.groupKey===key)completedPartIds.add(p.partId);changed()}));
+    root.querySelectorAll('.clear-group-complete').forEach(btn=>btn.addEventListener('click',e=>{const key=e.target.dataset.groupKey;for(const p of instances)if(p.groupKey===key)completedPartIds.delete(p.partId);changed()}));
+  }
+  function updateBomAndLayouts(s=state()){
+    const checks=designChecks(s),packed=packAll(s),remainingPacked=remainingPackedFrom(packed,s),summaries=Object.entries(packed.results).map(([m,g])=>summarizeMaterial(m,g,s)).sort((a,b)=>a.material.localeCompare(b.material)),remainingSummaries=Object.entries(remainingPacked.results).map(([m,g])=>summarizeMaterial(m,g,s)).sort((a,b)=>a.material.localeCompare(b.material)),linear=summarizeLinearStock(s);
     document.getElementById('designChecks').innerHTML=(checks.errors.length?`<div class="warning-box small"><strong>Design errors:</strong><br>${checks.errors.map(esc).join('<br>')}</div>`:'')+(checks.warnings.length?`<div class="note small"><strong>Assumptions / cautions:</strong><br>${checks.warnings.map(esc).join('<br>')}</div>`:'');
     const totalSheets=summaries.reduce((a,x)=>a+x.purchase,0),sheetPieces=summaries.reduce((a,x)=>a+x.pieces,0),framePieces=linear.reduce((a,x)=>a+x.pieces,0),totalPieces=sheetPieces+framePieces;document.getElementById('bomKpis').innerHTML=`<div class="kpi"><span class="muted small">Cut parts</span><strong>${totalPieces}</strong></div><div class="kpi"><span class="muted small">Plywood material types</span><strong>${summaries.length}</strong></div><div class="kpi"><span class="muted small">Suggested sheets</span><strong>${totalSheets}</strong></div><div class="kpi"><span class="muted small">Face-frame pieces</span><strong>${framePieces}</strong></div>`;
     let t='<div class="table-wrap"><table class="summary-table"><thead><tr><th>Material</th><th>Parts</th><th>Nested sheets</th><th>Suggested purchase</th><th>Sheet utilization</th><th>Status</th></tr></thead><tbody>';
     for(const x of summaries)t+=`<tr><td><strong>${esc(x.material)}</strong></td><td>${x.pieces}</td><td>${x.sheets}</td><td><strong>${x.purchase}</strong></td><td>${(x.util*100).toFixed(1)}%</td><td>${x.overs?`<span class="summary-warn">${x.overs} part(s) do not fit</span>`:'<span class="summary-good">OK</span>'}</td></tr>`;t+='</tbody></table></div>';document.getElementById('bomSummary').innerHTML=t;let lt='';if(linear.length){lt='<h3>Face-frame solid stock</h3><div class="table-wrap"><table class="summary-table"><thead><tr><th>Material</th><th>Thickness</th><th>Member width</th><th>Pieces</th><th>Total linear length</th></tr></thead><tbody>';for(const g of linear)lt+=`<tr><td>${esc(g.material)}</td><td>${dimText(g.thickness)}</td><td>${dimText(g.width)}</td><td>${g.pieces}</td><td><strong>${dimText(g.totalLength)}</strong></td></tr>`;lt+='</tbody></table></div><div class="hint">Linear length is a net cut-length estimate only; add waste based on the board lengths and defect allowance you intend to buy.</div>'}document.getElementById('linearStockSummary').innerHTML=lt;
-    renderLayouts(packed.results,s);window.__cabinetDrafterPacked={packed,s,summaries,linear};
+    renderProgress(packed,remainingPacked,summaries,remainingSummaries,s);
+    renderLayouts(remainingPacked.results,s);window.__cabinetDrafterPacked={packed,remainingPacked,s,summaries,remainingSummaries,linear};
   }
   function materialColor(mat){return mat.startsWith('Cherry')?'#c88967':'#ead9ae'}
   function svgEsc(s){return esc(s)}
+  function layoutSheetKey(mat,idx,sh){return `sheet:${cleanKey(mat)}:${idx+1}:${stableHash(sh.items.map(p=>p.partId).join('|'))}`}
+  function updateLayoutPrintCount(){const el=document.getElementById('layoutPrintCount');if(el)el.textContent=currentLayoutSheetKeys.length?`${layoutPrintSelection.size} of ${currentLayoutSheetKeys.length} sheet(s) selected`:'No remaining sheets to print'}
+  function syncLayoutSelectionUi(){document.querySelectorAll('.sheet-card').forEach(card=>{const key=card.dataset.sheetKey,selected=layoutPrintSelection.has(key);card.classList.toggle('print-selected',selected);const cb=card.querySelector('.layout-print-check');if(cb)cb.checked=selected});updateLayoutPrintCount()}
   function renderLayouts(results,s){
-    const root=document.getElementById('sheetLayouts'),warn=document.getElementById('layoutWarnings');root.innerHTML='';let warnings=[];
+    const root=document.getElementById('sheetLayouts'),warn=document.getElementById('layoutWarnings');root.innerHTML='';let warnings=[];currentLayoutSheetKeys=[];
     for(const [mat,g] of Object.entries(results).sort((a,b)=>a[0].localeCompare(b[0]))){if(g.overs.length)warnings.push(`${mat}: ${g.overs.length} part(s) cannot fit on a ${fmt(s.sheetWidth)} × ${fmt(s.sheetLength)} sheet with the current trim/grain rules.`);g.sheets.forEach((sh,idx)=>{
-      const card=document.createElement('div');card.className='sheet-card';const util=sh.items.reduce((a,p)=>a+p.w*p.h,0)/(s.sheetWidth*s.sheetLength);card.innerHTML=`<h3>${esc(mat)} — sheet ${idx+1}</h3><div class="small muted">${sh.items.length} parts · ${(util*100).toFixed(1)}% area used${mat.startsWith('Cherry')&&s.preserveCherryGrain?' · grain ↑':''}</div>`;
+      const key=layoutSheetKey(mat,idx,sh);currentLayoutSheetKeys.push(key);if(!layoutPrintSelectionTouched)layoutPrintSelection.add(key);
+      const selected=layoutPrintSelection.has(key),card=document.createElement('div');card.className='sheet-card'+(selected?' print-selected':'');card.dataset.sheetKey=key;const util=sh.items.reduce((a,p)=>a+p.w*p.h,0)/(s.sheetWidth*s.sheetLength);card.innerHTML=`<label class="layout-print-control"><input class="layout-print-check" type="checkbox" data-sheet-key="${esc(key)}" ${selected?'checked':''}> Print this sheet</label><h3>${esc(mat)} — sheet ${idx+1}</h3><div class="small muted">${sh.items.length} parts · ${(util*100).toFixed(1)}% area used${mat.startsWith('Cherry')&&s.preserveCherryGrain?' · grain ↑':''}</div>`;
       const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox',`0 0 ${s.sheetWidth} ${s.sheetLength}`);svg.setAttribute('class','sheet-svg');svg.setAttribute('aria-label',`${mat} sheet ${idx+1}`);
       const bg=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:0,y:0,width:s.sheetWidth,height:s.sheetLength,fill:'#fff',stroke:'#333','stroke-width':'0.18'}))bg.setAttribute(k,v);svg.appendChild(bg);
       if(s.edgeTrim>0){const r=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:s.edgeTrim,y:s.edgeTrim,width:s.sheetWidth-2*s.edgeTrim,height:s.sheetLength-2*s.edgeTrim,fill:'none',stroke:'#999','stroke-width':'0.12','stroke-dasharray':'0.5 0.5'}))r.setAttribute(k,v);svg.appendChild(r)}
       for(const p of sh.items){const r=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:p.x,y:p.y,width:p.w,height:p.h,fill:materialColor(mat),stroke:'#333','stroke-width':'0.12'}))r.setAttribute(k,v);svg.appendChild(r);const text=document.createElementNS(svg.namespaceURI,'text');text.setAttribute('x',p.x+0.5);text.setAttribute('y',p.y+1.8);text.setAttribute('font-size','1.35');text.setAttribute('font-family','Arial, sans-serif');text.setAttribute('fill','#222');const l1=document.createElementNS(svg.namespaceURI,'tspan');l1.textContent=p.name;l1.setAttribute('x',p.x+0.5);l1.setAttribute('dy','0');text.appendChild(l1);const l2=document.createElementNS(svg.namespaceURI,'tspan');l2.textContent=`${fmtDisplay(p.a)}×${fmtDisplay(p.b)}${activeUnits==='mm'?' mm':' in'}`;l2.setAttribute('x',p.x+0.5);l2.setAttribute('dy','1.45');text.appendChild(l2);svg.appendChild(text)}
       card.appendChild(svg);root.appendChild(card)
     })}
-    warn.innerHTML=warnings.length?`<div class="warning-box small"><strong>Layout warning:</strong> ${warnings.map(esc).join('<br>')}</div>`:'<div class="success-box small">All generated parts fit the selected sheet sizes.</div>';
+    if(layoutPrintSelectionTouched){const keys=new Set(currentLayoutSheetKeys);layoutPrintSelection=new Set([...layoutPrintSelection].filter(k=>keys.has(k)))}else layoutPrintSelection=new Set(currentLayoutSheetKeys);
+    root.querySelectorAll('.layout-print-check').forEach(cb=>cb.addEventListener('change',e=>{layoutPrintSelectionTouched=true;const key=e.target.dataset.sheetKey;if(e.target.checked)layoutPrintSelection.add(key);else layoutPrintSelection.delete(key);syncLayoutSelectionUi()}));
+    updateLayoutPrintCount();
+    if(!currentLayoutSheetKeys.length)warn.innerHTML=warnings.length?`<div class="warning-box small"><strong>Layout warning:</strong> ${warnings.map(esc).join('<br>')}</div>`:'<div class="success-box small">No remaining plywood parts need nesting.</div>';
+    else warn.innerHTML=warnings.length?`<div class="warning-box small"><strong>Layout warning:</strong> ${warnings.map(esc).join('<br>')}</div>`:'<div class="success-box small">All remaining generated parts fit the selected sheet sizes.</div>';
   }
 
   function csvCell(v){const s=String(v??'');return /[\",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
   function downloadBomCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const rows=[['Material','Part count','Nested sheets','Extra sheets','Suggested purchase','Utilization %','Oversize parts']];for(const s of x.summaries)rows.push([s.material,s.pieces,s.sheets,x.s.spareSheets,s.purchase,(s.util*100).toFixed(1),s.overs]);download('cabinet-drafter_sheet_BOM.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
   function downloadCutListCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const u=activeUnits==='mm'?'mm':'in';const rows=[['Material','Cabinet','Part','Qty',`Dimension A (${u})`,`Dimension B (${u})`,'Grain rule']];for(const p of x.packed.parts)rows.push([p.material,p.cabinet,p.name,p.qty,fmtDisplay(p.a),fmtDisplay(p.b),p.grainMode]);download('cabinet-drafter_detailed_cut_list.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
   function downloadLinearStockCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const u=activeUnits==='mm'?'mm':'in',rows=[['Material',`Thickness (${u})`,`Member width (${u})`,'Pieces',`Total linear length (${u})`]];for(const g of x.linear)rows.push([g.material,fmtDisplay(g.thickness),fmtDisplay(g.width),g.pieces,fmtDisplay(g.totalLength)]);download('cabinet-drafter_face_frame_stock.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
+  function instanceCutListRows(instances,statusMode){const u=activeUnits==='mm'?'mm':'in',rows=[['Status','Material','Cabinet','Part',`Dimension A (${u})`,`Dimension B (${u})`,'Grain rule','Part ID']];for(const p of instances){const status=statusMode|| (completedPartIds.has(p.partId)?'complete':'remaining');rows.push([status,p.material,p.cabinet,p.name,fmtDisplay(p.a),fmtDisplay(p.b),p.grainMode,p.partId])}return rows}
+  function downloadRemainingCutListCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const rows=instanceCutListRows(x.remainingPacked.instances,'remaining');download('cabinet-drafter_remaining_cut_list.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
+  function downloadProgressCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const rows=instanceCutListRows(x.packed.instances);download('cabinet-drafter_progress.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
+  function markAllCurrentPartsComplete(){const x=window.__cabinetDrafterPacked;if(!x)return;if(!confirm(`Mark all ${x.packed.instances.length} current plywood cut parts complete?`))return;for(const p of x.packed.instances)completedPartIds.add(p.partId);changed()}
+  function clearCompletedParts(){if(!completedPartIds.size)return;if(!confirm('Clear all completed-part checkmarks?'))return;completedPartIds.clear();changed()}
+  function selectAllLayouts(){layoutPrintSelectionTouched=true;layoutPrintSelection=new Set(currentLayoutSheetKeys);syncLayoutSelectionUi()}
+  function selectNoLayouts(){layoutPrintSelectionTouched=true;layoutPrintSelection=new Set();syncLayoutSelectionUi()}
+  function printSelectedLayouts(){syncLayoutSelectionUi();if(!layoutPrintSelection.size){alert('Select at least one remaining layout sheet to print.');return}document.body.classList.add('print-layouts');window.print();setTimeout(()=>document.body.classList.remove('print-layouts'),500)}
 
   function projectJsonText(){
-    return JSON.stringify({_format:'cabinetdrafter-project',_version:'1.1.1',_savedAt:new Date().toISOString(),...state()},null,2)+'\n';
+    return JSON.stringify({_format:'cabinetdrafter-project',_version:APP_VERSION,_savedAt:new Date().toISOString(),...currentCanonicalState()},null,2)+'\n';
   }
   function setProjectStatus(message,kind=''){
     const el=document.getElementById('projectSaveStatus');if(!el)return;
@@ -1626,13 +1715,13 @@ CabinetDrafter.run
   document.getElementById('savePreviewPng').addEventListener('click',()=>{renderPreview3D();const a=document.createElement('a');a.href=previewCanvas.toDataURL('image/png');a.download='cabinet-drafter_3d_preview.png';document.body.appendChild(a);a.click();a.remove()});
   if('ResizeObserver' in window)new ResizeObserver(()=>{if(preview3D.scene.boxes.length)fitPreview3D()}).observe(previewWrap);else window.addEventListener('resize',()=>{if(preview3D.scene.boxes.length)fitPreview3D()});
 
-  function updateAll(){const s=state();preview.value=generateRuby();updateAllRowBudgets();updateSummary();updateBomAndLayouts();update3DPreview(s);scheduleProjectAutosave()}
-  function changed(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state()))}catch(_){}updateAll()}
+  function updateAll(s=state()){canonicalStateCache=deepCopy(s);preview.value=generateRuby(s);updateAllRowBudgets(s);updateSummary(s);updateBomAndLayouts(s);update3DPreview(s);scheduleProjectAutosave()}
+  function changed(){const s=state();canonicalStateCache=deepCopy(s);localSave(s);updateAll(s)}
   function download(name,text,type='text/plain'){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500)}
   document.getElementById('addDrawer').onclick=()=>{makeRow({label:'New Drawer / Mixed Cabinet',type:'drawer',frontStyle:'frameless',width:24,qty:1,stackSpec:'D7, D7, D7',frontHeights:[],shelves:0});changed()};
   document.getElementById('addDoor').onclick=()=>{makeRow({label:'New Single Door Cabinet',type:'door',frontStyle:'frameless',width:20,qty:1,stackSpec:'',frontHeights:[],shelves:0});changed()};
   document.getElementById('addShelf').onclick=()=>{makeRow({label:'New Open Shelf Cabinet',type:'open_shelf',frontStyle:'frameless',width:24,qty:1,stackSpec:'',frontHeights:[],shelves:2});changed()};
-  document.getElementById('units').addEventListener('change',e=>{const st=state();activeUnits=e.target.value==='mm'?'mm':'in';st.units=activeUnits;applyState(st);try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state()))}catch(_){}});
+  document.getElementById('units').addEventListener('change',e=>{const st=currentCanonicalState();st.units=e.target.value==='mm'?'mm':'in';applyState(st);localSave()});
   ids.forEach(id=>document.getElementById(id).addEventListener('input',changed));document.getElementById('preserveCherryGrain').addEventListener('change',changed);document.getElementById('showLabels').addEventListener('change',changed);document.getElementById('showDrawerBoxHeightLabels').addEventListener('change',changed);document.getElementById('showDrawerFaceHeightLabels').addEventListener('change',changed);document.getElementById('showOpenSpaceHeightLabels').addEventListener('change',changed);
   function rubyTimestamp(){const d=new Date(),p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`}
   document.getElementById('downloadRuby').onclick=async()=>{await flushProjectSave();const name=`cabinet-drafter_generated_${rubyTimestamp()}.rb`;download(name,generateRuby());const cmd=`load File.expand_path('~/Downloads/${name}')`;document.getElementById('rubyDownloadStatus').innerHTML=`Downloaded <strong>${esc(name)}</strong>. In SketchUp Pro, open Extensions → Developer → Ruby Console and run: <code>${esc(cmd)}</code>`;};
@@ -1640,10 +1729,11 @@ CabinetDrafter.run
   document.getElementById('saveProject').onclick=saveProject;
   document.getElementById('saveProjectAs').onclick=saveProjectAs;
   document.getElementById('downloadJson').onclick=()=>download('cabinet-drafter_project_export.json',projectJsonText(),'application/json');
-  document.getElementById('downloadBom').onclick=downloadBomCsv;document.getElementById('downloadCutList').onclick=downloadCutListCsv;document.getElementById('downloadLinearStock').onclick=downloadLinearStockCsv;
-  document.getElementById('printLayouts').onclick=()=>{document.body.classList.add('print-layouts');window.print();setTimeout(()=>document.body.classList.remove('print-layouts'),500)};
+  document.getElementById('downloadBom').onclick=downloadBomCsv;document.getElementById('downloadCutList').onclick=downloadCutListCsv;document.getElementById('downloadLinearStock').onclick=downloadLinearStockCsv;document.getElementById('downloadRemainingCutList').onclick=downloadRemainingCutListCsv;document.getElementById('downloadProgressCsv').onclick=downloadProgressCsv;
+  document.getElementById('markAllPartsComplete').onclick=markAllCurrentPartsComplete;document.getElementById('clearCompletedParts').onclick=clearCompletedParts;
+  document.getElementById('selectAllLayouts').onclick=selectAllLayouts;document.getElementById('selectNoLayouts').onclick=selectNoLayouts;document.getElementById('printLayouts').onclick=printSelectedLayouts;
   document.getElementById('loadJson').onclick=()=>document.getElementById('jsonFile').click();
-  document.getElementById('jsonFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const s=JSON.parse(await file.text());applyState({...defaults,...s});try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state()))}catch(_){} }catch(err){alert('Could not load settings: '+err.message)}e.target.value=''});
+  document.getElementById('jsonFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const s=JSON.parse(await file.text());applyState({...defaults,...s});localSave()}catch(err){alert('Could not load settings: '+err.message)}e.target.value=''});
   document.getElementById('reset').onclick=()=>{if(confirm('Reset all cabinet settings to the supplied defaults?')){try{localStorage.removeItem(STORAGE_KEY)}catch(_){}applyState(deepCopy(defaults));changed()}};
 const helpDialog=document.getElementById('helpDialog');
   document.getElementById('openHelp').onclick=()=>{if(helpDialog.showModal)helpDialog.showModal();else helpDialog.setAttribute('open','')};

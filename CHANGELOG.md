@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 - 2026-09-14
+
+### Added
+
+- Build progress tracking for individual physical plywood cut parts.
+- Remaining-work BOM/nesting that excludes completed parts while preserving the full project design.
+- Full-sheet inventory by material and a shopping list of additional sheets still to buy.
+- Selective printing for remaining plywood layout sheets.
+- Project JSON/browser autosave persistence for completed parts and full-sheet inventory.
+
 ## 1.1.1 - 2026-09-14
 
 ### Fixed

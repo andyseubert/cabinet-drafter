@@ -12,7 +12,7 @@ CabinetDrafter is configurable, but its generated geometry and BOM must still st
 
 ## Face frames
 
-CabinetDrafter 1.1 supports three front-construction modes per cabinet:
+CabinetDrafter supports three front-construction modes per cabinet:
 
 - frameless
 - face-frame overlay
@@ -20,7 +20,7 @@ CabinetDrafter 1.1 supports three front-construction modes per cabinet:
 
 The face frame is applied to the front of the carcass and consists of two full-height stiles plus top and bottom perimeter rails cut to fit between the stiles (simple butt-joint length accounting). The app separately reports face-frame solid stock by thickness/member width/total cut length.
 
-**1.1 limitation:** intermediate face-frame rails between individual drawers/cubbies are not generated.
+**Current limitation:** intermediate face-frame rails between individual drawers/cubbies are not generated.
 
 ## Drawer boxes
 
@@ -59,6 +59,14 @@ The development project assumes the countertop is screwed through the top stretc
 ## Hardware
 
 Hardware counts and drilling templates are not yet complete. Development-project assumptions include two concealed European hinges per door and side-mount drawer slides using the configured clearance.
+
+## Build progress and full-sheet inventory
+
+Completed work is tracked as individual physical plywood cut parts. A completed part is removed from the remaining-work nesting, but the cabinet definition and 3D design remain unchanged.
+
+Part completion IDs are based on the cabinet instance, part role, material, and dimensions. Label-only edits should not lose progress, while material or size changes should invalidate affected completed parts.
+
+Full-sheet inventory is counted separately by material and means full, uncut usable sheets only. Scraps and partial sheets are not modeled as inventory in 1.2.0.
 
 ## Drawer-front alignment
 

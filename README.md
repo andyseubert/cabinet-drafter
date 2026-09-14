@@ -18,6 +18,8 @@ No account, web service, or installation is required for the core app. Open `ind
 - Drawer-box sizing with configurable slide clearance
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware sheet nesting, kerf, edge trim, and spare-sheet allowance
+- Build progress tracking by physical plywood part, with remaining-work nesting and selective layout printing
+- Full-sheet inventory by material with a shopping list of additional sheets still to buy
 - Separate face-frame solid-stock takeoff by thickness and member width
 - Interactive browser 3D preview with orbit/zoom/pan and PNG export
 - Project JSON save/load with browser autosave
@@ -39,7 +41,8 @@ You can also download the repository and open `index.html` directly. The app doe
 4. For each cabinet choose **Frameless**, **Face frame - overlay**, or **Face frame - inset**.
 5. Review the 3D preview and sizing warnings.
 6. Review the material BOM and sheet layouts before purchasing material.
-7. Use **Save Project JSON** to keep a portable project file.
+7. As you build, check off completed cut parts and enter full sheets already on hand.
+8. Use **Save Project JSON** to keep a portable project file.
 
 ### Drawer / mixed stack syntax
 
@@ -67,7 +70,7 @@ Open-shelf cabinets use the same field for clear opening heights from bottom to 
 
 Auto-sized drawer-front reveal lines are tied to the physical drawer-box stack. The reveal between adjacent drawers is centered in the actual drawer-box gap. This keeps a shared bottom-up sequence such as `D7.5, D7.5` aligned across neighboring cabinets even when one cabinet changes to an open cubby above.
 
-## Face frames in 1.1
+## Face frames
 
 Each cabinet can be:
 
@@ -77,7 +80,21 @@ Each cabinet can be:
 
 Global face-frame settings control stile width, rail width, frame thickness, material, overlay, and inset reveal. Face-frame members are treated as **solid linear stock**, not plywood sheet parts, and are summarized separately in the BOM.
 
-**Current 1.1 limitation:** face frames are perimeter frames only: two full-height stiles plus top and bottom rails. Intermediate face-frame rails between individual drawers or cubbies are not generated yet.
+**Current limitation:** face frames are perimeter frames only: two full-height stiles plus top and bottom rails. Intermediate face-frame rails between individual drawers or cubbies are not generated yet.
+
+## Build progress and inventory
+
+CabinetDrafter 1.2.0 tracks completed work as individual physical plywood cut parts. Checking off a part does not delete or change the cabinet design; it only removes that part from the remaining-work nesting and remaining cut-list CSV.
+
+Each cabinet instance has a stable internal ID so progress survives label changes and ordinary editing. Part IDs include the part geometry and material, so a completed part is not silently reused for a newly sized or newly specified part.
+
+The sheet inventory fields are for **uncut full usable sheets on hand** by material. Scraps and partial sheets are intentionally not treated as full sheets. The shopping list calculates:
+
+```text
+additional sheets to buy = max(remaining nested sheets + spare sheets - full sheets on hand, 0)
+```
+
+The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls.
 
 ## Material calculations
 
