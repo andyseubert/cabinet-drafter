@@ -10,7 +10,7 @@ Live site: `https://andyseubert.github.io/cabinet-drafter/`
 
 CabinetDrafter is a self-contained browser cabinet planner. The primary application is `index.html`, with no required server, account, CDN, framework, or external JavaScript dependency. It supports cabinet layout, drawer/open-space sizing, plywood BOMs, cut lists, sheet nesting, an interactive browser 3D preview, project JSON save/load, and optional SketchUp Ruby export.
 
-Current public version: **1.2.4**.
+Current public version: **1.2.5**.
 
 Future user-facing changes should bump the version according to semver unless there is a good reason not to.
 
@@ -270,6 +270,8 @@ The application supports:
 - browser File System Access API autosave when available
 - IndexedDB storage for the chosen project file handle where available
 
+Cabinet table order is the physical run order used by the BOM, 3D preview, and SketchUp export. Reordering cabinets must preserve each cabinet's stable `uid` so build-progress part IDs survive an order-only edit.
+
 Project JSON is part of the user workflow. New fields must migrate safely.
 
 Rules:
@@ -453,7 +455,7 @@ If browser automation is available, exercise the UI rather than relying only on 
 - fillers/scribes
 - double doors
 - per-cabinet height/depth
-- duplicate/reorder UI
+- duplicate UI
 - hinge drilling templates
 - shelf-pin drilling templates
 - costs

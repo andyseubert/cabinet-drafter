@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.5 - 2026-09-14
+
+### Added
+
+- Cabinet table move controls for reordering the cabinet run while preserving cabinet IDs and build-progress state.
+
 ## 1.2.4 - 2026-09-14
 
 ### Added

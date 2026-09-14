@@ -11,7 +11,7 @@ No account, web service, or installation is required for the core app. Open `ind
 ## What it does
 
 - Frameless, face-frame overlay, and face-frame inset cabinets on a per-cabinet basis
-- Drawer cabinets, single-door cabinets, mixed drawer/open-cubby cabinets, and open-shelf cabinets
+- Drawer cabinets, single-door cabinets, mixed drawer/open-cubby cabinets, and open-shelf cabinets, with reorder controls for the run
 - Explicit drawer heights and clear shelf/cubby opening heights
 - Inches or millimeters for entry/display while keeping canonical geometry stable internally
 - Applied backs behind open spaces and single-door cabinets
@@ -38,7 +38,7 @@ You can also download the repository and open `index.html` directly. The app doe
 
 1. Open `index.html`.
 2. Choose inches or millimeters.
-3. Add or edit cabinets in the cabinet table.
+3. Add, edit, or reorder cabinets in the cabinet table.
 4. For each cabinet choose **Frameless**, **Face frame - overlay**, or **Face frame - inset**.
 5. Review the 3D preview and sizing warnings.
 6. Review the material BOM and sheet layouts before purchasing material.
