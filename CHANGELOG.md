@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.2 - 2026-09-14
+
+### Added
+
+- Assembly-level progress checkboxes for whole carcasses, toe-kick bases, drawers, doors/fronts, shelves, and toe-kick skin.
+
 ## 1.2.1 - 2026-09-14
 
 ### Added

@@ -18,7 +18,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Drawer-box sizing with configurable slide clearance
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware sheet nesting, kerf, edge trim, and spare-sheet allowance
-- Build progress tracking by physical plywood part, with remaining-work nesting and selective layout printing
+- Build progress tracking by cabinet/drawer assembly or physical plywood part, with remaining-work nesting and selective layout printing
 - Full-sheet inventory by material with a shopping list of additional sheets still to buy
 - Separate face-frame solid-stock takeoff by thickness and member width
 - Interactive browser 3D preview with orbit/zoom/pan and PNG export
@@ -84,7 +84,7 @@ Global face-frame settings control stile width, rail width, frame thickness, mat
 
 ## Build progress and inventory
 
-CabinetDrafter tracks completed work as individual physical plywood cut parts. Checking off a part does not delete or change the cabinet design; it only removes that part from the remaining-work nesting and remaining cut-list CSV.
+CabinetDrafter tracks completed work as individual physical plywood cut parts. The progress UI also groups those parts into practical assemblies, so you can check off a whole carcass, toe-kick/base, drawer, door/front, or shelf set without clicking every piece. Checking off work does not delete or change the cabinet design; it only removes those parts from the remaining-work nesting and remaining cut-list CSV.
 
 Each cabinet instance has a stable internal ID so progress survives label changes and ordinary editing. Part IDs include the part geometry and material, so a completed part is not silently reused for a newly sized or newly specified part.
 
