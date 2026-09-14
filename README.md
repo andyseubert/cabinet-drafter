@@ -40,8 +40,8 @@ You can also download the repository and open `index.html` directly. The app doe
 2. Choose inches or millimeters.
 3. Add, edit, or reorder cabinets in the cabinet table.
 4. For each cabinet choose **Frameless**, **Face frame - overlay**, or **Face frame - inset**.
-5. Review the 3D preview and sizing warnings.
-6. Review the material BOM and sheet layouts before purchasing material.
+5. Review the 3D preview directly below the cabinet table and adjust export/label options if needed.
+6. Tune sizing, materials, and sheet-planning settings, then review the BOM and sheet layouts before purchasing material.
 7. As you build, check off completed cut parts and enter full sheets already on hand.
 8. Use **Save Project JSON** to keep a portable project file.
 

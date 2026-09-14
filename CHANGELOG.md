@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.8 - 2026-09-14
+
+### Changed
+
+- Reordered the main page so the 3D preview and SketchUp export/save controls sit directly below the cabinet list.
+- Moved construction notes below the build and cutting-planning sections so the primary shop workflow appears first.
+
 ## 1.2.7 - 2026-09-14
 
 ### Added
