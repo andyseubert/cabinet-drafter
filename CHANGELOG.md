@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.7 - 2026-09-14
+
+### Added
+
+- Optional cabinet width labels in the browser 3D preview and SketchUp export.
+
 ## 1.2.6 - 2026-09-14
 
 ### Changed

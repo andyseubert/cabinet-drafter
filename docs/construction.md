@@ -81,6 +81,10 @@ Part completion IDs are based on the cabinet instance, part role, material, and 
 
 Full-sheet inventory is counted separately by material and means full, uncut usable sheets only. Scraps and partial sheets are not modeled as inventory in the current workflow.
 
+## 3D and SketchUp labels
+
+Cabinet summary labels, short cabinet width labels, drawer box-height labels, drawer face-height labels, and open-space height labels are independently configurable. Cabinet width labels show the overall cabinet width in the active display unit and are placed near the front bottom of each cabinet.
+
 ## Drawer-front alignment
 
 For automatically sized drawer fronts, reveal lines between adjacent drawers are centered in the physical drawer-box gap. This keeps matching bottom-up drawer stacks aligned across neighboring cabinets. Extra face height is no longer distributed evenly among all drawer fronts, because doing so moved shared reveal lines when an adjacent cabinet had a different upper layout.

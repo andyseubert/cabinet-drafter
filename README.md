@@ -122,7 +122,7 @@ The built-in preview requires no SketchUp and no network connection. It can:
 - orbit, zoom, and pan
 - switch among isometric/front/left/right/top views
 - hide/show fronts, drawer boxes, and backs
-- display optional cabinet/drawer/open-space labels
+- display optional cabinet summary, cabinet width, drawer, and open-space labels
 - save the current view as PNG
 
 ## SketchUp export
@@ -130,6 +130,8 @@ The built-in preview requires no SketchUp and no network connection. It can:
 SketchUp is optional. If you have SketchUp Desktop with Ruby support, use **Download Ruby script**, then in SketchUp Pro open **Extensions → Developer → Ruby Console** and paste the exact `load ...` command shown by CabinetDrafter.
 
 By default, the generated Ruby replaces the prior `Generated Cabinet Lineup` group. Turn off **Replace prior Generated Cabinet Lineup in SketchUp** before downloading if you want SketchUp to keep existing generated cabinets and add the new export as a separate timestamped group.
+
+The 3D/SketchUp label options include separate toggles for cabinet summary labels, short cabinet width labels, drawer box heights, drawer face heights, and open-space heights.
 
 SketchUp for Web does not execute the Ruby generator; the in-browser 3D preview exists so CabinetDrafter remains useful without SketchUp.
 
