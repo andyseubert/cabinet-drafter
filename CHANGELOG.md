@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.9 - 2026-09-14
+
+### Added
+
+- Hidden-line print style for the browser 3D preview and saved preview PNGs.
+
 ## 1.2.8 - 2026-09-14
 
 ### Changed

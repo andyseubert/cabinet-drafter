@@ -10,7 +10,7 @@ Live site: `https://andyseubert.github.io/cabinet-drafter/`
 
 CabinetDrafter is a self-contained browser cabinet planner. The primary application is `index.html`, with no required server, account, CDN, framework, or external JavaScript dependency. It supports cabinet layout, drawer/open-space sizing, plywood BOMs, cut lists, sheet nesting, an interactive browser 3D preview, project JSON save/load, and optional SketchUp Ruby export.
 
-Current public version: **1.2.8**.
+Current public version: **1.2.9**.
 
 Future user-facing changes should bump the version according to semver unless there is a good reason not to.
 
@@ -299,6 +299,7 @@ Controls include:
 - show/hide drawer boxes
 - show/hide backs
 - optional cabinet width labels in the browser preview and SketchUp export
+- hidden-line print style for black-and-white PNG/print output
 - PNG export
 
 Keep this offline and dependency-free unless the user explicitly decides otherwise.

@@ -22,7 +22,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Build progress tracking by cabinet/drawer assembly or physical plywood part, with remaining-work nesting and selective layout printing
 - Full-sheet inventory by material with a shopping list of additional sheets still to buy
 - Separate face-frame solid-stock takeoff by thickness and member width
-- Interactive browser 3D preview with orbit/zoom/pan and PNG export
+- Interactive browser 3D preview with orbit/zoom/pan, hidden-line print style, and PNG export
 - Project JSON save/load with browser autosave
 - Optional SketchUp Desktop Ruby export, with a choice to replace or keep previous generated groups
 
@@ -123,6 +123,7 @@ The built-in preview requires no SketchUp and no network connection. It can:
 - switch among isometric/front/left/right/top views
 - hide/show fronts, drawer boxes, and backs
 - display optional cabinet summary, cabinet width, drawer, and open-space labels
+- switch to hidden-line print style for black-and-white shop printouts
 - save the current view as PNG
 
 ## SketchUp export
