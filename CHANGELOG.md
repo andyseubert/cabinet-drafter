@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.3 - 2026-09-14
+
+### Changed
+
+- Mixed drawer/open-cubby cabinets now omit the rear vertical stretchers when localized open-cubby backs are present.
+- Single-door cabinets now include a full cherry applied back matching the door/front material.
+
 ## 1.2.2 - 2026-09-14
 
 ### Added

@@ -10,9 +10,9 @@ Live site: `https://andyseubert.github.io/cabinet-drafter/`
 
 CabinetDrafter is a self-contained browser cabinet planner. The primary application is `index.html`, with no required server, account, CDN, framework, or external JavaScript dependency. It supports cabinet layout, drawer/open-space sizing, plywood BOMs, cut lists, sheet nesting, an interactive browser 3D preview, project JSON save/load, and optional SketchUp Ruby export.
 
-Current public version before the next feature: **1.1.1**.
+Current public version: **1.2.3**.
 
-The next feature should become **1.2.0** unless there is a good reason not to.
+Future user-facing changes should bump the version according to semver unless there is a good reason not to.
 
 ## Working style
 
@@ -140,7 +140,7 @@ Compatibility rules:
 
 Open height means clear cubby height. Drawer height means outside drawer-box wall height.
 
-### Pure drawer and single-door carcasses
+### Pure drawer carcasses
 
 - 3/4 in birch plywood carcass.
 - 3/4 in solid plywood bottom.
@@ -151,6 +151,20 @@ Open height means clear cubby height. Drawer height means outside drawer-box wal
   - rear top, flat
   - upper rear, vertical
   - lower rear, vertical and resting on bottom
+
+### Single-door cabinets
+
+- 3/4 in birch plywood cabinet box.
+- 3/4 in solid plywood bottom.
+- No full top.
+- Full applied back on the outside rear face, not inset.
+- Back material: cherry plywood matching the door/front material.
+- Back thickness follows the configured back thickness, default 1/4 in.
+- No rear vertical stretchers.
+- Two flat 4 in top stretchers:
+  - front top, flat
+  - rear top, flat
+- Optional adjustable shelves are birch plywood and use shelf pins.
 
 ### Open-shelf cabinets
 
@@ -173,7 +187,7 @@ Explicit clear opening heights may be entered bottom-to-top, for example:
 ### Mixed drawer/open-cubby cabinets
 
 - Carcass becomes cherry because the interior is visible.
-- Same four-stretcher open-back carcass structure as drawer cabinets.
+- Two flat 4 in top stretchers only; rear vertical stretchers are omitted where localized backs provide rear closure.
 - Fixed divider panels are 3/4 in by default, 24 in deep by default, and pocket-screwed.
 - Every open cubby gets a localized applied back.
 - Drawer-only areas remain open-backed.
@@ -185,8 +199,6 @@ Explicit clear opening heights may be entered bottom-to-top, for example:
 Example:
 
 18 in cabinet with `D9, D9, O15` gets an 18 in × 16.5 in × 1/4 in localized back.
-
-Current intentional assumption: mixed cabinets retain the rear stretchers even where localized applied backs exist.
 
 ### Fronts and doors
 
@@ -217,6 +229,7 @@ Materials currently include:
 - 3/4 cherry plywood
 - 1/2 birch drawer stock, including drawer bottoms
 - configurable thin open-space back, default 1/4 cherry
+- cherry single-door back stock, using the configured back thickness
 - 1/4 cherry toe-kick skin
 - face-frame solid stock tracked separately
 
@@ -290,11 +303,11 @@ The app displays the exact load command to paste into:
 
 Do not break Ruby syntax when changing embedded templates.
 
-## Current feature request: build/procurement progress tracking
+## Build/procurement progress tracking
 
-The user is already physically building this project. Some carcasses/parts are complete and some plywood has already been purchased.
+Implemented in 1.2.0 for users who are physically building a project while some carcasses/parts are already complete and some plywood has already been purchased.
 
-Implement a practical progress workflow with these goals:
+The practical progress workflow has these goals:
 
 ### 1. Track completed work
 
@@ -382,7 +395,7 @@ A good workflow would let the user answer:
 
 Avoid forcing the user to recreate or delete completed cabinets to get an accurate remaining-material plan.
 
-## Recommended implementation direction for 1.2.0
+## Implemented 1.2.0 progress model
 
 Do not blindly follow this if inspection of the code reveals a better fit, but this is the intended model:
 

@@ -14,7 +14,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Drawer cabinets, single-door cabinets, mixed drawer/open-cubby cabinets, and open-shelf cabinets
 - Explicit drawer heights and clear shelf/cubby opening heights
 - Inches or millimeters for entry/display while keeping canonical geometry stable internally
-- Applied backs behind open spaces
+- Applied backs behind open spaces and single-door cabinets
 - Drawer-box sizing with configurable slide clearance
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware sheet nesting, kerf, edge trim, and spare-sheet allowance

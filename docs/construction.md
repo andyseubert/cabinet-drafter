@@ -5,7 +5,8 @@ CabinetDrafter is configurable, but its generated geometry and BOM must still st
 ## Carcasses
 
 - Default carcass thickness: 3/4 in plywood.
-- Pure drawer/single-door defaults: birch carcass.
+- Pure drawer and single-door cabinet boxes default to birch.
+- Single-door backs use cherry plywood to match the door/front material.
 - Mixed drawer/open-cubby and open-shelf defaults: cherry carcass for visible interiors.
 - Carcass joints in the development project use pocket screws.
 - No automatic edge banding/solid edging is included.
@@ -37,6 +38,7 @@ The face frame is applied to the front of the carcass and consists of two full-h
 - Mixed cabinets receive backs only behind open cubbies; drawer-only areas remain open-backed.
 - A mixed-cubby back spans full cabinet width and covers clear opening height plus one carcass thickness above and below.
 - Open-shelf cabinets use one full-width applied back.
+- Single-door cabinets use one full-width applied cherry back using the configured back thickness.
 
 ## Shelves
 
@@ -46,7 +48,7 @@ The face frame is applied to the front of the carcass and consists of two full-h
 
 ## Stretchers
 
-Default open-back drawer/door carcass structure uses four stretchers: two flat top stretchers and two vertical rear stretchers. Open-shelf cabinets with full backs use two flat top stretchers and no rear vertical stretchers.
+Pure drawer open-back carcasses use four stretchers: two flat top stretchers and two vertical rear stretchers. Mixed drawer/open-cubby cabinets use only the two flat top stretchers because the open cubbies receive localized applied backs. Single-door and open-shelf cabinets also use two flat top stretchers and no rear vertical stretchers because they have full applied backs.
 
 ## Toe kick
 

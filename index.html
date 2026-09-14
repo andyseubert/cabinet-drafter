@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CabinetDrafter 1.2.2 — Cabinet planner</title>
+<title>CabinetDrafter 1.2.3 — Cabinet planner</title>
 <style>
 :root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:#222}main{max-width:1440px;margin:0 auto;padding:28px 22px 50px}h1{margin:0 0 6px;font-size:30px}h2{margin:0 0 14px;font-size:20px}h3{margin:18px 0 8px;font-size:16px}p{line-height:1.45}.muted{color:#666}.card{background:#fff;border:1px solid #d9d6cf;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:12px}label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:5px}input,select,textarea,button{font:inherit}input,select{width:100%;padding:8px 9px;border:1px solid #bbb;border-radius:7px;background:#fff}input[type=checkbox]{width:auto;transform:scale(1.1);margin-right:7px}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid #ddd}td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}td input,td select{min-width:70px}.drawer-list{min-width:165px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}button{border:1px solid #aaa;background:#fafafa;padding:9px 13px;border-radius:8px;cursor:pointer}button.primary{background:#333;color:#fff;border-color:#333}button.danger{color:#8b1e1e}textarea{width:100%;height:300px;padding:12px;border:1px solid #bbb;border-radius:8px;font-family:Menlo,Monaco,monospace;font-size:12px;line-height:1.4;white-space:pre}.note{background:#fff8df;border-left:4px solid #d7a800;padding:10px 12px;border-radius:5px;margin-top:12px}.small{font-size:13px}.summary-good{color:#265a2e}.summary-warn{color:#8b1e1e;font-weight:700}.dim{white-space:nowrap}.disabledish{opacity:.45}.hint{font-size:11px;color:#777;margin-top:3px}.drawer-budget{font-size:11px;color:#666;margin-top:4px;line-height:1.3;min-width:190px}.drawer-budget.bad{color:#8b1e1e}.summary-table td,.summary-table th{padding:7px 8px}.nowrap{white-space:nowrap}.pill{display:inline-block;padding:2px 7px;border-radius:999px;background:#eee;font-size:11px}.layout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.sheet-card{border:1px solid #ddd;border-radius:10px;padding:10px;background:#fafafa}.sheet-card h3{margin:0 0 8px}.sheet-svg{width:100%;height:auto;max-height:620px;background:#fff;border:1px solid #aaa}.bom-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}.kpi{background:#f7f7f5;border:1px solid #e1dfd9;border-radius:9px;padding:10px}.kpi strong{font-size:20px;display:block}.grain-arrow{font-weight:700}.warning-box{background:#fff0f0;border-left:4px solid #b64a4a;padding:10px 12px;border-radius:5px;margin-top:10px}.success-box{background:#eef8ef;border-left:4px solid #4a8f54;padding:10px 12px;border-radius:5px;margin-top:10px}.progress-group{border-top:1px solid #eee;padding:12px 0}.progress-group:first-child{border-top:0}.progress-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}.progress-actions{display:flex;gap:8px;flex-wrap:wrap}.progress-actions button{padding:6px 9px}.part-done{color:#777;text-decoration:line-through}.inventory-sheet-input{max-width:88px}.layout-print-control{display:flex;align-items:center;gap:6px;margin-bottom:7px}.layout-print-control input{margin-right:3px}.print-count{align-self:center;color:#666}.sheet-card:not(.print-selected){opacity:.72}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.table-wrap{overflow-x:auto}}@media print{body.print-layouts main>*{display:none!important}body.print-layouts #sheetLayoutsCard{display:block!important;border:none;box-shadow:none;margin:0;padding:0}body.print-layouts #sheetLayoutsCard .actions,body.print-layouts #sheetLayoutsCard .note,body.print-layouts .layout-print-control{display:none!important}body.print-layouts .sheet-card:not(.print-selected){display:none!important}.sheet-card{break-inside:avoid;page-break-inside:avoid}.layout-grid{display:block}.sheet-card{margin:0 0 20px;opacity:1!important}}
 .app-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.app-header p{margin:6px 0 0}.help-button{font-weight:700;min-width:88px}.help-dialog{width:min(980px,calc(100vw - 32px));max-height:88vh;border:1px solid #bbb;border-radius:14px;padding:0;box-shadow:0 16px 60px rgba(0,0,0,.28);background:#fff;color:#222}.help-dialog::backdrop{background:rgba(0,0,0,.38)}.help-doc{padding:22px 26px 32px;line-height:1.5}.help-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;position:sticky;top:0;background:#fff;padding:2px 0 12px;border-bottom:1px solid #eee;z-index:2}.help-heading h2{margin:0}.help-heading p{margin:3px 0 0}.help-close{white-space:nowrap}.help-doc h3{margin-top:26px;padding-top:4px;border-top:1px solid #eee}.help-doc h4{margin:20px 0 8px}.help-doc li{margin:5px 0}.help-doc pre{overflow:auto;background:#f6f5f1;border:1px solid #dedbd2;border-radius:8px;padding:12px;line-height:1.35}.help-table{width:100%;border-collapse:collapse;margin:10px 0}.help-table th,.help-table td{border:1px solid #ddd;padding:8px;vertical-align:top}.help-callout{background:#eef8ef;border-left:4px solid #4a8f54;padding:12px 14px;border-radius:6px}.help-warning{background:#fff3df;border-left:4px solid #d28a00;padding:12px 14px;border-radius:6px;margin:12px 0}@media(max-width:700px){.app-header{flex-direction:column}.help-button{align-self:flex-start}.help-doc{padding:18px}.help-heading{position:static}}
@@ -12,7 +12,7 @@
 </style>
 </head>
 <body><main>
-<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.2.2</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
+<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.2.3</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
 
 <section class="card"><h2>Units</h2><div class="grid"><div><label>Display / entry units</label><select id="units"><option value="in">Inches</option><option value="mm">Millimeters</option></select><div class="hint">The project is stored internally in inches for SketchUp compatibility. Switching units converts the displayed values without changing cabinet geometry.</div></div></div></section>
 
@@ -56,7 +56,7 @@
 </section>
 
 <section class="card"><h2>Standard cabinet dimensions</h2><div class="grid">
-<div><label>Cabinet depth</label><input id="cabDepth" type="number" step="0.125"></div><div><label>Cabinet box height</label><input id="cabHeight" type="number" step="0.125"></div><div><label>Carcass plywood</label><input id="ply" type="number" step="0.125"></div><div><label>Open-space back thickness</label><input id="backPly" type="number" step="0.125"><div class="hint">Default 1/4&quot;. Applied to the outside rear face.</div></div><div><label>Open-space back material</label><select id="openBackMaterial"><option value="cherry">Cherry</option><option value="birch">Birch</option></select><div class="hint">Default cherry. Used for open-shelf backs and localized mixed-cubby backs.</div></div><div><label>Stretcher width</label><input id="stretcher" type="number" step="0.125"></div><div><label>Vertical front gap</label><input id="frontGap" type="number" min="0" step="0.03125"><div class="hint">Default 1/8&quot; top, bottom, and between drawer fronts.</div></div><div><label>Side reveal per cabinet edge</label><input id="sideReveal" type="number" min="0" step="0.03125"><div class="hint">Default 1/16&quot;; two abutting cabinets then have a 1/8&quot; seam.</div></div><div><label>Toe-kick height</label><input id="kickHeight" type="number" step="0.125"></div><div><label>Toe-kick setback</label><input id="kickSetback" type="number" step="0.125"></div><div><label>Toe-kick depth</label><input id="kickDepth" type="number" step="0.125"></div><div><label>Toe-kick skin thickness</label><input id="kickSkinPly" type="number" min="0.03125" step="0.03125"><div class="hint">Default 1/4&quot; cherry plywood. Veneer may be substituted manually.</div></div><div><label>Shelf depth</label><input id="shelfDepth" type="number" step="0.125"></div><div><label>Display gap between cabinets</label><input id="displayGap" type="number" step="0.5"></div><div><label>Saved SKP filename</label><input id="saveFilename" type="text"></div>
+<div><label>Cabinet depth</label><input id="cabDepth" type="number" step="0.125"></div><div><label>Cabinet box height</label><input id="cabHeight" type="number" step="0.125"></div><div><label>Carcass plywood</label><input id="ply" type="number" step="0.125"></div><div><label>Back thickness</label><input id="backPly" type="number" step="0.125"><div class="hint">Default 1/4&quot;. Applied to open spaces and single-door cabinets on the outside rear face.</div></div><div><label>Open-space back material</label><select id="openBackMaterial"><option value="cherry">Cherry</option><option value="birch">Birch</option></select><div class="hint">Default cherry. Used for open-shelf backs and localized mixed-cubby backs; single-door backs stay cherry to match the door.</div></div><div><label>Stretcher width</label><input id="stretcher" type="number" step="0.125"></div><div><label>Vertical front gap</label><input id="frontGap" type="number" min="0" step="0.03125"><div class="hint">Default 1/8&quot; top, bottom, and between drawer fronts.</div></div><div><label>Side reveal per cabinet edge</label><input id="sideReveal" type="number" min="0" step="0.03125"><div class="hint">Default 1/16&quot;; two abutting cabinets then have a 1/8&quot; seam.</div></div><div><label>Toe-kick height</label><input id="kickHeight" type="number" step="0.125"></div><div><label>Toe-kick setback</label><input id="kickSetback" type="number" step="0.125"></div><div><label>Toe-kick depth</label><input id="kickDepth" type="number" step="0.125"></div><div><label>Toe-kick skin thickness</label><input id="kickSkinPly" type="number" min="0.03125" step="0.03125"><div class="hint">Default 1/4&quot; cherry plywood. Veneer may be substituted manually.</div></div><div><label>Shelf depth</label><input id="shelfDepth" type="number" step="0.125"></div><div><label>Display gap between cabinets</label><input id="displayGap" type="number" step="0.5"></div><div><label>Saved SKP filename</label><input id="saveFilename" type="text"></div>
 </div></section>
 
 <section class="card"><h2>Plywood sheet planning</h2><div class="grid">
@@ -69,7 +69,7 @@
 </div>
 <div class="note small"><strong>Cutting-layout assumption:</strong> sheet grain runs along the 96&quot; direction. Cherry parts are oriented so visible grain runs the expected direction and are not rotated when grain preservation is on. Birch parts may rotate for better yield.</div></section>
 
-<section class="card"><h2>Construction rules in this version</h2><p class="small"><strong>Cabinets may be frameless, face-frame overlay, or face-frame inset on a per-cabinet basis.</strong> Structural carcass joints use pocket screws in the supplied project defaults. Pure drawer and single-door cabinets use a birch carcass; mixed drawer/open-cubby cabinets and open-shelf cabinets use cherry carcasses by default so visible interiors are finished. Face frames are modeled as solid-wood perimeter frames and are reported separately as linear stock. Drawer boxes remain 1/2&quot; birch with bottoms fitted completely between the four walls. Open spaces receive applied backs at the rear. Adjustable shelves are pin-supported; fixed mixed-cubby dividers are pocket-screwed. Countertops attach through top stretchers. No edge banding is included.</p><div class="note small"><strong>Toe-kick/base:</strong> each cabinet gets a separate 2&quot;-high 3/4&quot; birch ladder frame (front rail, rear rail, two side rails), intended to use offcuts. A separate 1/4&quot; cherry skin covers the visible front. The BOM treats the cabinet list as one installed run and makes the cherry skin in the longest pieces that fit the configured sheet length; SketchUp shows one skin segment per cabinet because the presentation model spaces cabinets apart.</div></section>
+<section class="card"><h2>Construction rules in this version</h2><p class="small"><strong>Cabinets may be frameless, face-frame overlay, or face-frame inset on a per-cabinet basis.</strong> Structural carcass joints use pocket screws in the supplied project defaults. Pure drawer cabinets use birch open-backed carcasses. Single-door cabinets use birch boxes with cherry applied backs matching the door. Mixed drawer/open-cubby cabinets and open-shelf cabinets use cherry carcasses by default so visible interiors are finished. Face frames are modeled as solid-wood perimeter frames and are reported separately as linear stock. Drawer boxes remain 1/2&quot; birch with bottoms fitted completely between the four walls. Open spaces receive applied backs at the rear. Adjustable shelves are pin-supported; fixed mixed-cubby dividers are pocket-screwed. Countertops attach through top stretchers. No edge banding is included.</p><div class="note small"><strong>Toe-kick/base:</strong> each cabinet gets a separate 2&quot;-high 3/4&quot; birch ladder frame (front rail, rear rail, two side rails), intended to use offcuts. A separate 1/4&quot; cherry skin covers the visible front. The BOM treats the cabinet list as one installed run and makes the cherry skin in the longest pieces that fit the configured sheet length; SketchUp shows one skin segment per cabinet because the presentation model spaces cabinets apart.</div></section>
 
 <section class="card" id="progressCard"><h2>Build progress & sheet inventory</h2><div id="progressKpis" class="bom-kpi"></div><div class="note small"><strong>Progress tracks physical plywood cut parts.</strong> Check off whole carcasses or drawers for speed, or open the physical-parts table for piece-by-piece control. Checked work stays in the project design and 3D model, but it is removed from the remaining-work nesting below. Full sheets on hand means uncut, full usable sheets only; scraps and partial sheets are not counted as full-sheet inventory.</div><h3>Shopping list of sheets still to buy</h3><div id="inventorySummary" class="small"></div><h3>Completed cut parts</h3><div class="actions"><button id="markAllPartsComplete">Mark all current parts complete</button><button id="clearCompletedParts">Clear completed parts</button><button id="downloadRemainingCutList">Download remaining cut list CSV</button><button id="downloadProgressCsv">Download progress CSV</button></div><div id="partProgress" class="small"></div></section>
 
@@ -83,7 +83,7 @@
   <div class="help-heading">
     <div>
       <h2>CabinetDrafter Help</h2>
-      <p class="muted">Cabinet planner · version 1.2.2</p>
+      <p class="muted">Cabinet planner · version 1.2.3</p>
     </div>
     <button type="button" id="closeHelp" class="help-close">Close</button>
   </div>
@@ -119,8 +119,8 @@
   <table class="help-table">
     <thead><tr><th>Type</th><th>Use it for</th><th>Default construction</th></tr></thead>
     <tbody>
-      <tr><td><strong>Drawer / mixed</strong></td><td>Drawers, or drawers combined with fixed open cubbies.</td><td>Pure drawer cabinet: 3/4 birch carcass. If any open cubby is present, the carcass becomes 3/4 cherry so the visible interior is cherry.</td></tr>
-      <tr><td><strong>Single door</strong></td><td>One full-overlay door with optional adjustable shelves.</td><td>3/4 birch carcass, cherry door, open back, four stretchers.</td></tr>
+      <tr><td><strong>Drawer / mixed</strong></td><td>Drawers, or drawers combined with fixed open cubbies.</td><td>Pure drawer cabinet: 3/4 birch open-backed carcass with four stretchers. If any open cubby is present, the carcass becomes 3/4 cherry with localized backs and only the two flat top stretchers.</td></tr>
+      <tr><td><strong>Single door</strong></td><td>One full-overlay door with optional adjustable shelves.</td><td>3/4 birch cabinet box, cherry door, cherry applied back, two flat top stretchers.</td></tr>
       <tr><td><strong>Open shelf</strong></td><td>Visible shelving with an applied full-width back.</td><td>3/4 cherry carcass, configurable applied back (default 1/4 cherry), two flat top stretchers, adjustable shelf-pin shelves.</td></tr>
     </tbody>
   </table>
@@ -164,7 +164,7 @@
     <li>No edge banding or solid-wood edge treatment is currently included.</li>
   </ul>
 
-  <h4>Open-back carcass and stretchers</h4>
+  <h4>Stretchers and applied backs</h4>
   <pre>FRONT / TOP CONCEPT
 
   cabinet side                         cabinet side
@@ -184,7 +184,7 @@ REAR CONCEPT
        |                                 |
        |---- lower rear stretcher -------|  vertical, rests on bottom
        +========== bottom ===============+</pre>
-  <p>Pure drawer and single-door cabinets use birch for these carcass parts. Mixed drawer/open-cubby cabinets use cherry. Mixed cabinets keep the four stretchers and receive localized applied backs only behind open cubbies. Open-shelf cabinets use one applied full-width back instead of the two vertical rear stretchers.</p>
+  <p>Pure drawer cabinets use birch and keep the four-stretcher open-back structure shown above. Mixed drawer/open-cubby cabinets use cherry carcass parts with localized applied backs behind open cubbies; because the open sections have backs, mixed cabinets omit the two vertical rear stretchers and keep only the flat top stretchers. Single-door cabinets use a birch box with two flat top stretchers and a full cherry applied back matching the door. Open-shelf cabinets use one applied full-width back and two flat top stretchers.</p>
 
   <h4>Drawer box</h4>
   <pre>TOP VIEW
@@ -274,7 +274,7 @@ Visible front gets 1/4 cherry plywood or veneer skin.</pre>
   <p><strong>An open-shelf height list does not fit:</strong> use <code>auto</code> for the top opening, or adjust the entered clear heights so the total plus shelf thicknesses fits the available vertical space.</p>
 </div></dialog>
 <script type="text/plain" id="rubyTemplate">
-# CabinetDrafter SketchUp Generator - 1.2.2
+# CabinetDrafter SketchUp Generator - 1.2.3
 # Generated by CabinetDrafter.
 # Run from SketchUp: Extensions > Developer > Ruby Console
 #   load '/full/path/to/cabinet_lineup_generated.rb'
@@ -432,9 +432,9 @@ __CABINETS__
             width, KICK_SKIN_PLY, KICK_HEIGHT, cherry_skin)
   end
 
-  # Frameless open-back carcass used by pure drawer, single-door, and mixed
-  # drawer/open-cubby cabinets. It has no full top/back and uses four stretchers.
-  def make_open_back_box(entities, width, carcass, wood_label, birch, cherry_skin)
+  # Frameless carcass helper. Pure drawer cabinets keep rear vertical stretchers;
+  # backed cabinets omit them because the applied back closes the rear.
+  def make_open_back_box(entities, width, carcass, wood_label, birch, cherry_skin, include_rear_vertical_stretchers = true)
     inside_w = width - (2.0 * PLY)
     z0 = KICK_HEIGHT
     make_kick(entities, width, birch, cherry_skin)
@@ -455,12 +455,14 @@ __CABINETS__
             PLY, CAB_DEPTH - STRETCHER, top_z,
             inside_w, STRETCHER, PLY, carcass)
 
-    add_box(entities, "Upper Rear Stretcher - #{wood_label} 3/4",
-            PLY, rear_y, top_z - STRETCHER,
-            inside_w, PLY, STRETCHER, carcass)
-    add_box(entities, "Lower Rear Stretcher - #{wood_label} 3/4",
-            PLY, rear_y, z0 + PLY,
-            inside_w, PLY, STRETCHER, carcass)
+    if include_rear_vertical_stretchers
+      add_box(entities, "Upper Rear Stretcher - #{wood_label} 3/4",
+              PLY, rear_y, top_z - STRETCHER,
+              inside_w, PLY, STRETCHER, carcass)
+      add_box(entities, "Lower Rear Stretcher - #{wood_label} 3/4",
+              PLY, rear_y, z0 + PLY,
+              inside_w, PLY, STRETCHER, carcass)
+    end
   end
 
   def add_birch_shelves(entities, width, shelf_count, birch)
@@ -816,7 +818,7 @@ __CABINETS__
     mixed = zones_for_material.any? { |z| z[:kind] == :open }
     carcass = mixed ? cherry : birch
     carcass_name = mixed ? 'Cherry' : 'Birch'
-    make_open_back_box(e, width, carcass, carcass_name, birch, cherry_skin)
+    make_open_back_box(e, width, carcass, carcass_name, birch, cherry_skin, !mixed)
     layout, fronts, box_w = add_drawer_mixed_contents(e, width, spec, birch, cherry, open_back)
     add_face_frame(e, width, spec, birch, cherry)
     stack_text = layout[:zones].map { |z| "#{z[:kind] == :drawer ? 'D' : 'O'}#{format_dimension(z[:height])}" }.join(', ')
@@ -841,13 +843,15 @@ __CABINETS__
     cab.name = spec[:label].to_s
     e = cab.entities
 
-    make_open_back_box(e, width, birch, 'Birch', birch, cherry_skin)
+    make_open_back_box(e, width, birch, 'Birch', birch, cherry_skin, false)
+    add_box(e, 'Applied Full Back - Cherry', 0, CAB_DEPTH, KICK_HEIGHT,
+            width, BACK_PLY, CAB_HEIGHT, cherry)
     add_birch_shelves(e, width, shelves, birch)
     add_single_door(e, width, spec, cherry)
     add_face_frame(e, width, spec, birch, cherry)
 
     add_label(e,
-              format("%s\n%s W x %s D x %s H\nBirch box | one cherry door | %d shelf(s)",
+              format("%s\n%s W x %s D x %s H\nBirch box + cherry applied back | one cherry door | %d shelf(s)",
                      spec[:label], format_dimension(width), format_dimension(CAB_DEPTH), format_dimension(CAB_HEIGHT), shelves),
               0, CAB_DEPTH + 2.0, KICK_HEIGHT + CAB_HEIGHT + 4.0)
     cab.transform!(Geom::Transformation.translation([i(x0), 0, 0]))
@@ -1021,8 +1025,8 @@ CabinetDrafter.run
 </script>
 <script>
 (() => {
-  const APP_VERSION='1.2.2';
-  const STORAGE_KEY='cabinetDrafterV122', OLD_KEYS=['cabinetDrafterV121','cabinetDrafterV120','cabinetDrafterV110','joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','joineryGridV25','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
+  const APP_VERSION='1.2.3';
+  const STORAGE_KEY='cabinetDrafterV123', OLD_KEYS=['cabinetDrafterV122','cabinetDrafterV121','cabinetDrafterV120','cabinetDrafterV110','joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','joineryGridV25','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
   const defaults={"cabinets":[{"uid":"cab-default-1","label":"24in Drawer Cabinet","type":"drawer","width":24,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"uid":"cab-default-2","label":"20in Single Door Cabinet","type":"door","width":20,"qty":1,"stackSpec":"","frontHeights":[],"shelves":0,"frontStyle":"frameless"},{"uid":"cab-default-3","label":"18in Drawer Cabinet","type":"drawer","width":18,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless"}],"cabDepth":25,"cabHeight":38,"ply":0.75,"backPly":0.25,"stretcher":4,"frontGap":0.125,"sideReveal":0.0625,"kickHeight":2,"kickSetback":3,"kickDepth":22,"shelfDepth":24.5,"displayGap":8,"drawerDepth":24,"slideClearance":1.0,"drawerSidePly":0.5,"drawerBottomPly":0.5,"drawerBoxGap":0.5,"drawerBottomClearance":0.5,"mixedPanelDepth":24,"mixedPanelMaterial":"cherry","openBackMaterial":"cherry","saveFilename":"cabinet-drafter_generated.skp","sheetWidth":48,"sheetLength":96,"kerf":0.125,"edgeTrim":0.25,"spareSheets":0,"preserveCherryGrain":true,"showLabels":true,"showDrawerBoxHeightLabels":false,"showDrawerFaceHeightLabels":false,"showOpenSpaceHeightLabels":false,"replaceExistingSketchupGroup":true,"kickSkinPly":0.25,"units":"in","frameStileWidth":1.5,"frameRailWidth":1.5,"frameThickness":0.75,"frameMaterial":"cherry","frameOverlay":0.5,"frameInsetReveal":0.0625,"progress":{"completedPartIds":[]},"inventory":{"fullSheetsOnHand":{}}};
   const rows=document.getElementById('cabinetRows'), preview=document.getElementById('rubyPreview'), summary=document.getElementById('drawerSummary');
   const PROJECT_DB='CabinetDrafterProjectFiles', PROJECT_STORE='handles', PROJECT_HANDLE_KEY='cabinetdrafter-project-json';
@@ -1308,7 +1312,8 @@ CabinetDrafter.run
         const carcassWood=mixed?'Cherry':'Birch',sideGrain=mixed?'vertical':'none',flatGrain=mixed?'horizontal':'none';
         addCabPart(carcassWood,s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,sideGrain,'cabinet-side',carcass);
         addCabPart(carcassWood,s.ply,'Bottom',inside,s.cabDepth,1,flatGrain,'cabinet-bottom',carcass);
-        addCabPart(carcassWood,s.ply,'4in stretcher',inside,s.stretcher,4,flatGrain,'carcass-stretcher',carcass);
+        if(mixed)addCabPart(carcassWood,s.ply,'Top stretcher',inside,s.stretcher,2,flatGrain,'top-stretcher',carcass);
+        else addCabPart(carcassWood,s.ply,'4in stretcher',inside,s.stretcher,4,flatGrain,'carcass-stretcher',carcass);
         const fl=frontLayout(c,s,layout),boxW=inside-s.slideClearance;
         if(!layout.error){
           const panelWood=s.mixedPanelMaterial==='cherry'?'Cherry':'Birch',panelGrain=panelWood==='Cherry'?'horizontal':'none',panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply);
@@ -1327,7 +1332,8 @@ CabinetDrafter.run
       }else if(c.type==='door'){
         addCabPart('Birch',s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'none','cabinet-side',carcass);
         addCabPart('Birch',s.ply,'Bottom',inside,s.cabDepth,1,'none','cabinet-bottom',carcass);
-        addCabPart('Birch',s.ply,'4in stretcher',inside,s.stretcher,4,'none','carcass-stretcher',carcass);
+        addCabPart('Birch',s.ply,'Top stretcher',inside,s.stretcher,2,'none','top-stretcher',carcass);
+        addCabPart('Cherry',s.backPly,'Applied full back',w,s.cabHeight,1,'vertical','single-door-applied-back',carcass);
         if(c.shelves>0)addCabPart('Birch',s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),c.shelves,'none','adjustable-shelf',shelves);
         const fr=frontRect(c,s);addCabPart('Cherry',s.ply,c.frontStyle==='face_inset'?'Single inset door':c.frontStyle==='face_overlay'?'Single face-frame overlay door':'Single frameless overlay door',fr.w,fr.high-fr.low,1,'vertical','single-door-front',doorFront);
       }else if(c.type==='open_shelf'){
@@ -1420,7 +1426,7 @@ CabinetDrafter.run
     if(s.sideReveal>s.ply+0.001)errors.push('Side reveal cannot exceed carcass thickness for a full-overlay front.');
     if(!['birch','cherry'].includes(s.mixedPanelMaterial))errors.push('Mixed-cabinet divider material must be birch or cherry.');
     if(!['birch','cherry'].includes(s.openBackMaterial))errors.push('Open-space back material must be birch or cherry.');
-    if(s.backPly<=0)errors.push('Open-space back thickness must be positive.');
+    if(s.backPly<=0)errors.push('Back thickness must be positive.');
     if(s.frameStileWidth<=0||s.frameRailWidth<=0||s.frameThickness<=0)errors.push('Face-frame stile width, rail width, and thickness must be positive.');
     if(s.frameOverlay<0||s.frameInsetReveal<0)errors.push('Face-frame overlay and inset reveal cannot be negative.');
     if(!['birch','cherry'].includes(s.frameMaterial))errors.push('Face-frame material must be birch or cherry.');
@@ -1434,20 +1440,20 @@ CabinetDrafter.run
         const layout=zoneLayout(c,s);if(layout.error)errors.push(`${name}: ${layout.error}.`);
         if(layout.drawers&&layout.drawers.some(d=>d.height<=s.drawerBottomPly))errors.push(`${name}: every drawer box height must exceed the drawer-bottom thickness.`);
         const fl=frontLayout(c,s,layout);if(fl.error&&!layout.error)errors.push(`${name}: ${fl.error}.`);if(fl.shorter)warnings.push(`${name}: ${fl.shorter} custom drawer front(s) are shorter than the corresponding box.`);
-        if(s.mixedPanelDepth>s.cabDepth-s.ply+0.001&&layout.dividers&&layout.dividers.length)warnings.push(`${name}: mixed divider depth is clamped to ${fmt(s.cabDepth-s.ply)}" so it does not intersect the rear stretchers.`);
+        if(s.mixedPanelDepth>s.cabDepth-s.ply+0.001&&layout.dividers&&layout.dividers.length)warnings.push(`${name}: mixed divider depth is clamped to ${fmt(s.cabDepth-s.ply)}" so it stays inside the cabinet back plane.`);
       }
       if(c.type==='door'&&s.shelfDepth>s.cabDepth+0.001)warnings.push(`${name}: shelf depth is clamped to cabinet depth (${fmt(s.cabDepth)}").`);
       if(c.type==='open_shelf'){const sl=shelfLayout(c,s);if(sl.error)errors.push(`${name}: ${sl.error}.`);if(s.shelfDepth>s.cabDepth+0.001)warnings.push(`${name}: shelf depth is clamped to cabinet depth (${dimText(s.cabDepth)}).`);}
     }
     warnings.push(`Cabinet box height is ${dimText(s.cabHeight)} plus a separate ${dimText(s.kickHeight)} toe kick, so the modeled overall height is ${dimText(s.cabHeight+s.kickHeight)}.`);
-    warnings.push('Pure drawer and single-door cabinets use birch carcasses. Any drawer cabinet containing an open cubby automatically uses a cherry carcass and the same four-stretcher open-back structure.');
+    warnings.push('Pure drawer cabinets use birch open-backed carcasses with four stretchers. Single-door cabinets use birch boxes with two flat top stretchers and a cherry applied back matching the door.');
     warnings.push(`Mixed-cabinet fixed divider panels are ${dimText(Math.min(s.mixedPanelDepth,s.cabDepth-s.ply))} deep and currently ${s.mixedPanelMaterial} plywood. Bottom cubbies use the cabinet bottom; top cubbies have no added top panel.`);
-    warnings.push(`Open-space backs are applied to the outside rear face using ${dimText(s.backPly)} ${s.openBackMaterial} material. This adds ${dimText(s.backPly)} to overall physical depth where a back is present.`);
+    warnings.push(`Open-space backs are applied to the outside rear face using ${dimText(s.backPly)} ${s.openBackMaterial} material. Single-door backs use ${dimText(s.backPly)} cherry to match the door. Applied backs add ${dimText(s.backPly)} to overall physical depth where present.`);
     warnings.push('Mixed cabinets receive backs only behind open cubbies. Each localized back is full cabinet width and clear-opening height plus one carcass thickness above and below. Drawer-only regions remain open-backed.');
     warnings.push('Open-shelf cabinets use one full-width applied back; their bottom and adjustable shelves may use the full carcass depth.');
     warnings.push('Drawer boxes are pocket-screw construction: 1/2" birch sides/front/back and a 1/2" birch bottom fitted completely between the four walls, with no dados. The entered drawer-box height is the full wall height.');
     const actualOverlay=s.ply-s.sideReveal;warnings.push(`Frameless fronts use ${dimText(s.sideReveal)} side reveal (${dimText(actualOverlay)} geometric carcass-edge overlap with the current carcass thickness). Face-frame overlay fronts use ${dimText(s.frameOverlay)} overlay beyond the frame opening; inset fronts use ${dimText(s.frameInsetReveal)} reveal per edge.`);warnings.push('Face-frame support currently uses a perimeter frame only: two full-height stiles plus top and bottom rails. Intermediate face-frame rails between drawers/cubbies are not generated yet.');
-    warnings.push('Mixed drawer/open-cubby cabinets use cherry carcass sides, bottom, and all four stretchers; their fixed cubby dividers default to cherry.');
+    warnings.push('Mixed drawer/open-cubby cabinets use cherry carcass sides, bottom, and two flat top stretchers; rear vertical stretchers are omitted because the open cubbies receive localized applied backs.');
     warnings.push('Adjustable shelves are pin-supported. Mixed-cubby divider panels are fixed with pocket screws. Countertops attach with screws through the top stretchers.');
     warnings.push('No edge banding/solid edging is included. Door hinge model, hinge count/cup bores, and handmade pulls remain outside the generated BOM.');
     warnings.push('Toe-kick skin BOM assumes the listed cabinets form one continuous installed run; SketchUp display gaps are ignored for that skin length.');
@@ -1628,7 +1634,7 @@ CabinetDrafter.run
     if(sideDepth>0){previewAddBox(scene,'Toe-kick left side',x0,sideY,0,s.ply,sideDepth,s.kickHeight,'birch','kick');previewAddBox(scene,'Toe-kick right side',x0+width-s.ply,sideY,0,s.ply,sideDepth,s.kickHeight,'birch','kick')}
     previewAddBox(scene,'Toe-kick skin',x0,s.kickSetback,0,width,s.kickSkinPly,s.kickHeight,'cherry','kick');
   }
-  function addPreviewOpenBackCarcass(scene,x0,width,s,material){
+  function addPreviewOpenBackCarcass(scene,x0,width,s,material,includeRearVertical=true){
     const inside=width-(2*s.ply),z0=s.kickHeight,topZ=z0+s.cabHeight-s.ply,rearY=s.cabDepth-s.ply;
     addPreviewKick(scene,x0,width,s);
     previewAddBox(scene,'Left side',x0,0,z0,s.ply,s.cabDepth,s.cabHeight,material);
@@ -1636,8 +1642,10 @@ CabinetDrafter.run
     previewAddBox(scene,'Bottom',x0+s.ply,0,z0,inside,s.cabDepth,s.ply,material);
     previewAddBox(scene,'Front top stretcher',x0+s.ply,0,topZ,inside,s.stretcher,s.ply,material);
     previewAddBox(scene,'Rear top stretcher',x0+s.ply,s.cabDepth-s.stretcher,topZ,inside,s.stretcher,s.ply,material);
-    previewAddBox(scene,'Upper rear stretcher',x0+s.ply,rearY,topZ-s.stretcher,inside,s.ply,s.stretcher,material);
-    previewAddBox(scene,'Lower rear stretcher',x0+s.ply,rearY,z0+s.ply,inside,s.ply,s.stretcher,material);
+    if(includeRearVertical){
+      previewAddBox(scene,'Upper rear stretcher',x0+s.ply,rearY,topZ-s.stretcher,inside,s.ply,s.stretcher,material);
+      previewAddBox(scene,'Lower rear stretcher',x0+s.ply,rearY,z0+s.ply,inside,s.ply,s.stretcher,material);
+    }
   }
   function addPreviewDrawerBox(scene,x,y,z,width,depth,height,s){
     const side=s.drawerSidePly,bottom=s.drawerBottomPly;
@@ -1660,7 +1668,7 @@ CabinetDrafter.run
       try{
         if(c.type==='drawer'){
           const parsed=parseStack(c.stackSpec||'','in'),mixed=parsed.zones.some(z=>z.kind==='open'),carcass=mixed?'cherry':'birch';
-          addPreviewOpenBackCarcass(scene,x0,w,s,carcass);
+          addPreviewOpenBackCarcass(scene,x0,w,s,carcass,!mixed);
           const layout=zoneLayout(c,s);if(layout.error)throw new Error(layout.error);const fl=frontLayout(c,s,layout);if(fl.error)throw new Error(fl.error);
           const panelMat=s.mixedPanelMaterial==='birch'?'birch':'cherry',panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply),backMat=s.openBackMaterial==='birch'?'birchBack':'cherryBack';
           layout.dividers.forEach((d,i)=>previewAddBox(scene,`Open cubby divider ${i+1}`,x0+s.ply,0,z0+d.z,inside,panelDepth,s.ply,panelMat));
@@ -1674,7 +1682,9 @@ CabinetDrafter.run
           });
           if(s.showOpenSpaceHeightLabels)layout.opens.forEach(o=>previewAddLabel(scene,previewDim(o.height),x0+w/2,-0.03,z0+(o.clearBottom+o.clearTop)/2,'dimension'));
         }else if(c.type==='door'){
-          addPreviewOpenBackCarcass(scene,x0,w,s,'birch');addPreviewDoorShelves(scene,x0,w,c.shelves,s);
+          addPreviewOpenBackCarcass(scene,x0,w,s,'birch',false);
+          previewAddBox(scene,'Applied full back',x0,s.cabDepth,z0,w,s.backPly,s.cabHeight,'cherryBack','back');
+          addPreviewDoorShelves(scene,x0,w,c.shelves,s);
           const fr=frontRect(c,s);previewAddBox(scene,'Single door',x0+fr.x,fr.y,z0+fr.low,fr.w,s.ply,fr.high-fr.low,'cherry','front');
         }else if(c.type==='open_shelf'){
           addPreviewKick(scene,x0,w,s);const topZ=z0+s.cabHeight-s.ply;
