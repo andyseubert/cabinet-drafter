@@ -19,6 +19,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Drawer-box sizing with configurable slide clearance
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware black-and-white sheet nesting, kerf, edge trim, and spare-sheet allowance
+- Per-species sheet layout strategy: Auto, crosscut-first, or rip-first; Auto compares both practical strip directions
 - Build progress tracking by cabinet/drawer assembly or physical plywood part, with remaining-work nesting and selective layout printing
 - Full-sheet inventory by material with a shopping list of additional sheets still to buy
 - Separate face-frame solid-stock takeoff by thickness and member width
@@ -109,7 +110,7 @@ The **Material choices** section sets project defaults without pretending the ap
 
 Pure drawer cabinets keep using the hidden cabinet-box material by default. Mixed, open-shelf, and single-door cabinet boxes default to the face/front material because those interiors are visible, but row-level overrides can separate them. Single-door applied backs follow the face/front material so they match the door.
 
-CabinetDrafter creates a valid, non-overlapping, strip-based sheet layout using the selected sheet size, edge trim, kerf, and grain constraints. Dashed guides show full-width crosscuts that separate strips before the parts within each strip are cut. The sheet count is a practical purchase-planning number for the layout it found, but the nesting algorithm does **not** claim to find the mathematical minimum number of sheets in every case.
+CabinetDrafter creates a valid, non-overlapping, strip-based sheet layout using the selected sheet size, edge trim, kerf, and grain constraints. Choose a crosscut-first or rip-first strategy independently for Birch and Cherry plywood, or leave each on Auto to compare both directions. Dashed guides show full-width cuts that separate strips before the parts within each strip are cut. The sheet count is a practical purchase-planning number for the layout it found, but the nesting algorithm does **not** claim to find the mathematical minimum number of sheets in every case.
 
 Face-frame solid stock is reported as net cut length grouped by material, thickness, and member width. Add waste based on available board lengths, defects, milling allowance, and your shop process.
 

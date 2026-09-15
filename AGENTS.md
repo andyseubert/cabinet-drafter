@@ -252,7 +252,7 @@ Nesting rules:
 - Grain is treated as running along the 96 in sheet direction.
 - Hidden cabinet-box and drawer-box parts may rotate.
 - Grain-sensitive visible parts do not rotate when grain preservation is on, regardless of whether the selected visible/front species is birch or cherry.
-- Layout uses guillotine-friendly horizontal strips with full-width crosscut guides, not arbitrary free-form rectangle nesting. It remains a planning aid rather than a complete table-saw cut sequence.
+- Layout uses guillotine-friendly strips with full-width cut guides, not arbitrary free-form rectangle nesting. Birch and Cherry may use independent crosscut-first, rip-first, or Auto strategies. It remains a planning aid rather than a complete table-saw cut sequence.
 - Cut-layout sheet diagrams are black-and-white friendly: part rectangles use species hatch patterns, while material/thickness is named in the sheet header.
 - Nesting free-space rectangles must remain non-overlapping so placed parts never intersect; preserve configured kerf and edge trim as cutting clearance.
 - Do not claim mathematically minimal sheet count.

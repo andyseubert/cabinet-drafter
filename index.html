@@ -76,6 +76,8 @@
 <div><label>Saw kerf</label><input id="kerf" type="number" min="0" step="0.03125"><div class="hint">Default 1/8&quot;.</div></div>
 <div><label>Edge trim per side</label><input id="edgeTrim" type="number" min="0" step="0.03125"><div class="hint">Default 1/4&quot; trim around each sheet.</div></div>
 <div><label>Extra/spare sheets per material</label><input id="spareSheets" type="number" min="0" step="1"><div class="hint">Added to the nested layout count.</div></div>
+<div><label>Birch sheet layout strategy</label><select id="birchLayoutStrategy"><option value="auto">Auto: choose best direction</option><option value="crosscut">Crosscut-first: strips across sheet width</option><option value="rip">Rip-first: strips along sheet length</option></select><div class="hint">Applies to all Birch plywood thicknesses.</div></div>
+<div><label>Cherry sheet layout strategy</label><select id="cherryLayoutStrategy"><option value="auto">Auto: choose best direction</option><option value="crosscut">Crosscut-first: strips across sheet width</option><option value="rip">Rip-first: strips along sheet length</option></select><div class="hint">Applies to all Cherry plywood thicknesses.</div></div>
 <div><label>&nbsp;</label><div style="padding-top:8px"><input id="preserveCherryGrain" type="checkbox"><strong>Preserve visible grain direction</strong></div><div class="hint">Recommended for fronts, doors, visible shelves, sides, backs, and toe-kick skin.</div></div>
 </div>
 <div class="note small"><strong>Cutting-layout assumption:</strong> sheet grain runs along the 96&quot; direction. Grain-sensitive visible parts are oriented so the face grain runs the expected direction and are not rotated when grain preservation is on. Hidden cabinet and drawer-box parts may rotate for better yield.</div></section>
@@ -1153,11 +1155,13 @@ CabinetDrafter.run
   const APP_VERSION='1.2.11';
   const STORAGE_KEY='cabinetDrafterV1211', OLD_KEYS=['cabinetDrafterV1210','cabinetDrafterV129','cabinetDrafterV128','cabinetDrafterV127','cabinetDrafterV126','cabinetDrafterV125','cabinetDrafterV124','cabinetDrafterV123','cabinetDrafterV122','cabinetDrafterV121','cabinetDrafterV120','cabinetDrafterV110','joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
   const defaults={"cabinets":[{"uid":"cab-default-1","label":"24in Drawer Cabinet","type":"drawer","width":24,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"},{"uid":"cab-default-2","label":"20in Single Door Cabinet","type":"door","width":20,"qty":1,"stackSpec":"","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"},{"uid":"cab-default-3","label":"18in Drawer Cabinet","type":"drawer","width":18,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"}],"cabDepth":25,"cabHeight":38,"ply":0.75,"backPly":0.25,"stretcher":4,"frontGap":0.125,"sideReveal":0.0625,"kickHeight":2,"kickSetback":3,"kickDepth":22,"shelfDepth":24.5,"displayGap":8,"drawerDepth":24,"slideClearance":1.0,"drawerSidePly":0.5,"drawerBottomPly":0.5,"drawerBoxGap":0.5,"drawerBottomClearance":0.5,"mixedPanelDepth":24,"frontMaterial":"cherry","hiddenCarcassMaterial":"birch","drawerBoxMaterial":"birch","mixedPanelMaterial":"front","openBackMaterial":"front","saveFilename":"cabinet-drafter_generated.skp","sheetWidth":48,"sheetLength":96,"kerf":0.125,"edgeTrim":0.25,"spareSheets":0,"preserveCherryGrain":true,"showLabels":true,"showCabinetWidthLabels":false,"showDrawerBoxHeightLabels":false,"showDrawerFaceHeightLabels":false,"showOpenSpaceHeightLabels":false,"previewHiddenLine":false,"replaceExistingSketchupGroup":true,"kickSkinPly":0.25,"units":"in","frameStileWidth":1.5,"frameRailWidth":1.5,"frameThickness":0.75,"frameMaterial":"cherry","frameOverlay":0.5,"frameInsetReveal":0.0625,"progress":{"completedPartIds":[]},"inventory":{"fullSheetsOnHand":{}}};
+  defaults.birchLayoutStrategy='auto';defaults.cherryLayoutStrategy='auto';
   const rows=document.getElementById('cabinetRows'), preview=document.getElementById('rubyPreview'), summary=document.getElementById('drawerSummary');
   const PROJECT_DB='CabinetDrafterProjectFiles', PROJECT_STORE='handles', PROJECT_HANDLE_KEY='cabinetdrafter-project-json';
   let projectFileHandle=null, projectAutosaveTimer=null, projectHandleReady=false, projectWriteChain=Promise.resolve();
   let completedPartIds=new Set(), fullSheetInventory={}, layoutPrintSelection=new Set(), currentLayoutSheetKeys=[], layoutPrintSelectionTouched=false, nextCabinetUidCounter=1, canonicalStateCache=null;
   const ids=["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frontMaterial","hiddenCarcassMaterial","drawerBoxMaterial","mixedPanelMaterial","openBackMaterial","frameStileWidth","frameRailWidth","frameThickness","frameMaterial","frameOverlay","frameInsetReveal","saveFilename","sheetWidth","sheetLength","kerf","edgeTrim","spareSheets"];
+  ids.push('birchLayoutStrategy','cherryLayoutStrategy');
   const dimensionIds=new Set(["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frameStileWidth","frameRailWidth","frameThickness","frameOverlay","frameInsetReveal","sheetWidth","sheetLength","kerf","edgeTrim"]);
   let activeUnits='in';
   const deepCopy=x=>JSON.parse(JSON.stringify(x));
@@ -1560,30 +1564,37 @@ CabinetDrafter.run
   }
 
   function partPackOptions(part,k){const opts=[{w:part.packW+k,h:part.packH+k,rot:false,aw:part.packW,ah:part.packH}];if(!part.locked&&Math.abs(part.packW-part.packH)>0.001)opts.push({w:part.packH+k,h:part.packW+k,rot:true,aw:part.packH,ah:part.packW});return opts}
-  function placeInStrip(sheet,part,s){
-    const k=Math.max(0,s.kerf),usableW=s.sheetWidth-(2*s.edgeTrim),capacityW=usableW+k;
+  function placeInStrip(sheet,part,s,direction){
+    const k=Math.max(0,s.kerf),crossCapacity=(direction==='rip'?s.sheetWidth:s.sheetLength)-(2*s.edgeTrim)+k,axisCapacity=(direction==='rip'?s.sheetLength:s.sheetWidth)-(2*s.edgeTrim)+k;
     let best=null;
-    for(const [rowIndex,row] of sheet.rows.entries())for(const o of partPackOptions(part,k)){if(o.w<=capacityW-row.used+1e-9&&o.h<=row.h+1e-9){const score=[row.h-o.h,capacityW-(row.used+o.w),rowIndex];if(!best||score[0]<best.score[0]||score[0]===best.score[0]&&score[1]<best.score[1]||score[0]===best.score[0]&&score[1]===best.score[1]&&score[2]<best.score[2])best={row,...o,score}}}
+    for(const [rowIndex,row] of sheet.rows.entries())for(const o of partPackOptions(part,k)){const cross=direction==='rip'?o.w:o.h,axis=direction==='rip'?o.h:o.w;if(axis<=axisCapacity-row.used+1e-9&&cross<=row.size+1e-9){const score=[row.size-cross,crossCapacity-(row.used+axis),rowIndex];if(!best||score[0]<best.score[0]||score[0]===best.score[0]&&score[1]<best.score[1]||score[0]===best.score[0]&&score[1]===best.score[1]&&score[2]<best.score[2])best={row,...o,axis,cross,score}}}
     if(!best)return false;
-    const x=s.edgeTrim+best.row.used,y=s.edgeTrim+best.row.y;best.row.used+=best.w;sheet.items.push({...part,x,y,w:best.aw,h:best.ah,rotated:best.rot});return true;
+    const x=direction==='rip'?s.edgeTrim+best.row.offset:s.edgeTrim+best.row.used,y=direction==='rip'?s.edgeTrim+best.row.used:s.edgeTrim+best.row.offset;best.row.used+=best.axis;sheet.items.push({...part,x,y,w:best.aw,h:best.ah,rotated:best.rot});return true;
   }
-  function placeInNewStrip(sheet,part,s){
-    const k=Math.max(0,s.kerf),usableW=s.sheetWidth-(2*s.edgeTrim),usableH=s.sheetLength-(2*s.edgeTrim),capacityW=usableW+k,options=partPackOptions(part,k).filter(o=>o.w<=capacityW+1e-9),best=options.sort((a,b)=>a.h-b.h||b.w-a.w)[0];
-    if(!best)return false;const y=sheet.usedHeight;if(y+best.h>usableH+k+1e-9)return false;
-    const row={y,h:best.h,used:best.w};sheet.rows.push(row);sheet.usedHeight+=best.h;sheet.items.push({...part,x:s.edgeTrim,y:s.edgeTrim+y,w:best.aw,h:best.ah,rotated:best.rot});return true;
+  function placeInNewStrip(sheet,part,s,direction){
+    const k=Math.max(0,s.kerf),crossCapacity=(direction==='rip'?s.sheetWidth:s.sheetLength)-(2*s.edgeTrim)+k,axisCapacity=(direction==='rip'?s.sheetLength:s.sheetWidth)-(2*s.edgeTrim)+k,options=partPackOptions(part,k).filter(o=>(direction==='rip'?o.w:o.h)<=crossCapacity+1e-9&&(direction==='rip'?o.h:o.w)<=axisCapacity+1e-9),best=options.sort((a,b)=>(direction==='rip'?a.w:b.h)-(direction==='rip'?b.w:a.h)||b.w-a.w)[0];
+    if(!best)return false;const cross=direction==='rip'?best.w:best.h,axis=direction==='rip'?best.h:best.w,offset=sheet.usedCross;if(offset+cross>crossCapacity+1e-9)return false;
+    const row={offset,size:cross,used:axis};sheet.rows.push(row);sheet.usedCross+=cross;sheet.items.push({...part,x:direction==='rip'?s.edgeTrim+offset:s.edgeTrim,y:direction==='rip'?s.edgeTrim:s.edgeTrim+offset,w:best.aw,h:best.ah,rotated:best.rot});return true;
   }
-  function packMaterial(instances,s){
+  function packMaterialDirection(instances,s,direction){
     const usableW=s.sheetWidth-(2*s.edgeTrim),usableH=s.sheetLength-(2*s.edgeTrim),sheets=[],overs=[];
     if(usableW<=0||usableH<=0)return {sheets,overs:[...instances]};
     const sorted=[...instances].sort((a,b)=>Math.max(b.packW,b.packH)-Math.max(a.packW,a.packH)||b.packW*b.packH-a.packW*a.packH);
     for(const p of sorted){
-      const canFit=partPackOptions(p,Math.max(0,s.kerf)).some(o=>o.w<=usableW+Math.max(0,s.kerf)+1e-9&&o.h<=usableH+Math.max(0,s.kerf)+1e-9);if(!canFit){overs.push(p);continue}
-      let placed=false;for(const sh of sheets){if(placeInStrip(sh,p,s)||placeInNewStrip(sh,p,s)){placed=true;break}}
-      if(!placed){const sh={rows:[],usedHeight:0,items:[]};sheets.push(sh);if(!placeInNewStrip(sh,p,s))overs.push(p)}
+      const k=Math.max(0,s.kerf),crossCapacity=(direction==='rip'?usableW:usableH)+k,axisCapacity=(direction==='rip'?usableH:usableW)+k,canFit=partPackOptions(p,k).some(o=>(direction==='rip'?o.w:o.h)<=crossCapacity+1e-9&&(direction==='rip'?o.h:o.w)<=axisCapacity+1e-9);if(!canFit){overs.push(p);continue}
+      let placed=false;for(const sh of sheets){if(placeInStrip(sh,p,s,direction)||placeInNewStrip(sh,p,s,direction)){placed=true;break}}
+      if(!placed){const sh={rows:[],usedCross:0,items:[]};sheets.push(sh);if(!placeInNewStrip(sh,p,s,direction))overs.push(p)}
     }
-    return {sheets,overs};
+    return {sheets,overs,strategy:direction};
   }
-  function packInstances(instances,s){const groups={};for(const p of instances)(groups[p.material]??=[]).push(p);const results={};for(const [mat,items] of Object.entries(groups))results[mat]=packMaterial(items,s);return results}
+  function layoutStrategyForMaterial(mat,s){const species=String(mat||'').toLowerCase().startsWith('cherry')?'cherry':'birch',choice=s[`${species}LayoutStrategy`];return ['crosscut','rip'].includes(choice)?choice:'auto'}
+  function packMaterial(instances,s,mat){
+    const choice=layoutStrategyForMaterial(mat,s);if(choice!=='auto')return packMaterialDirection(instances,s,choice);
+    const candidates=[packMaterialDirection(instances,s,'crosscut'),packMaterialDirection(instances,s,'rip')],sheetArea=s.sheetWidth*s.sheetLength;
+    const score=result=>{const used=result.sheets.reduce((n,sh)=>n+sh.items.reduce((m,p)=>m+p.w*p.h,0),0),strips=result.sheets.reduce((n,sh)=>n+sh.rows.length,0);return [result.overs.length?1:0,result.sheets.length,result.sheets.length*sheetArea-used,strips]};
+    return candidates.sort((a,b)=>{const sa=score(a),sb=score(b);for(let i=0;i<sa.length;i++)if(sa[i]!==sb[i])return sa[i]-sb[i];return a.strategy.localeCompare(b.strategy)})[0];
+  }
+  function packInstances(instances,s){const groups={};for(const p of instances)(groups[p.material]??=[]).push(p);const results={};for(const [mat,items] of Object.entries(groups))results[mat]=packMaterial(items,s,mat);return results}
   function packAll(s){
     const parts=buildParts(s),inst=instanceParts(parts,s);return {parts,instances:inst,results:packInstances(inst,s)};
   }
@@ -1717,7 +1728,7 @@ CabinetDrafter.run
       const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox',`0 0 ${s.sheetWidth} ${s.sheetLength}`);svg.setAttribute('class','sheet-svg');svg.setAttribute('aria-label',`${mat} sheet ${idx+1}`);const hatchBase=`layout-hatch-${cleanKey(key)}`;addLayoutHatchDefs(svg,hatchBase);
       const bg=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:0,y:0,width:s.sheetWidth,height:s.sheetLength,fill:'#fff',stroke:'#333','stroke-width':'0.18'}))bg.setAttribute(k,v);svg.appendChild(bg);
       if(s.edgeTrim>0){const r=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:s.edgeTrim,y:s.edgeTrim,width:s.sheetWidth-2*s.edgeTrim,height:s.sheetLength-2*s.edgeTrim,fill:'none',stroke:'#999','stroke-width':'0.12','stroke-dasharray':'0.5 0.5'}))r.setAttribute(k,v);svg.appendChild(r)}
-      const k=Math.max(0,s.kerf);for(const row of sh.rows||[]){if(row.y+row.h-k<=0||row.y+row.h-k>=s.sheetLength-2*s.edgeTrim+0.001)continue;const line=document.createElementNS(svg.namespaceURI,'line');for(const [name,value] of Object.entries({x1:s.edgeTrim,y1:s.edgeTrim+row.y+row.h-k/2,x2:s.sheetWidth-s.edgeTrim,y2:s.edgeTrim+row.y+row.h-k/2,stroke:'#555','stroke-width':'0.16','stroke-dasharray':'1.2 0.8'}))line.setAttribute(name,value);svg.appendChild(line)}
+      const k=Math.max(0,s.kerf),rip=sh.strategy==='rip';for(const row of sh.rows||[]){const edge=s.edgeTrim+row.offset+row.size-k/2,inside=rip?s.sheetWidth-2*s.edgeTrim:s.sheetLength-2*s.edgeTrim;if(row.offset+row.size-k<=0||row.offset+row.size-k>=inside+0.001)continue;const line=document.createElementNS(svg.namespaceURI,'line');for(const [name,value] of Object.entries(rip?{x1:edge,y1:s.edgeTrim,x2:edge,y2:s.sheetLength-s.edgeTrim,stroke:'#555','stroke-width':'0.16','stroke-dasharray':'1.2 0.8'}:{x1:s.edgeTrim,y1:edge,x2:s.sheetWidth-s.edgeTrim,y2:edge,stroke:'#555','stroke-width':'0.16','stroke-dasharray':'1.2 0.8'}))line.setAttribute(name,value);svg.appendChild(line)}
       for(const p of sh.items){const r=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:p.x,y:p.y,width:p.w,height:p.h,fill:`url(#${hatchBase}-${layoutSpecies(mat)})`,stroke:'#111','stroke-width':'0.12'}))r.setAttribute(k,v);svg.appendChild(r);const text=document.createElementNS(svg.namespaceURI,'text');text.setAttribute('x',p.x+0.5);text.setAttribute('y',p.y+1.8);text.setAttribute('font-size','1.35');text.setAttribute('font-family','Arial, sans-serif');text.setAttribute('fill','#111');text.setAttribute('stroke','#fff');text.setAttribute('stroke-width','0.35');text.setAttribute('paint-order','stroke fill');const l1=document.createElementNS(svg.namespaceURI,'tspan');l1.textContent=p.name;l1.setAttribute('x',p.x+0.5);l1.setAttribute('dy','0');text.appendChild(l1);const l2=document.createElementNS(svg.namespaceURI,'tspan');l2.textContent=`${fmtDisplay(p.a)}×${fmtDisplay(p.b)}${activeUnits==='mm'?' mm':' in'}`;l2.setAttribute('x',p.x+0.5);l2.setAttribute('dy','1.45');text.appendChild(l2);svg.appendChild(text)}
       card.appendChild(svg);root.appendChild(card)
     })}
