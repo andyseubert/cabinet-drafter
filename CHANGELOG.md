@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.10 - 2026-09-15
+
+### Added
+
+- Per-cabinet material overrides for box/carcass plywood and face/front plywood.
+- Material summaries in the build progress/inventory cabinet and assembly rows.
+
+### Changed
+
+- Toe-kick skin planning now splits adjacent installed runs when cabinet face/front species changes.
+
 ## 1.2.9 - 2026-09-14
 
 ### Added

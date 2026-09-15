@@ -10,7 +10,7 @@ Live site: `https://andyseubert.github.io/cabinet-drafter/`
 
 CabinetDrafter is a self-contained browser cabinet planner. The primary application is `index.html`, with no required server, account, CDN, framework, or external JavaScript dependency. It supports cabinet layout, drawer/open-space sizing, plywood BOMs, cut lists, sheet nesting, an interactive browser 3D preview, project JSON save/load, and optional SketchUp Ruby export.
 
-Current public version: **1.2.9**.
+Current public version: **1.2.10**.
 
 Future user-facing changes should bump the version according to semver unless there is a good reason not to.
 
@@ -54,6 +54,7 @@ SketchUp Web cannot execute Ruby extensions/scripts.
 - Default visible/front plywood: cherry.
 - Default hidden cabinet-box plywood: birch.
 - Default drawer-box plywood: birch.
+- Cabinet rows can override box/carcass plywood species and face/front plywood species independently.
 - Separate toe kick/base: 2 in high.
 - Default toe-kick setback: 3 in.
 - Default toe-kick depth: 22 in.
@@ -148,7 +149,7 @@ The drawer-box gap applies only between adjacent drawer boxes; fixed divider pan
 
 ### Pure drawer carcasses
 
-- 3/4 in hidden cabinet-box plywood carcass.
+- Default 3/4 in hidden cabinet-box plywood carcass; cabinet-row box/carcass override can change the species.
 - 3/4 in solid plywood bottom.
 - No full top.
 - No full back.
@@ -160,21 +161,21 @@ The drawer-box gap applies only between adjacent drawer boxes; fixed divider pan
 
 ### Single-door cabinets
 
-- 3/4 in visible/front plywood cabinet box.
+- Default 3/4 in visible/front plywood cabinet box; cabinet-row box/carcass override can change the box, stretchers, and shelf species.
 - 3/4 in solid plywood bottom.
 - No full top.
 - Full applied back on the outside rear face, not inset.
-- Back material: visible/front plywood matching the door.
+- Back material: cabinet face/front plywood matching the door.
 - Back thickness follows the configured back thickness, default 1/4 in.
 - No rear vertical stretchers.
 - Two flat 4 in top stretchers:
   - front top, flat
   - rear top, flat
-- Optional adjustable shelves use visible/front plywood and shelf pins.
+- Optional adjustable shelves use the cabinet box/carcass plywood and shelf pins.
 
 ### Open-shelf cabinets
 
-- 3/4 in visible/front plywood carcass.
+- Default 3/4 in visible/front plywood carcass; cabinet-row box/carcass override can change the box and shelf species.
 - Applied back on the outside rear face, not inset.
 - Default applied back: 1/4 in plywood matching visible/front material, configurable to match hidden cabinet-box material or explicit birch/cherry.
 - Full-width, full-height back.
@@ -192,7 +193,7 @@ Explicit clear opening heights may be entered bottom-to-top, for example:
 
 ### Mixed drawer/open-cubby cabinets
 
-- Carcass uses visible/front plywood because the interior is visible.
+- Carcass defaults to visible/front plywood because the interior is visible; cabinet-row box/carcass override can change the species.
 - Two flat 4 in top stretchers only; rear vertical stretchers are omitted where localized backs provide rear closure.
 - Fixed divider panels are 3/4 in by default, 24 in deep by default, pocket-screwed, and default to the visible/front material.
 - Divider panels can instead match the hidden cabinet-box material or be set explicitly to birch/cherry.
@@ -211,6 +212,7 @@ Example:
 ### Fronts and doors
 
 - Default material: 3/4 in visible/front plywood, which defaults to cherry.
+- Cabinet rows can override the face/front plywood species for drawer fronts, doors, single-door backs, and that cabinet's visible toe-kick skin.
 - Frameless construction is full overlay.
 - Frameless side reveal default: 1/16 in.
 - With 3/4 in carcass, that means 11/16 in geometric overlap per side.
@@ -225,8 +227,8 @@ Example:
 - 3/4 in hidden cabinet-box plywood structural rails.
 - Front rail, rear rail, and two side rails.
 - Intended to use offcuts where possible.
-- Visible front gets 1/4 in visible/front plywood or veneer skin.
-- BOM treats the current cabinet list as one installed run for continuous visible-material skin planning.
+- Visible front gets 1/4 in the cabinet's face/front plywood or veneer skin.
+- BOM treats adjacent cabinets with the same face/front species as continuous installed runs for visible-material skin planning.
 - Multiple-wall/run support remains a known limitation.
 
 ## BOM and nesting behavior
@@ -235,6 +237,7 @@ Materials currently include:
 
 - 3/4 visible/front plywood, default cherry
 - 3/4 hidden cabinet-box plywood, default birch
+- cabinet-specific 3/4 box/carcass and face/front plywood overrides
 - drawer-box plywood, default 1/2 birch including drawer bottoms
 - configurable mixed-cabinet divider plywood, default matching visible/front
 - configurable thin open-space back, default 1/4 matching visible/front

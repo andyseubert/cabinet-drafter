@@ -15,7 +15,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Explicit drawer heights and clear shelf/cubby opening heights
 - Inches or millimeters for entry/display while keeping canonical geometry stable internally
 - Applied backs behind open spaces and single-door cabinets
-- Role-based plywood material choices for visible/front parts, hidden cabinet-box parts, drawer boxes, open-space backs, and mixed dividers
+- Role-based plywood material defaults, plus per-cabinet species overrides for box/carcass parts and faces/fronts
 - Drawer-box sizing with configurable slide clearance
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware sheet nesting, kerf, edge trim, and spare-sheet allowance
@@ -39,7 +39,7 @@ You can also download the repository and open `index.html` directly. The app doe
 1. Open `index.html`.
 2. Choose inches or millimeters.
 3. Add, edit, or reorder cabinets in the cabinet table.
-4. For each cabinet choose **Frameless**, **Face frame - overlay**, or **Face frame - inset**.
+4. For each cabinet choose **Frameless**, **Face frame - overlay**, or **Face frame - inset**, and override box/carcass or face/front material if needed.
 5. Review the 3D preview directly below the cabinet table and adjust export/label options if needed.
 6. Tune sizing, materials, and sheet-planning settings, then review the BOM and sheet layouts before purchasing material.
 7. As you build, check off completed cut parts and enter full sheets already on hand.
@@ -91,7 +91,7 @@ Global face-frame settings control stile width, rail width, frame thickness, mat
 
 ## Build progress and inventory
 
-CabinetDrafter tracks completed work as individual physical plywood cut parts. The progress UI also groups those parts into practical assemblies, so you can check off a whole carcass, toe-kick/base, drawer, door/front, or shelf set without clicking every piece. Checking off work does not delete or change the cabinet design; it only removes those parts from the remaining-work nesting and remaining cut-list CSV.
+CabinetDrafter tracks completed work as individual physical plywood cut parts. The progress UI also groups those parts into practical assemblies, so you can check off a whole carcass, toe-kick/base, drawer, door/front, or shelf set without clicking every piece. Cabinet and assembly rows list their generated material species before you open the physical-parts details. Checking off work does not delete or change the cabinet design; it only removes those parts from the remaining-work nesting and remaining cut-list CSV.
 
 Each cabinet instance has a stable internal ID so progress survives label changes and ordinary editing. Part IDs include the part geometry and material, so a completed part is not silently reused for a newly sized or newly specified part.
 
@@ -105,9 +105,9 @@ The remaining plywood layouts are individually selectable before printing, with 
 
 ## Material calculations
 
-The **Material choices** section keeps visible and hidden work separate without pretending the app knows every sheet good in the lumber rack. Choose the plywood for faces/doors/drawer fronts and visible cabinet parts, the hidden cabinet-box plywood for pure drawer carcasses and toe-kick structure, and the drawer-box plywood independently. Mixed-cabinet dividers and open-space backs can either match one of those roles or be set explicitly to birch or cherry.
+The **Material choices** section sets project defaults without pretending the app knows every sheet good in the lumber rack. Choose the default plywood for faces/doors/drawer fronts and visible cabinet parts, the default hidden cabinet-box plywood for pure drawer carcasses and toe-kick structure, and the drawer-box plywood independently. Each cabinet row can override the box/carcass species and face/front species. Mixed-cabinet dividers and open-space backs can either match the visible/front role, match the hidden cabinet-box role, or be set explicitly to birch or cherry.
 
-Single-door cabinets use the visible/front material for the cabinet box, shelves, door, and applied back. Pure drawer cabinets keep using the hidden cabinet-box material by default.
+Pure drawer cabinets keep using the hidden cabinet-box material by default. Mixed, open-shelf, and single-door cabinet boxes default to the face/front material because those interiors are visible, but row-level overrides can separate them. Single-door applied backs follow the face/front material so they match the door.
 
 CabinetDrafter creates a valid, non-overlapping sheet layout using the selected sheet size, edge trim, kerf, and grain constraints. The sheet count is a practical purchase-planning number for the layout it found, but the nesting algorithm does **not** claim to find the mathematical minimum number of sheets in every case.
 

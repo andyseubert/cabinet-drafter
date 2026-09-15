@@ -8,9 +8,10 @@ CabinetDrafter is configurable, but its generated geometry and BOM must still st
 - Default visible/front plywood: cherry.
 - Default hidden cabinet-box plywood: birch.
 - Default drawer-box plywood: birch.
-- Pure drawer cabinet boxes use the hidden cabinet-box material.
-- Single-door cabinet boxes, shelves, doors, and applied backs use the visible/front material.
-- Mixed drawer/open-cubby and open-shelf visible cabinet parts use the visible/front material.
+- Pure drawer cabinet boxes use the hidden cabinet-box material by default.
+- Mixed drawer/open-cubby, open-shelf, and single-door cabinet boxes use the face/front material by default because those interiors are visible.
+- Each cabinet row can override the box/carcass plywood species and the face/front plywood species independently.
+- Single-door doors and applied backs use the face/front material so the back matches the door.
 - Carcass joints in the development project use pocket screws.
 - No automatic edge banding/solid edging is included.
 
@@ -47,7 +48,7 @@ The face frame is applied to the front of the carcass and consists of two full-h
 - A single mixed-cubby back spans full cabinet width and covers clear opening height plus one carcass thickness above and below.
 - Adjacent open cubbies share one localized back spanning the combined clear openings, the divider panel(s) between them, and one carcass thickness above and below.
 - Open-shelf cabinets use one full-width applied back.
-- Single-door cabinets use one full-width applied back in the visible/front material using the configured back thickness.
+- Single-door cabinets use one full-width applied back in that cabinet's face/front material using the configured back thickness.
 
 ## Shelves
 
@@ -61,7 +62,7 @@ Pure drawer open-back carcasses use four stretchers: two flat top stretchers and
 
 ## Toe kick
 
-Default base is a separate 2 in-high 3/4 in ladder frame using the hidden cabinet-box material and narrow offcuts, with a visible 1/4 in skin using the visible/front material across the installed run. The current BOM treats the listed cabinets as one continuous run for toe-kick skin planning.
+Default base is a separate 2 in-high 3/4 in ladder frame using the hidden cabinet-box material and narrow offcuts, with a visible 1/4 in skin using each cabinet's face/front material. The current BOM treats adjacent cabinets with the same face/front species as continuous runs for toe-kick skin planning.
 
 ## Countertop
 
@@ -75,7 +76,7 @@ Hardware counts and drilling templates are not yet complete. Development-project
 
 Completed work is tracked as individual physical plywood cut parts. A completed part is removed from the remaining-work nesting, but the cabinet definition and 3D design remain unchanged.
 
-The progress UI groups those physical parts into practical shop assemblies. Whole carcasses mark the cabinet box parts complete without also marking loose fronts or drawer boxes. Whole drawer assembly checkboxes mark the drawer box parts and matching drawer front together. Individual part checkboxes remain available for partial work.
+The progress UI groups those physical parts into practical shop assemblies and lists the material species generated for each cabinet and assembly. Whole carcasses mark the cabinet box parts complete without also marking loose fronts or drawer boxes. Whole drawer assembly checkboxes mark the drawer box parts and matching drawer front together. Individual part checkboxes remain available for partial work.
 
 Part completion IDs are based on the cabinet instance, part role, material, and dimensions. Label-only edits should not lose progress, while material or size changes should invalidate affected completed parts.
 
