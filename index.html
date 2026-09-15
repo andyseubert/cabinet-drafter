@@ -84,7 +84,7 @@
 
 <section class="card" id="bomCard"><h2>Material / sheet BOM <span class="muted">full project</span></h2><div id="bomKpis" class="bom-kpi"></div><div id="designChecks"></div><div id="bomSummary" class="small"></div><div id="linearStockSummary" class="small"></div><div class="actions"><button id="downloadBom">Download sheet BOM CSV</button><button id="downloadCutList">Download detailed cut list CSV</button><button id="downloadLinearStock">Download face-frame stock CSV</button></div></section>
 
-<section class="card" id="sheetLayoutsCard"><h2>Remaining plywood cutting layouts</h2><div class="actions"><button id="selectAllLayouts">Select all</button><button id="selectNoLayouts">Select none</button><button id="printLayouts">Print / Save selected layouts as PDF</button><span id="layoutPrintCount" class="small print-count"></span></div><div class="note small">These layouts include remaining cut parts only. Completed physical parts are not nested here. This is a nesting/planning diagram, not a table-saw cut sequence. Parts use black-and-white hatch fills by species; the sheet material and thickness are named in the sheet header. Real sheets may have voids, damage or grain defects, and your final saw strategy may move pieces around. The optimizer includes the selected kerf and edge trim.</div><div id="layoutWarnings"></div><div id="sheetLayouts" class="layout-grid"></div></section>
+<section class="card" id="sheetLayoutsCard"><h2>Remaining plywood cutting layouts</h2><div class="actions"><button id="selectAllLayouts">Select all</button><button id="selectNoLayouts">Select none</button><button id="printLayouts">Print / Save selected layouts as PDF</button><span id="layoutPrintCount" class="small print-count"></span></div><div class="note small">These layouts include remaining cut parts only. Parts are grouped into horizontal strips: dashed guides mark full-width crosscuts across the sheet, followed by cuts within each strip. Parts use black-and-white hatch fills by species; the sheet material and thickness are named in the sheet header. Real sheets may have voids, damage or grain defects, and your final saw strategy may move pieces around. The optimizer includes the selected kerf and edge trim.</div><div id="layoutWarnings"></div><div id="sheetLayouts" class="layout-grid"></div></section>
 
 <section class="card"><h2>Construction rules in this version</h2><p class="small"><strong>Cabinets may be frameless, face-frame overlay, or face-frame inset on a per-cabinet basis.</strong> Structural carcass joints use pocket screws in the supplied project defaults. Pure drawer cabinets use the hidden cabinet-box material and remain open-backed unless the cabinet row overrides the box/carcass species. Single-door cabinet boxes, shelves, and mixed/open visible cabinet parts default to the face/front material, and each cabinet row can override box/carcass and face/front species independently. Single-door applied backs match the door/front material. Face frames are modeled as solid-wood perimeter frames and are reported separately as linear stock. Drawer boxes use the drawer-box material with bottoms fitted completely between the four walls. Open spaces receive applied backs at the rear. Adjustable shelves are pin-supported; fixed mixed-cubby dividers are pocket-screwed. Countertops attach through top stretchers. No edge banding is included.</p><div class="note small"><strong>Toe-kick/base:</strong> each cabinet gets a separate 2&quot;-high ladder frame using the hidden cabinet-box material, intended to use offcuts. A separate visible skin uses the cabinet's face/front material. The BOM treats adjacent cabinets with the same face/front species as one installed run and makes the skin in the longest pieces that fit the configured sheet length; SketchUp shows one skin segment per cabinet because the presentation model spaces cabinets apart.</div></section>
 <dialog id="helpDialog" class="help-dialog"><div class="help-doc">
@@ -254,7 +254,7 @@ Visible front gets the cabinet's face/front material or veneer skin.</pre>
   <p>To give the tool to somebody else, send the CabinetDrafter ZIP. They can unzip it and open <code>index.html</code> directly in a modern browser. To share a specific design, send the project JSON too.</p>
 
   <h3>12. BOM, face-frame stock, and sheet layouts</h3>
-  <p>The sheet optimizer is a planning/nesting aid, not a table-saw cut sequence. It accounts for the configured sheet size, edge trim, saw kerf, and visible grain direction. Inspect real sheets for damage, voids, and grain before cutting.</p>
+  <p>The sheet optimizer is a guillotine-friendly planning aid for breaking down sheets into rectangular strips. Dashed guides show full-width crosscuts between strips. It accounts for the configured sheet size, edge trim, saw kerf, and visible grain direction. Inspect real sheets for damage, voids, and grain before cutting, and choose a cut order that keeps each panel supported.</p>
   <div class="help-warning"><strong>Current run assumption:</strong> CabinetDrafter treats the complete cabinet list as one installed straight run when it creates the continuous visible-material toe-kick skin. If cabinet face/front species changes within the list, it splits the skin into adjacent same-species runs. If a project contains cabinets on multiple walls or separate runs, split them into separate project files or manually split the toe-kick skin until multi-run support is added.</div>
 
   <h3>13. Before you cut</h3>
@@ -1559,34 +1559,27 @@ CabinetDrafter.run
     return out;
   }
 
-  function intersects(a,b){return !(b.x>=a.x+a.w||b.x+b.w<=a.x||b.y>=a.y+a.h||b.y+b.h<=a.y)}
-  function contains(a,b){return b.x>=a.x-1e-9&&b.y>=a.y-1e-9&&b.x+b.w<=a.x+a.w+1e-9&&b.y+b.h<=a.y+a.h+1e-9}
-  function splitFree(f,u){
-    if(!intersects(f,u))return [f];const r=[];
-    // Partition the space around the placed rectangle without overlapping
-    // corner regions. Overlapping free rectangles can produce intersecting
-    // placements later in the same sheet.
-    if(u.x>f.x)r.push({x:f.x,y:f.y,w:u.x-f.x,h:f.h});
-    if(u.x+u.w<f.x+f.w)r.push({x:u.x+u.w,y:f.y,w:(f.x+f.w)-(u.x+u.w),h:f.h});
-    if(u.y>f.y)r.push({x:u.x,y:f.y,w:u.w,h:u.y-f.y});
-    if(u.y+u.h<f.y+f.h)r.push({x:u.x,y:u.y+u.h,w:u.w,h:(f.y+f.h)-(u.y+u.h)});
-    return r.filter(x=>x.w>0.001&&x.h>0.001);
-  }
-  function pruneFree(rects){return rects.filter((r,i)=>!rects.some((q,j)=>i!==j&&contains(q,r)))}
-  function tryPlace(sheet,part,s){
-    const k=s.kerf,opts=[{w:part.packW+k,h:part.packH+k,rot:false,aw:part.packW,ah:part.packH}];if(!part.locked&&Math.abs(part.packW-part.packH)>0.001)opts.push({w:part.packH+k,h:part.packW+k,rot:true,aw:part.packH,ah:part.packW});
+  function partPackOptions(part,k){const opts=[{w:part.packW+k,h:part.packH+k,rot:false,aw:part.packW,ah:part.packH}];if(!part.locked&&Math.abs(part.packW-part.packH)>0.001)opts.push({w:part.packH+k,h:part.packW+k,rot:true,aw:part.packH,ah:part.packW});return opts}
+  function placeInStrip(sheet,part,s){
+    const k=Math.max(0,s.kerf),usableW=s.sheetWidth-(2*s.edgeTrim),capacityW=usableW+k;
     let best=null;
-    for(const f of sheet.free){for(const o of opts){if(o.w<=f.w+1e-9&&o.h<=f.h+1e-9){const leftoverH=f.h-o.h,leftoverW=f.w-o.w,short=Math.min(leftoverH,leftoverW),long=Math.max(leftoverH,leftoverW),area=f.w*f.h-o.w*o.h;const score=[short,long,area];if(!best||score[0]<best.score[0]||score[0]===best.score[0]&&score[1]<best.score[1]||score[0]===best.score[0]&&score[1]===best.score[1]&&score[2]<best.score[2])best={x:f.x,y:f.y,...o,score}}}}
-    if(!best)return false;const used={x:best.x,y:best.y,w:best.w,h:best.h};let free=[];for(const f of sheet.free)free.push(...splitFree(f,used));sheet.free=pruneFree(free);sheet.items.push({...part,x:best.x+s.edgeTrim,y:best.y+s.edgeTrim,w:best.aw,h:best.ah,rotated:best.rot});return true;
+    for(const [rowIndex,row] of sheet.rows.entries())for(const o of partPackOptions(part,k)){if(o.w<=capacityW-row.used+1e-9&&o.h<=row.h+1e-9){const score=[row.h-o.h,capacityW-(row.used+o.w),rowIndex];if(!best||score[0]<best.score[0]||score[0]===best.score[0]&&score[1]<best.score[1]||score[0]===best.score[0]&&score[1]===best.score[1]&&score[2]<best.score[2])best={row,...o,score}}}
+    if(!best)return false;
+    const x=s.edgeTrim+best.row.used,y=s.edgeTrim+best.row.y;best.row.used+=best.w;sheet.items.push({...part,x,y,w:best.aw,h:best.ah,rotated:best.rot});return true;
+  }
+  function placeInNewStrip(sheet,part,s){
+    const k=Math.max(0,s.kerf),usableW=s.sheetWidth-(2*s.edgeTrim),usableH=s.sheetLength-(2*s.edgeTrim),capacityW=usableW+k,options=partPackOptions(part,k).filter(o=>o.w<=capacityW+1e-9),best=options.sort((a,b)=>a.h-b.h||b.w-a.w)[0];
+    if(!best)return false;const y=sheet.usedHeight;if(y+best.h>usableH+k+1e-9)return false;
+    const row={y,h:best.h,used:best.w};sheet.rows.push(row);sheet.usedHeight+=best.h;sheet.items.push({...part,x:s.edgeTrim,y:s.edgeTrim+y,w:best.aw,h:best.ah,rotated:best.rot});return true;
   }
   function packMaterial(instances,s){
-    const k=Math.max(0,s.kerf),usableW=s.sheetWidth-(2*s.edgeTrim),usableH=s.sheetLength-(2*s.edgeTrim),effectiveW=usableW+k,effectiveH=usableH+k,sheets=[],overs=[];
+    const usableW=s.sheetWidth-(2*s.edgeTrim),usableH=s.sheetLength-(2*s.edgeTrim),sheets=[],overs=[];
     if(usableW<=0||usableH<=0)return {sheets,overs:[...instances]};
     const sorted=[...instances].sort((a,b)=>Math.max(b.packW,b.packH)-Math.max(a.packW,a.packH)||b.packW*b.packH-a.packW*a.packH);
     for(const p of sorted){
-      const canFit=(p.packW+k<=effectiveW&&p.packH+k<=effectiveH)||(!p.locked&&p.packH+k<=effectiveW&&p.packW+k<=effectiveH);if(!canFit){overs.push(p);continue}
-      let placed=false;for(const sh of sheets){if(tryPlace(sh,p,{...s,kerf:k})){placed=true;break}}
-      if(!placed){const sh={free:[{x:0,y:0,w:effectiveW,h:effectiveH}],items:[]};sheets.push(sh);if(!tryPlace(sh,p,{...s,kerf:k}))overs.push(p)}
+      const canFit=partPackOptions(p,Math.max(0,s.kerf)).some(o=>o.w<=usableW+Math.max(0,s.kerf)+1e-9&&o.h<=usableH+Math.max(0,s.kerf)+1e-9);if(!canFit){overs.push(p);continue}
+      let placed=false;for(const sh of sheets){if(placeInStrip(sh,p,s)||placeInNewStrip(sh,p,s)){placed=true;break}}
+      if(!placed){const sh={rows:[],usedHeight:0,items:[]};sheets.push(sh);if(!placeInNewStrip(sh,p,s))overs.push(p)}
     }
     return {sheets,overs};
   }
@@ -1724,6 +1717,7 @@ CabinetDrafter.run
       const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox',`0 0 ${s.sheetWidth} ${s.sheetLength}`);svg.setAttribute('class','sheet-svg');svg.setAttribute('aria-label',`${mat} sheet ${idx+1}`);const hatchBase=`layout-hatch-${cleanKey(key)}`;addLayoutHatchDefs(svg,hatchBase);
       const bg=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:0,y:0,width:s.sheetWidth,height:s.sheetLength,fill:'#fff',stroke:'#333','stroke-width':'0.18'}))bg.setAttribute(k,v);svg.appendChild(bg);
       if(s.edgeTrim>0){const r=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:s.edgeTrim,y:s.edgeTrim,width:s.sheetWidth-2*s.edgeTrim,height:s.sheetLength-2*s.edgeTrim,fill:'none',stroke:'#999','stroke-width':'0.12','stroke-dasharray':'0.5 0.5'}))r.setAttribute(k,v);svg.appendChild(r)}
+      const k=Math.max(0,s.kerf);for(const row of sh.rows||[]){if(row.y+row.h-k<=0||row.y+row.h-k>=s.sheetLength-2*s.edgeTrim+0.001)continue;const line=document.createElementNS(svg.namespaceURI,'line');for(const [name,value] of Object.entries({x1:s.edgeTrim,y1:s.edgeTrim+row.y+row.h-k/2,x2:s.sheetWidth-s.edgeTrim,y2:s.edgeTrim+row.y+row.h-k/2,stroke:'#555','stroke-width':'0.16','stroke-dasharray':'1.2 0.8'}))line.setAttribute(name,value);svg.appendChild(line)}
       for(const p of sh.items){const r=document.createElementNS(svg.namespaceURI,'rect');for(const [k,v] of Object.entries({x:p.x,y:p.y,width:p.w,height:p.h,fill:`url(#${hatchBase}-${layoutSpecies(mat)})`,stroke:'#111','stroke-width':'0.12'}))r.setAttribute(k,v);svg.appendChild(r);const text=document.createElementNS(svg.namespaceURI,'text');text.setAttribute('x',p.x+0.5);text.setAttribute('y',p.y+1.8);text.setAttribute('font-size','1.35');text.setAttribute('font-family','Arial, sans-serif');text.setAttribute('fill','#111');text.setAttribute('stroke','#fff');text.setAttribute('stroke-width','0.35');text.setAttribute('paint-order','stroke fill');const l1=document.createElementNS(svg.namespaceURI,'tspan');l1.textContent=p.name;l1.setAttribute('x',p.x+0.5);l1.setAttribute('dy','0');text.appendChild(l1);const l2=document.createElementNS(svg.namespaceURI,'tspan');l2.textContent=`${fmtDisplay(p.a)}×${fmtDisplay(p.b)}${activeUnits==='mm'?' mm':' in'}`;l2.setAttribute('x',p.x+0.5);l2.setAttribute('dy','1.45');text.appendChild(l2);svg.appendChild(text)}
       card.appendChild(svg);root.appendChild(card)
     })}

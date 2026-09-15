@@ -109,7 +109,7 @@ The **Material choices** section sets project defaults without pretending the ap
 
 Pure drawer cabinets keep using the hidden cabinet-box material by default. Mixed, open-shelf, and single-door cabinet boxes default to the face/front material because those interiors are visible, but row-level overrides can separate them. Single-door applied backs follow the face/front material so they match the door.
 
-CabinetDrafter creates a valid, non-overlapping sheet layout using the selected sheet size, edge trim, kerf, and grain constraints. The sheet count is a practical purchase-planning number for the layout it found, but the nesting algorithm does **not** claim to find the mathematical minimum number of sheets in every case.
+CabinetDrafter creates a valid, non-overlapping, strip-based sheet layout using the selected sheet size, edge trim, kerf, and grain constraints. Dashed guides show full-width crosscuts that separate strips before the parts within each strip are cut. The sheet count is a practical purchase-planning number for the layout it found, but the nesting algorithm does **not** claim to find the mathematical minimum number of sheets in every case.
 
 Face-frame solid stock is reported as net cut length grouped by material, thickness, and member width. Add waste based on available board lengths, defects, milling allowance, and your shop process.
 

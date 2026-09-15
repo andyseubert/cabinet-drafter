@@ -9,6 +9,7 @@
 ### Fixed
 
 - Corrected sheet nesting free-space splitting so cut-layout part rectangles cannot overlap or produce intersecting cut lines. Kerf and edge-trim clearances remain included.
+- Reworked remaining sheet layouts into horizontal guillotine-friendly strips with full-width crosscut guides for a more practical sheet-breakdown workflow.
 
 ## 1.2.10 - 2026-09-15
 

@@ -82,7 +82,7 @@ Part completion IDs are based on the cabinet instance, part role, material, and 
 
 Full-sheet inventory is counted separately by material and means full, uncut usable sheets only. Scraps and partial sheets are not modeled as inventory in the current workflow.
 
-Sheet layout diagrams are designed for black-and-white shop printing. The sheet header names the material and thickness, and part rectangles use species hatch patterns instead of material-color fills.
+Sheet layout diagrams are designed for black-and-white shop printing. The sheet header names the material and thickness, part rectangles use species hatch patterns instead of material-color fills, and dashed guides show the full-width crosscuts between horizontal strips.
 
 ## 3D and SketchUp labels
 
