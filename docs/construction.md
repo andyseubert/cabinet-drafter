@@ -84,6 +84,8 @@ Full-sheet inventory is counted separately by material and means full, uncut usa
 
 Sheet layout diagrams are designed for black-and-white shop printing. The sheet header names the material and thickness, part rectangles use species hatch patterns instead of material-color fills, and dashed guides show the full-width cuts between strips. Birch and Cherry can independently use Auto, crosscut-first, or rip-first strip strategies; Auto selects the better practical direction for each material.
 
+Each sheet part label includes the cabinet instance, the part role, and the cut dimensions. Quantity copies therefore remain distinguishable when multiple cabinets share the same drawer geometry.
+
 ## 3D and SketchUp labels
 
 Cabinet summary labels, short cabinet width labels, drawer box-height labels, drawer face-height labels, and open-space height labels are independently configurable. Cabinet width labels show the overall cabinet width in the active display unit and are placed near the front bottom of each cabinet.

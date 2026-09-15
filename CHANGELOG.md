@@ -11,6 +11,7 @@
 - Corrected sheet nesting free-space splitting so cut-layout part rectangles cannot overlap or produce intersecting cut lines. Kerf and edge-trim clearances remain included.
 - Reworked remaining sheet layouts into guillotine-friendly strips with full-width cut guides for a more practical sheet-breakdown workflow.
 - Added independent Birch and Cherry sheet-strategy controls with Auto comparison, crosscut-first, and rip-first options.
+- Improved cut-sheet labels to include the cabinet instance, part role, and dimensions.
 
 ## 1.2.10 - 2026-09-15
 
