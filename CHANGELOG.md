@@ -6,6 +6,10 @@
 
 - Remaining plywood cut-layout sheets now use black-and-white species hatch fills instead of material-color fills, keeping material/thickness in the sheet header.
 
+### Fixed
+
+- Corrected sheet nesting free-space splitting so cut-layout part rectangles cannot overlap or produce intersecting cut lines. Kerf and edge-trim clearances remain included.
+
 ## 1.2.10 - 2026-09-15
 
 ### Added

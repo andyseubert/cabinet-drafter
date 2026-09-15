@@ -1563,10 +1563,13 @@ CabinetDrafter.run
   function contains(a,b){return b.x>=a.x-1e-9&&b.y>=a.y-1e-9&&b.x+b.w<=a.x+a.w+1e-9&&b.y+b.h<=a.y+a.h+1e-9}
   function splitFree(f,u){
     if(!intersects(f,u))return [f];const r=[];
+    // Partition the space around the placed rectangle without overlapping
+    // corner regions. Overlapping free rectangles can produce intersecting
+    // placements later in the same sheet.
     if(u.x>f.x)r.push({x:f.x,y:f.y,w:u.x-f.x,h:f.h});
     if(u.x+u.w<f.x+f.w)r.push({x:u.x+u.w,y:f.y,w:(f.x+f.w)-(u.x+u.w),h:f.h});
-    if(u.y>f.y)r.push({x:f.x,y:f.y,w:f.w,h:u.y-f.y});
-    if(u.y+u.h<f.y+f.h)r.push({x:f.x,y:u.y+u.h,w:f.w,h:(f.y+f.h)-(u.y+u.h)});
+    if(u.y>f.y)r.push({x:u.x,y:f.y,w:u.w,h:u.y-f.y});
+    if(u.y+u.h<f.y+f.h)r.push({x:u.x,y:u.y+u.h,w:u.w,h:(f.y+f.h)-(u.y+u.h)});
     return r.filter(x=>x.w>0.001&&x.h>0.001);
   }
   function pruneFree(rects){return rects.filter((r,i)=>!rects.some((q,j)=>i!==j&&contains(q,r)))}

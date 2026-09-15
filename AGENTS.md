@@ -254,6 +254,7 @@ Nesting rules:
 - Grain-sensitive visible parts do not rotate when grain preservation is on, regardless of whether the selected visible/front species is birch or cherry.
 - Layout is a practical rectangle nesting plan, not a table-saw cut sequence.
 - Cut-layout sheet diagrams are black-and-white friendly: part rectangles use species hatch patterns, while material/thickness is named in the sheet header.
+- Nesting free-space rectangles must remain non-overlapping so placed parts never intersect; preserve configured kerf and edge trim as cutting clearance.
 - Do not claim mathematically minimal sheet count.
 
 The detailed cut list, BOM, layout diagrams, browser preview, and SketchUp export should agree on geometry.
