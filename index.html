@@ -1751,7 +1751,7 @@ CabinetDrafter.run
   function persistLayoutSelection(){localSave();scheduleProjectAutosave()}
   function selectAllLayouts(){layoutPrintSelectionTouched=true;layoutPrintSelection=new Set(currentLayoutSheetKeys);syncLayoutSelectionUi();persistLayoutSelection()}
   function selectNoLayouts(){layoutPrintSelectionTouched=true;layoutPrintSelection=new Set();syncLayoutSelectionUi();persistLayoutSelection()}
-  function printSelectedLayouts(){syncLayoutSelectionUi();if(!layoutPrintSelection.size){alert('Select at least one remaining layout sheet to print.');return}document.body.classList.add('print-layouts');window.print();setTimeout(()=>document.body.classList.remove('print-layouts'),500)}
+  function printSelectedLayouts(){syncLayoutSelectionUi();if(!layoutPrintSelection.size){alert('Select at least one remaining layout sheet to print.');return}document.body.classList.add('print-layouts');let timer;const cleanup=()=>{document.body.classList.remove('print-layouts');if(timer)clearTimeout(timer)};window.addEventListener('afterprint',cleanup,{once:true});timer=setTimeout(cleanup,60000);requestAnimationFrame(()=>requestAnimationFrame(()=>window.print()))}
 
   function projectJsonText(){
     return JSON.stringify({_format:'cabinetdrafter-project',_version:APP_VERSION,_savedAt:new Date().toISOString(),...currentCanonicalState()},null,2)+'\n';
