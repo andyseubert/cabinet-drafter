@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.11 - 2026-09-15
+
+### Changed
+
+- Remaining plywood cut-layout sheets now use black-and-white species hatch fills instead of material-color fills, keeping material/thickness in the sheet header.
+
 ## 1.2.10 - 2026-09-15
 
 ### Added

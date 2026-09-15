@@ -18,7 +18,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Role-based plywood material defaults, plus per-cabinet species overrides for box/carcass parts and faces/fronts
 - Drawer-box sizing with configurable slide clearance
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
-- Plywood BOM, detailed cut list, grain-aware sheet nesting, kerf, edge trim, and spare-sheet allowance
+- Plywood BOM, detailed cut list, grain-aware black-and-white sheet nesting, kerf, edge trim, and spare-sheet allowance
 - Build progress tracking by cabinet/drawer assembly or physical plywood part, with remaining-work nesting and selective layout printing
 - Full-sheet inventory by material with a shopping list of additional sheets still to buy
 - Separate face-frame solid-stock takeoff by thickness and member width
@@ -101,7 +101,7 @@ The sheet inventory fields are for **uncut full usable sheets on hand** by mater
 additional sheets to buy = max(remaining nested sheets + spare sheets - full sheets on hand, 0)
 ```
 
-The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls.
+The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls. Layout rectangles use black-and-white hatch fills by species; the sheet header names the material and thickness.
 
 ## Material calculations
 

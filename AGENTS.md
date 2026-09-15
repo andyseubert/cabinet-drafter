@@ -10,7 +10,7 @@ Live site: `https://andyseubert.github.io/cabinet-drafter/`
 
 CabinetDrafter is a self-contained browser cabinet planner. The primary application is `index.html`, with no required server, account, CDN, framework, or external JavaScript dependency. It supports cabinet layout, drawer/open-space sizing, plywood BOMs, cut lists, sheet nesting, an interactive browser 3D preview, project JSON save/load, and optional SketchUp Ruby export.
 
-Current public version: **1.2.10**.
+Current public version: **1.2.11**.
 
 Future user-facing changes should bump the version according to semver unless there is a good reason not to.
 
@@ -253,6 +253,7 @@ Nesting rules:
 - Hidden cabinet-box and drawer-box parts may rotate.
 - Grain-sensitive visible parts do not rotate when grain preservation is on, regardless of whether the selected visible/front species is birch or cherry.
 - Layout is a practical rectangle nesting plan, not a table-saw cut sequence.
+- Cut-layout sheet diagrams are black-and-white friendly: part rectangles use species hatch patterns, while material/thickness is named in the sheet header.
 - Do not claim mathematically minimal sheet count.
 
 The detailed cut list, BOM, layout diagrams, browser preview, and SketchUp export should agree on geometry.

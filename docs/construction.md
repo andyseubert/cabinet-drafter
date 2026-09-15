@@ -82,6 +82,8 @@ Part completion IDs are based on the cabinet instance, part role, material, and 
 
 Full-sheet inventory is counted separately by material and means full, uncut usable sheets only. Scraps and partial sheets are not modeled as inventory in the current workflow.
 
+Sheet layout diagrams are designed for black-and-white shop printing. The sheet header names the material and thickness, and part rectangles use species hatch patterns instead of material-color fills.
+
 ## 3D and SketchUp labels
 
 Cabinet summary labels, short cabinet width labels, drawer box-height labels, drawer face-height labels, and open-space height labels are independently configurable. Cabinet width labels show the overall cabinet width in the active display unit and are placed near the front bottom of each cabinet.
