@@ -103,7 +103,7 @@ The sheet inventory fields are for **uncut full usable sheets on hand** by mater
 additional sheets to buy = max(remaining nested sheets + spare sheets - full sheets on hand, 0)
 ```
 
-The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls. The selected sheet set is saved with the project and restored when it is reopened. Layout rectangles use black-and-white hatch fills by species; the sheet header names the material and thickness.
+The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls. The selected sheet set is saved with the project and restored when it is reopened. Layout rectangles use black-and-white hatch fills by species; the sheet header names the material and thickness. Printed layouts are scaled labeled cutting diagrams that fit normal printer pages, not 1:1 templates.
 
 ## Material calculations
 

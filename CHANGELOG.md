@@ -13,6 +13,7 @@
 - Added independent Birch and Cherry sheet-strategy controls with Auto comparison, crosscut-first, and rip-first options.
 - Improved cut-sheet labels to include the cabinet instance, part role, and dimensions.
 - Saved selective sheet-printing choices in project JSON and browser recovery state.
+- Scaled selected cut layouts to fit normal printer pages instead of allowing tall sheet diagrams to overflow or be clipped.
 
 ## 1.2.10 - 2026-09-15
 
