@@ -86,6 +86,8 @@ Sheet layout diagrams are designed for black-and-white shop printing. The sheet 
 
 Each sheet part label includes the cabinet instance, the part role, and the cut dimensions. Quantity copies therefore remain distinguishable when multiple cabinets share the same drawer geometry.
 
+The selected remaining sheets for printing are saved as stable sheet selections in the project JSON and browser recovery state. Older projects without this field continue to select all current remaining sheets by default.
+
 ## 3D and SketchUp labels
 
 Cabinet summary labels, short cabinet width labels, drawer box-height labels, drawer face-height labels, and open-space height labels are independently configurable. Cabinet width labels show the overall cabinet width in the active display unit and are placed near the front bottom of each cabinet.

@@ -1200,8 +1200,8 @@ CabinetDrafter.run
   function progressFromProject(st){return normalizeCompletedIds(st?.progress||st?.completedPartIds)}
   function inventoryFromProject(st){return normalizeFullSheetInventory(st?.inventory||st?.fullSheetsOnHand)}
   function projectStateOnly(st){const out=deepCopy(st);delete out._format;delete out._version;delete out._savedAt;return out}
-  function currentCanonicalState(){return projectStateOnly(canonicalStateCache||state())}
-  function localSave(st=currentCanonicalState()){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(st))}catch(_){}}
+  function currentCanonicalState(){return {...projectStateOnly(canonicalStateCache||state()),layoutPrintSelection:[...layoutPrintSelection].sort()}}
+  function localSave(st=currentCanonicalState()){const saved={...projectStateOnly(st),layoutPrintSelection:[...layoutPrintSelection].sort()};try{localStorage.setItem(STORAGE_KEY,JSON.stringify(saved))}catch(_){} }
   function uniqueCabinets(cabinets){const seen=new Set();return (cabinets||defaults.cabinets).map(normalizeCab).map(c=>{if(seen.has(c.uid))c.uid=nextCabinetUid();seen.add(c.uid);return c})}
 
   function parseMeasurement(token,sourceUnits=activeUnits){
@@ -1719,6 +1719,7 @@ CabinetDrafter.run
   function updateLayoutPrintCount(){const el=document.getElementById('layoutPrintCount');if(el)el.textContent=currentLayoutSheetKeys.length?`${layoutPrintSelection.size} of ${currentLayoutSheetKeys.length} sheet(s) selected`:'No remaining sheets to print'}
   function syncLayoutSelectionUi(){document.querySelectorAll('.sheet-card').forEach(card=>{const key=card.dataset.sheetKey,selected=layoutPrintSelection.has(key);card.classList.toggle('print-selected',selected);const cb=card.querySelector('.layout-print-check');if(cb)cb.checked=selected});updateLayoutPrintCount()}
   function renderLayouts(results,s){
+    if(!layoutPrintSelectionTouched&&Array.isArray(canonicalStateCache?.layoutPrintSelection)){layoutPrintSelection=new Set(canonicalStateCache.layoutPrintSelection);layoutPrintSelectionTouched=true}
     const root=document.getElementById('sheetLayouts'),warn=document.getElementById('layoutWarnings');root.innerHTML='';let warnings=[];currentLayoutSheetKeys=[];
     for(const [mat,g] of Object.entries(results).sort((a,b)=>a[0].localeCompare(b[0]))){if(g.overs.length)warnings.push(`${mat}: ${g.overs.length} part(s) cannot fit on a ${fmt(s.sheetWidth)} × ${fmt(s.sheetLength)} sheet with the current trim/grain rules.`);g.sheets.forEach((sh,idx)=>{
       const key=layoutSheetKey(mat,idx,sh);currentLayoutSheetKeys.push(key);if(!layoutPrintSelectionTouched)layoutPrintSelection.add(key);
@@ -1731,7 +1732,7 @@ CabinetDrafter.run
       card.appendChild(svg);root.appendChild(card)
     })}
     if(layoutPrintSelectionTouched){const keys=new Set(currentLayoutSheetKeys);layoutPrintSelection=new Set([...layoutPrintSelection].filter(k=>keys.has(k)))}else layoutPrintSelection=new Set(currentLayoutSheetKeys);
-    root.querySelectorAll('.layout-print-check').forEach(cb=>cb.addEventListener('change',e=>{layoutPrintSelectionTouched=true;const key=e.target.dataset.sheetKey;if(e.target.checked)layoutPrintSelection.add(key);else layoutPrintSelection.delete(key);syncLayoutSelectionUi()}));
+    root.querySelectorAll('.layout-print-check').forEach(cb=>cb.addEventListener('change',e=>{layoutPrintSelectionTouched=true;const key=e.target.dataset.sheetKey;if(e.target.checked)layoutPrintSelection.add(key);else layoutPrintSelection.delete(key);syncLayoutSelectionUi();persistLayoutSelection()}));
     updateLayoutPrintCount();
     if(!currentLayoutSheetKeys.length)warn.innerHTML=warnings.length?`<div class="warning-box small"><strong>Layout warning:</strong> ${warnings.map(esc).join('<br>')}</div>`:'<div class="success-box small">No remaining plywood parts need nesting.</div>';
     else warn.innerHTML=warnings.length?`<div class="warning-box small"><strong>Layout warning:</strong> ${warnings.map(esc).join('<br>')}</div>`:'<div class="success-box small">All remaining generated parts fit the selected sheet sizes.</div>';
@@ -1746,8 +1747,9 @@ CabinetDrafter.run
   function downloadProgressCsv(){const x=window.__cabinetDrafterPacked;if(!x)return;const rows=instanceCutListRows(x.packed.instances);download('cabinet-drafter_progress.csv',rows.map(r=>r.map(csvCell).join(',')).join('\n'),'text/csv')}
   function markAllCurrentPartsComplete(){const x=window.__cabinetDrafterPacked;if(!x)return;if(!confirm(`Mark all ${x.packed.instances.length} current plywood cut parts complete?`))return;for(const p of x.packed.instances)completedPartIds.add(p.partId);changed()}
   function clearCompletedParts(){if(!completedPartIds.size)return;if(!confirm('Clear all completed-part checkmarks?'))return;completedPartIds.clear();changed()}
-  function selectAllLayouts(){layoutPrintSelectionTouched=true;layoutPrintSelection=new Set(currentLayoutSheetKeys);syncLayoutSelectionUi()}
-  function selectNoLayouts(){layoutPrintSelectionTouched=true;layoutPrintSelection=new Set();syncLayoutSelectionUi()}
+  function persistLayoutSelection(){localSave();scheduleProjectAutosave()}
+  function selectAllLayouts(){layoutPrintSelectionTouched=true;layoutPrintSelection=new Set(currentLayoutSheetKeys);syncLayoutSelectionUi();persistLayoutSelection()}
+  function selectNoLayouts(){layoutPrintSelectionTouched=true;layoutPrintSelection=new Set();syncLayoutSelectionUi();persistLayoutSelection()}
   function printSelectedLayouts(){syncLayoutSelectionUi();if(!layoutPrintSelection.size){alert('Select at least one remaining layout sheet to print.');return}document.body.classList.add('print-layouts');window.print();setTimeout(()=>document.body.classList.remove('print-layouts'),500)}
 
   function projectJsonText(){
