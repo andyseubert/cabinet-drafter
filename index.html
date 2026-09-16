@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CabinetDrafter 1.3.0 — Cabinet planner</title>
+<title>CabinetDrafter 1.3.1 — Cabinet planner</title>
 <style>
 :root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:#222}main{max-width:1440px;margin:0 auto;padding:28px 22px 50px}h1{margin:0 0 6px;font-size:30px}h2{margin:0 0 14px;font-size:20px}h3{margin:18px 0 8px;font-size:16px}p{line-height:1.45}.muted{color:#666}.card{background:#fff;border:1px solid #d9d6cf;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:12px}label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:5px}input,select,textarea,button{font:inherit}input,select{width:100%;padding:8px 9px;border:1px solid #bbb;border-radius:7px;background:#fff}input[type=checkbox]{width:auto;transform:scale(1.1);margin-right:7px}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid #ddd}td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}td input,td select{min-width:70px}.drawer-list{min-width:165px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.row-actions{display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap}.row-actions button{min-width:34px;padding:6px 8px}.row-actions button:disabled{opacity:.35;cursor:not-allowed}button{border:1px solid #aaa;background:#fafafa;padding:9px 13px;border-radius:8px;cursor:pointer}button.primary{background:#333;color:#fff;border-color:#333}button.danger{color:#8b1e1e}textarea{width:100%;height:300px;padding:12px;border:1px solid #bbb;border-radius:8px;font-family:Menlo,Monaco,monospace;font-size:12px;line-height:1.4;white-space:pre}.note{background:#fff8df;border-left:4px solid #d7a800;padding:10px 12px;border-radius:5px;margin-top:12px}.small{font-size:13px}.summary-good{color:#265a2e}.summary-warn{color:#8b1e1e;font-weight:700}.dim{white-space:nowrap}.disabledish{opacity:.45}.hint{font-size:11px;color:#777;margin-top:3px}.drawer-budget{font-size:11px;color:#666;margin-top:4px;line-height:1.3;min-width:190px}.drawer-budget.bad{color:#8b1e1e}.summary-table td,.summary-table th{padding:7px 8px}.nowrap{white-space:nowrap}.pill{display:inline-block;padding:2px 7px;border-radius:999px;background:#eee;font-size:11px}.layout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.sheet-card{border:1px solid #ddd;border-radius:10px;padding:10px;background:#fafafa}.sheet-card h3{margin:0 0 8px}.sheet-svg{width:100%;height:auto;max-height:620px;background:#fff;border:1px solid #aaa}.bom-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}.kpi{background:#f7f7f5;border:1px solid #e1dfd9;border-radius:9px;padding:10px}.kpi strong{font-size:20px;display:block}.grain-arrow{font-weight:700}.warning-box{background:#fff0f0;border-left:4px solid #b64a4a;padding:10px 12px;border-radius:5px;margin-top:10px}.success-box{background:#eef8ef;border-left:4px solid #4a8f54;padding:10px 12px;border-radius:5px;margin-top:10px}.progress-group{border-top:1px solid #eee;padding:12px 0}.progress-group:first-child{border-top:0}.progress-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}.progress-actions{display:flex;gap:8px;flex-wrap:wrap}.progress-actions button{padding:6px 9px}.part-done{color:#777;text-decoration:line-through}.inventory-sheet-input{max-width:88px}.layout-print-control{display:flex;align-items:center;gap:6px;margin-bottom:7px}.layout-print-control input{margin-right:3px}.print-count{align-self:center;color:#666}.sheet-card:not(.print-selected){opacity:.72}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.table-wrap{overflow-x:auto}}@media print{body.print-layouts main>*{display:none!important}body.print-layouts #sheetLayoutsCard{display:block!important;border:none;box-shadow:none;margin:0;padding:0}body.print-layouts #sheetLayoutsCard .actions,body.print-layouts #sheetLayoutsCard .note,body.print-layouts .layout-print-control{display:none!important}body.print-layouts .sheet-card:not(.print-selected){display:none!important}.sheet-card{break-inside:avoid;page-break-inside:avoid}.layout-grid{display:block}.sheet-card{margin:0 0 20px;opacity:1!important}}
 .app-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.app-header p{margin:6px 0 0}.help-button{font-weight:700;min-width:88px}.help-dialog{width:min(980px,calc(100vw - 32px));max-height:88vh;border:1px solid #bbb;border-radius:14px;padding:0;box-shadow:0 16px 60px rgba(0,0,0,.28);background:#fff;color:#222}.help-dialog::backdrop{background:rgba(0,0,0,.38)}.help-doc{padding:22px 26px 32px;line-height:1.5}.help-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;position:sticky;top:0;background:#fff;padding:2px 0 12px;border-bottom:1px solid #eee;z-index:2}.help-heading h2{margin:0}.help-heading p{margin:3px 0 0}.help-close{white-space:nowrap}.help-doc h3{margin-top:26px;padding-top:4px;border-top:1px solid #eee}.help-doc h4{margin:20px 0 8px}.help-doc li{margin:5px 0}.help-doc pre{overflow:auto;background:#f6f5f1;border:1px solid #dedbd2;border-radius:8px;padding:12px;line-height:1.35}.help-table{width:100%;border-collapse:collapse;margin:10px 0}.help-table th,.help-table td{border:1px solid #ddd;padding:8px;vertical-align:top}.help-callout{background:#eef8ef;border-left:4px solid #4a8f54;padding:12px 14px;border-radius:6px}.help-warning{background:#fff3df;border-left:4px solid #d28a00;padding:12px 14px;border-radius:6px;margin:12px 0}@media(max-width:700px){.app-header{flex-direction:column}.help-button{align-self:flex-start}.help-doc{padding:18px}.help-heading{position:static}}
@@ -13,7 +13,7 @@
 </style>
 </head>
 <body><main>
-<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.3.0</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
+<div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.3.1</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
 
 <section class="card"><h2>Cabinets</h2><div class="table-wrap"><table><thead><tr><th>Label</th><th>Type</th><th>Front construction</th><th>Box / carcass material</th><th>Faces / fronts material</th><th>Hinge side<br><span class="muted">single door</span></th><th>Width</th><th>Qty</th><th>Vertical stack / clear openings<br><span class="muted">bottom → top</span></th><th>Custom drawer-front heights<br><span class="muted">optional; drawers only</span></th><th>Shelves<br><span class="muted">count fallback</span></th><th></th></tr></thead><tbody id="cabinetRows"></tbody></table></div>
 <div class="actions"><button id="addDrawer">+ Drawer / mixed cabinet</button><button id="addDoor">+ Single-door cabinet</button><button id="addShelf">+ Open-shelf cabinet</button></div>
@@ -69,7 +69,7 @@
 <div><label>Cabinet depth</label><input id="cabDepth" type="number" step="0.125"></div><div><label>Cabinet box height</label><input id="cabHeight" type="number" step="0.125"></div><div><label>Cabinet-box plywood thickness</label><input id="ply" type="number" step="0.125"></div><div><label>Back thickness</label><input id="backPly" type="number" step="0.125"><div class="hint">Default 1/4&quot;. Applied to open spaces and single-door cabinets on the outside rear face.</div></div><div><label>Stretcher width</label><input id="stretcher" type="number" step="0.125"></div><div><label>Vertical front gap</label><input id="frontGap" type="number" min="0" step="0.03125"><div class="hint">Default 1/8&quot; top, bottom, and between drawer fronts.</div></div><div><label>Side reveal per cabinet edge</label><input id="sideReveal" type="number" min="0" step="0.03125"><div class="hint">Default 1/16&quot;; two abutting cabinets then have a 1/8&quot; seam.</div></div><div><label>Toe-kick height</label><input id="kickHeight" type="number" step="0.125"></div><div><label>Toe-kick setback</label><input id="kickSetback" type="number" step="0.125"></div><div><label>Toe-kick depth</label><input id="kickDepth" type="number" step="0.125"></div><div><label>Toe-kick skin thickness</label><input id="kickSkinPly" type="number" min="0.03125" step="0.03125"><div class="hint">Default 1/4&quot;. Uses the visible/front material unless you substitute veneer manually.</div></div><div><label>Shelf depth</label><input id="shelfDepth" type="number" step="0.125"></div><div><label>Display gap between cabinets</label><input id="displayGap" type="number" step="0.5"></div><div><label>Saved SKP filename</label><input id="saveFilename" type="text"></div>
 </div></section>
 
-<section class="card"><h2>Front pull cut-outs</h2><div class="grid"><div><label>Enable simple finger notches</label><div style="padding-top:8px"><input id="pullCutouts" type="checkbox"><strong>Drawer tops and door pull edges</strong></div><div class="hint">Cut-outs are secondary operations on the rectangular front blanks.</div></div><div><label>Notch width</label><input id="pullCutoutWidth" type="number" min="0" step="0.125"><div class="hint">Drawer notch width and door notch height.</div></div><div><label>Notch depth</label><input id="pullCutoutDepth" type="number" min="0" step="0.125"><div class="hint">How far the notch enters the front.</div></div></div><div class="note small">Drawer notches open from the top edge. Single-door notches are centered vertically on the edge opposite the configured hinge side.</div></section>
+<section class="card"><h2>Front pull cut-outs</h2><div class="grid"><div><label>Enable rounded finger notches</label><div style="padding-top:8px"><input id="pullCutouts" type="checkbox"><strong>Drawer tops and door pull edges</strong></div><div class="hint">Cut-outs are secondary operations on the rectangular front blanks.</div></div><div><label>Cut-out width</label><input id="pullCutoutWidth" type="number" min="0" step="0.125"><div class="hint">Drawer notch width; door notch height.</div></div><div><label>Cut-out height</label><input id="pullCutoutHeight" type="number" min="0" step="0.125"><div class="hint">How far the notch enters the front.</div></div><div><label>Corner radius</label><input id="pullCutoutRadius" type="number" min="0" step="0.125"><div class="hint">Set near half the width for a half-circle style.</div></div></div><div class="note small">Drawer notches open from the top edge. Single-door notches are centered vertically on the edge opposite the configured hinge side. The cut-out dimensions are limited automatically when they cannot fit the front.</div></section>
 
 <section class="card"><h2>Plywood sheet planning</h2><div class="grid">
 <div><label>Sheet width</label><input id="sheetWidth" type="number" step="0.125"><div class="hint">Default 48&quot;.</div></div>
@@ -94,7 +94,7 @@
   <div class="help-heading">
     <div>
       <h2>CabinetDrafter Help</h2>
-      <p class="muted">Cabinet planner · version 1.3.0</p>
+      <p class="muted">Cabinet planner · version 1.3.1</p>
     </div>
     <button type="button" id="closeHelp" class="help-close">Close</button>
   </div>
@@ -287,7 +287,7 @@ Visible front gets the cabinet's face/front material or veneer skin.</pre>
   <p><strong>An open-shelf height list does not fit:</strong> use <code>auto</code> for the top opening, or adjust the entered clear heights so the total plus shelf thicknesses fits the available vertical space.</p>
 </div></dialog>
 <script type="text/plain" id="rubyTemplate">
-# CabinetDrafter SketchUp Generator - 1.3.0
+# CabinetDrafter SketchUp Generator - 1.3.1
 # Generated by CabinetDrafter.
 # Run from SketchUp: Extensions > Developer > Ruby Console
 #   load '/full/path/to/cabinet_lineup_generated.rb'
@@ -315,7 +315,8 @@ __CABINETS__
   SIDE_REVEAL = __SIDE_REVEAL__
   PULL_CUTOUTS = __PULL_CUTOUTS__
   PULL_CUTOUT_WIDTH = __PULL_CUTOUT_WIDTH__
-  PULL_CUTOUT_DEPTH = __PULL_CUTOUT_DEPTH__
+  PULL_CUTOUT_HEIGHT = __PULL_CUTOUT_HEIGHT__
+  PULL_CUTOUT_RADIUS = __PULL_CUTOUT_RADIUS__
   KICK_HEIGHT = __KICK_HEIGHT__
   KICK_SETBACK = __KICK_SETBACK__
   KICK_DEPTH   = __KICK_DEPTH__
@@ -450,28 +451,55 @@ __CABINETS__
     group
   end
 
-  # Keep the cut list rectangular; this is a secondary notch operation on the
-  # front blank, represented as three solids in SketchUp.
+  def pull_arc(cx, cz, radius, start_angle, end_angle)
+    steps = 8
+    (0..steps).map do |idx|
+      angle = start_angle + ((end_angle - start_angle) * idx.to_f / steps)
+      [cx + (radius * Math.cos(angle)), cz + (radius * Math.sin(angle))]
+    end
+  end
+
   def add_pull_cutout_panel(entities, name, x, y, z, width, depth, height, mat, edge)
-    unless PULL_CUTOUTS && PULL_CUTOUT_WIDTH > 0 && PULL_CUTOUT_DEPTH > 0
+    unless PULL_CUTOUTS && PULL_CUTOUT_WIDTH > 0 && PULL_CUTOUT_HEIGHT > 0
       return add_box(entities, name, x, y, z, width, depth, height, mat)
     end
-    notch_w = edge == :top ? PULL_CUTOUT_WIDTH : PULL_CUTOUT_DEPTH
-    notch_h = edge == :top ? PULL_CUTOUT_DEPTH : PULL_CUTOUT_WIDTH
+    notch_w = edge == :top ? PULL_CUTOUT_WIDTH : PULL_CUTOUT_HEIGHT
+    notch_h = edge == :top ? PULL_CUTOUT_HEIGHT : PULL_CUTOUT_WIDTH
     return add_box(entities, name, x, y, z, width, depth, height, mat) if notch_w >= width || notch_h >= height
+    radius = [[PULL_CUTOUT_RADIUS, notch_w / 2.0].min, notch_h].min
+    points = [[0, 0], [width, 0], [width, height]]
     if edge == :top
       left = (width - notch_w) / 2.0
-      add_box(entities, "#{name} left", x, y, z, left, depth, height, mat)
-      add_box(entities, "#{name} right", x + left + notch_w, y, z, width - left - notch_w, depth, height, mat)
-      add_box(entities, "#{name} lower", x + left, y, z, notch_w, depth, height - notch_h, mat)
+      bottom = height - notch_h
+      points << [left + notch_w, height] << [left + notch_w, bottom + radius]
+      points.concat(pull_arc(left + notch_w - radius, bottom + radius, radius, 0, -Math::PI / 2.0)[1..-1])
+      points << [left + radius, bottom]
+      points.concat(pull_arc(left + radius, bottom + radius, radius, -Math::PI / 2.0, -Math::PI)[1..-1])
+      points << [left, height] << [0, height]
     else
-      notch_x = edge == :left ? 0.0 : width - notch_w
-      far_x = edge == :left ? notch_w : 0.0
-      add_box(entities, "#{name} far side", x + far_x, y, z, width - notch_w, depth, height, mat)
-      notch_z = (height - notch_h) / 2.0
-      add_box(entities, "#{name} pull edge top", x + notch_x, y, z + notch_z + notch_h, notch_w, depth, height - notch_z - notch_h, mat)
-      add_box(entities, "#{name} pull edge bottom", x + notch_x, y, z, notch_w, depth, notch_z, mat)
+      bottom = (height - notch_h) / 2.0
+      if edge == :right
+        points << [width, bottom] << [width - notch_w + radius, bottom]
+        points.concat(pull_arc(width - notch_w + radius, bottom + radius, radius, -Math::PI / 2.0, -Math::PI)[1..-1])
+        points << [width - notch_w, bottom + notch_h - radius]
+        points.concat(pull_arc(width - notch_w + radius, bottom + notch_h - radius, radius, Math::PI, Math::PI / 2.0)[1..-1])
+        points << [width, bottom + notch_h] << [width, height]
+      else
+        points << [0, bottom] << [notch_w - radius, bottom]
+        points.concat(pull_arc(notch_w - radius, bottom + radius, radius, -Math::PI / 2.0, 0)[1..-1])
+        points << [notch_w, bottom + notch_h - radius]
+        points.concat(pull_arc(notch_w - radius, bottom + notch_h - radius, radius, 0, Math::PI / 2.0)[1..-1])
+        points << [0, bottom + notch_h] << [0, height]
+      end
     end
+    group = entities.add_group
+    group.name = name
+    face = group.entities.add_face(points.map { |px, pz| Geom::Point3d.new(i(px), 0, i(pz)) })
+    face.reverse! if face.normal.y > 0
+    face.pushpull(i(depth))
+    group.material = mat if mat
+    group.transform!(Geom::Transformation.translation([i(x), i(y), i(z)]))
+    group
   end
 
   def add_label(entities, text, x, y, z)
@@ -1181,17 +1209,17 @@ CabinetDrafter.run
 </script>
 <script>
 (() => {
-  const APP_VERSION='1.3.0';
+  const APP_VERSION='1.3.1';
   const STORAGE_KEY='cabinetDrafterV130', OLD_KEYS=['cabinetDrafterV1211','cabinetDrafterV1210','cabinetDrafterV129','cabinetDrafterV128','cabinetDrafterV127','cabinetDrafterV126','cabinetDrafterV125','cabinetDrafterV124','cabinetDrafterV123','cabinetDrafterV122','cabinetDrafterV121','cabinetDrafterV120','cabinetDrafterV110','joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
   const defaults={"cabinets":[{"uid":"cab-default-1","label":"24in Drawer Cabinet","type":"drawer","width":24,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"},{"uid":"cab-default-2","label":"20in Single Door Cabinet","type":"door","width":20,"qty":1,"stackSpec":"","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"},{"uid":"cab-default-3","label":"18in Drawer Cabinet","type":"drawer","width":18,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"}],"cabDepth":25,"cabHeight":38,"ply":0.75,"backPly":0.25,"stretcher":4,"frontGap":0.125,"sideReveal":0.0625,"kickHeight":2,"kickSetback":3,"kickDepth":22,"shelfDepth":24.5,"displayGap":8,"drawerDepth":24,"slideClearance":1.0,"drawerSidePly":0.5,"drawerBottomPly":0.5,"drawerBoxGap":0.5,"drawerBottomClearance":0.5,"mixedPanelDepth":24,"frontMaterial":"cherry","hiddenCarcassMaterial":"birch","drawerBoxMaterial":"birch","mixedPanelMaterial":"front","openBackMaterial":"front","saveFilename":"cabinet-drafter_generated.skp","sheetWidth":48,"sheetLength":96,"kerf":0.125,"edgeTrim":0.25,"spareSheets":0,"preserveCherryGrain":true,"showLabels":true,"showCabinetWidthLabels":false,"showDrawerBoxHeightLabels":false,"showDrawerFaceHeightLabels":false,"showOpenSpaceHeightLabels":false,"previewHiddenLine":false,"replaceExistingSketchupGroup":true,"kickSkinPly":0.25,"units":"in","frameStileWidth":1.5,"frameRailWidth":1.5,"frameThickness":0.75,"frameMaterial":"cherry","frameOverlay":0.5,"frameInsetReveal":0.0625,"progress":{"completedPartIds":[]},"inventory":{"fullSheetsOnHand":{}}};
   defaults.birchLayoutStrategy='auto';defaults.cherryLayoutStrategy='auto';
-  defaults.pullCutouts=true;defaults.pullCutoutWidth=3;defaults.pullCutoutDepth=0.75;defaults.cabinets=defaults.cabinets.map(c=>({...c,hingeSide:'right'}));
+  defaults.pullCutouts=true;defaults.pullCutoutWidth=3;defaults.pullCutoutHeight=0.75;defaults.pullCutoutRadius=1.5;defaults.cabinets=defaults.cabinets.map(c=>({...c,hingeSide:'right'}));
   const rows=document.getElementById('cabinetRows'), preview=document.getElementById('rubyPreview'), summary=document.getElementById('drawerSummary');
   const PROJECT_DB='CabinetDrafterProjectFiles', PROJECT_STORE='handles', PROJECT_HANDLE_KEY='cabinetdrafter-project-json';
   let projectFileHandle=null, projectAutosaveTimer=null, projectHandleReady=false, projectWriteChain=Promise.resolve();
   let completedPartIds=new Set(), fullSheetInventory={}, layoutPrintSelection=new Set(), currentLayoutSheetKeys=[], layoutPrintSelectionTouched=false, nextCabinetUidCounter=1, canonicalStateCache=null;
   const ids=["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frontMaterial","hiddenCarcassMaterial","drawerBoxMaterial","mixedPanelMaterial","openBackMaterial","frameStileWidth","frameRailWidth","frameThickness","frameMaterial","frameOverlay","frameInsetReveal","saveFilename","sheetWidth","sheetLength","kerf","edgeTrim","spareSheets"];
-  ids.push('pullCutoutWidth','pullCutoutDepth');
+  ids.push('pullCutoutWidth','pullCutoutHeight','pullCutoutRadius');
   ids.push('birchLayoutStrategy','cherryLayoutStrategy');
   const dimensionIds=new Set(["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frameStileWidth","frameRailWidth","frameThickness","frameOverlay","frameInsetReveal","sheetWidth","sheetLength","kerf","edgeTrim"]);
   let activeUnits='in';
@@ -1374,7 +1402,7 @@ CabinetDrafter.run
   function applyState(st){st={...defaults,...st};if(st.drawerBottomClearance===undefined&&st.drawerTopClearance!==undefined)st.drawerBottomClearance=st.drawerTopClearance;if(st.showDrawerBoxHeightLabels===undefined&&st.showDrawerHeightLabels!==undefined)st.showDrawerBoxHeightLabels=!!st.showDrawerHeightLabels;if(st.showDrawerFaceHeightLabels===undefined&&st.showDrawerHeightLabels!==undefined)st.showDrawerFaceHeightLabels=!!st.showDrawerHeightLabels;st.frontMaterial=normalizeWood(st.frontMaterial,'cherry');st.hiddenCarcassMaterial=normalizeWood(st.hiddenCarcassMaterial,'birch');st.drawerBoxMaterial=normalizeWood(st.drawerBoxMaterial,'birch');st.mixedPanelMaterial=normalizeMaterialChoice(st.mixedPanelMaterial,'front');st.openBackMaterial=normalizeMaterialChoice(st.openBackMaterial,'front');completedPartIds=progressFromProject(st);fullSheetInventory=inventoryFromProject(st);layoutPrintSelection=new Set();currentLayoutSheetKeys=[];layoutPrintSelectionTouched=false;activeUnits=st.units==='mm'?'mm':'in';st.units=activeUnits;st.cabinets=uniqueCabinets(st.cabinets||defaults.cabinets);st.previewHiddenLine=st.previewHiddenLine===true;st.progress={completedPartIds:[...completedPartIds].sort()};st.inventory={fullSheetsOnHand:normalizeFullSheetInventory(fullSheetInventory)};canonicalStateCache=deepCopy(st);document.getElementById('units').value=activeUnits;rows.innerHTML='';st.cabinets.forEach(makeRow);ids.forEach(id=>{const el=document.getElementById(id),v=st[id]??defaults[id];el.value=el.type==='number'&&dimensionIds.has(id)?fmtDisplay(v):v});document.getElementById('preserveCherryGrain').checked=st.preserveCherryGrain??defaults.preserveCherryGrain;document.getElementById('showLabels').checked=st.showLabels??defaults.showLabels;document.getElementById('showCabinetWidthLabels').checked=st.showCabinetWidthLabels??defaults.showCabinetWidthLabels;document.getElementById('showDrawerBoxHeightLabels').checked=st.showDrawerBoxHeightLabels??defaults.showDrawerBoxHeightLabels;document.getElementById('showDrawerFaceHeightLabels').checked=st.showDrawerFaceHeightLabels??defaults.showDrawerFaceHeightLabels;document.getElementById('showOpenSpaceHeightLabels').checked=st.showOpenSpaceHeightLabels??defaults.showOpenSpaceHeightLabels;document.getElementById('previewHiddenLine').checked=st.previewHiddenLine;document.getElementById('replaceExistingSketchupGroup').checked=st.replaceExistingSketchupGroup??defaults.replaceExistingSketchupGroup;updateInputSteps();updateAll(st)}
   const readStateBeforePullCutouts=state,applyStateBeforePullCutouts=applyState;
   state=function(){const st=readStateBeforePullCutouts();st.pullCutouts=document.getElementById('pullCutouts').checked;return st};
-  applyState=function(st){applyStateBeforePullCutouts(st);document.getElementById('pullCutouts').checked=st.pullCutouts!==false};
+  applyState=function(st){st={...st};if(st.pullCutoutHeight===undefined&&st.pullCutoutDepth!==undefined)st.pullCutoutHeight=st.pullCutoutDepth;applyStateBeforePullCutouts(st);document.getElementById('pullCutouts').checked=st.pullCutouts!==false};
   function updateInputSteps(){const step=activeUnits==='mm'?'0.5':'0.03125';dimensionIds.forEach(id=>{const el=document.getElementById(id);if(el&&el.type==='number')el.step=step});rows.querySelectorAll('.width').forEach(el=>el.step=activeUnits==='mm'?'0.5':'0.125')}
 
 
@@ -1386,10 +1414,11 @@ CabinetDrafter.run
     return {x:st.sideReveal,w:c.width-(2*st.sideReveal),y:-st.ply,low:st.frontGap,high:st.cabHeight-st.frontGap}
   }
   function pullCutout(c,st,fr,kind){
-    if(!st.pullCutouts||!(st.pullCutoutWidth>0)||!(st.pullCutoutDepth>0))return null;
-    if(kind==='drawer'){if(st.pullCutoutWidth>=fr.w||st.pullCutoutDepth>=fr.high-fr.low)return null;return {x:fr.x+(fr.w-st.pullCutoutWidth)/2,z:fr.high-st.pullCutoutDepth,w:st.pullCutoutWidth,h:st.pullCutoutDepth,edge:'top'}}
-    if(st.pullCutoutWidth>=fr.high-fr.low||st.pullCutoutDepth>=fr.w)return null;
-    return {x:c.hingeSide==='left'?fr.w-st.pullCutoutDepth:0,z:fr.low+(fr.high-fr.low-st.pullCutoutWidth)/2-fr.low,w:st.pullCutoutDepth,h:st.pullCutoutWidth,edge:c.hingeSide==='left'?'right':'left'};
+    if(!st.pullCutouts||!(st.pullCutoutWidth>0)||!(st.pullCutoutHeight>0))return null;
+    const radius=Math.max(0,Math.min(number(st.pullCutoutRadius,0),st.pullCutoutWidth/2,st.pullCutoutHeight));
+    if(kind==='drawer'){if(st.pullCutoutWidth>=fr.w||st.pullCutoutHeight>=fr.high-fr.low)return null;return {x:(fr.w-st.pullCutoutWidth)/2,z:fr.high-fr.low-st.pullCutoutHeight,w:st.pullCutoutWidth,h:st.pullCutoutHeight,radius,edge:'top'}}
+    if(st.pullCutoutWidth>=fr.high-fr.low||st.pullCutoutHeight>=fr.w)return null;
+    return {x:c.hingeSide==='left'?fr.w-st.pullCutoutHeight:0,z:(fr.high-fr.low-st.pullCutoutWidth)/2,w:st.pullCutoutHeight,h:st.pullCutoutWidth,radius,edge:c.hingeSide==='left'?'right':'left'};
   }
   function addFaceFrameParts(parts,c,st,label){
     if(!isFaceFrame(c))return;const wood=st.frameMaterial==='birch'?'Birch':'Cherry';
@@ -1500,7 +1529,7 @@ CabinetDrafter.run
   function generateRuby(st=currentCanonicalState()){let text=document.getElementById('rubyTemplate').textContent.replace(/^\n/,'');const map={'__CABINETS__':cabinetRuby(st.cabinets),'__CAB_DEPTH__':fmt(st.cabDepth),'__CAB_HEIGHT__':fmt(st.cabHeight),'__PLY__':fmt(st.ply),'__BACK_PLY__':fmt(st.backPly),'__FRONT_MATERIAL__':normalizeWood(st.frontMaterial,'cherry'),'__HIDDEN_CARCASS_MATERIAL__':normalizeWood(st.hiddenCarcassMaterial,'birch'),'__DRAWER_BOX_MATERIAL__':normalizeWood(st.drawerBoxMaterial,'birch'),'__STRETCHER__':fmt(st.stretcher),'__FRONT_GAP__':fmt(st.frontGap),'__SIDE_REVEAL__':fmt(st.sideReveal),'__KICK_HEIGHT__':fmt(st.kickHeight),'__KICK_SETBACK__':fmt(st.kickSetback),'__KICK_DEPTH__':fmt(st.kickDepth),'__KICK_SKIN_PLY__':fmt(st.kickSkinPly),'__SHELF_DEPTH__':fmt(st.shelfDepth),'__DISPLAY_GAP__':fmt(st.displayGap),'__DRAWER_DEPTH__':fmt(st.drawerDepth),'__SLIDE_CLEARANCE__':fmt(st.slideClearance),'__DRAWER_SIDE_PLY__':fmt(st.drawerSidePly),'__DRAWER_BOTTOM_PLY__':fmt(st.drawerBottomPly),'__DRAWER_BOX_GAP__':fmt(st.drawerBoxGap),'__DRAWER_BOTTOM_CLEARANCE__':fmt(st.drawerBottomClearance),'__MIXED_PANEL_DEPTH__':fmt(st.mixedPanelDepth),'__MIXED_PANEL_MATERIAL__':normalizeMaterialChoice(st.mixedPanelMaterial,'front'),'__OPEN_BACK_MATERIAL__':normalizeMaterialChoice(st.openBackMaterial,'front'),'__FRAME_STILE_WIDTH__':fmt(st.frameStileWidth),'__FRAME_RAIL_WIDTH__':fmt(st.frameRailWidth),'__FRAME_THICKNESS__':fmt(st.frameThickness),'__FRAME_MATERIAL__':st.frameMaterial==='birch'?'birch':'cherry','__FRAME_OVERLAY__':fmt(st.frameOverlay),'__FRAME_INSET_REVEAL__':fmt(st.frameInsetReveal),'__SHOW_LABELS__':st.showLabels?'true':'false','__SHOW_CABINET_WIDTH_LABELS__':st.showCabinetWidthLabels?'true':'false','__SHOW_DRAWER_BOX_HEIGHT_LABELS__':st.showDrawerBoxHeightLabels?'true':'false','__SHOW_DRAWER_FACE_HEIGHT_LABELS__':st.showDrawerFaceHeightLabels?'true':'false','__SHOW_OPEN_SPACE_HEIGHT_LABELS__':st.showOpenSpaceHeightLabels?'true':'false','__REPLACE_EXISTING_GROUP__':st.replaceExistingSketchupGroup===false?'false':'true','__DISPLAY_UNITS__':st.units==='mm'?'mm':'in','__SAVE_FILENAME__':rubyString(st.saveFilename||defaults.saveFilename)};for(const[k,v]of Object.entries(map))text=text.split(k).join(String(v));return text}
 
   const generateRubyBeforePullCutouts=generateRuby;
-  generateRuby=function(st=currentCanonicalState()){return generateRubyBeforePullCutouts(st).replace(/__PULL_CUTOUTS__/g,st.pullCutouts?'true':'false').replace(/__PULL_CUTOUT_WIDTH__/g,fmt(st.pullCutoutWidth)).replace(/__PULL_CUTOUT_DEPTH__/g,fmt(st.pullCutoutDepth))};
+  generateRuby=function(st=currentCanonicalState()){return generateRubyBeforePullCutouts(st).replace(/__PULL_CUTOUTS__/g,st.pullCutouts?'true':'false').replace(/__PULL_CUTOUT_WIDTH__/g,fmt(st.pullCutoutWidth)).replace(/__PULL_CUTOUT_HEIGHT__/g,fmt(st.pullCutoutHeight)).replace(/__PULL_CUTOUT_RADIUS__/g,fmt(st.pullCutoutRadius))};
   function fracLabel(n){const known=[[0.75,'3/4'],[0.5,'1/2'],[0.25,'1/4'],[0.625,'5/8'],[0.375,'3/8'],[0.125,'1/8']];for(const [v,l] of known)if(Math.abs(n-v)<0.001)return l;return fmt(n)}
   function materialKey(wood,thickness){return `${wood} ${fracLabel(thickness)}`}
   function addPart(parts,wood,thickness,name,a,b,qty=1,grainMode='none',cabinet='',meta={}){
@@ -1886,12 +1915,9 @@ CabinetDrafter.run
   function previewAddBox(scene,name,x,y,z,w,d,h,material,category='structure'){
     if(!(w>0&&d>0&&h>0))return;scene.boxes.push({name,x,y,z,w,d,h,material,category});
   }
-  function previewAddPullCutout(scene,name,x,y,z,w,d,h,material,cutout){
-    if(!cutout){previewAddBox(scene,name,x,y,z,w,d,h,material,'front');return}
-    if(cutout.edge==='top'){previewAddBox(scene,`${name} left`,x,y,z,cutout.x,d,h,material,'front');previewAddBox(scene,`${name} right`,x+cutout.x+cutout.w,y,z,w-cutout.x-cutout.w,d,h,material,'front');previewAddBox(scene,`${name} lower`,x+cutout.x,y,z,cutout.w,d,cutout.z,material,'front');return}
-    const notchX=cutout.edge==='left'?0:cutout.x,notchW=cutout.w,farX=cutout.edge==='left'?notchW:0,farW=w-notchW;
-    previewAddBox(scene,`${name} far side`,x+farX,y,z,farW,d,h,material,'front');previewAddBox(scene,`${name} pull edge top`,x+notchX,y,z+cutout.z+cutout.h,notchW,d,h-cutout.z-cutout.h,material,'front');previewAddBox(scene,`${name} pull edge bottom`,x+notchX,y,z,notchW,d,cutout.z,material,'front');
-  }
+  function previewArc(cx,cz,radius,start,end){const points=[],steps=8;for(let i=0;i<=steps;i++){const a=start+(end-start)*i/steps;points.push([cx+radius*Math.cos(a),cz+radius*Math.sin(a)])}return points}
+  function previewCutoutPoints(cutout,w,h){const r=cutout.radius,x=cutout.x,nw=cutout.w,nh=cutout.h,points=[];if(cutout.edge==='top'){const bottom=cutout.z;points.push([x,h],[x+nw,h],[x+nw,bottom+r]);points.push(...previewArc(x+nw-r,bottom+r,r,0,-Math.PI/2).slice(1));points.push([x+r,bottom]);points.push(...previewArc(x+r,bottom+r,r,-Math.PI/2,-Math.PI).slice(1));points.push([x,h]);return points}const bottom=cutout.z;if(cutout.edge==='right'){points.push([w,bottom],[w-nw+r,bottom]);points.push(...previewArc(w-nw+r,bottom+r,r,-Math.PI/2,-Math.PI).slice(1));points.push([w-nw,bottom+nh-r]);points.push(...previewArc(w-nw+r,bottom+nh-r,r,Math.PI,Math.PI/2).slice(1));points.push([w,bottom+nh])}else{points.push([0,bottom],[nw-r,bottom]);points.push(...previewArc(nw-r,bottom+r,r,-Math.PI/2,0).slice(1));points.push([nw,bottom+nh-r]);points.push(...previewArc(nw-r,bottom+nh-r,r,0,Math.PI/2).slice(1));points.push([0,bottom+nh])}return points}
+  function previewAddPullCutout(scene,name,x,y,z,w,d,h,material,cutout){previewAddBox(scene,name,x,y,z,w,d,h,material,'front');if(cutout)scene.cutouts.push({x,y,z,w,d,h,material,points:previewCutoutPoints(cutout,w,h)})}
   function previewAddLabel(scene,text,x,y,z,kind='dimension'){if(text)scene.labels.push({text:String(text),x,y,z,kind})}
   function addPreviewKick(scene,x0,width,s,railMaterial='birch',skinMaterial='cherry'){
     const frontY=s.kickSetback+s.kickSkinPly,rearY=s.kickSetback+s.kickDepth-s.ply,sideY=frontY+s.ply,sideDepth=rearY-sideY;
@@ -1928,7 +1954,7 @@ CabinetDrafter.run
   function previewAddFaceFrame(scene,x0,c,s){if(!isFaceFrame(c))return;const mat=s.frameMaterial==='birch'?'birch':'cherry',z0=s.kickHeight,railLen=c.width-(2*s.frameStileWidth);previewAddBox(scene,'Face-frame left stile',x0,-s.frameThickness,z0,s.frameStileWidth,s.frameThickness,s.cabHeight,mat,'frame');previewAddBox(scene,'Face-frame right stile',x0+c.width-s.frameStileWidth,-s.frameThickness,z0,s.frameStileWidth,s.frameThickness,s.cabHeight,mat,'frame');if(railLen>0){previewAddBox(scene,'Face-frame bottom rail',x0+s.frameStileWidth,-s.frameThickness,z0,railLen,s.frameThickness,s.frameRailWidth,mat,'frame');previewAddBox(scene,'Face-frame top rail',x0+s.frameStileWidth,-s.frameThickness,z0+s.cabHeight-s.frameRailWidth,railLen,s.frameThickness,s.frameRailWidth,mat,'frame')}}
 
   function buildPreviewScene(s){
-    const scene={boxes:[],labels:[],errors:[],cabinetCount:0},expanded=expandedCabinets(s);let x0=0;
+    const scene={boxes:[],cutouts:[],labels:[],errors:[],cabinetCount:0},expanded=expandedCabinets(s);let x0=0;
     const hiddenWood=normalizeWood(s.hiddenCarcassMaterial,'birch'),drawerBoxWood=normalizeWood(s.drawerBoxMaterial,'birch');
     const hiddenMat=previewMaterial(hiddenWood),drawerBoxMat=previewMaterial(drawerBoxWood);
     for(const c of expanded){
@@ -1995,6 +2021,7 @@ CabinetDrafter.run
     if(!previewCanvas)return;const {ctx,width,height}=previewResizeCanvas(),hiddenLine=document.getElementById('previewHiddenLine').checked;ctx.clearRect(0,0,width,height);ctx.fillStyle=hiddenLine?'#fff':'#f7f7f4';ctx.fillRect(0,0,width,height);if(!preview3D.scene.boxes.length){ctx.fillStyle='#666';ctx.textAlign='center';ctx.font='14px sans-serif';ctx.fillText('No cabinet geometry to preview.',width/2,height/2);return}
     const basis=previewBasis(),faces=[];for(const b of previewVisibleBoxes()){const c=previewBoxCorners(b);for(const f of previewFaceDefs){if(vdot(f.n,basis.cameraVec)<=0.0001)continue;const world=f.i.map(i=>c[i]),proj=world.map(p=>previewProject(p,basis,width,height)),depth=proj.reduce((a,p)=>a+p.depth,0)/proj.length,fill=hiddenLine?previewHiddenLineFill(f.n):previewShade(b.material,f.n);faces.push({pts:proj,depth,fill,name:b.name})}}
     faces.sort((a,b)=>b.depth-a.depth);ctx.lineJoin='round';ctx.lineCap='round';for(const f of faces){ctx.beginPath();ctx.moveTo(f.pts[0].x,f.pts[0].y);for(let i=1;i<f.pts.length;i++)ctx.lineTo(f.pts[i].x,f.pts[i].y);ctx.closePath();ctx.fillStyle=f.fill;ctx.fill();ctx.strokeStyle=hiddenLine?'rgba(0,0,0,.92)':'rgba(32,32,32,.78)';ctx.lineWidth=hiddenLine?1.25:0.9;ctx.stroke()}
+    for(const cutout of preview3D.scene.cutouts){const pts=cutout.points.map(([px,pz])=>previewProject([cutout.x+px,cutout.y-0.02,cutout.z+pz],basis,width,height));ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i].x,pts[i].y);ctx.closePath();ctx.fillStyle=hiddenLine?'#fff':'#b9a98f';ctx.fill();ctx.strokeStyle=hiddenLine?'#111':'rgba(32,32,32,.85)';ctx.lineWidth=hiddenLine?1.25:0.9;ctx.stroke()}
     const labels=preview3D.scene.labels.map(l=>({label:l,p:previewProject([l.x,l.y,l.z],basis,width,height)})).sort((a,b)=>b.p.depth-a.p.depth);labels.forEach(x=>drawPreviewLabel(ctx,x.label,x.p,hiddenLine));
     const errors=preview3D.scene.errors.length?` · ${preview3D.scene.errors.length} preview warning(s)`:'';const style=hiddenLine?' · hidden-line print style':'';previewStatus.textContent=`${preview3D.scene.cabinetCount} cabinet(s) · ${preview3D.scene.boxes.length} modeled pieces${errors}${style} · Drag to orbit · wheel to zoom · Shift-drag to pan · double-click to fit.`;
   }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.1 - 2026-09-16
+
+### Changed
+
+- Made front pull cut-outs configurable by width, entry height, and corner radius, with rounded profiles suitable for crescent or half-circle-like pulls.
+
 ## 1.3.0 - 2026-09-15
 
 ### Added

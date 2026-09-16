@@ -70,7 +70,7 @@ The development project assumes the countertop is screwed through the top stretc
 
 ## Hardware
 
-Hardware counts and drilling templates are not yet complete. Development-project assumptions include two concealed European hinges per door and side-mount drawer slides using the configured clearance. Optional front pull cut-outs are simple square-ended secondary notches: drawer notches open at the top edge, while single-door notches are centered on the edge opposite the configured hinge side. They do not change the rectangular blank dimensions in the BOM or sheet nesting.
+Hardware counts and drilling templates are not yet complete. Development-project assumptions include two concealed European hinges per door and side-mount drawer slides using the configured clearance. Optional front pull cut-outs are rounded secondary notches: drawer notches open at the top edge, while single-door notches are centered on the edge opposite the configured hinge side. Width, entry height, and corner radius are configurable. They do not change the rectangular blank dimensions in the BOM or sheet nesting.
 
 ## Build progress and full-sheet inventory
 

@@ -82,7 +82,7 @@ Auto-sized drawer-front reveal lines are tied to the physical drawer-box stack. 
 
 ## Front pull cut-outs
 
-The optional simple finger-notch feature keeps the cut-list and nesting dimensions rectangular because the notch is a secondary operation on the front blank. Drawer notches open from the top edge. Single-door notches are centered vertically on the pull edge, opposite the per-cabinet hinge-side setting. Notch width and depth are configurable; the current shape is a square-ended notch rather than a hardware-specific profile.
+The optional rounded finger-notch feature keeps the cut-list and nesting dimensions rectangular because the notch is a secondary operation on the front blank. Drawer notches open from the top edge. Single-door notches are centered vertically on the pull edge, opposite the per-cabinet hinge-side setting. Cut-out width, entry height, and corner radius are configurable. A radius near half the cut-out width produces a half-circle-like profile; smaller radii produce a more squared crescent.
 
 ## Face frames
 
