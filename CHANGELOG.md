@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 - 2026-09-15
+
+### Added
+
+- Optional simple finger notches for drawer-front tops and single-door pull edges.
+- Configurable notch width/depth and per-door hinge-side selection, carried through the browser preview and SketchUp export.
+
 ## 1.2.11 - 2026-09-15
 
 ### Changed

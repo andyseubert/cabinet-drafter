@@ -15,6 +15,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Explicit drawer heights and clear shelf/cubby opening heights
 - Inches or millimeters for entry/display while keeping canonical geometry stable internally
 - Applied backs behind open spaces and single-door cabinets
+- Optional simple finger notches at drawer-front tops and centered on single-door pull edges, with configurable notch size and per-door hinge side
 - Role-based plywood material defaults, plus per-cabinet species overrides for box/carcass parts and faces/fronts
 - Drawer-box sizing with configurable slide clearance
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
@@ -78,6 +79,10 @@ Open-shelf cabinets use the same field for clear opening heights from bottom to 
 ## Drawer-front alignment
 
 Auto-sized drawer-front reveal lines are tied to the physical drawer-box stack. The reveal between adjacent drawers is centered in the actual drawer-box gap. This keeps a shared bottom-up sequence such as `D7.5, D7.5` aligned across neighboring cabinets even when one cabinet changes to an open cubby above.
+
+## Front pull cut-outs
+
+The optional simple finger-notch feature keeps the cut-list and nesting dimensions rectangular because the notch is a secondary operation on the front blank. Drawer notches open from the top edge. Single-door notches are centered vertically on the pull edge, opposite the per-cabinet hinge-side setting. Notch width and depth are configurable; the current shape is a square-ended notch rather than a hardware-specific profile.
 
 ## Face frames
 
