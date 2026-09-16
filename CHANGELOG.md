@@ -5,6 +5,7 @@
 ### Changed
 
 - Made front pull cut-outs configurable by width, entry height, and corner radius, with rounded profiles suitable for crescent or half-circle-like pulls.
+- Added a high-contrast cabinet favicon for browser tabs and bookmarks.
 
 ## 1.3.0 - 2026-09-15
 
