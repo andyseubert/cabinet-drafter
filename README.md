@@ -18,6 +18,8 @@ No account, web service, or installation is required for the core app. Open `ind
 - Optional simple finger notches at drawer-front tops and centered on single-door pull edges, with configurable notch size and per-door hinge side
 - Role-based plywood material defaults, plus per-cabinet species overrides for box/carcass parts and faces/fronts
 - Drawer-box sizing with configurable slide clearance
+- Drawer-box joinery options: butt joints, 1/4 x 1/4 rabbets, box/finger joints, and half-blind dovetails
+- Drawer-bottom options: between-wall biscuit fastening, floating bottoms in grooves, or captured bottoms in rabbets
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware black-and-white sheet nesting, kerf, edge trim, and spare-sheet allowance
 - Per-species sheet layout strategy: Auto, crosscut-first, or rip-first; Auto compares both practical strip directions
@@ -83,6 +85,10 @@ Auto-sized drawer-front reveal lines are tied to the physical drawer-box stack. 
 ## Front pull cut-outs
 
 The optional rounded finger-notch feature keeps the cut-list and nesting dimensions rectangular because the notch is a secondary operation on the front blank. Drawer notches open from the top edge. Single-door notches are centered vertically on the pull edge, opposite the per-cabinet hinge-side setting. Cut-out width, entry height, and corner radius are configurable. A radius near half the cut-out width produces a half-circle-like profile; smaller radii produce a more squared crescent.
+
+## Drawer joinery
+
+Drawer boxes default to the existing butt layout: full-depth sides with the front and back between them. Choose 1/4 x 1/4 rabbets, box/finger joints, or half-blind dovetails for the corners. Bottoms can remain between the walls for biscuit fastening, float in grooves, or be captured in rabbets. The cut list reports stock blanks and the selected machining assumptions; verify actual plywood thickness and fit before cutting.
 
 ## Face frames
 

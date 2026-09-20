@@ -32,7 +32,9 @@ The face frame is applied to the front of the carcass and consists of two full-h
 - Default sides/front/back: 1/2 in drawer-box plywood.
 - Default bottom: 1/2 in drawer-box plywood.
 - Default drawer-box material: birch.
-- Bottom fits completely between all four walls; no dado/rabbet is assumed.
+- Default corner construction is a butt layout: sides run full depth and front/back fit between the sides. This remains the compatibility default.
+- Selectable corner joinery includes 1/4 x 1/4 rabbets, box/finger joints, and half-blind dovetails. The cut list reports rectangular stock blanks for these options and the builder is responsible for fitting the machining to actual material.
+- Selectable bottom construction includes between-wall biscuit fastening, floating bottoms in grooves, and captured bottoms in rabbets. Floating/captured bottoms extend into the configured wall groove depth, 1/4 in by default.
 - Drawer box height is the outside wall height; bottom thickness does not reduce that entered height.
 - Default side-slide clearance: 1/2 in per side / 1 in total.
 - The drawer-box gap applies between adjacent drawer boxes.

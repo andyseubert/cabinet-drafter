@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Added drawer-box corner joinery choices for the existing butt layout, 1/4 x 1/4 rabbets, box/finger joints, and half-blind dovetails.
+- Added between-wall biscuit, floating-groove, and captured-rabbet bottom construction choices. The selected construction is reflected in drawer cut-list blanks, the browser preview, design warnings, and SketchUp export.
+
 ## 1.3.1 - 2026-09-16
 
 ### Changed
