@@ -10,6 +10,7 @@
 ### Changed
 
 - Reworked cabinet-definition editing so values read as compact text until focused, while long stack and drawer-front fields wrap and remain editable.
+- Added top-level tabs for design, 3D preview, SketchUp/export, materials and cuts, build progress, and construction rules, with responsive mobile layouts.
 
 ## 1.3.1 - 2026-09-16
 

@@ -15,10 +15,14 @@
 <style>
 main>section:first-of-type table{min-width:1450px}main>section:first-of-type table th{white-space:normal;vertical-align:bottom}main>section:first-of-type table td{padding:5px 4px}main>section:first-of-type table input,main>section:first-of-type table select,main>section:first-of-type table textarea{min-width:0;border:1px solid transparent;background:transparent;border-radius:4px;padding:5px 4px;cursor:text}main>section:first-of-type table input:focus,main>section:first-of-type table select:focus,main>section:first-of-type table textarea:focus{border-color:#aaa;background:#fff;box-shadow:0 0 0 2px rgba(70,90,110,.12);outline:none}main>section:first-of-type table .label{width:180px}main>section:first-of-type table .type{min-width:145px}main>section:first-of-type table .frontStyle{min-width:165px}main>section:first-of-type table .carcassMaterial,main>section:first-of-type table .faceMaterial{min-width:170px}main>section:first-of-type table .drawer-list{display:block;width:220px;min-height:28px;resize:none;overflow:hidden;line-height:1.25;white-space:pre-wrap}main>section:first-of-type table .width{width:82px}main>section:first-of-type table .qty,main>section:first-of-type table .shelves{width:62px}
 body{overflow-x:hidden}main>.card:first-of-type table .label{width:220px}.table-wrap{overflow-x:auto}
+.section-tabs{position:sticky;top:0;z-index:10;display:flex;gap:6px;overflow-x:auto;margin:10px 0 4px;padding:6px 0;background:#f4f3ef;scrollbar-width:thin}.section-tab{flex:0 0 auto;border:1px solid #c8c5be;border-radius:7px;background:#fff;color:#444;padding:8px 12px;font-size:13px;white-space:nowrap}.section-tab[aria-selected="true"]{background:#333;color:#fff;border-color:#333}.tab-panel.is-hidden,.tab-associated.is-hidden{display:none!important}.tab-panel{scroll-margin-top:64px}
+@media(max-width:700px){main{padding:14px 10px 32px}.app-header{gap:10px}.app-header h1{font-size:25px}.app-header p{font-size:13px}.card{padding:12px;margin-top:12px;border-radius:8px}.section-tabs{margin:8px -10px 2px;padding:6px 10px}.section-tab{padding:8px 10px}.grid{grid-template-columns:1fr}.actions{gap:7px}.actions button{padding:8px 10px}.preview3d-toolbar{gap:6px}.preview3d-toolbar button,.preview3d-check{padding:6px 8px}.preview3d-wrap{height:58vh;min-height:300px}.help-dialog{width:calc(100vw - 20px)}}
 </style>
 </head>
 <body><main>
 <div class="app-header"><div><h1>CabinetDrafter <span class="muted">1.3.1</span></h1><p class="muted"><strong>Free cabinet design, material planning, nesting, and 3D.</strong> Plan frameless or face-frame cabinets in the browser, with optional SketchUp export.</p></div><button type="button" id="openHelp" class="help-button">Help</button></div>
+
+<nav id="sectionTabs" class="section-tabs" role="tablist" aria-label="CabinetDrafter sections"></nav>
 
 <section class="card"><h2>Cabinets</h2><div class="table-wrap"><table><thead><tr><th>Label</th><th>Type</th><th>Front construction</th><th>Box / carcass material</th><th>Faces / fronts material</th><th>Hinge side<br><span class="muted">single door</span></th><th>Width</th><th>Qty</th><th>Vertical stack / clear openings<br><span class="muted">bottom → top</span></th><th>Custom drawer-front heights<br><span class="muted">optional; drawers only</span></th><th>Shelves<br><span class="muted">count fallback</span></th><th></th></tr></thead><tbody id="cabinetRows"></tbody></table></div>
 <div class="actions"><button id="addDrawer">+ Drawer / mixed cabinet</button><button id="addDoor">+ Single-door cabinet</button><button id="addShelf">+ Open-shelf cabinet</button></div>
@@ -2088,6 +2092,31 @@ CabinetDrafter.run
   document.getElementById('savePreviewPng').addEventListener('click',()=>{renderPreview3D();const a=document.createElement('a');a.href=previewCanvas.toDataURL('image/png');a.download='cabinet-drafter_3d_preview.png';document.body.appendChild(a);a.click();a.remove()});
   if('ResizeObserver' in window)new ResizeObserver(()=>{if(preview3D.scene.boxes.length)fitPreview3D()}).observe(previewWrap);else window.addEventListener('resize',()=>{if(preview3D.scene.boxes.length)fitPreview3D()});
 
+  function initSectionTabs(){
+    const nav=document.getElementById('sectionTabs');if(!nav)return;
+    const definitions=[
+      {key:'design',label:'Design',titles:['Cabinets','Drawer sizing','Material choices','Face-frame options','Drawer / mixed sizing preview','Standard cabinet dimensions','Front pull cut-outs']},
+      {key:'preview',label:'3D preview',titles:['3D Preview']},
+      {key:'export',label:'SketchUp / export',titles:['Optional SketchUp export','Use in SketchUp Pro']},
+      {key:'planning',label:'Materials & cuts',titles:['Plywood sheet planning','Material / sheet BOM','Remaining plywood cutting layouts']},
+      {key:'progress',label:'Build progress',titles:['Build progress & sheet inventory']},
+      {key:'construction',label:'Construction rules',titles:['Construction rules in this version']}
+    ];
+    const sections=[...document.querySelectorAll('main > section.card')];
+    sections.forEach(section=>{
+      const title=section.querySelector('h2')?.textContent.trim()||'';
+      const group=definitions.find(x=>x.titles.some(t=>title.startsWith(t)))||definitions[0];
+      section.dataset.tab=group.key;section.classList.add('tab-panel');
+      if(!section.id)section.id=`tab-panel-${group.key}-${sections.indexOf(section)}`;
+    });
+    const materialNote=[...document.querySelectorAll('main > .note')].find(x=>x.textContent.includes('Per-cabinet carcass material'));
+    if(materialNote){materialNote.dataset.tab='design';materialNote.classList.add('tab-associated')}
+    nav.innerHTML=definitions.map((x,i)=>`<button class="section-tab" id="tab-${x.key}" type="button" role="tab" aria-selected="${i===0?'true':'false'}">${esc(x.label)}</button>`).join('');
+    const buttons=[...nav.querySelectorAll('.section-tab')];
+    const showTab=key=>{definitions.forEach(x=>{const active=x.key===key;document.querySelectorAll(`[data-tab="${x.key}"]`).forEach(el=>{el.classList.toggle('is-hidden',!active);el.setAttribute('aria-hidden',active?'false':'true')});const button=document.getElementById(`tab-${x.key}`);if(button)button.setAttribute('aria-selected',active?'true':'false')});const active=buttons.find(x=>x.id===`tab-${key}`);if(active)active.scrollIntoView({block:'nearest',inline:'nearest'})};
+    buttons.forEach((button,index)=>{button.addEventListener('click',()=>showTab(button.id.slice(4)));button.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?buttons.length-1:(index+(e.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;buttons[next].focus();buttons[next].click()})});
+    showTab('design');
+  }
   function updateAll(s=state()){canonicalStateCache=deepCopy(s);preview.value=generateRuby(s);updateAllRowBudgets(s);updateSummary(s);updateBomAndLayouts(s);update3DPreview(s);scheduleProjectAutosave()}
   function changed(){const s=state();canonicalStateCache=deepCopy(s);localSave(s);updateAll(s)}
   function download(name,text,type='text/plain'){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500)}
@@ -2113,6 +2142,6 @@ const helpDialog=document.getElementById('helpDialog');
   document.getElementById('openHelp').onclick=()=>{if(helpDialog.showModal)helpDialog.showModal();else helpDialog.setAttribute('open','')};
   document.getElementById('closeHelp').onclick=()=>{if(helpDialog.close)helpDialog.close();else helpDialog.removeAttribute('open')};
   helpDialog.addEventListener('click',e=>{if(e.target===helpDialog){if(helpDialog.close)helpDialog.close();else helpDialog.removeAttribute('open')}});
-  let initial=deepCopy(defaults);try{let saved=localStorage.getItem(STORAGE_KEY),fromOld=false;if(!saved){for(const k of OLD_KEYS){saved=localStorage.getItem(k);if(saved){fromOld=true;break}}}if(saved){const prior=JSON.parse(saved);if(fromOld){prior.mixedPanelMaterial=prior.mixedPanelMaterial||'cherry';prior.openBackMaterial=prior.openBackMaterial||'cherry';if(Array.isArray(prior.cabinets))prior.cabinets=prior.cabinets.map(c=>({...c,frontStyle:c.frontStyle||'frameless'}))}initial={...initial,...prior}}}catch(_){}applyState(initial);initProjectFile();
+  let initial=deepCopy(defaults);try{let saved=localStorage.getItem(STORAGE_KEY),fromOld=false;if(!saved){for(const k of OLD_KEYS){saved=localStorage.getItem(k);if(saved){fromOld=true;break}}}if(saved){const prior=JSON.parse(saved);if(fromOld){prior.mixedPanelMaterial=prior.mixedPanelMaterial||'cherry';prior.openBackMaterial=prior.openBackMaterial||'cherry';if(Array.isArray(prior.cabinets))prior.cabinets=prior.cabinets.map(c=>({...c,frontStyle:c.frontStyle||'frameless'}))}initial={...initial,...prior}}}catch(_){}initSectionTabs();applyState(initial);initProjectFile();
 })();
 </script></body></html>

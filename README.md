@@ -28,6 +28,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Full-sheet inventory by material with a shopping list of additional sheets still to buy
 - Separate face-frame solid-stock takeoff by thickness and member width
 - Interactive browser 3D preview with orbit/zoom/pan, hidden-line print style, and PNG export
+- Responsive tabbed workspace for design, preview, export, materials/cuts, progress, and construction reference
 - Project JSON save/load with browser autosave
 - Optional SketchUp Desktop Ruby export, with a choice to replace or keep previous generated groups
 
