@@ -16,6 +16,7 @@
 main>section:first-of-type table{min-width:1450px}main>section:first-of-type table th{white-space:normal;vertical-align:bottom}main>section:first-of-type table td{padding:5px 4px}main>section:first-of-type table input,main>section:first-of-type table select,main>section:first-of-type table textarea{min-width:0;border:1px solid transparent;background:transparent;border-radius:4px;padding:5px 4px;cursor:text}main>section:first-of-type table input:focus,main>section:first-of-type table select:focus,main>section:first-of-type table textarea:focus{border-color:#aaa;background:#fff;box-shadow:0 0 0 2px rgba(70,90,110,.12);outline:none}main>section:first-of-type table .label{width:180px}main>section:first-of-type table .type{min-width:145px}main>section:first-of-type table .frontStyle{min-width:165px}main>section:first-of-type table .carcassMaterial,main>section:first-of-type table .faceMaterial{min-width:170px}main>section:first-of-type table .drawer-list{display:block;width:220px;min-height:28px;resize:none;overflow:hidden;line-height:1.25;white-space:pre-wrap}main>section:first-of-type table .width{width:82px}main>section:first-of-type table .qty,main>section:first-of-type table .shelves{width:62px}
 body{overflow-x:hidden}main>.card:first-of-type table .label{width:220px}.table-wrap{overflow-x:auto}
 .section-tabs{position:sticky;top:0;z-index:10;display:flex;gap:6px;overflow-x:auto;margin:10px 0 4px;padding:6px 0;background:#f4f3ef;scrollbar-width:thin}.section-tab{flex:0 0 auto;border:1px solid #c8c5be;border-radius:7px;background:#fff;color:#444;padding:8px 12px;font-size:13px;white-space:nowrap}.section-tab[aria-selected="true"]{background:#333;color:#fff;border-color:#333}.tab-panel.is-hidden,.tab-associated.is-hidden{display:none!important}.tab-panel{scroll-margin-top:64px}
+.section-tabs .tab-help-button{flex:0 0 auto;margin-left:auto;padding:8px 12px}.help-moved-construction{margin-top:26px;padding-top:4px;border-top:1px solid #eee}.help-moved-construction h2{margin-top:0}
 @media(max-width:700px){main{padding:14px 10px 32px}.app-header{gap:10px}.app-header h1{font-size:25px}.app-header p{font-size:13px}.card{padding:12px;margin-top:12px;border-radius:8px}.section-tabs{margin:8px -10px 2px;padding:6px 10px}.section-tab{padding:8px 10px}.grid{grid-template-columns:1fr}.actions{gap:7px}.actions button{padding:8px 10px}.preview3d-toolbar{gap:6px}.preview3d-toolbar button,.preview3d-check{padding:6px 8px}.preview3d-wrap{height:58vh;min-height:300px}.help-dialog{width:calc(100vw - 20px)}}
 </style>
 </head>
@@ -2100,8 +2101,12 @@ CabinetDrafter.run
       {key:'export',label:'SketchUp / export',titles:['Optional SketchUp export','Use in SketchUp Pro']},
       {key:'planning',label:'Materials & cuts',titles:['Plywood sheet planning','Material / sheet BOM','Remaining plywood cutting layouts']},
       {key:'progress',label:'Build progress',titles:['Build progress & sheet inventory']},
-      {key:'construction',label:'Construction rules',titles:['Construction rules in this version']}
     ];
+    const construction=[...document.querySelectorAll('main > section.card')].find(x=>x.querySelector('h2')?.textContent.trim().startsWith('Construction rules'));
+    const helpDoc=document.querySelector('#helpDialog .help-doc');
+    if(construction&&helpDoc){construction.classList.remove('card');construction.classList.add('help-moved-construction');helpDoc.appendChild(construction)}
+    const helpButton=document.getElementById('openHelp');
+    if(helpButton){helpButton.classList.add('tab-help-button');nav.appendChild(helpButton)}
     const sections=[...document.querySelectorAll('main > section.card')];
     sections.forEach(section=>{
       const title=section.querySelector('h2')?.textContent.trim()||'';
