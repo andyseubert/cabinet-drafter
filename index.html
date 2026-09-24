@@ -2105,8 +2105,6 @@ CabinetDrafter.run
     const construction=[...document.querySelectorAll('main > section.card')].find(x=>x.querySelector('h2')?.textContent.trim().startsWith('Construction rules'));
     const helpDoc=document.querySelector('#helpDialog .help-doc');
     if(construction&&helpDoc){construction.classList.remove('card');construction.classList.add('help-moved-construction');helpDoc.appendChild(construction)}
-    const helpButton=document.getElementById('openHelp');
-    if(helpButton){helpButton.classList.add('tab-help-button');nav.appendChild(helpButton)}
     const sections=[...document.querySelectorAll('main > section.card')];
     sections.forEach(section=>{
       const title=section.querySelector('h2')?.textContent.trim()||'';
@@ -2117,6 +2115,8 @@ CabinetDrafter.run
     const materialNote=[...document.querySelectorAll('main > .note')].find(x=>x.textContent.includes('Per-cabinet carcass material'));
     if(materialNote){materialNote.dataset.tab='design';materialNote.classList.add('tab-associated')}
     nav.innerHTML=definitions.map((x,i)=>`<button class="section-tab" id="tab-${x.key}" type="button" role="tab" aria-selected="${i===0?'true':'false'}">${esc(x.label)}</button>`).join('');
+    const helpButton=document.getElementById('openHelp');
+    if(helpButton){helpButton.classList.add('tab-help-button');nav.appendChild(helpButton)}
     const buttons=[...nav.querySelectorAll('.section-tab')];
     const showTab=key=>{definitions.forEach(x=>{const active=x.key===key;document.querySelectorAll(`[data-tab="${x.key}"]`).forEach(el=>{el.classList.toggle('is-hidden',!active);el.setAttribute('aria-hidden',active?'false':'true')});const button=document.getElementById(`tab-${x.key}`);if(button)button.setAttribute('aria-selected',active?'true':'false')});const active=buttons.find(x=>x.id===`tab-${key}`);if(active)active.scrollIntoView({block:'nearest',inline:'nearest'})};
     buttons.forEach((button,index)=>{button.addEventListener('click',()=>showTab(button.id.slice(4)));button.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?buttons.length-1:(index+(e.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;buttons[next].focus();buttons[next].click()})});
