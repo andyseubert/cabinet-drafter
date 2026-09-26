@@ -26,8 +26,8 @@ body{overflow-x:hidden}main>.card:first-of-type table .label{width:220px}.table-
 <nav id="sectionTabs" class="section-tabs" role="tablist" aria-label="CabinetDrafter sections"></nav>
 
 <div class="project-toolbar" aria-label="Project file controls">
-<div class="project-toolbar-actions"><button type="button" class="primary" id="saveProject">Save project</button><button type="button" id="saveProjectAs">Save As...</button><button type="button" id="downloadJson">Export JSON</button><button type="button" id="loadJson">Load JSON</button><input id="jsonFile" type="file" accept="application/json,.json" hidden></div>
-<div><div id="projectSaveStatus" class="hint project-save-status">Project JSON: checking...</div><div class="project-save-note">Browser recovery is automatic. Save project writes a JSON file; Save As chooses a different file.</div></div>
+<div class="project-toolbar-actions"><button type="button" class="primary" id="saveProject">Save project</button><button type="button" id="saveProjectAs">Save As...</button><button type="button" id="loadJson">Load JSON</button><input id="jsonFile" type="file" accept="application/json,.json" hidden></div>
+<div><div id="projectSaveStatus" class="hint project-save-status">Project JSON: checking...</div><div class="project-save-note">Browser recovery is automatic. Save project writes the connected JSON file; Save As chooses a different file.</div></div>
 </div>
 
 <section class="card"><h2>Cabinets</h2><div class="table-wrap"><table><thead><tr><th>Label</th><th>Type</th><th>Front construction</th><th>Box / carcass material</th><th>Faces / fronts material</th><th>Hinge side<br><span class="muted">single door</span></th><th>Width</th><th>Qty</th><th>Vertical stack / clear openings<br><span class="muted">bottom → top</span></th><th>Custom drawer-front heights<br><span class="muted">optional; drawers only</span></th><th>Shelves<br><span class="muted">count fallback</span></th><th></th></tr></thead><tbody id="cabinetRows"></tbody></table></div>
@@ -269,7 +269,7 @@ Visible front gets the cabinet's face/front material or veneer skin.</pre>
     <li><strong>Browser recovery copy:</strong> every edit is stored in browser local storage.</li>
     <li><strong>Project JSON:</strong> click Save Project JSON once and choose a file. When the browser permits direct file access, CabinetDrafter auto-saves that file after edits and before Ruby export/copy.</li>
   </ul>
-  <p>Use <strong>Save Project As…</strong> to branch a design. Use <strong>Export JSON copy</strong> for a portable snapshot. Use <strong>Load / Import JSON</strong> to open somebody else's project.</p>
+  <p>Use <strong>Save As…</strong> to branch a design. Use <strong>Load JSON</strong> to open somebody else's project.</p>
 
   <h3>10. Build progress and inventory</h3>
   <p>Use the Build progress section while cutting and assembling. Assembly checkboxes let you mark a whole carcass, toe-kick/base, drawer, door, or shelf set complete while still saving progress as individual physical plywood part IDs. Each cabinet and assembly row lists the generated material species so you can see what to build from without opening every cut part. Checking work complete keeps the cabinet in the design and 3D model, but removes those physical parts from the remaining-work nesting and remaining cut-list CSV.</p>
@@ -1250,7 +1250,7 @@ CabinetDrafter.run
   defaults.pullCutouts=true;defaults.pullCutoutWidth=3;defaults.pullCutoutHeight=1.5;defaults.pullCutoutRadius=1.5;defaults.cabinets=defaults.cabinets.map(c=>({...c,hingeSide:'right'}));
   const rows=document.getElementById('cabinetRows'), preview=document.getElementById('rubyPreview'), summary=document.getElementById('drawerSummary');
   const PROJECT_DB='CabinetDrafterProjectFiles', PROJECT_STORE='handles', PROJECT_HANDLE_KEY='cabinetdrafter-project-json';
-  let projectFileHandle=null, projectAutosaveTimer=null, projectHandleReady=false, projectWriteChain=Promise.resolve(), projectDirty=true;
+  let projectFileHandle=null, projectAutosaveTimer=null, projectHandleReady=false, projectFileInitPromise=null, projectWriteChain=Promise.resolve(), projectDirty=true;
   let completedPartIds=new Set(), fullSheetInventory={}, layoutPrintSelection=new Set(), currentLayoutSheetKeys=[], layoutPrintSelectionTouched=false, nextCabinetUidCounter=1, canonicalStateCache=null;
   const ids=["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerCornerJoinery","drawerBottomJoinery","drawerRabbetWidth","drawerRabbetDepth","drawerBottomGrooveDepth","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frontMaterial","hiddenCarcassMaterial","drawerBoxMaterial","mixedPanelMaterial","openBackMaterial","frameStileWidth","frameRailWidth","frameThickness","frameMaterial","frameOverlay","frameInsetReveal","saveFilename","sheetWidth","sheetLength","kerf","edgeTrim","spareSheets"];
   ids.push('pullCutoutWidth','pullCutoutHeight','pullCutoutRadius');
@@ -1955,6 +1955,7 @@ CabinetDrafter.run
     }catch(err){if(err&&err.name==='AbortError')return false;setProjectStatus(`Could not select project JSON: ${err.message}`,'warn');return false}
   }
   async function saveProject(){
+    await initProjectFile();
     if(projectFileHandle)return await writeProjectHandle(projectFileHandle,{requestPermission:true,quiet:false});
     return await saveProjectAs();
   }
@@ -1963,11 +1964,15 @@ CabinetDrafter.run
     if(projectFileHandle)return await writeProjectHandle(projectFileHandle,{requestPermission:false,quiet:true});
     return false;
   }
-  async function initProjectFile(){
-    projectFileHandle=await storedProjectHandle();projectHandleReady=true;
-    if(!projectFileHandle){setProjectDirty(true);setProjectStatus('Project JSON: no directly connected file in this browser. Browser recovery is saving edits locally. Use Save project to connect a file; Export JSON creates a one-time snapshot.');return}
-    if(await handlePermission(projectFileHandle,false)){setProjectDirty(false);setProjectStatus(`Project JSON: ${projectFileHandle.name||'connected file'} is connected. Auto-save is on.`,'good');}
-    else{setProjectDirty(true);setProjectStatus(`Project JSON remembered as ${projectFileHandle.name||'a file'}. Click Save project once to restore write permission.`,'warn');}
+  function initProjectFile(){
+    if(projectFileInitPromise)return projectFileInitPromise;
+    projectFileInitPromise=(async()=>{
+      projectFileHandle=await storedProjectHandle();projectHandleReady=true;
+      if(!projectFileHandle){setProjectDirty(true);setProjectStatus('Project JSON: no directly connected file in this browser. Browser recovery is saving edits locally. Use Save project to connect a file; Save As chooses a different file.');return}
+      if(await handlePermission(projectFileHandle,false)){setProjectDirty(false);setProjectStatus(`Project JSON: ${projectFileHandle.name||'connected file'} is connected. Auto-save is on.`,'good');}
+      else{setProjectDirty(true);setProjectStatus(`Project JSON remembered as ${projectFileHandle.name||'a file'}. Click Save project once to restore write permission.`,'warn');}
+    })();
+    return projectFileInitPromise;
   }
 
 
@@ -2153,7 +2158,6 @@ CabinetDrafter.run
   document.getElementById('copyRuby').onclick=async()=>{await flushProjectSave();try{await navigator.clipboard.writeText(generateRuby());alert('Ruby copied to clipboard.')}catch(_){preview.select();document.execCommand('copy');alert('Ruby copied to clipboard.')}};
   document.getElementById('saveProject').onclick=saveProject;
   document.getElementById('saveProjectAs').onclick=saveProjectAs;
-  document.getElementById('downloadJson').onclick=()=>download('cabinet-drafter_project_export.json',projectJsonText(),'application/json');
   document.getElementById('downloadBom').onclick=downloadBomCsv;document.getElementById('downloadCutList').onclick=downloadCutListCsv;document.getElementById('downloadLinearStock').onclick=downloadLinearStockCsv;document.getElementById('downloadRemainingCutList').onclick=downloadRemainingCutListCsv;document.getElementById('downloadProgressCsv').onclick=downloadProgressCsv;
   document.getElementById('markAllPartsComplete').onclick=markAllCurrentPartsComplete;document.getElementById('clearCompletedParts').onclick=clearCompletedParts;
   document.getElementById('selectAllLayouts').onclick=selectAllLayouts;document.getElementById('selectNoLayouts').onclick=selectNoLayouts;document.getElementById('printLayouts').onclick=printSelectedLayouts;
