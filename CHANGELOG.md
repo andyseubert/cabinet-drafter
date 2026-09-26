@@ -15,6 +15,7 @@
 - Moved project save, export, and load controls to the top of the workspace, with a Save button that reactivates when changes are unsaved.
 - Expanded the Material / sheet BOM with completed parts, remaining parts, sheets on hand, and per-material sheets still to buy, using the same progress calculations as the Build progress section.
 - Removed the redundant Export JSON control; Save project and Save As use the same JSON content, with Save As reserved for choosing a different file.
+- Added short cabinet-and-piece marks such as `2 A` to cut-sheet labels, progress details, and cut-list CSVs while retaining the full descriptive labels.
 
 ## 1.3.1 - 2026-09-16
 

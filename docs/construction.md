@@ -88,6 +88,8 @@ Sheet layout diagrams are designed for black-and-white shop printing. The sheet 
 
 Each sheet part label includes the cabinet instance, the part role, and the cut dimensions. Quantity copies therefore remain distinguishable when multiple cabinets share the same drawer geometry.
 
+Each sheet part also receives a short pencil mark such as `2 A`: the cabinet's generated number followed by a letter assigned to that physical piece. Cabinet rows with an explicit leading number use it; otherwise row order supplies the number. Quantity copies and duplicate explicit numbers receive a suffix so their marks remain distinguishable. The short mark is additive and does not change stable completion IDs.
+
 The selected remaining sheets for printing are saved as stable sheet selections in the project JSON and browser recovery state. Older projects without this field continue to select all current remaining sheets by default.
 
 ## 3D and SketchUp labels

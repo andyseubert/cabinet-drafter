@@ -24,6 +24,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Plywood BOM, detailed cut list, grain-aware black-and-white sheet nesting, kerf, edge trim, and spare-sheet allowance
 - Per-species sheet layout strategy: Auto, crosscut-first, or rip-first; Auto compares both practical strip directions
 - Sheet diagrams identify each part by cabinet instance, part role, and dimensions
+- Cut-sheet parts also show a short pencil mark such as `2 A`: cabinet number plus a per-piece letter, with the detailed label retained below
 - Build progress tracking by cabinet/drawer assembly or physical plywood part, with remaining-work nesting and selective layout printing
 - Full-sheet inventory by material with a shopping list of additional sheets still to buy
 - Separate face-frame solid-stock takeoff by thickness and member width
