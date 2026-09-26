@@ -49,9 +49,9 @@ You can also download the repository and open `index.html` directly. The app doe
 5. Review the 3D preview directly below the cabinet table and adjust export/label options if needed.
 6. Tune sizing, materials, and sheet-planning settings, then review the BOM and sheet layouts before purchasing material.
 7. As you build, check off completed cut parts and enter full sheets already on hand.
-8. Use **Save Project JSON** to keep a portable project file.
+8. Use the top **Save project** control to keep a portable project file.
 
-In browsers that support the File System Access API, **Save Project JSON** asks for a destination once and then reuses that same file for later saves and autosaves after permission is granted. **Save Project As...** is the control for intentionally choosing a different file. Browsers without direct file-write support still keep browser recovery storage current, but saving a JSON file is a normal download/export each time.
+In browsers that support the File System Access API, **Save project** asks for a destination once and then reuses that same file for later saves and autosaves after permission is granted. The button is inactive while the connected file is current and becomes active again after an unsaved change. **Save As...** is the control for intentionally choosing a different file. Browsers without direct file-write support still keep browser recovery storage current, but saving a JSON file is a normal download/export each time.
 
 ### Drawer / mixed stack syntax
 
