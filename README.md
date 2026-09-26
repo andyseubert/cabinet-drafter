@@ -117,6 +117,8 @@ additional sheets to buy = max(remaining nested sheets + spare sheets - full she
 
 The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls. The selected sheet set is saved with the project and restored when it is reopened. Layout rectangles use black-and-white hatch fills by species; the sheet header names the material and thickness. Printed layouts are scaled labeled cutting diagrams that fit normal printer pages, not 1:1 templates.
 
+The **Material / sheet BOM** also reconciles purchasing progress by material. It shows full-project parts, completed parts, remaining parts, the full-project sheet target, remaining nested sheets, full sheets on hand, and the sheets still to buy. The purchase number is calculated separately for each material, so sheets on hand for one species do not offset another species.
+
 ## Material calculations
 
 The **Material choices** section sets project defaults without pretending the app knows every sheet good in the lumber rack. Choose the default plywood for faces/doors/drawer fronts and visible cabinet parts, the default hidden cabinet-box plywood for pure drawer carcasses and toe-kick structure, and the drawer-box plywood independently. Each cabinet row can override the box/carcass species and face/front species. Mixed-cabinet dividers and open-space backs can either match the visible/front role, match the hidden cabinet-box role, or be set explicitly to birch or cherry.

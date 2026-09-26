@@ -13,6 +13,7 @@
 - Added top-level tabs for design, 3D preview, SketchUp/export, materials and cuts, build progress, and construction rules, with responsive mobile layouts.
 - Moved the read-only construction rules into Help and placed Help on the main tab row.
 - Moved project save, export, and load controls to the top of the workspace, with a Save button that reactivates when changes are unsaved.
+- Expanded the Material / sheet BOM with completed parts, remaining parts, sheets on hand, and per-material sheets still to buy, using the same progress calculations as the Build progress section.
 
 ## 1.3.1 - 2026-09-16
 
