@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.3.2 - 2026-09-26
+
 ### Added
 
 - Added drawer-box corner joinery choices for the existing butt layout, 1/4 x 1/4 rabbets, box/finger joints, and half-blind dovetails.
