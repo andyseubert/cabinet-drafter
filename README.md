@@ -24,6 +24,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware black-and-white sheet nesting, kerf, edge trim, and spare-sheet allowance
 - Per-species sheet layout strategy: Auto, crosscut-first, or rip-first; Auto compares both practical strip directions
+- Optional dedicated face sheets keep all drawer fronts and doors together by material, separate from carcass and drawer-box parts
 - Sheet diagrams identify each part by cabinet instance, part role, and dimensions
 - Cut-sheet parts also show a short pencil mark such as `2 A`: cabinet number plus a per-piece letter, with the detailed label retained below
 - Build progress tracking by cabinet/drawer assembly or physical plywood part, with remaining-work nesting and selective layout printing

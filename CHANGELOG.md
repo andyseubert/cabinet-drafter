@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 1.3.5 - 2026-09-28
+## 1.3.6 - 2026-09-28
 
 ### Added
 
@@ -21,6 +21,7 @@
 - Added project-default, per-cabinet, and per-drawer drawer corner/bottom joinery overrides, carried through geometry, preview, cut lists, and SketchUp export.
 - Updated inherited drawer override labels immediately when cabinet-level or project-level joinery changes.
 - Preserved expanded Build progress sections while completion checkboxes recalculate progress and remaining layouts.
+- Added an optional dedicated-face-sheet nesting mode for doors and drawer fronts, separated by material from carcass and drawer-box parts.
 
 ## 1.3.1 - 2026-09-16
 
