@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 1.3.4 - 2026-09-28
+## 1.3.5 - 2026-09-28
 
 ### Added
 
@@ -20,6 +20,7 @@
 - Added short cabinet-and-piece marks such as `2 A` to cut-sheet labels, progress details, and cut-list CSVs while retaining the full descriptive labels.
 - Added project-default, per-cabinet, and per-drawer drawer corner/bottom joinery overrides, carried through geometry, preview, cut lists, and SketchUp export.
 - Updated inherited drawer override labels immediately when cabinet-level or project-level joinery changes.
+- Preserved expanded Build progress sections while completion checkboxes recalculate progress and remaining layouts.
 
 ## 1.3.1 - 2026-09-16
 
