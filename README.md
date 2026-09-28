@@ -20,6 +20,7 @@ No account, web service, or installation is required for the core app. Open `ind
 - Drawer-box sizing with configurable slide clearance
 - Drawer-box joinery options: butt joints, 1/4 x 1/4 rabbets, box/finger joints, and half-blind dovetails
 - Drawer-bottom options: between-wall biscuit fastening, floating bottoms in grooves, or captured bottoms in rabbets
+- Drawer joinery inherits project defaults, with cabinet-level overrides and individual drawer overrides when a cabinet needs mixed construction
 - Auto-sized drawer fronts keep matching bottom-up drawer stacks aligned across adjacent cabinets
 - Plywood BOM, detailed cut list, grain-aware black-and-white sheet nesting, kerf, edge trim, and spare-sheet allowance
 - Per-species sheet layout strategy: Auto, crosscut-first, or rip-first; Auto compares both practical strip directions
