@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 1.3.3 - 2026-09-28
+## 1.3.4 - 2026-09-28
 
 ### Added
 
@@ -19,6 +19,7 @@
 - Removed the redundant Export JSON control; Save project and Save As use the same JSON content, with Save As reserved for choosing a different file.
 - Added short cabinet-and-piece marks such as `2 A` to cut-sheet labels, progress details, and cut-list CSVs while retaining the full descriptive labels.
 - Added project-default, per-cabinet, and per-drawer drawer corner/bottom joinery overrides, carried through geometry, preview, cut lists, and SketchUp export.
+- Updated inherited drawer override labels immediately when cabinet-level or project-level joinery changes.
 
 ## 1.3.1 - 2026-09-16
 
