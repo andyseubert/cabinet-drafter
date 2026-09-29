@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 1.3.6 - 2026-09-28
+## 1.3.7 - 2026-09-28
 
 ### Added
 
@@ -22,6 +22,7 @@
 - Updated inherited drawer override labels immediately when cabinet-level or project-level joinery changes.
 - Preserved expanded Build progress sections while completion checkboxes recalculate progress and remaining layouts.
 - Added an optional dedicated-face-sheet nesting mode for doors and drawer fronts, separated by material from carcass and drawer-box parts.
+- Added optional per-cabinet face grouping so a cabinet's doors and drawer fronts stay together on their own face-sheet group when physically possible.
 
 ## 1.3.1 - 2026-09-16
 
