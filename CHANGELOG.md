@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 1.3.8 - 2026-09-28
+## 1.3.9 - 2026-09-29
 
 ### Added
 
@@ -24,6 +24,7 @@
 - Added an optional dedicated-face-sheet nesting mode for doors and drawer fronts, separated by material from carcass and drawer-box parts.
 - Added optional per-cabinet face grouping so a cabinet's doors and drawer fronts stay together on their own face-sheet group when physically possible.
 - Cabinet-face grouping now allows compatible non-face parts to fill unused space on those grouped face sheets; strict dedicated face-only sheets remain available separately.
+- Added a face-specific side-by-side/crosscut layout strategy and a faces-only grain-preservation scope so hidden Cherry parts can rotate for better yield.
 
 ## 1.3.1 - 2026-09-16
 
