@@ -95,6 +95,8 @@ Each sheet part also receives a short pencil mark such as `2 A`: the cabinet's g
 
 The selected remaining sheets for printing are saved as stable sheet selections in the project JSON and browser recovery state. Older projects without this field continue to select all current remaining sheets by default.
 
+Each layout part can be clicked, or its small sheet checkbox can be clicked, to mark that physical piece complete. This uses the same completion IDs as Build progress. By default completed pieces leave the remaining-work layout; enable `Keep cut pieces on diagrams` to show the full layout with checked pieces still in place.
+
 ## 3D and SketchUp labels
 
 Cabinet summary labels, short cabinet width labels, drawer box-height labels, drawer face-height labels, and open-space height labels are independently configurable. Cabinet width labels show the overall cabinet width in the active display unit and are placed near the front bottom of each cabinet.
