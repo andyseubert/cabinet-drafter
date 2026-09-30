@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 1.4.0 - 2026-09-30
+## 1.4.1 - 2026-09-30
 
 ### Added
 
@@ -26,6 +26,7 @@
 - Cabinet-face grouping now allows compatible non-face parts to fill unused space on those grouped face sheets; strict dedicated face-only sheets remain available separately.
 - Added a face-specific side-by-side/crosscut layout strategy and a faces-only grain-preservation scope so hidden Cherry parts can rotate for better yield.
 - Added clickable cut-sheet parts and an option to keep completed pieces on the diagrams with checked indicators, sharing progress state with Build progress.
+- Kept full checked-off sheet diagrams visible when no remaining cut parts are left, instead of leaving the layout area empty.
 
 ## 1.3.1 - 2026-09-16
 
