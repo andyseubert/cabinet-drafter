@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 1.4.5 - 2026-10-06
+## 1.4.6 - 2026-10-07
 
 ### Added
 
@@ -31,6 +31,7 @@
 - Plywood thickness fields now accept actual decimal, fractional, or metric sheet thicknesses such as `11/16` or `18 mm`.
 - Grouped material roles and actual thicknesses with the cabinet dimension and construction controls; visible/front thickness now drives doors, drawer fronts, and visible cabinet parts.
 - Cut-sheet labels now use practical fractional inches in inch mode, while millimeter mode remains metric.
+- Added custom visible/front and hidden cabinet-box material names for BOMs, cut sheets, inventory, and saved projects.
 
 ## 1.3.1 - 2026-09-16
 
