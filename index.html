@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<title>CabinetDrafter 1.4.3 — Cabinet planner</title>
+<title>CabinetDrafter 1.4.5 — Cabinet planner</title>
 <style>
 :root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:#f4f3ef;color:#222}main{max-width:1440px;margin:0 auto;padding:28px 22px 50px}h1{margin:0 0 6px;font-size:30px}h2{margin:0 0 14px;font-size:20px}h3{margin:18px 0 8px;font-size:16px}p{line-height:1.45}.muted{color:#666}.card{background:#fff;border:1px solid #d9d6cf;border-radius:12px;padding:18px;margin-top:18px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:12px}label{display:block;font-size:12px;font-weight:700;color:#555;margin-bottom:5px}input,select,textarea,button{font:inherit}input,select{width:100%;padding:8px 9px;border:1px solid #bbb;border-radius:7px;background:#fff}input[type=checkbox]{width:auto;transform:scale(1.1);margin-right:7px}table{width:100%;border-collapse:collapse}th{text-align:left;font-size:12px;color:#555;padding:8px 6px;border-bottom:2px solid #ddd}td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}td input,td select{min-width:70px}.drawer-list{min-width:165px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.row-actions{display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap}.row-actions button{min-width:34px;padding:6px 8px}.row-actions button:disabled{opacity:.35;cursor:not-allowed}button{border:1px solid #aaa;background:#fafafa;padding:9px 13px;border-radius:8px;cursor:pointer}button.primary{background:#333;color:#fff;border-color:#333}button.danger{color:#8b1e1e}textarea{width:100%;height:300px;padding:12px;border:1px solid #bbb;border-radius:8px;font-family:Menlo,Monaco,monospace;font-size:12px;line-height:1.4;white-space:pre}.note{background:#fff8df;border-left:4px solid #d7a800;padding:10px 12px;border-radius:5px;margin-top:12px}.small{font-size:13px}.summary-good{color:#265a2e}.summary-warn{color:#8b1e1e;font-weight:700}.dim{white-space:nowrap}.disabledish{opacity:.45}.hint{font-size:11px;color:#777;margin-top:3px}.drawer-budget{font-size:11px;color:#666;margin-top:4px;line-height:1.3;min-width:190px}.drawer-budget.bad{color:#8b1e1e}.summary-table td,.summary-table th{padding:7px 8px}.nowrap{white-space:nowrap}.pill{display:inline-block;padding:2px 7px;border-radius:999px;background:#eee;font-size:11px}.layout-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.sheet-card{border:1px solid #ddd;border-radius:10px;padding:10px;background:#fafafa}.sheet-card h3{margin:0 0 8px}.sheet-svg{width:100%;height:auto;max-height:620px;background:#fff;border:1px solid #aaa}.bom-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px}.kpi{background:#f7f7f5;border:1px solid #e1dfd9;border-radius:9px;padding:10px}.kpi strong{font-size:20px;display:block}.grain-arrow{font-weight:700}.warning-box{background:#fff0f0;border-left:4px solid #b64a4a;padding:10px 12px;border-radius:5px;margin-top:10px}.success-box{background:#eef8ef;border-left:4px solid #4a8f54;padding:10px 12px;border-radius:5px;margin-top:10px}.progress-group{border-top:1px solid #eee;padding:12px 0}.progress-group:first-child{border-top:0}.progress-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}.progress-actions{display:flex;gap:8px;flex-wrap:wrap}.progress-actions button{padding:6px 9px}.part-done{color:#777;text-decoration:line-through}.inventory-sheet-input{max-width:88px}.layout-print-control{display:flex;align-items:center;gap:6px;margin-bottom:7px}.layout-print-control input{margin-right:3px}.print-count{align-self:center;color:#666}.sheet-card:not(.print-selected){opacity:.72}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.table-wrap{overflow-x:auto}}@media print{body.print-layouts main>*{display:none!important}body.print-layouts #sheetLayoutsCard{display:block!important;border:none;box-shadow:none;margin:0;padding:0}body.print-layouts #sheetLayoutsCard .actions,body.print-layouts #sheetLayoutsCard .note,body.print-layouts .layout-print-control{display:none!important}body.print-layouts .sheet-card:not(.print-selected){display:none!important}.sheet-card{break-inside:avoid;page-break-inside:avoid}.layout-grid{display:block}.sheet-card{margin:0 0 20px;opacity:1!important}}
 .app-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.app-header p{margin:6px 0 0}.help-button{font-weight:700;min-width:88px}.help-dialog{width:min(980px,calc(100vw - 32px));max-height:88vh;border:1px solid #bbb;border-radius:14px;padding:0;box-shadow:0 16px 60px rgba(0,0,0,.28);background:#fff;color:#222}.help-dialog::backdrop{background:rgba(0,0,0,.38)}.help-doc{padding:22px 26px 32px;line-height:1.5}.help-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;position:sticky;top:0;background:#fff;padding:2px 0 12px;border-bottom:1px solid #eee;z-index:2}.help-heading h2{margin:0}.help-heading p{margin:3px 0 0}.help-close{white-space:nowrap}.help-doc h3{margin-top:26px;padding-top:4px;border-top:1px solid #eee}.help-doc h4{margin:20px 0 8px}.help-doc li{margin:5px 0}.help-doc pre{overflow:auto;background:#f6f5f1;border:1px solid #dedbd2;border-radius:8px;padding:12px;line-height:1.35}.help-table{width:100%;border-collapse:collapse;margin:10px 0}.help-table th,.help-table td{border:1px solid #ddd;padding:8px;vertical-align:top}.help-callout{background:#eef8ef;border-left:4px solid #4a8f54;padding:12px 14px;border-radius:6px}.help-warning{background:#fff3df;border-left:4px solid #d28a00;padding:12px 14px;border-radius:6px;margin:12px 0}@media(max-width:700px){.app-header{flex-direction:column}.help-button{align-self:flex-start}.help-doc{padding:18px}.help-heading{position:static}}
@@ -121,7 +121,7 @@ body{overflow-x:hidden}main>.card:first-of-type table .label{width:220px}.table-
   <div class="help-heading">
     <div>
       <h2>CabinetDrafter Help</h2>
-      <p class="muted">Cabinet planner · version 1.4.3</p>
+      <p class="muted">Cabinet planner · version 1.4.5</p>
     </div>
     <button type="button" id="closeHelp" class="help-close">Close</button>
   </div>
@@ -314,7 +314,7 @@ Visible front gets the cabinet's face/front material or veneer skin.</pre>
   <p><strong>An open-shelf height list does not fit:</strong> use <code>auto</code> for the top opening, or adjust the entered clear heights so the total plus shelf thicknesses fits the available vertical space.</p>
 </div></dialog>
 <script type="text/plain" id="rubyTemplate">
-# CabinetDrafter SketchUp Generator - 1.4.3
+# CabinetDrafter SketchUp Generator - 1.4.5
 # Generated by CabinetDrafter.
 # Run from SketchUp: Extensions > Developer > Ruby Console
 #   load '/full/path/to/cabinet_lineup_generated.rb'
@@ -332,6 +332,7 @@ __CABINETS__
   CAB_DEPTH   = __CAB_DEPTH__
   CAB_HEIGHT  = __CAB_HEIGHT__
   PLY         = __PLY__
+  FRONT_PLY   = __FRONT_PLY__
   BACK_PLY    = __BACK_PLY__
   FRONT_MATERIAL = :__FRONT_MATERIAL__
   HIDDEN_CARCASS_MATERIAL = :__HIDDEN_CARCASS_MATERIAL__
@@ -454,6 +455,14 @@ __CABINETS__
   def cabinet_carcass_wood(spec, face_wood, hidden_wood)
     wood = normalize_cabinet_material(spec[:carcass_material])
     wood == :default ? cabinet_default_carcass_wood(spec, face_wood, hidden_wood) : wood
+  end
+
+  def cabinet_carcass_ply(spec)
+    if spec[:type].to_sym == :drawer && !Array(spec[:zones]).any? { |entry| entry.is_a?(Array) && entry[0].to_sym == :open }
+      PLY
+    else
+      FRONT_PLY
+    end
   end
 
   def resolve_material_choice(choice, front_wood, hidden_wood)
@@ -594,34 +603,34 @@ __CABINETS__
 
   # Frameless carcass helper. Pure drawer cabinets keep rear vertical stretchers;
   # backed cabinets omit them because the applied back closes the rear.
-  def make_open_back_box(entities, width, carcass, wood_label, kick_rail, kick_rail_label, kick_skin, kick_skin_label, include_rear_vertical_stretchers = true)
-    inside_w = width - (2.0 * PLY)
+  def make_open_back_box(entities, width, carcass, wood_label, kick_rail, kick_rail_label, kick_skin, kick_skin_label, include_rear_vertical_stretchers = true, carcass_ply = PLY)
+    inside_w = width - (2.0 * carcass_ply)
     z0 = KICK_HEIGHT
     make_kick(entities, width, kick_rail, kick_rail_label, kick_skin, kick_skin_label)
 
     add_box(entities, "Left Side - #{wood_label} 3/4", 0, 0, z0,
-            PLY, CAB_DEPTH, CAB_HEIGHT, carcass)
-    add_box(entities, "Right Side - #{wood_label} 3/4", width - PLY, 0, z0,
-            PLY, CAB_DEPTH, CAB_HEIGHT, carcass)
-    add_box(entities, "Bottom - #{wood_label} 3/4", PLY, 0, z0,
-            inside_w, CAB_DEPTH, PLY, carcass)
+            carcass_ply, CAB_DEPTH, CAB_HEIGHT, carcass)
+    add_box(entities, "Right Side - #{wood_label}", width - carcass_ply, 0, z0,
+            carcass_ply, CAB_DEPTH, CAB_HEIGHT, carcass)
+    add_box(entities, "Bottom - #{wood_label}", carcass_ply, 0, z0,
+            inside_w, CAB_DEPTH, carcass_ply, carcass)
 
-    top_z = z0 + CAB_HEIGHT - PLY
-    rear_y = CAB_DEPTH - PLY
+    top_z = z0 + CAB_HEIGHT - carcass_ply
+    rear_y = CAB_DEPTH - carcass_ply
 
     add_box(entities, "Front Top Stretcher - #{wood_label} 3/4",
-            PLY, 0, top_z, inside_w, STRETCHER, PLY, carcass)
+            carcass_ply, 0, top_z, inside_w, STRETCHER, carcass_ply, carcass)
     add_box(entities, "Rear Top Stretcher - #{wood_label} 3/4",
-            PLY, CAB_DEPTH - STRETCHER, top_z,
-            inside_w, STRETCHER, PLY, carcass)
+            carcass_ply, CAB_DEPTH - STRETCHER, top_z,
+            inside_w, STRETCHER, carcass_ply, carcass)
 
     if include_rear_vertical_stretchers
       add_box(entities, "Upper Rear Stretcher - #{wood_label} 3/4",
-              PLY, rear_y, top_z - STRETCHER,
-              inside_w, PLY, STRETCHER, carcass)
-      add_box(entities, "Lower Rear Stretcher - #{wood_label} 3/4",
-              PLY, rear_y, z0 + PLY,
-              inside_w, PLY, STRETCHER, carcass)
+              carcass_ply, rear_y, top_z - STRETCHER,
+              inside_w, carcass_ply, STRETCHER, carcass)
+      add_box(entities, "Lower Rear Stretcher - #{wood_label}",
+              carcass_ply, rear_y, z0 + carcass_ply,
+              inside_w, carcass_ply, STRETCHER, carcass)
     end
   end
 
@@ -656,14 +665,14 @@ __CABINETS__
     zones
   end
 
-  def open_back_runs(opens)
+  def open_back_runs(opens, thickness = PLY)
     runs = []
     Array(opens).sort_by { |o| o[:zone_index] }.each do |o|
       last = runs.last
       if last && o[:zone_index] == last[:last_zone_index] + 1
         last[:last_zone_index] = o[:zone_index]
         last[:clear_top] = o[:clear_top]
-        last[:height] = (last[:clear_top] - last[:clear_bottom]) + (2.0 * PLY)
+        last[:height] = (last[:clear_top] - last[:clear_bottom]) + (2.0 * thickness)
         last[:open_count] += 1
       else
         runs << {
@@ -671,7 +680,7 @@ __CABINETS__
           last_zone_index: o[:zone_index],
           clear_bottom: o[:clear_bottom],
           clear_top: o[:clear_top],
-          height: o[:height] + (2.0 * PLY),
+          height: o[:height] + (2.0 * thickness),
           open_count: 1
         }
       end
@@ -688,8 +697,9 @@ __CABINETS__
   # entered clear opening height remains exact.
   def resolved_zone_layout(spec)
     zones = normalized_zones(spec)
-    internal_bottom = PLY
-    internal_top = CAB_HEIGHT - PLY
+    ply = cabinet_carcass_ply(spec)
+    internal_bottom = ply
+    internal_top = CAB_HEIGHT - ply
     usable = internal_top - internal_bottom
     raise "#{spec[:label]}: cabinet leaves no usable internal height" if usable <= 0
 
@@ -719,13 +729,13 @@ __CABINETS__
           cursor += DRAWER_BOX_GAP
         when [:drawer, :open]
           dividers << { z: cursor, boundary: 'bottom of open cubby' }
-          cursor += PLY
+          cursor += ply
         when [:open, :drawer]
           dividers << { z: cursor, boundary: 'top of open cubby' }
-          cursor += PLY
+          cursor += ply
         when [:open, :open]
           dividers << { z: cursor, boundary: 'between open cubbies' }
-          cursor += PLY
+          cursor += ply
         end
       end
 
@@ -745,7 +755,7 @@ __CABINETS__
       raise "#{spec[:label]}: an all-open cabinet should use the Open Shelf type" if top_open_start == 0
       top_run = zones[top_open_start, zones.length - top_open_start]
       top_clear_height = top_run.map { |z| z[:height] }.reduce(0.0, :+)
-      divider_z = internal_top - top_clear_height - (top_run.length * PLY)
+      divider_z = internal_top - top_clear_height - (top_run.length * ply)
       min_divider_z = cursor
       if divider_z < min_divider_z - 0.001
         raise "#{spec[:label]}: stack exceeds available height by #{format_dimension(min_divider_z - divider_z)}"
@@ -756,7 +766,7 @@ __CABINETS__
       top_run.each_with_index do |zone, offset|
         dividers << { z: top_cursor,
                       boundary: offset.zero? ? 'bottom of top open cubby run' : 'between open cubbies' }
-        top_cursor += PLY
+        top_cursor += ply
         opens << { zone_index: top_open_start + offset,
                    clear_bottom: top_cursor,
                    clear_top: top_cursor + zone[:height],
@@ -773,7 +783,7 @@ __CABINETS__
     end
 
     { zones: zones, drawers: drawers, opens: opens, dividers: dividers,
-      back_runs: open_back_runs(opens),
+      back_runs: open_back_runs(opens, ply),
       usable: usable, remaining: remaining, remaining_context: remaining_context }
   end
 
@@ -793,13 +803,13 @@ __CABINETS__
     if style == :face_overlay
       o = frame_opening(spec)
       { x: o[:x] - FRAME_OVERLAY, width: o[:width] + (2.0 * FRAME_OVERLAY),
-        y: -(FRAME_THICKNESS + PLY), low: o[:z] - FRAME_OVERLAY, high: o[:z] + o[:height] + FRAME_OVERLAY }
+        y: -(FRAME_THICKNESS + FRONT_PLY), low: o[:z] - FRAME_OVERLAY, high: o[:z] + o[:height] + FRAME_OVERLAY }
     elsif style == :face_inset
       o = frame_opening(spec)
       { x: o[:x] + FRAME_INSET_REVEAL, width: o[:width] - (2.0 * FRAME_INSET_REVEAL),
         y: -FRAME_THICKNESS, low: o[:z] + FRAME_INSET_REVEAL, high: o[:z] + o[:height] - FRAME_INSET_REVEAL }
     else
-      { x: SIDE_REVEAL, width: width - (2.0 * SIDE_REVEAL), y: -PLY, low: FRONT_GAP, high: CAB_HEIGHT - FRONT_GAP }
+      { x: SIDE_REVEAL, width: width - (2.0 * SIDE_REVEAL), y: -FRONT_PLY, low: FRONT_GAP, high: CAB_HEIGHT - FRONT_GAP }
     end
   end
 
@@ -941,20 +951,21 @@ __CABINETS__
   def add_drawer_mixed_contents(entities, width, spec, drawer_box_mat, drawer_box_label, front_mat, front_label, mixed_panel_mat, mixed_panel_label, open_back, open_back_label)
     layout = resolved_zone_layout(spec)
     fronts = resolved_front_layout(spec, layout)
-    inside_w = width - (2.0 * PLY)
+    carcass_ply = cabinet_carcass_ply(spec)
+    inside_w = width - (2.0 * carcass_ply)
     box_w = inside_w - SLIDE_CLEARANCE_TOTAL
     raise "#{spec[:label]}: slide clearance leaves no drawer-box width" if box_w <= 0
     raise "#{spec[:label]}: drawer depth #{DRAWER_DEPTH} exceeds cabinet depth #{CAB_DEPTH}" if DRAWER_DEPTH > CAB_DEPTH
 
     z0 = KICK_HEIGHT
-    x_box = PLY + (SLIDE_CLEARANCE_TOTAL / 2.0)
+    x_box = carcass_ply + (SLIDE_CLEARANCE_TOTAL / 2.0)
     front = front_rect(spec)
     front_w = front[:width]
-    panel_depth = [MIXED_PANEL_DEPTH, CAB_DEPTH - PLY].min
+    panel_depth = [MIXED_PANEL_DEPTH, CAB_DEPTH - carcass_ply].min
 
     layout[:dividers].each_with_index do |d, idx|
       add_box(entities, format('Open Cubby Divider %d - %s 3/4', idx + 1, mixed_panel_label),
-              PLY, 0, z0 + d[:z], inside_w, panel_depth, PLY, mixed_panel_mat)
+              carcass_ply, 0, z0 + d[:z], inside_w, panel_depth, carcass_ply, mixed_panel_mat)
     end
 
     # Contiguous open cubbies share one applied back so adjacent openings do not
@@ -962,7 +973,7 @@ __CABINETS__
     layout[:back_runs].each_with_index do |run, idx|
       name = run[:open_count] > 1 ? 'Open Cubby Run Back' : 'Open Cubby Back'
       add_box(entities, format('%s %d - %s', name, idx + 1, open_back_label),
-              0, CAB_DEPTH, z0 + run[:clear_bottom] - PLY,
+              0, CAB_DEPTH, z0 + run[:clear_bottom] - carcass_ply,
               width, BACK_PLY, run[:height], open_back)
     end
 
@@ -995,7 +1006,7 @@ __CABINETS__
                       end
       add_pull_cutout_panel(entities,
                             format('Drawer Front %d (%s) - %s 3/4', f[:drawer_index] + 1, position_name, front_label),
-                            front[:x], front[:y], z0 + f[:z], front_w, PLY, f[:height], front_mat, :top)
+                            front[:x], front[:y], z0 + f[:z], front_w, FRONT_PLY, f[:height], front_mat, :top)
       front_map[f[:drawer_index]] = f
     end
 
@@ -1019,7 +1030,7 @@ __CABINETS__
     front = front_rect(spec)
     name = spec[:front_style].to_sym == :face_inset ? "Single Inset Door - #{front_label} 3/4" : "Single Overlay Door - #{front_label} 3/4"
     add_pull_cutout_panel(entities, name, front[:x], front[:y], z0 + front[:low],
-                          front[:width], PLY, front[:high] - front[:low], front_mat,
+                          front[:width], FRONT_PLY, front[:high] - front[:low], front_mat,
                           spec[:hinge_side].to_sym == :left ? :right : :left)
   end
 
@@ -1263,22 +1274,29 @@ CabinetDrafter.run
 </script>
 <script>
 (() => {
-  const APP_VERSION='1.4.3';
+  const APP_VERSION='1.4.5';
   const STORAGE_KEY='cabinetDrafterV130', OLD_KEYS=['cabinetDrafterV1211','cabinetDrafterV1210','cabinetDrafterV129','cabinetDrafterV128','cabinetDrafterV127','cabinetDrafterV126','cabinetDrafterV125','cabinetDrafterV124','cabinetDrafterV123','cabinetDrafterV122','cabinetDrafterV121','cabinetDrafterV120','cabinetDrafterV110','joineryGridV110','joineryGridV30','joineryGridV29','joineryGridV28','joineryGridV27','joineryGridV26','simpleCabinetBuilderV24','simpleCabinetBuilderV23','simpleCabinetBuilderV22','simpleCabinetBuilderV21','simpleCabinetBuilderV20','simpleCabinetBuilderV19','simpleCabinetBuilderV18','simpleCabinetBuilderV17','simpleCabinetBuilderV16','simpleCabinetBuilderV15','simpleCabinetBuilderV14','simpleCabinetBuilderV13','simpleCabinetBuilderV12','simpleCabinetBuilderV11','simpleCabinetBuilderV10','simpleCabinetBuilderV9','simpleCabinetBuilderV8','simpleCabinetBuilderV7','simpleCabinetBuilderV6'];
   const defaults={"cabinets":[{"uid":"cab-default-1","label":"24in Drawer Cabinet","type":"drawer","width":24,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"},{"uid":"cab-default-2","label":"20in Single Door Cabinet","type":"door","width":20,"qty":1,"stackSpec":"","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"},{"uid":"cab-default-3","label":"18in Drawer Cabinet","type":"drawer","width":18,"qty":1,"stackSpec":"D7, D7, D7","frontHeights":[],"shelves":0,"frontStyle":"frameless","carcassMaterial":"default","faceMaterial":"default"}],"cabDepth":25,"cabHeight":38,"ply":0.75,"backPly":0.25,"stretcher":4,"frontGap":0.125,"sideReveal":0.0625,"kickHeight":2,"kickSetback":3,"kickDepth":22,"shelfDepth":24.5,"displayGap":8,"drawerDepth":24,"slideClearance":1.0,"drawerSidePly":0.5,"drawerBottomPly":0.5,"drawerCornerJoinery":"butt","drawerBottomJoinery":"between_biscuits","drawerRabbetWidth":0.25,"drawerRabbetDepth":0.25,"drawerBottomGrooveDepth":0.25,"drawerBoxGap":0.5,"drawerBottomClearance":0.5,"mixedPanelDepth":24,"frontMaterial":"cherry","hiddenCarcassMaterial":"birch","drawerBoxMaterial":"birch","mixedPanelMaterial":"front","openBackMaterial":"front","saveFilename":"cabinet-drafter_generated.skp","sheetWidth":48,"sheetLength":96,"kerf":0.125,"edgeTrim":0.25,"spareSheets":0,"preserveCherryGrain":true,"showLabels":true,"showCabinetWidthLabels":false,"showDrawerBoxHeightLabels":false,"showDrawerFaceHeightLabels":false,"showOpenSpaceHeightLabels":false,"previewHiddenLine":false,"replaceExistingSketchupGroup":true,"kickSkinPly":0.25,"units":"in","frameStileWidth":1.5,"frameRailWidth":1.5,"frameThickness":0.75,"frameMaterial":"cherry","frameOverlay":0.5,"frameInsetReveal":0.0625,"progress":{"completedPartIds":[]},"inventory":{"fullSheetsOnHand":{}}};
   defaults.birchLayoutStrategy='auto';defaults.cherryLayoutStrategy='auto';
+  defaults.frontPly=0.75;
   defaults.dedicatedFaceSheets=defaults.dedicatedFaceSheets===true;defaults.groupCabinetFaces=defaults.groupCabinetFaces===true;defaults.faceLayoutStrategy='inherit';defaults.grainPreservationScope='all';defaults.showCompletedOnLayouts=false;defaults.pullCutouts=true;defaults.pullCutoutWidth=3;defaults.pullCutoutHeight=1.5;defaults.pullCutoutRadius=1.5;defaults.cabinets=defaults.cabinets.map(c=>({...c,hingeSide:'right'}));
   const rows=document.getElementById('cabinetRows'), preview=document.getElementById('rubyPreview'), summary=document.getElementById('drawerSummary');
+  const materialChoicesGrid=[...document.querySelectorAll('section.card')].find(x=>x.querySelector('h2')?.textContent.trim()==='Material choices')?.querySelector('.grid');
+  if(materialChoicesGrid){const cell=document.createElement('div');cell.innerHTML='<label>Default faces / doors / visible plywood thickness</label><input id="frontPly" type="text" inputmode="decimal" placeholder="3/4 or 18 mm"><div class="hint">Used for drawer fronts, doors, and visible cabinet parts. Enter the actual sheet thickness.</div>';materialChoicesGrid.insertBefore(cell,materialChoicesGrid.children[1]||null)}
   const PROJECT_DB='CabinetDrafterProjectFiles', PROJECT_STORE='handles', PROJECT_HANDLE_KEY='cabinetdrafter-project-json';
   let projectFileHandle=null, projectAutosaveTimer=null, projectHandleReady=false, projectFileInitPromise=null, projectWriteChain=Promise.resolve(), projectDirty=true;
   let completedPartIds=new Set(), fullSheetInventory={}, layoutPrintSelection=new Set(), currentLayoutSheetKeys=[], layoutPrintSelectionTouched=false, nextCabinetUidCounter=1, canonicalStateCache=null;
   const ids=["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerCornerJoinery","drawerBottomJoinery","drawerRabbetWidth","drawerRabbetDepth","drawerBottomGrooveDepth","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frontMaterial","hiddenCarcassMaterial","drawerBoxMaterial","mixedPanelMaterial","openBackMaterial","frameStileWidth","frameRailWidth","frameThickness","frameMaterial","frameOverlay","frameInsetReveal","saveFilename","sheetWidth","sheetLength","kerf","edgeTrim","spareSheets"];
+  ids.push('frontPly');
   const plywoodThicknessIds=["ply","backPly","drawerSidePly","drawerBottomPly","kickSkinPly"];
+  plywoodThicknessIds.push('frontPly');
   plywoodThicknessIds.forEach(id=>{const el=document.getElementById(id);if(el){el.type='text';el.inputMode='decimal';el.placeholder=id==='ply'?'3/4 or 18 mm':id==='backPly'?'1/4 or 6 mm':'1/2 or 12.7 mm'}});
   ids.push('pullCutoutWidth','pullCutoutHeight','pullCutoutRadius');
   ids.push('birchLayoutStrategy','cherryLayoutStrategy','faceLayoutStrategy','grainPreservationScope');
   const dimensionIds=new Set(["cabDepth","cabHeight","ply","backPly","stretcher","frontGap","sideReveal","kickHeight","kickSetback","kickDepth","kickSkinPly","shelfDepth","displayGap","drawerDepth","slideClearance","drawerSidePly","drawerBottomPly","drawerRabbetWidth","drawerRabbetDepth","drawerBottomGrooveDepth","drawerBoxGap","drawerBottomClearance","mixedPanelDepth","frameStileWidth","frameRailWidth","frameThickness","frameOverlay","frameInsetReveal","sheetWidth","sheetLength","kerf","edgeTrim"]);
+  dimensionIds.add('frontPly');
   let activeUnits='in';
+  let layoutFractionDisplay=false;
   const deepCopy=x=>JSON.parse(JSON.stringify(x));
   const number=(v,f=0)=>{if(v===null||v===undefined||String(v).trim()==='')return f;const n=Number(v);return Number.isFinite(n)?n:f};
   const rubyString=s=>String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
@@ -1286,7 +1304,8 @@ CabinetDrafter.run
   const esc=s=>String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
   const toInches=(v,units=activeUnits)=>units==='mm'?Number(v)/25.4:Number(v);
   const fromInches=(v,units=activeUnits)=>units==='mm'?Number(v)*25.4:Number(v);
-  const fmtDisplay=n=>activeUnits==='mm'?Number(fromInches(n)).toFixed(2).replace(/0+$/,'').replace(/\.$/,''):fmt(n);
+  function fractionInches(value){const sign=value<0?'-':'',abs=Math.abs(value),sixteenths=Math.round(abs*16),whole=Math.floor(sixteenths/16),num0=sixteenths%16;if(!num0)return `${sign}${whole}"`;const gcd=(a,b)=>b?gcd(b,a%b):a,g=gcd(num0,16),num=num0/g,den=16/g;return `${sign}${whole?whole+' ':''}${num}/${den}"`}
+  const fmtDisplay=n=>activeUnits==='mm'?Number(fromInches(n)).toFixed(2).replace(/0+$/,'').replace(/\.$/,''):layoutFractionDisplay?fractionInches(n):fmt(n);
   const unitSuffix=()=>activeUnits==='mm'?' mm':'"';
   const dimText=n=>`${fmtDisplay(n)}${unitSuffix()}`;
   const listText=a=>(Array.isArray(a)?a:[]).map(fmtDisplay).join(', ');
@@ -1302,6 +1321,8 @@ CabinetDrafter.run
     return cabinetFaceWood(c,s);
   }
   function cabinetCarcassWood(c,s){const v=normalizeCabinetMaterial(c?.carcassMaterial,'default');return v==='default'?cabinetDefaultCarcassWood(c,s):v}
+  function visiblePly(s){return Number(s.frontPly)>0?s.frontPly:s.ply}
+  function cabinetCarcassPly(c,s){return c?.type==='drawer'&&!zonesFor(c).some(z=>z.kind==='open')?s.ply:visiblePly(s)}
   function cabinetFaceLabel(c,s){return woodLabel(cabinetFaceWood(c,s))}
   function cabinetCarcassLabel(c,s){return woodLabel(cabinetCarcassWood(c,s))}
   function cabinetMaterialSummary(c,s){return `Box/carcass ${cabinetCarcassLabel(c,s)}, faces/fronts ${cabinetFaceLabel(c,s)}`}
@@ -1375,17 +1396,17 @@ CabinetDrafter.run
     }
     return {zones,errors,normalized:stackTextFromZones(zones)};
   }
-  function openBackRuns(opens,st){
+  function openBackRuns(opens,st,thickness=st.ply){
     const runs=[];
     for(const o of [...(opens||[])].sort((a,b)=>a.zoneIndex-b.zoneIndex)){
       const last=runs[runs.length-1];
       if(last&&o.zoneIndex===last.lastZoneIndex+1){
         last.lastZoneIndex=o.zoneIndex;
         last.clearTop=o.clearTop;
-        last.height=(last.clearTop-last.clearBottom)+(2*st.ply);
+        last.height=(last.clearTop-last.clearBottom)+(2*thickness);
         last.openCount+=1;
       }else{
-        runs.push({firstZoneIndex:o.zoneIndex,lastZoneIndex:o.zoneIndex,clearBottom:o.clearBottom,clearTop:o.clearTop,height:o.height+(2*st.ply),openCount:1});
+        runs.push({firstZoneIndex:o.zoneIndex,lastZoneIndex:o.zoneIndex,clearBottom:o.clearBottom,clearTop:o.clearTop,height:o.height+(2*thickness),openCount:1});
       }
     }
     return runs;
@@ -1436,10 +1457,11 @@ CabinetDrafter.run
     return type==='open_shelf'?canonicalizeShelfSpec(value,activeUnits):canonicalizeDrawerSpec(value,activeUnits);
   }
   function shelfLayout(c,st){
+    const ply=visiblePly(st);
     const p=parseShelfSpec(c.stackSpec||'','in');if(p.errors.length)return {error:p.errors.join('; ')};
-    if(!p.entries.length){const count=Math.max(0,c.shelves||0),clearTotal=st.cabHeight-(2*st.ply)-(count*st.ply);if(clearTotal<0)return {error:'Shelf count leaves no clear opening height'};const openingH=clearTotal/(count+1),openings=[],shelves=[];let bottom=st.ply;for(let i=0;i<count;i++){const z=bottom+openingH;openings.push({height:openingH,clearBottom:bottom,clearTop:z});shelves.push({z});bottom=z+st.ply}openings.push({height:openingH,clearBottom:bottom,clearTop:bottom+openingH});return {openings,shelves,explicit:false}}
-    const shelfCount=p.entries.length-1,availableClear=st.cabHeight-(2*st.ply)-(shelfCount*st.ply);if(availableClear<=0)return {error:'Shelf count leaves no clear opening height'};let heights=p.entries.filter(e=>!e.auto).map(e=>e.height);if(p.entries[p.entries.length-1].auto){const autoH=availableClear-heights.reduce((a,b)=>a+b,0);if(autoH<=0)return {error:`Specified openings exceed available clear height by ${dimText(-autoH)}`};heights=[...heights,autoH]}else{const diff=availableClear-heights.reduce((a,b)=>a+b,0);if(Math.abs(diff)>0.01)return {error:`Clear opening heights must total ${dimText(availableClear)}; adjust by ${dimText(diff)} or use auto for the top opening`}}
-    const openings=[],shelves=[];let bottom=st.ply;heights.forEach((h,i)=>{openings.push({height:h,clearBottom:bottom,clearTop:bottom+h});if(i<heights.length-1){const z=bottom+h;shelves.push({z});bottom=z+st.ply}});return {openings,shelves,explicit:true}
+    if(!p.entries.length){const count=Math.max(0,c.shelves||0),clearTotal=st.cabHeight-(2*ply)-(count*ply);if(clearTotal<0)return {error:'Shelf count leaves no clear opening height'};const openingH=clearTotal/(count+1),openings=[],shelves=[];let bottom=ply;for(let i=0;i<count;i++){const z=bottom+openingH;openings.push({height:openingH,clearBottom:bottom,clearTop:z});shelves.push({z});bottom=z+ply}openings.push({height:openingH,clearBottom:bottom,clearTop:bottom+openingH});return {openings,shelves,explicit:false}}
+    const shelfCount=p.entries.length-1,availableClear=st.cabHeight-(2*ply)-(shelfCount*ply);if(availableClear<=0)return {error:'Shelf count leaves no clear opening height'};let heights=p.entries.filter(e=>!e.auto).map(e=>e.height);if(p.entries[p.entries.length-1].auto){const autoH=availableClear-heights.reduce((a,b)=>a+b,0);if(autoH<=0)return {error:`Specified openings exceed available clear height by ${dimText(-autoH)}`};heights=[...heights,autoH]}else{const diff=availableClear-heights.reduce((a,b)=>a+b,0);if(Math.abs(diff)>0.01)return {error:`Clear opening heights must total ${dimText(availableClear)}; adjust by ${dimText(diff)} or use auto for the top opening`}}
+    const openings=[],shelves=[];let bottom=ply;heights.forEach((h,i)=>{openings.push({height:h,clearBottom:bottom,clearTop:bottom+h});if(i<heights.length-1){const z=bottom+h;shelves.push({z});bottom=z+ply}});return {openings,shelves,explicit:true}
   }
 
   function normalizeCab(c){
@@ -1510,16 +1532,17 @@ CabinetDrafter.run
   applyState=function(st){applyStateBeforeLayoutDisplay(st);document.getElementById('showCompletedOnLayouts').checked=st.showCompletedOnLayouts===true};
   const readStateBeforePlywoodThickness=state,applyStateBeforePlywoodThickness=applyState;
   state=function(){const st=readStateBeforePlywoodThickness();for(const id of plywoodThicknessIds){const el=document.getElementById(id);st[id]=readDimensionValue(el,defaults[id],canonicalStateCache?.[id])}return st};
-  applyState=function(st){applyStateBeforePlywoodThickness(st);for(const id of plywoodThicknessIds){const el=document.getElementById(id);if(el)el.value=fmtDisplay(number(st[id],defaults[id]))}};
+  applyState=function(st){st={...st};if(st.frontPly===undefined)st.frontPly=st.ply??defaults.frontPly;applyStateBeforePlywoodThickness(st);for(const id of plywoodThicknessIds){const el=document.getElementById(id);if(el)el.value=fmtDisplay(number(st[id],defaults[id]))}};
   function updateInputSteps(){const step=activeUnits==='mm'?'0.5':'0.03125';dimensionIds.forEach(id=>{const el=document.getElementById(id);if(el&&el.type==='number')el.step=step});rows.querySelectorAll('.width').forEach(el=>el.step=activeUnits==='mm'?'0.5':'0.125')}
 
 
   function isFaceFrame(c){return c.frontStyle==='face_overlay'||c.frontStyle==='face_inset'}
   function frameOpening(c,st){return {x:st.frameStileWidth,z:st.frameRailWidth,w:c.width-(2*st.frameStileWidth),h:st.cabHeight-(2*st.frameRailWidth)}}
   function frontRect(c,st){
-    if(c.frontStyle==='face_overlay'){const o=frameOpening(c,st);return {x:o.x-st.frameOverlay,w:o.w+(2*st.frameOverlay),y:-(st.frameThickness+st.ply),low:o.z-st.frameOverlay,high:o.z+o.h+st.frameOverlay}}
+    const facePly=visiblePly(st);
+    if(c.frontStyle==='face_overlay'){const o=frameOpening(c,st);return {x:o.x-st.frameOverlay,w:o.w+(2*st.frameOverlay),y:-(st.frameThickness+facePly),low:o.z-st.frameOverlay,high:o.z+o.h+st.frameOverlay}}
     if(c.frontStyle==='face_inset'){const o=frameOpening(c,st);return {x:o.x+st.frameInsetReveal,w:o.w-(2*st.frameInsetReveal),y:-st.frameThickness,low:o.z+st.frameInsetReveal,high:o.z+o.h-st.frameInsetReveal}}
-    return {x:st.sideReveal,w:c.width-(2*st.sideReveal),y:-st.ply,low:st.frontGap,high:st.cabHeight-st.frontGap}
+    return {x:st.sideReveal,w:c.width-(2*st.sideReveal),y:-facePly,low:st.frontGap,high:st.cabHeight-st.frontGap}
   }
   function pullCutout(c,st,fr,kind){
     if(!st.pullCutouts||!(st.pullCutoutWidth>0)||!(st.pullCutoutHeight>0))return null;
@@ -1539,7 +1562,7 @@ CabinetDrafter.run
     const parsed=parseStack(c.stackSpec||''),zones=parsed.zones;if(parsed.errors.length)return {error:parsed.errors.join('; '),zones};
     if(!zones.length)return {error:'No drawer/open stack entered',zones};
     if(!zones.some(z=>z.kind==='drawer'))return {error:'Drawer / mixed cabinet needs at least one drawer; use Open Shelf for an all-open cabinet',zones};
-    const internalBottom=st.ply,internalTop=st.cabHeight-st.ply,usable=internalTop-internalBottom;if(usable<=0)return {error:'Cabinet height leaves no usable internal height',zones};
+    const carcassPly=cabinetCarcassPly(c,st),internalBottom=carcassPly,internalTop=st.cabHeight-carcassPly,usable=internalTop-internalBottom;if(usable<=0)return {error:'Cabinet height leaves no usable internal height',zones};
     const drawers=[],opens=[],dividers=[];let drawerIndex=0,cursor=internalBottom;
     let topOpenStart=zones.length;
     if(zones[zones.length-1].kind==='open'){topOpenStart--;while(topOpenStart>0&&zones[topOpenStart-1].kind==='open')topOpenStart--}
@@ -1550,9 +1573,9 @@ CabinetDrafter.run
       else{
         const prev=zones[i-1];
         if(prev.kind==='drawer'&&z.kind==='drawer')cursor+=st.drawerBoxGap;
-        else if(prev.kind==='drawer'&&z.kind==='open'){dividers.push({z:cursor,boundary:'bottom of open cubby'});cursor+=st.ply}
-        else if(prev.kind==='open'&&z.kind==='drawer'){dividers.push({z:cursor,boundary:'top of open cubby'});cursor+=st.ply}
-        else if(prev.kind==='open'&&z.kind==='open'){dividers.push({z:cursor,boundary:'between open cubbies'});cursor+=st.ply}
+        else if(prev.kind==='drawer'&&z.kind==='open'){dividers.push({z:cursor,boundary:'bottom of open cubby'});cursor+=carcassPly}
+        else if(prev.kind==='open'&&z.kind==='drawer'){dividers.push({z:cursor,boundary:'top of open cubby'});cursor+=carcassPly}
+        else if(prev.kind==='open'&&z.kind==='open'){dividers.push({z:cursor,boundary:'between open cubbies'});cursor+=carcassPly}
       }
       if(z.kind==='drawer'){drawers.push({zoneIndex:i,drawerIndex,z:cursor,height:z.height});drawerIndex++;cursor+=z.height}
       else{opens.push({zoneIndex:i,clearBottom:cursor,clearTop:cursor+z.height,height:z.height});cursor+=z.height}
@@ -1560,16 +1583,16 @@ CabinetDrafter.run
     let remaining=0,remainingContext='unused above stack';
     if(topOpen){
       if(topOpenStart===0)return {error:'An all-open cabinet should use the Open Shelf type',zones};
-      const topRun=zones.slice(topOpenStart),topClearHeight=topRun.reduce((sum,z)=>sum+z.height,0),dividerZ=internalTop-topClearHeight-(topRun.length*st.ply),minDividerZ=cursor;
+      const topRun=zones.slice(topOpenStart),topClearHeight=topRun.reduce((sum,z)=>sum+z.height,0),dividerZ=internalTop-topClearHeight-(topRun.length*carcassPly),minDividerZ=cursor;
       if(dividerZ<minDividerZ-0.001)return {error:`Stack exceeds available height by ${dimText(minDividerZ-dividerZ)}`,zones,usable,drawers,opens,dividers};
       remaining=Math.max(0,dividerZ-minDividerZ);remainingContext=topRun.length>1?'extra hidden clearance below top cubby run':'extra hidden clearance below top cubby';
       let topCursor=dividerZ;
-      topRun.forEach((z,offset)=>{dividers.push({z:topCursor,boundary:offset===0?'bottom of top open cubby run':'between open cubbies'});topCursor+=st.ply;opens.push({zoneIndex:topOpenStart+offset,clearBottom:topCursor,clearTop:topCursor+z.height,height:z.height});topCursor+=z.height});
+      topRun.forEach((z,offset)=>{dividers.push({z:topCursor,boundary:offset===0?'bottom of top open cubby run':'between open cubbies'});topCursor+=carcassPly;opens.push({zoneIndex:topOpenStart+offset,clearBottom:topCursor,clearTop:topCursor+z.height,height:z.height});topCursor+=z.height});
       cursor=topCursor;
     }else{
       remaining=internalTop-cursor;if(remaining<-0.001)return {error:`Stack exceeds internal vertical space by ${dimText(-remaining)}`,zones,usable,drawers,opens,dividers};remaining=Math.max(0,remaining);
     }
-    return {zones,usable,drawers,opens,dividers,backRuns:openBackRuns(opens,st),remaining,remainingContext,internalBottom,internalTop};
+    return {zones,usable,drawers,opens,dividers,backRuns:openBackRuns(opens,st,carcassPly),remaining,remainingContext,internalBottom,internalTop};
   }
 
   function frontLayout(c,st,layout=zoneLayout(c,st)){
@@ -1639,7 +1662,7 @@ CabinetDrafter.run
   function generateRuby(st=currentCanonicalState()){let text=document.getElementById('rubyTemplate').textContent.replace(/^\n/,'');const map={'__CABINETS__':cabinetRuby(st.cabinets),'__CAB_DEPTH__':fmt(st.cabDepth),'__CAB_HEIGHT__':fmt(st.cabHeight),'__PLY__':fmt(st.ply),'__BACK_PLY__':fmt(st.backPly),'__FRONT_MATERIAL__':normalizeWood(st.frontMaterial,'cherry'),'__HIDDEN_CARCASS_MATERIAL__':normalizeWood(st.hiddenCarcassMaterial,'birch'),'__DRAWER_BOX_MATERIAL__':normalizeWood(st.drawerBoxMaterial,'birch'),'__STRETCHER__':fmt(st.stretcher),'__FRONT_GAP__':fmt(st.frontGap),'__SIDE_REVEAL__':fmt(st.sideReveal),'__KICK_HEIGHT__':fmt(st.kickHeight),'__KICK_SETBACK__':fmt(st.kickSetback),'__KICK_DEPTH__':fmt(st.kickDepth),'__KICK_SKIN_PLY__':fmt(st.kickSkinPly),'__SHELF_DEPTH__':fmt(st.shelfDepth),'__DISPLAY_GAP__':fmt(st.displayGap),'__DRAWER_DEPTH__':fmt(st.drawerDepth),'__SLIDE_CLEARANCE__':fmt(st.slideClearance),'__DRAWER_SIDE_PLY__':fmt(st.drawerSidePly),'__DRAWER_BOTTOM_PLY__':fmt(st.drawerBottomPly),'__DRAWER_CORNER_JOINERY__':normalizeDrawerCorner(st.drawerCornerJoinery),'__DRAWER_BOTTOM_JOINERY__':normalizeDrawerBottom(st.drawerBottomJoinery),'__DRAWER_RABBET_WIDTH__':fmt(st.drawerRabbetWidth),'__DRAWER_RABBET_DEPTH__':fmt(st.drawerRabbetDepth),'__DRAWER_BOTTOM_GROOVE_DEPTH__':fmt(st.drawerBottomGrooveDepth),'__DRAWER_BOX_GAP__':fmt(st.drawerBoxGap),'__DRAWER_BOTTOM_CLEARANCE__':fmt(st.drawerBottomClearance),'__MIXED_PANEL_DEPTH__':fmt(st.mixedPanelDepth),'__MIXED_PANEL_MATERIAL__':normalizeMaterialChoice(st.mixedPanelMaterial,'front'),'__OPEN_BACK_MATERIAL__':normalizeMaterialChoice(st.openBackMaterial,'front'),'__FRAME_STILE_WIDTH__':fmt(st.frameStileWidth),'__FRAME_RAIL_WIDTH__':fmt(st.frameRailWidth),'__FRAME_THICKNESS__':fmt(st.frameThickness),'__FRAME_MATERIAL__':st.frameMaterial==='birch'?'birch':'cherry','__FRAME_OVERLAY__':fmt(st.frameOverlay),'__FRAME_INSET_REVEAL__':fmt(st.frameInsetReveal),'__SHOW_LABELS__':st.showLabels?'true':'false','__SHOW_CABINET_WIDTH_LABELS__':st.showCabinetWidthLabels?'true':'false','__SHOW_DRAWER_BOX_HEIGHT_LABELS__':st.showDrawerBoxHeightLabels?'true':'false','__SHOW_DRAWER_FACE_HEIGHT_LABELS__':st.showDrawerFaceHeightLabels?'true':'false','__SHOW_OPEN_SPACE_HEIGHT_LABELS__':st.showOpenSpaceHeightLabels?'true':'false','__REPLACE_EXISTING_GROUP__':st.replaceExistingSketchupGroup===false?'false':'true','__DISPLAY_UNITS__':st.units==='mm'?'mm':'in','__SAVE_FILENAME__':rubyString(st.saveFilename||defaults.saveFilename)};for(const[k,v]of Object.entries(map))text=text.split(k).join(String(v));return text}
 
   const generateRubyBeforePullCutouts=generateRuby;
-  generateRuby=function(st=currentCanonicalState()){return generateRubyBeforePullCutouts(st).replace(/__PULL_CUTOUTS__/g,st.pullCutouts?'true':'false').replace(/__PULL_CUTOUT_WIDTH__/g,fmt(st.pullCutoutWidth)).replace(/__PULL_CUTOUT_HEIGHT__/g,fmt(st.pullCutoutHeight)).replace(/__PULL_CUTOUT_RADIUS__/g,fmt(st.pullCutoutRadius))};
+  generateRuby=function(st=currentCanonicalState()){return generateRubyBeforePullCutouts(st).replace(/__FRONT_PLY__/g,fmt(st.frontPly??st.ply)).replace(/__PULL_CUTOUTS__/g,st.pullCutouts?'true':'false').replace(/__PULL_CUTOUT_WIDTH__/g,fmt(st.pullCutoutWidth)).replace(/__PULL_CUTOUT_HEIGHT__/g,fmt(st.pullCutoutHeight)).replace(/__PULL_CUTOUT_RADIUS__/g,fmt(st.pullCutoutRadius))};
   function fracLabel(n){const known=[[0.75,'3/4'],[0.5,'1/2'],[0.25,'1/4'],[0.625,'5/8'],[0.375,'3/8'],[0.125,'1/8']];for(const [v,l] of known)if(Math.abs(n-v)<0.001)return l;return fmt(n)}
   function materialKey(wood,thickness){return `${wood} ${fracLabel(thickness)}`}
   function addPart(parts,wood,thickness,name,a,b,qty=1,grainMode='none',cabinet='',meta={}){
@@ -1660,7 +1683,7 @@ CabinetDrafter.run
       kickSkinRuns.push(run);return run;
     };
     for(const c of expanded){
-      const w=c.width,inside=w-(2*s.ply),label=c.instanceLabel||c.label||`${w} cabinet`,faceWood=cabinetFaceLabel(c,s),carcassWood=cabinetCarcassLabel(c,s);
+      const w=c.width,carcassPly=cabinetCarcassPly(c,s),facePly=visiblePly(s),inside=w-(2*carcassPly),label=c.instanceLabel||c.label||`${w} cabinet`,faceWood=cabinetFaceLabel(c,s),carcassWood=cabinetCarcassLabel(c,s);
       const mixedPanelWood=materialChoiceLabel(s.mixedPanelMaterial,s,c),openBackWood=materialChoiceLabel(s.openBackMaterial,s,c);
       const groupMeta={groupKey:c.instanceKey,groupLabel:label,cabinetMark:c.cabinetMark||'1'},carcass=assemblyMeta('carcass','Carcass / cabinet box',10),toeKickBase=assemblyMeta('toe-kick-base','Toe-kick/base',30),shelves=assemblyMeta('adjustable-shelves','Adjustable shelves',40),doorFront=assemblyMeta('door-front','Door/front',80);
       const drawerAssembly=(idx,count)=>assemblyMeta(`drawer-${idx+1}`,`Drawer ${idx+1}${drawerPositionSuffix(idx,count)}`,100+idx);
@@ -1676,20 +1699,20 @@ CabinetDrafter.run
       if(c.type==='drawer'){
         const layout=zoneLayout(c,s),mixed=!layout.error&&layout.opens&&layout.opens.length>0;
         const sideGrain=mixed?'vertical':'none',flatGrain=mixed?'horizontal':'none';
-        addCabPart(carcassWood,s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,sideGrain,'cabinet-side',carcass);
-        addCabPart(carcassWood,s.ply,'Bottom',inside,s.cabDepth,1,flatGrain,'cabinet-bottom',carcass);
-        if(mixed)addCabPart(carcassWood,s.ply,'Top stretcher',inside,s.stretcher,2,flatGrain,'top-stretcher',carcass);
-        else addCabPart(carcassWood,s.ply,'4in stretcher',inside,s.stretcher,4,flatGrain,'carcass-stretcher',carcass);
+        addCabPart(carcassWood,carcassPly,'Cabinet side',s.cabDepth,s.cabHeight,2,sideGrain,'cabinet-side',carcass);
+        addCabPart(carcassWood,carcassPly,'Bottom',inside,s.cabDepth,1,flatGrain,'cabinet-bottom',carcass);
+        if(mixed)addCabPart(carcassWood,carcassPly,'Top stretcher',inside,s.stretcher,2,flatGrain,'top-stretcher',carcass);
+        else addCabPart(carcassWood,carcassPly,'4in stretcher',inside,s.stretcher,4,flatGrain,'carcass-stretcher',carcass);
         const fl=frontLayout(c,s,layout),boxW=inside-s.slideClearance;
         if(!layout.error){
-          const panelWood=mixedPanelWood,panelGrain='horizontal',panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply);
-          if(layout.dividers.length)addCabPart(panelWood,s.ply,'Open cubby fixed divider (pocket screwed)',inside,panelDepth,layout.dividers.length,panelGrain,'open-cubby-fixed-divider',carcass);
+          const panelWood=mixedPanelWood,panelGrain='horizontal',panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-carcassPly);
+          if(layout.dividers.length)addCabPart(panelWood,carcassPly,'Open cubby fixed divider (pocket screwed)',inside,panelDepth,layout.dividers.length,panelGrain,'open-cubby-fixed-divider',carcass);
           const backWood=openBackWood,backGrain='vertical';
           for(const run of layout.backRuns){
             const single=run.openCount===1,name=single?'Open cubby applied back':'Open cubby run applied back';
             addCabPart(backWood,s.backPly,name,w,run.height,1,backGrain,single?`open-cubby-back-zone-${run.firstZoneIndex}`:`open-cubby-back-zones-${run.firstZoneIndex}-${run.lastZoneIndex}`,carcass);
           }
-          if(!fl.error){const fr=frontRect(c,s);for(const f of fl.fronts)addCabPart(faceWood,s.ply,`Drawer front ${f.drawerIndex+1}`,fr.w,f.height,1,'horizontal',`drawer-front-${f.drawerIndex+1}`,{...drawerAssembly(f.drawerIndex,layout.drawers.length),isCabinetFace:true})}
+          if(!fl.error){const fr=frontRect(c,s);for(const f of fl.fronts)addCabPart(faceWood,facePly,`Drawer front ${f.drawerIndex+1}`,fr.w,f.height,1,'horizontal',`drawer-front-${f.drawerIndex+1}`,{...drawerAssembly(f.drawerIndex,layout.drawers.length),isCabinetFace:true})}
           for(const d of layout.drawers){
             const pos=drawerPositionSuffix(d.drawerIndex,layout.drawers.length),assembly=drawerAssembly(d.drawerIndex,layout.drawers.length);
             const side=s.drawerSidePly,bottom=s.drawerBottomPly,drawerGeom=drawerBoxGeometry(s,boxW,s.drawerDepth,drawerCornerFor(c,s,d.drawerIndex),drawerBottomFor(c,s,d.drawerIndex));
@@ -1699,17 +1722,17 @@ CabinetDrafter.run
           }
         }
       }else if(c.type==='door'){
-        addCabPart(carcassWood,s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'vertical','cabinet-side',carcass);
-        addCabPart(carcassWood,s.ply,'Bottom',inside,s.cabDepth,1,'horizontal','cabinet-bottom',carcass);
-        addCabPart(carcassWood,s.ply,'Top stretcher',inside,s.stretcher,2,'horizontal','top-stretcher',carcass);
+        addCabPart(carcassWood,carcassPly,'Cabinet side',s.cabDepth,s.cabHeight,2,'vertical','cabinet-side',carcass);
+        addCabPart(carcassWood,carcassPly,'Bottom',inside,s.cabDepth,1,'horizontal','cabinet-bottom',carcass);
+        addCabPart(carcassWood,carcassPly,'Top stretcher',inside,s.stretcher,2,'horizontal','top-stretcher',carcass);
         addCabPart(faceWood,s.backPly,'Applied full back',w,s.cabHeight,1,'vertical','single-door-applied-back',carcass);
-        if(c.shelves>0)addCabPart(carcassWood,s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),c.shelves,'horizontal','adjustable-shelf',shelves);
-        const fr=frontRect(c,s);addCabPart(faceWood,s.ply,c.frontStyle==='face_inset'?'Single inset door':c.frontStyle==='face_overlay'?'Single face-frame overlay door':'Single frameless overlay door',fr.w,fr.high-fr.low,1,'vertical','single-door-front',{...doorFront,isCabinetFace:true});
+        if(c.shelves>0)addCabPart(carcassWood,carcassPly,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),c.shelves,'horizontal','adjustable-shelf',shelves);
+        const fr=frontRect(c,s);addCabPart(faceWood,facePly,c.frontStyle==='face_inset'?'Single inset door':c.frontStyle==='face_overlay'?'Single face-frame overlay door':'Single frameless overlay door',fr.w,fr.high-fr.low,1,'vertical','single-door-front',{...doorFront,isCabinetFace:true});
       }else if(c.type==='open_shelf'){
-        addCabPart(carcassWood,s.ply,'Cabinet side',s.cabDepth,s.cabHeight,2,'vertical','cabinet-side',carcass);
-        addCabPart(carcassWood,s.ply,'Bottom',inside,s.cabDepth,1,'horizontal','cabinet-bottom',carcass);
-        addCabPart(carcassWood,s.ply,'Top stretcher',inside,s.stretcher,2,'horizontal','top-stretcher',carcass);
-        const sl=shelfLayout(c,s);if(!sl.error&&sl.shelves.length)addCabPart(carcassWood,s.ply,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),sl.shelves.length,'horizontal','adjustable-shelf',shelves);
+        addCabPart(carcassWood,carcassPly,'Cabinet side',s.cabDepth,s.cabHeight,2,'vertical','cabinet-side',carcass);
+        addCabPart(carcassWood,carcassPly,'Bottom',inside,s.cabDepth,1,'horizontal','cabinet-bottom',carcass);
+        addCabPart(carcassWood,carcassPly,'Top stretcher',inside,s.stretcher,2,'horizontal','top-stretcher',carcass);
+        const sl=shelfLayout(c,s);if(!sl.error&&sl.shelves.length)addCabPart(carcassWood,carcassPly,'Adjustable shelf (pin supported)',inside,Math.min(s.shelfDepth,s.cabDepth),sl.shelves.length,'horizontal','adjustable-shelf',shelves);
         const backWood=openBackWood,backGrain='vertical';
         addCabPart(backWood,s.backPly,'Applied full back',w,s.cabHeight,1,backGrain,'applied-full-back',carcass);
       }
@@ -1918,6 +1941,7 @@ CabinetDrafter.run
   function syncLayoutSelectionUi(){document.querySelectorAll('.sheet-card').forEach(card=>{const key=card.dataset.sheetKey,selected=layoutPrintSelection.has(key);card.classList.toggle('print-selected',selected);const cb=card.querySelector('.layout-print-check');if(cb)cb.checked=selected});updateLayoutPrintCount()}
   function toggleLayoutPart(partId){if(completedPartIds.has(partId))completedPartIds.delete(partId);else completedPartIds.add(partId);changed()}
   function renderLayouts(results,s){
+    layoutFractionDisplay=activeUnits==='in';
     if(!layoutPrintSelectionTouched&&Array.isArray(canonicalStateCache?.layoutPrintSelection)){layoutPrintSelection=new Set(canonicalStateCache.layoutPrintSelection);layoutPrintSelectionTouched=true}
     const root=document.getElementById('sheetLayouts'),warn=document.getElementById('layoutWarnings');root.innerHTML='';let warnings=[];currentLayoutSheetKeys=[];
     for(const [mat,g] of Object.entries(results).sort((a,b)=>a[0].localeCompare(b[0]))){if(g.overs.length)warnings.push(`${mat}: ${g.overs.length} part(s) cannot fit on a ${fmt(s.sheetWidth)} × ${fmt(s.sheetLength)} sheet with the current trim/grain rules.`);g.sheets.forEach((sh,idx)=>{if(sh.faceGroupSheetCount>1&&sh.faceGroupSheetIndex===1)warnings.push(`${sh.faceGroupLabel}: faces require ${sh.faceGroupSheetCount} ${sh.faceOnly?'dedicated sheets':'face-sheet group sheets'}; they cannot all fit on one sheet at the current size and grain settings.`);
@@ -1935,6 +1959,7 @@ CabinetDrafter.run
     updateLayoutPrintCount();
     if(!currentLayoutSheetKeys.length)warn.innerHTML=warnings.length?`<div class="warning-box small"><strong>Layout warning:</strong> ${warnings.map(esc).join('<br>')}</div>`:'<div class="success-box small">No remaining plywood parts need nesting.</div>';
     else warn.innerHTML=warnings.length?`<div class="warning-box small"><strong>Layout warning:</strong> ${warnings.map(esc).join('<br>')}</div>`:'<div class="success-box small">All remaining generated parts fit the selected sheet sizes.</div>';
+    layoutFractionDisplay=false;
   }
 
   function csvCell(v){const s=String(v??'');return /[\",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
@@ -2064,17 +2089,17 @@ CabinetDrafter.run
     if(sideDepth>0){previewAddBox(scene,'Toe-kick left side',x0,sideY,0,s.ply,sideDepth,s.kickHeight,railMaterial,'kick');previewAddBox(scene,'Toe-kick right side',x0+width-s.ply,sideY,0,s.ply,sideDepth,s.kickHeight,railMaterial,'kick')}
     previewAddBox(scene,'Toe-kick skin',x0,s.kickSetback,0,width,s.kickSkinPly,s.kickHeight,skinMaterial,'kick');
   }
-  function addPreviewOpenBackCarcass(scene,x0,width,s,material,railMaterial='birch',skinMaterial='cherry',includeRearVertical=true){
-    const inside=width-(2*s.ply),z0=s.kickHeight,topZ=z0+s.cabHeight-s.ply,rearY=s.cabDepth-s.ply;
+  function addPreviewOpenBackCarcass(scene,x0,width,s,material,railMaterial='birch',skinMaterial='cherry',includeRearVertical=true,carcassPly=s.ply){
+    const inside=width-(2*carcassPly),z0=s.kickHeight,topZ=z0+s.cabHeight-carcassPly,rearY=s.cabDepth-carcassPly;
     addPreviewKick(scene,x0,width,s,railMaterial,skinMaterial);
-    previewAddBox(scene,'Left side',x0,0,z0,s.ply,s.cabDepth,s.cabHeight,material);
-    previewAddBox(scene,'Right side',x0+width-s.ply,0,z0,s.ply,s.cabDepth,s.cabHeight,material);
-    previewAddBox(scene,'Bottom',x0+s.ply,0,z0,inside,s.cabDepth,s.ply,material);
-    previewAddBox(scene,'Front top stretcher',x0+s.ply,0,topZ,inside,s.stretcher,s.ply,material);
-    previewAddBox(scene,'Rear top stretcher',x0+s.ply,s.cabDepth-s.stretcher,topZ,inside,s.stretcher,s.ply,material);
+    previewAddBox(scene,'Left side',x0,0,z0,carcassPly,s.cabDepth,s.cabHeight,material);
+    previewAddBox(scene,'Right side',x0+width-carcassPly,0,z0,carcassPly,s.cabDepth,s.cabHeight,material);
+    previewAddBox(scene,'Bottom',x0+carcassPly,0,z0,inside,s.cabDepth,carcassPly,material);
+    previewAddBox(scene,'Front top stretcher',x0+carcassPly,0,topZ,inside,s.stretcher,carcassPly,material);
+    previewAddBox(scene,'Rear top stretcher',x0+carcassPly,s.cabDepth-s.stretcher,topZ,inside,s.stretcher,carcassPly,material);
     if(includeRearVertical){
-      previewAddBox(scene,'Upper rear stretcher',x0+s.ply,rearY,topZ-s.stretcher,inside,s.ply,s.stretcher,material);
-      previewAddBox(scene,'Lower rear stretcher',x0+s.ply,rearY,z0+s.ply,inside,s.ply,s.stretcher,material);
+      previewAddBox(scene,'Upper rear stretcher',x0+carcassPly,rearY,topZ-s.stretcher,inside,carcassPly,s.stretcher,material);
+      previewAddBox(scene,'Lower rear stretcher',x0+carcassPly,rearY,z0+carcassPly,inside,carcassPly,s.stretcher,material);
     }
   }
   function addPreviewDrawerBox(scene,x,y,z,width,depth,height,s,material='birch',cornerValue=null,bottomValue=null){
@@ -2085,9 +2110,9 @@ CabinetDrafter.run
     previewAddBox(scene,'Drawer back',g.overlap?x:x+side,y+depth-side,z,g.endWidth,side,height,material,'drawerBox');
     previewAddBox(scene,'Drawer bottom',x+g.bottomInset,y+g.bottomInset,z,g.bottomWidth,g.bottomDepth,bottom,material,'drawerBox');
   }
-  function addPreviewDoorShelves(scene,x0,width,count,s,material='birch'){
-    count=Math.max(0,Math.round(count||0));if(!count)return;const inside=width-(2*s.ply),clearTotal=s.cabHeight-(2*s.ply)-(count*s.ply);if(clearTotal<0)return;const opening=clearTotal/(count+1),z0=s.kickHeight;let bottom=s.ply;
-    for(let i=0;i<count;i++){const z=bottom+opening;previewAddBox(scene,`Shelf ${i+1}`,x0+s.ply,0,z0+z,inside,Math.min(s.shelfDepth,s.cabDepth),s.ply,material);bottom=z+s.ply}
+  function addPreviewDoorShelves(scene,x0,width,count,s,material='birch',carcassPly=visiblePly(s)){
+    count=Math.max(0,Math.round(count||0));if(!count)return;const inside=width-(2*carcassPly),clearTotal=s.cabHeight-(2*carcassPly)-(count*carcassPly);if(clearTotal<0)return;const opening=clearTotal/(count+1),z0=s.kickHeight;let bottom=carcassPly;
+    for(let i=0;i<count;i++){const z=bottom+opening;previewAddBox(scene,`Shelf ${i+1}`,x0+carcassPly,0,z0+z,inside,Math.min(s.shelfDepth,s.cabDepth),carcassPly,material);bottom=z+carcassPly}
   }
   function previewAddFaceFrame(scene,x0,c,s){if(!isFaceFrame(c))return;const mat=s.frameMaterial==='birch'?'birch':'cherry',z0=s.kickHeight,railLen=c.width-(2*s.frameStileWidth);previewAddBox(scene,'Face-frame left stile',x0,-s.frameThickness,z0,s.frameStileWidth,s.frameThickness,s.cabHeight,mat,'frame');previewAddBox(scene,'Face-frame right stile',x0+c.width-s.frameStileWidth,-s.frameThickness,z0,s.frameStileWidth,s.frameThickness,s.cabHeight,mat,'frame');if(railLen>0){previewAddBox(scene,'Face-frame bottom rail',x0+s.frameStileWidth,-s.frameThickness,z0,railLen,s.frameThickness,s.frameRailWidth,mat,'frame');previewAddBox(scene,'Face-frame top rail',x0+s.frameStileWidth,-s.frameThickness,z0+s.cabHeight-s.frameRailWidth,railLen,s.frameThickness,s.frameRailWidth,mat,'frame')}}
 
@@ -2098,34 +2123,34 @@ CabinetDrafter.run
     for(const c of expanded){
       const faceWood=cabinetFaceWood(c,s),carcassWood=cabinetCarcassWood(c,s),mixedPanelWood=materialChoiceWood(s.mixedPanelMaterial,s,c),openBackWood=materialChoiceWood(s.openBackMaterial,s,c);
       const faceMat=previewMaterial(faceWood),carcassMat=previewMaterial(carcassWood),mixedPanelMat=previewMaterial(mixedPanelWood),openBackMat=previewBackMaterial(openBackWood),faceBackMat=previewBackMaterial(faceWood);
-      const w=c.width,inside=w-(2*s.ply),label=c.instanceLabel||c.label||`${previewDim(w)} cabinet`,z0=s.kickHeight;scene.cabinetCount++;
+      const carcassPly=cabinetCarcassPly(c,s),facePly=visiblePly(s),w=c.width,inside=w-(2*carcassPly),label=c.instanceLabel||c.label||`${previewDim(w)} cabinet`,z0=s.kickHeight;scene.cabinetCount++;
       try{
         if(c.type==='drawer'){
           const parsed=parseStack(c.stackSpec||'','in'),mixed=parsed.zones.some(z=>z.kind==='open');
-          addPreviewOpenBackCarcass(scene,x0,w,s,carcassMat,hiddenMat,faceMat,!mixed);
+          addPreviewOpenBackCarcass(scene,x0,w,s,carcassMat,hiddenMat,faceMat,!mixed,carcassPly);
           const layout=zoneLayout(c,s);if(layout.error)throw new Error(layout.error);const fl=frontLayout(c,s,layout);if(fl.error)throw new Error(fl.error);
-          const panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-s.ply);
-          layout.dividers.forEach((d,i)=>previewAddBox(scene,`Open cubby divider ${i+1}`,x0+s.ply,0,z0+d.z,inside,panelDepth,s.ply,mixedPanelMat));
-          layout.backRuns.forEach((run,i)=>previewAddBox(scene,`${run.openCount>1?'Open cubby run back':'Open cubby back'} ${i+1}`,x0,s.cabDepth,z0+run.clearBottom-s.ply,w,s.backPly,run.height,openBackMat,'back'));
-          const boxW=inside-s.slideClearance,xBox=x0+s.ply+(s.slideClearance/2);
+          const panelDepth=Math.min(s.mixedPanelDepth,s.cabDepth-carcassPly);
+          layout.dividers.forEach((d,i)=>previewAddBox(scene,`Open cubby divider ${i+1}`,x0+carcassPly,0,z0+d.z,inside,panelDepth,carcassPly,mixedPanelMat));
+          layout.backRuns.forEach((run,i)=>previewAddBox(scene,`${run.openCount>1?'Open cubby run back':'Open cubby back'} ${i+1}`,x0,s.cabDepth,z0+run.clearBottom-carcassPly,w,s.backPly,run.height,openBackMat,'back'));
+          const boxW=inside-s.slideClearance,xBox=x0+carcassPly+(s.slideClearance/2);
           layout.drawers.forEach(d=>addPreviewDrawerBox(scene,xBox,0,z0+d.z,boxW,s.drawerDepth,d.height,s,drawerBoxMat,drawerCornerFor(c,s,d.drawerIndex),drawerBottomFor(c,s,d.drawerIndex)));
           const fr=frontRect(c,s),drawerByIndex=new Map(layout.drawers.map(d=>[d.drawerIndex,d]));
           fl.fronts.forEach(f=>{
-            previewAddPullCutout(scene,`Drawer front ${f.drawerIndex+1}`,x0+fr.x,fr.y,z0+f.z,fr.w,s.ply,f.height,faceMat,pullCutout(c,s,{...fr,low:0,high:f.height},'drawer'));
+            previewAddPullCutout(scene,`Drawer front ${f.drawerIndex+1}`,x0+fr.x,fr.y,z0+f.z,fr.w,facePly,f.height,faceMat,pullCutout(c,s,{...fr,low:0,high:f.height},'drawer'));
             const d=drawerByIndex.get(f.drawerIndex);let txt='';if(s.showDrawerBoxHeightLabels&&s.showDrawerFaceHeightLabels)txt=`${previewDim(d.height)} / ${previewDim(f.height)}`;else if(s.showDrawerBoxHeightLabels)txt=previewDim(d.height);else if(s.showDrawerFaceHeightLabels)txt=previewDim(f.height);if(txt)previewAddLabel(scene,txt,x0+fr.x+(fr.w/2),fr.y-0.03,z0+f.z+f.height/2,'dimension');
           });
           if(s.showOpenSpaceHeightLabels)layout.opens.forEach(o=>previewAddLabel(scene,previewDim(o.height),x0+w/2,-0.03,z0+(o.clearBottom+o.clearTop)/2,'dimension'));
         }else if(c.type==='door'){
-          addPreviewOpenBackCarcass(scene,x0,w,s,carcassMat,hiddenMat,faceMat,false);
+          addPreviewOpenBackCarcass(scene,x0,w,s,carcassMat,hiddenMat,faceMat,false,carcassPly);
           previewAddBox(scene,'Applied full back',x0,s.cabDepth,z0,w,s.backPly,s.cabHeight,faceBackMat,'back');
-          addPreviewDoorShelves(scene,x0,w,c.shelves,s,carcassMat);
-          const fr=frontRect(c,s);previewAddPullCutout(scene,'Single door',x0+fr.x,fr.y,z0+fr.low,fr.w,s.ply,fr.high-fr.low,faceMat,pullCutout(c,s,fr,'door'));
+          addPreviewDoorShelves(scene,x0,w,c.shelves,s,carcassMat,carcassPly);
+          const fr=frontRect(c,s);previewAddPullCutout(scene,'Single door',x0+fr.x,fr.y,z0+fr.low,fr.w,facePly,fr.high-fr.low,faceMat,pullCutout(c,s,fr,'door'));
         }else if(c.type==='open_shelf'){
-          addPreviewKick(scene,x0,w,s,hiddenMat,faceMat);const topZ=z0+s.cabHeight-s.ply;
-          previewAddBox(scene,'Left side',x0,0,z0,s.ply,s.cabDepth,s.cabHeight,carcassMat);previewAddBox(scene,'Right side',x0+w-s.ply,0,z0,s.ply,s.cabDepth,s.cabHeight,carcassMat);previewAddBox(scene,'Bottom',x0+s.ply,0,z0,inside,s.cabDepth,s.ply,carcassMat);
+          addPreviewKick(scene,x0,w,s,hiddenMat,faceMat);const topZ=z0+s.cabHeight-carcassPly;
+          previewAddBox(scene,'Left side',x0,0,z0,carcassPly,s.cabDepth,s.cabHeight,carcassMat);previewAddBox(scene,'Right side',x0+w-carcassPly,0,z0,carcassPly,s.cabDepth,s.cabHeight,carcassMat);previewAddBox(scene,'Bottom',x0+carcassPly,0,z0,inside,s.cabDepth,carcassPly,carcassMat);
           previewAddBox(scene,'Applied full back',x0,s.cabDepth,z0,w,s.backPly,s.cabHeight,openBackMat,'back');
-          previewAddBox(scene,'Front top stretcher',x0+s.ply,0,topZ,inside,s.stretcher,s.ply,carcassMat);previewAddBox(scene,'Rear top stretcher',x0+s.ply,s.cabDepth-s.stretcher,topZ,inside,s.stretcher,s.ply,carcassMat);
-          const sl=shelfLayout(c,s);if(sl.error)throw new Error(sl.error);sl.shelves.forEach((sh,i)=>previewAddBox(scene,`Adjustable shelf ${i+1}`,x0+s.ply,0,z0+sh.z,inside,Math.min(s.shelfDepth,s.cabDepth),s.ply,carcassMat));
+          previewAddBox(scene,'Front top stretcher',x0+carcassPly,0,topZ,inside,s.stretcher,carcassPly,carcassMat);previewAddBox(scene,'Rear top stretcher',x0+carcassPly,s.cabDepth-s.stretcher,topZ,inside,s.stretcher,carcassPly,carcassMat);
+          const sl=shelfLayout(c,s);if(sl.error)throw new Error(sl.error);sl.shelves.forEach((sh,i)=>previewAddBox(scene,`Adjustable shelf ${i+1}`,x0+carcassPly,0,z0+sh.z,inside,Math.min(s.shelfDepth,s.cabDepth),carcassPly,carcassMat));
           if(s.showOpenSpaceHeightLabels)sl.openings.forEach(o=>previewAddLabel(scene,previewDim(o.height),x0+w/2,-0.03,z0+(o.clearBottom+o.clearTop)/2,'dimension'));
         }
         previewAddFaceFrame(scene,x0,c,s);
@@ -2185,6 +2210,10 @@ CabinetDrafter.run
     const construction=[...document.querySelectorAll('main > section.card')].find(x=>x.querySelector('h2')?.textContent.trim().startsWith('Construction rules'));
     const helpDoc=document.querySelector('#helpDialog .help-doc');
     if(construction&&helpDoc){construction.classList.remove('card');construction.classList.add('help-moved-construction');helpDoc.appendChild(construction)}
+    const cards=[...document.querySelectorAll('main > section.card')],findCard=title=>cards.find(x=>x.querySelector('h2')?.textContent.trim().startsWith(title));
+    const standard=findCard('Standard cabinet dimensions'),materials=findCard('Material choices'),frames=findCard('Face-frame options'),drawerSizing=findCard('Drawer sizing');
+    if(standard&&materials&&frames&&drawerSizing){const first=standard;first.parentNode.insertBefore(materials,first.nextSibling);first.parentNode.insertBefore(frames,materials.nextSibling);first.parentNode.insertBefore(drawerSizing,frames.nextSibling)}
+    if(materials){const grid=materials.querySelector('.grid');for(const id of ['ply','frontPly','backPly','kickSkinPly','drawerSidePly','drawerBottomPly']){const el=document.getElementById(id);if(el&&grid&&!grid.contains(el))grid.appendChild(el.parentElement)}const note=materials.querySelector('.note');if(note)note.innerHTML='<strong>Material profiles:</strong> species and actual thickness are configured together here. Cabinet rows can override species per cabinet; thicknesses remain project-wide role settings. The hidden cabinet-box thickness drives pure drawer carcasses and toe-kick structure, while the visible/front thickness drives mixed, open-shelf, and single-door carcass parts plus doors and drawer fronts.'}
     const sections=[...document.querySelectorAll('main > section.card')];
     sections.forEach(section=>{
       const title=section.querySelector('h2')?.textContent.trim()||'';

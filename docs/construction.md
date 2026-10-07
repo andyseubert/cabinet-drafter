@@ -6,6 +6,7 @@ CabinetDrafter is configurable, but its generated geometry and BOM must still st
 
 - Default carcass thickness: 3/4 in plywood.
 - Plywood thickness inputs may use decimals, fractions such as `11/16`, or explicit metric values such as `18 mm`; the app converts them to canonical inches for geometry.
+- Visible/front plywood thickness drives doors, drawer fronts, and visible cabinet parts. Hidden cabinet-box thickness drives pure drawer carcasses and toe-kick structure; drawer side and bottom thicknesses remain separate role settings.
 - Default visible/front plywood: cherry.
 - Default hidden cabinet-box plywood: birch.
 - Default drawer-box plywood: birch.
