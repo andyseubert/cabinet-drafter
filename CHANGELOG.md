@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 1.4.2 - 2026-09-30
+## 1.4.3 - 2026-10-06
 
 ### Added
 
@@ -28,6 +28,7 @@
 - Added clickable cut-sheet parts and an option to keep completed pieces on the diagrams with checked indicators, sharing progress state with Build progress.
 - Kept full checked-off sheet diagrams visible when no remaining cut parts are left, instead of leaving the layout area empty.
 - Restored cutting layouts to the Materials & cuts tab.
+- Plywood thickness fields now accept actual decimal, fractional, or metric sheet thicknesses such as `11/16` or `18 mm`.
 
 ## 1.3.1 - 2026-09-16
 
