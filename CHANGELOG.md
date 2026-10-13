@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.5.1 - 2026-10-13
+
+### Changed
+
+- Improved cut-sheet annotations: completion checkboxes no longer cover labels, drawer-position suffixes are removed, assembly roles are explicit, and dimensions are printed on separate unit-aware lines.
+
 ## 1.5.0 - 2026-10-13
 
 ### Added
