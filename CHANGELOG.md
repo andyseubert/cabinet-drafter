@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.4.7 - 2026-10-13
+
+### Changed
+
+- Updated cut-layout sheet headings to show material thicknesses as practical fractional inches or millimeters with explicit units instead of raw decimal inches.
+
 ## 1.4.6 - 2026-10-07
 
 ### Added

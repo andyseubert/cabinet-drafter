@@ -121,7 +121,7 @@ The sheet inventory fields are for **uncut full usable sheets on hand** by mater
 additional sheets to buy = max(remaining nested sheets + spare sheets - full sheets on hand, 0)
 ```
 
-The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls. The selected sheet set is saved with the project and restored when it is reopened. Layout rectangles use black-and-white hatch fills by species; the sheet header names the material and thickness. Cut-sheet dimensions use practical fractional inches in inch mode and millimeters in metric mode. Printed layouts are scaled labeled cutting diagrams that fit normal printer pages, not 1:1 templates.
+The remaining plywood layouts are individually selectable before printing, with Select all and Select none controls. The selected sheet set is saved with the project and restored when it is reopened. Layout rectangles use black-and-white hatch fills by species; the sheet header names the material and thickness with explicit units, such as `Birch 1/2 inch` or `Birch 18 mm`. Cut-sheet dimensions use practical fractional inches in inch mode and millimeters in metric mode. Printed layouts are scaled labeled cutting diagrams that fit normal printer pages, not 1:1 templates.
 
 The **Material / sheet BOM** also reconciles purchasing progress by material. It shows full-project parts, completed parts, remaining parts, the full-project sheet target, remaining nested sheets, full sheets on hand, and the sheets still to buy. The purchase number is calculated separately for each material, so sheets on hand for one species do not offset another species.
 
