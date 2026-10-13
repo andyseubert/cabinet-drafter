@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.5.2 - 2026-10-13
+
+### Changed
+
+- Visible drawer-front parts are labeled `Drawer face` in cut sheets, Shop mode, progress details, and cut-list exports, while drawer-box front/back parts remain distinct.
+
 ## 1.5.1 - 2026-10-13
 
 ### Changed

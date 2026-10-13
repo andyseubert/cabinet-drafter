@@ -82,7 +82,7 @@ Hardware counts and drilling templates are not yet complete. Development-project
 
 Shop mode is a touch-friendly view of the same physical-part progress data. It is intended for a phone or tablet in the shop: filter by cabinet or material, search by part mark or name, and check parts as they are made. Those checks use the same stable IDs as Build progress and remove the parts from remaining nesting.
 
-Cut-sheet labels identify the assembly role directly, such as cabinet side/bottom or drawer side/bottom. The dimensions are split across two lines to remain legible on narrow parts and use practical fractions in inch mode or millimeters in metric mode.
+Cut-sheet labels identify the assembly role directly, such as cabinet side/bottom or drawer side/bottom. Visible applied drawer pieces are labeled drawer face; drawer-box front/back parts remain distinct. The dimensions are split across two lines to remain legible on narrow parts and use practical fractions in inch mode or millimeters in metric mode.
 
 Completed work is tracked as individual physical plywood cut parts. A completed part is removed from the remaining-work nesting, but the cabinet definition and 3D design remain unchanged.
 

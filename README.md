@@ -12,7 +12,7 @@ No account, web service, or installation is required for the core app. Open `ind
 
 CabinetDrafter includes a mobile-friendly **Shop mode** for checking off parts at the bench. It can filter the current cut list by cabinet or material, search for a part mark, show only unfinished work, and download the remaining cut list without changing the project design.
 
-Cut-sheet labels use short marks plus explicit assembly roles such as `Cabinet side`, `Cabinet bottom`, `Drawer 1 side`, and `Drawer 1 bottom`. Dimensions are printed vertically with practical fractions and unit-aware labels.
+Cut-sheet labels use short marks plus explicit assembly roles such as `Cabinet side`, `Cabinet bottom`, `Drawer 1 side`, and `Drawer 1 bottom`. Visible applied drawer pieces are labeled `Drawer face`; drawer-box `front/back` parts remain distinct. Dimensions are printed vertically with practical fractions and unit-aware labels.
 
 - Frameless, face-frame overlay, and face-frame inset cabinets on a per-cabinet basis
 - Drawer cabinets, single-door cabinets, mixed drawer/open-cubby cabinets, and open-shelf cabinets, with reorder controls for the run
