@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## 1.5.0 - 2026-10-13
+
+### Added
+
+- Added Shop mode, a focused workbench for filtering cabinet parts by cabinet, material, search text, and completion status, with large touch-friendly checkboxes and direct remaining-cut-list access.
+- Added a mobile-first cabinet editor layout that turns the wide desktop cabinet table into readable, editable cards on phones and tablets.
+
+### Changed
+
+- Made the Shop mode the starting tab while retaining the full Design, preview, export, planning, progress, and Help workflows.
+
 ## 1.4.7 - 2026-10-13
 
 ### Changed
