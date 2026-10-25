@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.5.3 - 2026-10-25
+
+### Added
+
+- Added printable 1:1 pull cut-out templates for drawer faces and both door hinge orientations, using the configured width, height, and corner radius. Templates include a one-inch scale check and explicit actual-size printing guidance.
+
 ## 1.5.2 - 2026-10-13
 
 ### Changed
