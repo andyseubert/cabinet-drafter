@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 1.6.1 - 2026-10-25
+
+### Fixed
+
+- Smoothed circular pull arcs across the browser preview, printable templates, STL jig, and SketchUp export.
+- Corrected door-edge circular cutouts so both hinge orientations follow the edge cleanly instead of crossing the arc path.
+
 ## 1.6.0 - 2026-10-25
 
 ### Added
