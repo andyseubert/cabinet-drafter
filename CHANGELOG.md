@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.5.4 - 2026-10-25
+
+### Changed
+
+- Moved the printable pull templates directly into the Front pull cut-outs panel beside the dimensions and radius settings for easier visual editing.
+
 ## 1.5.3 - 2026-10-25
 
 ### Added

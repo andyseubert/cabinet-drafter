@@ -14,7 +14,7 @@ CabinetDrafter includes a mobile-friendly **Shop mode** for checking off parts a
 
 Cut-sheet labels use short marks plus explicit assembly roles such as `Cabinet side`, `Cabinet bottom`, `Drawer 1 side`, and `Drawer 1 bottom`. Visible applied drawer pieces are labeled `Drawer face`; drawer-box `front/back` parts remain distinct. Dimensions are printed vertically with practical fractions and unit-aware labels.
 
-The Materials & cuts tab includes 1:1 printable pull templates for drawer-face top notches and left/right-hinge door notches. Print at Actual size and verify the included one-inch scale square before transferring the shape.
+The Design tab includes 1:1 printable pull templates directly below the pull width, height, and radius settings for drawer-face top notches and left/right-hinge door notches. Print at Actual size and verify the included one-inch scale square before transferring the shape.
 
 - Frameless, face-frame overlay, and face-frame inset cabinets on a per-cabinet basis
 - Drawer cabinets, single-door cabinets, mixed drawer/open-cubby cabinets, and open-shelf cabinets, with reorder controls for the run
