@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.6.2 - 2026-10-25
+
+### Fixed
+
+- Fixed broken router-template STL meshes by triangulating the concave pull-opening outline correctly instead of using crossing fan triangles.
+
 ## 1.6.1 - 2026-10-25
 
 ### Fixed
