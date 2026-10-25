@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 1.6.0 - 2026-10-25
+
+### Added
+
+- Added a downloadable ASCII STL router-bushing jig for drawer-face pull cut-outs. The jig uses the configured pull geometry, applies the exact bit-to-bushing offset, and includes wide clamp wings, top locating tabs, and a center reference.
+- Added router bit diameter, guide-bushing diameter/thickness, and printed-template thickness settings with fit validation.
+
 ## 1.5.5 - 2026-10-25
 
 ### Added

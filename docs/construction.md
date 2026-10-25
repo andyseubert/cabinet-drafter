@@ -86,6 +86,8 @@ Cut-sheet labels identify the assembly role directly, such as cabinet side/botto
 
 The Design tab provides 1:1 pull cut-out templates directly below the pull settings for drawer-face top notches and both door hinge orientations. The templates use the configured rounded or circular pull geometry and include a one-inch scale check.
 
+The same panel can download an ASCII STL router-bushing jig for the drawer-face top notch. Enter the actual router-bit diameter, guide-bushing outside diameter and thickness, and a printed-jig thickness thinner than the bushing thickness. The STL opening is enlarged by half the bit-to-bushing diameter difference. It includes 1 1/2 in clamp wings, top locating tabs, and a center reference ridge. Import it at 100% scale and test on scrap first; confirm the actual bit and bushing dimensions before routing a finished face.
+
 Completed work is tracked as individual physical plywood cut parts. A completed part is removed from the remaining-work nesting, but the cabinet definition and 3D design remain unchanged.
 
 The progress UI groups those physical parts into practical shop assemblies and lists the material species generated for each cabinet and assembly. Whole carcasses mark the cabinet box parts complete without also marking loose fronts or drawer boxes. Whole drawer assembly checkboxes mark the drawer box parts and matching drawer front together. Individual part checkboxes remain available for partial work.
