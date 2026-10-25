@@ -76,7 +76,7 @@ The development project assumes the countertop is screwed through the top stretc
 
 ## Hardware
 
-Hardware counts and drilling templates are not yet complete. Development-project assumptions include two concealed European hinges per door and side-mount drawer slides using the configured clearance. Optional front pull cut-outs are rounded secondary notches: drawer notches open at the top edge, while single-door notches are centered on the edge opposite the configured hinge side. Width, entry height, and corner radius are configurable. They do not change the rectangular blank dimensions in the BOM or sheet nesting.
+Hardware counts and drilling templates are not yet complete. Development-project assumptions include two concealed European hinges per door and side-mount drawer slides using the configured clearance. Optional front pull cut-outs are secondary notches: drawer notches open at the top edge, while single-door notches are centered on the edge opposite the configured hinge side. Rounded notches use width, entry height, and corner radius. Circular chord/segment notches use circle diameter and segment depth, with the chord width calculated automatically. They do not change the rectangular blank dimensions in the BOM or sheet nesting.
 
 ## Build progress and full-sheet inventory
 
@@ -84,7 +84,7 @@ Shop mode is a touch-friendly view of the same physical-part progress data. It i
 
 Cut-sheet labels identify the assembly role directly, such as cabinet side/bottom or drawer side/bottom. Visible applied drawer pieces are labeled drawer face; drawer-box front/back parts remain distinct. The dimensions are split across two lines to remain legible on narrow parts and use practical fractions in inch mode or millimeters in metric mode.
 
-The Design tab provides 1:1 pull cut-out templates directly below the pull settings for drawer-face top notches and both door hinge orientations. The templates use the configured pull dimensions and radius and include a one-inch scale check.
+The Design tab provides 1:1 pull cut-out templates directly below the pull settings for drawer-face top notches and both door hinge orientations. The templates use the configured rounded or circular pull geometry and include a one-inch scale check.
 
 Completed work is tracked as individual physical plywood cut parts. A completed part is removed from the remaining-work nesting, but the cabinet definition and 3D design remain unchanged.
 

@@ -14,14 +14,14 @@ CabinetDrafter includes a mobile-friendly **Shop mode** for checking off parts a
 
 Cut-sheet labels use short marks plus explicit assembly roles such as `Cabinet side`, `Cabinet bottom`, `Drawer 1 side`, and `Drawer 1 bottom`. Visible applied drawer pieces are labeled `Drawer face`; drawer-box `front/back` parts remain distinct. Dimensions are printed vertically with practical fractions and unit-aware labels.
 
-The Design tab includes 1:1 printable pull templates directly below the pull width, height, and radius settings for drawer-face top notches and left/right-hinge door notches. Print at Actual size and verify the included one-inch scale square before transferring the shape.
+The Design tab includes 1:1 printable pull templates directly below the pull settings for drawer-face top notches and left/right-hinge door notches. Rounded notches use width, entry height, and corner radius. Circular chord/segment notches use circle diameter and segment depth; the tool calculates the chord width. Print at Actual size and verify the included one-inch scale square before transferring the shape.
 
 - Frameless, face-frame overlay, and face-frame inset cabinets on a per-cabinet basis
 - Drawer cabinets, single-door cabinets, mixed drawer/open-cubby cabinets, and open-shelf cabinets, with reorder controls for the run
 - Explicit drawer heights and clear shelf/cubby opening heights
 - Inches or millimeters for entry/display while keeping canonical geometry stable internally
 - Applied backs behind open spaces and single-door cabinets
-- Optional simple finger notches at drawer-front tops and centered on single-door pull edges, with configurable notch size and per-door hinge side
+- Optional simple finger notches at drawer-front tops and centered on single-door pull edges, with rounded or circular chord/segment geometry and per-door hinge side
 - Role-based plywood material defaults, plus per-cabinet species overrides for box/carcass parts and faces/fronts
 - Drawer-box sizing with configurable slide clearance
 - Drawer-box joinery options: butt joints, 1/4 x 1/4 rabbets, box/finger joints, and half-blind dovetails
@@ -97,7 +97,7 @@ Auto-sized drawer-front reveal lines are tied to the physical drawer-box stack. 
 
 ## Front pull cut-outs
 
-The optional rounded finger-notch feature keeps the cut-list and nesting dimensions rectangular because the notch is a secondary operation on the front blank. Drawer notches open from the top edge. Single-door notches are centered vertically on the pull edge, opposite the per-cabinet hinge-side setting. Cut-out width, entry height, and corner radius are configurable. A radius near half the cut-out width produces a half-circle-like profile; smaller radii produce a more squared crescent.
+The optional finger-notch feature keeps the cut-list and nesting dimensions rectangular because the notch is a secondary operation on the front blank. Drawer notches open from the top edge. Single-door notches are centered vertically on the pull edge, opposite the per-cabinet hinge-side setting. Rounded notches use cut-out width, entry height, and corner radius. Circular chord/segment notches use circle diameter and segment depth; the chord width is calculated from those two values. A diameter equal to twice the segment depth produces a half-circle; shallower segments produce a flatter crescent-like arc.
 
 ## Drawer joinery
 

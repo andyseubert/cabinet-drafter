@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 1.5.5 - 2026-10-25
+
+### Added
+
+- Added circular chord/segment pull cut-outs. Enter a circle diameter and segment depth to calculate the chord width and generate matching 3D, SketchUp, and printable template geometry.
+
 ## 1.5.4 - 2026-10-25
 
 ### Changed
