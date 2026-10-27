@@ -8,6 +8,8 @@ No account, web service, or installation is required for the core app. Open `ind
 
 ![CabinetDrafter 3D preview](screenshots/3d-preview.png)
 
+Current version: **1.7.0**.
+
 ## What it does
 
 CabinetDrafter includes a mobile-friendly **Shop mode** for checking off parts at the bench. It can filter the current cut list by cabinet or material, search for a part mark, show only unfinished work, and download the remaining cut list without changing the project design.
@@ -147,6 +149,12 @@ CabinetDrafter creates a valid, non-overlapping, strip-based sheet layout using 
 Face-frame solid stock is reported as net cut length grouped by material, thickness, and member width. Add waste based on available board lengths, defects, milling allowance, and your shop process.
 
 Before cutting, verify dimensions against your hardware, actual material thickness, installation site, and chosen construction method.
+
+## Front pulls
+
+The Design tab has a **Front pulls** card with two reusable choices. Each choice can be a cut-out, leather loop, knob, handle, or none. Set separate drawer and door defaults, then override a cabinet or individual drawer under **Front pulls** in its cabinet row. Drawer numbers run bottom to top. Inherited labels update when defaults change.
+
+Hardware replaces the cut-out on that face and appears in the offline 3D preview, PNG, and SketchUp export. Configure its visual length/diameter, width, projection, and edge distance; drawers use horizontal pulls near the top and doors use vertical pulls opposite the hinges. These are schematic planning dimensions, not drilling patterns or mounting-hole spacing. Hardware is excluded from plywood nesting and the BOM. Existing projects retain their previous cut-out settings. Pull choices and overrides persist in project JSON and browser recovery.
 
 ## 3D preview
 

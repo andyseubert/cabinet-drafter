@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 1.7.0 - 2026-10-27
+
+### Added
+
+- Added a Front pulls card with two reusable choices supporting existing cut-outs, leather loops, knobs, handles, and none, plus separate drawer/door defaults.
+- Added inherited cabinet and individual-drawer pull overrides, saved in project JSON and browser recovery.
+- Added adjustable schematic hardware dimensions and placement shared by the offline preview and SketchUp export. Hardware replaces cut-outs on selected faces and stays outside plywood nesting and the BOM. Older projects preserve their existing cut-outs.
+
 ## 1.6.2 - 2026-10-25
 
 ### Fixed

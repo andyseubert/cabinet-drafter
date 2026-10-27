@@ -76,6 +76,8 @@ The development project assumes the countertop is screwed through the top stretc
 
 ## Hardware
 
+Front pulls inherit from separate drawer/door project defaults through cabinet overrides to individual drawer overrides. Two reusable profiles initially support cut-outs, leather loops, knobs, handles, and none. Hardware replaces cut-outs on selected faces without changing rectangular front blanks or plywood part IDs. Shared schematic hardware geometry appears in the browser preview and SketchUp export. Drawers have horizontal pulls centered across their width near the top; doors have vertical pulls centered on the edge opposite the hinges. Visual dimensions and placement are limited to fit each face; they do not specify mounting-hole spacing or drilling. Leather is shown as a bowed strap with two fasteners. Hardware does not contribute to the plywood BOM or nesting.
+
 Hardware counts and drilling templates are not yet complete. Development-project assumptions include two concealed European hinges per door and side-mount drawer slides using the configured clearance. Optional front pull cut-outs are secondary notches: drawer notches open at the top edge, while single-door notches are centered on the edge opposite the configured hinge side. Rounded notches use width, entry height, and corner radius. Circular chord/segment notches use circle diameter and segment depth, with the chord width calculated automatically. They do not change the rectangular blank dimensions in the BOM or sheet nesting.
 
 ## Build progress and full-sheet inventory
